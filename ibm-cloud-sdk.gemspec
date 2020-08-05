@@ -8,6 +8,7 @@ Gem::Specification.new do |spec|
   spec.summary       = %q{IBM Cloud API Ruby gem.}
   spec.description   = %q{A Ruby gem for interacting with the various IBM Cloud services.}
   spec.homepage      = "https://github.com/IBM-Cloud/ibm-cloud-sdk-ruby"
+  spec.licenses      = %w["Apache-2.0"]
   spec.required_ruby_version = Gem::Requirement.new(">= 2.3.0")
 
   spec.metadata["homepage_uri"] = spec.homepage
