@@ -18,7 +18,7 @@ module IBM
         end
 
         def endpoint
-          "https://#{region}.power-iaas.cloud.ibm.com/pcloud/v1"
+          "https://#{region.sub(/-\d$/, '')}.power-iaas.cloud.ibm.com/pcloud/v1"
         end
 
         # Get all PVM instances in an IBM Power Cloud instance
