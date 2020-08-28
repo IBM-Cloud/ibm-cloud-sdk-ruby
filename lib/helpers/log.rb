@@ -1,3 +1,4 @@
+# typed: true
 # frozen_string_literal: true
 
 require 'logger'
@@ -40,16 +41,14 @@ class Log < Logger
     @level = level(loglevel)
   end
 
-  private
-
   # Determine what class is being passed in and set appropriately.
   # @param logdev [Logger | Log] The param passed in from initialize.
   # @param shift_age [Integer] How long to keep logs for.
   # @param shift_size [Integer] How large a log file can last for.
   # @return [LogDevice]
-  def _set_logdev(logdev, shift_age, shift_size)
+  private def _set_logdev(logdev, shift_age, shift_size)
     # This class's logdev was passed in.
-    return logdev if logdev.class == Config::Helpers::Log::LogDevice
+    return logdev if logdev.class == Log::LogDevice
 
     # A stardard ruby logger class from the legacy code.
     return logdev.logdev if logdev.class == Logger
@@ -112,7 +111,7 @@ class Log < Logger
   # @return [Log] New instance of Log with basename and logdev set.
   def get_logger(basename)
     # Set name & basename to Class name.
-    l = Config::Helpers::Log.new(@logdev, name: basename, log_level: @level)
+    l = Log.new(@logdev, name: basename, log_level: @level)
     # Save Class name for appending to method name.
     l.basename = basename
     l
@@ -154,7 +153,7 @@ class Log < Logger
     # @param log [String] Name of log file to attach.
     # @return [NilClass]
     def attach(log)
-      @mutex.synchronize do
+      synchronize do
         # If @devs is not defined then set to empty Hash.
         @devs ||= {}
         # Open file for writing and add to Hash.
@@ -173,7 +172,7 @@ class Log < Logger
       return if @devs[log].nil?
 
       # Set lock, close log file and delete from hash.
-      @mutex.synchronize do
+      synchronize do
         @devs[log].close
         @devs.delete(log)
       end
@@ -189,7 +188,7 @@ class Log < Logger
       # Write to the original log file.
       old_write(message)
       # Set lock, and write message to each defined log file.
-      @mutex.synchronize do
+      synchronize do
         # If @devs is not defined then set to Hash.
         @devs ||= {}
         # Iterate through @devs.
