@@ -1,25 +1,23 @@
 # frozen_string_literal: true
 
-
-
 module IBM
   module Cloud
     module SDK
-      # A class that encapuslates logic for getting REST results.
-      class Connection
-        def initialize(region, guid, token, crn, tenant)
-          @crn    = crn
-          @guid   = guid
-          @region = region
-          @token  = token
-          @tenant = tenant
-        end
-      end
-
       # Container that encapsulates the VPC API.
       class BaseVPC
+        def initialize(endpoint, token, logger)
+          @endpoint = endpoint
+          @token = token
+          @logger = logger.get_logger(self.class) unless logger.nil?
+        end
+
         def get(path, params = nil)
-          response = RestClient.get(url(path), metadata(params))
+          begin
+            response = RestClient.get(url(path), metadata(params))
+          rescue RestClient::ExceptionWithResponse => e
+            @logger.error("Exception for #{e.response.request.url} #{e.response.description}")
+            return e.response
+          end
           JSON.parse(response)
         end
 
@@ -43,6 +41,8 @@ module IBM
           JSON.parse(response)
         end
 
+        attr_reader :endpoint
+
         def url(path)
           return endpoint if path.nil?
 
@@ -50,14 +50,14 @@ module IBM
         end
 
         def headers
-          {
-            'Authorization' => token.authorization_header,
-            'Content-Type' => 'application/json'
+          head = {
+            'Authorization' => @token.authorization_header
           }
+          head
         end
 
         def metadata(params)
-          { params: merge_params(params), headers: headers }
+          { params: merge_params(params) }.merge(headers)
         end
 
         def merge_params(params)
