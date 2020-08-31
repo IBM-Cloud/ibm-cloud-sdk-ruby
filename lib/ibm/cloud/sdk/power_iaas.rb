@@ -131,6 +131,14 @@ module IBM
           get("cloud-instances/#{guid}/networks/#{network_id}")
         end
 
+        def get_system_pool
+          get("cloud-instances/#{guid}/system-pools")
+        end
+
+        def get_storage_types
+          get("https://#{region.sub(/-\d$/, '')}.power-iaas.cloud.ibm.com/broker/v1/storage-types")
+        end
+
         def create_network(network_hash)
           post("cloud-instances/#{guid}/networks", network_hash.to_json)
         end
