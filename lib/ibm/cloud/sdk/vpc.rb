@@ -3,6 +3,7 @@
 
 require('helpers/log')
 require_relative('vpc/base_vpc')
+require_relative('vpc/instances')
 
 module IBM
   module Cloud
@@ -26,6 +27,8 @@ module IBM
           "https://#{@region.sub(/-\d$/, '')}.iaas.cloud.ibm.com/v1"
         end
 
+        def instances
+          IBM::Cloud::SDK::VPC::Instances.new("#{endpoint}/instances", @token, @logger)
         end
       end
     end
