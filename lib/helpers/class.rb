@@ -1,3 +1,4 @@
+# typed: false
 # The base object.
 class Object
   # Filter out the standard methods and only show the interesting methods.

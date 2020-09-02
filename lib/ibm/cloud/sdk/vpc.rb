@@ -1,10 +1,14 @@
+# typed: true
 # frozen_string_literal: true
+
+require('helpers/log')
+require_relative('vpc/base_vpc')
 
 module IBM
   module Cloud
     module SDK
       # Container that encapsulates the VPC API.
-      class VPC < BaseService
+      class Vpc < BaseVPC
         # Create an API Client object for the  VPC IaaS service
         #
         # @param region [String] the IBM Power Cloud instance region
@@ -15,14 +19,13 @@ module IBM
         def initialize(region, token)
           @region = region
           @token  = token
+          @logger = Log.new(STDOUT, name: 'root', log_level: 'debug')
         end
 
         def endpoint
-          "https://#{@region.sub(/-\d$/, '')}.iaas.cloud.ibm.com/v2"
+          "https://#{@region.sub(/-\d$/, '')}.iaas.cloud.ibm.com/v1"
         end
 
-        def floagintips
-          IBM::Cloud::SDK::VPC::FloatingIPs.new()
         end
       end
     end
