@@ -4,4 +4,24 @@
 require 'bundler/setup'
 require 'ibm'
 require 'pry'
-Pry.start
+require 'thor'
+
+def interactive(options)
+  puts options
+  eval File.read(options[:script]) if options[:script] # rubocop:disable Security/Eval
+  pry
+end
+
+# A Thor CLI.
+class MyCLI < Thor
+  include Thor::Actions
+
+  desc 'cli', 'Load a cli instance'
+  option :script, desc: 'Script to run and then start interactive session.', type: :string
+  def cli
+    # puts "Heee #{options[:script]}"
+    interactive(options)
+  end
+end
+
+MyCLI.start(ARGV)
