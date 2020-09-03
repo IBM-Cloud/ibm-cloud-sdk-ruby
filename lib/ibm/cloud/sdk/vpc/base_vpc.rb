@@ -10,22 +10,28 @@ module IBM
       class BaseVPC < BaseService
         extend T::Sig
 
+        sig { params(parent: BaseVPC, endpoint: T.nilable(String)).void }
+        def initialize(parent, endpoint = nil)
+          @endpoint = T.let(parent.url(endpoint), String)
+          @token = T.let(parent.token, IBM::Cloud::SDK::IAM::Token)
+          @logger = T.let(parent.logger.get_logger(self.class), Log)
+        end
+
+        sig { returns(String) }
+        attr_reader :endpoint
+
+        sig { returns(SDK::IAM::Token) }
+        attr_reader :token
+
+        sig { returns(Log) }
+        attr_reader :logger
+
         sig { params(method: String, path: T.nilable(String), params: T.untyped).returns(RestClient::Response) }
         def adhoc(method = 'get', path = nil, params = nil)
           RestClient::Request.execute(method: method.to_sym, url: url(path), headers: metadata(params))
         rescue RestClient::ExceptionWithResponse => e
           @logger.error("Exception for #{e.response.request.url} #{e.response.description}")
           e.response
-        end
-
-        sig { returns(String) }
-        attr_reader :endpoint
-
-        sig { params(endpoint: String, token: IBM::Cloud::SDK::IAM::Token, logger: Log).void }
-        def initialize(endpoint, token, logger)
-          @endpoint = T.let(endpoint, String)
-          @token = T.let(token, IBM::Cloud::SDK::IAM::Token)
-          @logger = T.let(logger.get_logger(self.class), Log) unless logger.nil?
         end
 
         sig { params(path: T.nilable(String), params: T.nilable(T::Hash[String, String])).returns(RestClient::Response) }
@@ -69,14 +75,14 @@ module IBM
           JSON.parse(response)
         end
 
-        private
-
         sig { params(path: T.nilable(String)).returns(String) }
         def url(path = nil)
           return endpoint if path.nil?
 
           "#{endpoint}/#{path}"
         end
+
+        private
 
         sig { returns(T::Hash[String, String]) }
         def headers
