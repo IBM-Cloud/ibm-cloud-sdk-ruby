@@ -1,7 +1,6 @@
-# frozen_string_literal: true
 # typed: strict
+# frozen_string_literal: true
 
-require 'sorbet-runtime'
 require('helpers/response')
 
 module IBM
@@ -11,7 +10,7 @@ module IBM
       class BaseVPC < BaseService
         extend T::Sig
 
-        sig { params(method: String, path: T.nilable(String), params: T.nilable(T.untyped)).returns(RestClient::Response) }
+        sig { params(method: String, path: T.nilable(String), params: T.untyped).returns(RestClient::Response) }
         def adhoc(method = 'get', path = nil, params = nil)
           RestClient::Request.execute(method: method.to_sym, url: url(path), headers: metadata(params))
         rescue RestClient::ExceptionWithResponse => e
@@ -21,8 +20,6 @@ module IBM
 
         sig { returns(String) }
         attr_reader :endpoint
-
-        private
 
         sig { params(endpoint: String, token: IBM::Cloud::SDK::IAM::Token, logger: Log).void }
         def initialize(endpoint, token, logger)
@@ -71,6 +68,8 @@ module IBM
           response = RestClient.delete(url(path), metadata(params))
           JSON.parse(response)
         end
+
+        private
 
         sig { params(path: T.nilable(String)).returns(String) }
         def url(path = nil)
