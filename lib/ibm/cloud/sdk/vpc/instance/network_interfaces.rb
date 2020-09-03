@@ -12,6 +12,7 @@ module IBM
           class NetworkInterfaces < BaseVPC
             def all
               get.subkey('network_interfaces')
+              # get
             end
 
             def update(payload)
