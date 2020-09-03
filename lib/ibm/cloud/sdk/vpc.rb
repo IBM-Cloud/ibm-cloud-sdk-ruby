@@ -2,9 +2,14 @@
 # frozen_string_literal: true
 
 require_relative 'vpc/base_vpc'
+require_relative 'vpc/base_collection'
+require_relative 'vpc/base_instance'
+
 require_relative 'vpc/images'
 require_relative 'vpc/floatingips'
 require_relative 'vpc/instances'
+require_relative 'vpc/subnets'
+
 
 module IBM
   module Cloud
@@ -53,6 +58,10 @@ module IBM
 
         def regions
           VPC::Regions.new(self)
+        end
+
+        def subnets
+          VPC::Subnets.new(self)
         end
       end
     end
