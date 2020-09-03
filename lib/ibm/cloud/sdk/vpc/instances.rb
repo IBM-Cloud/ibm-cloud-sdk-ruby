@@ -10,6 +10,10 @@ module IBM
       module VPC
         # Work with multiple VM instances.
         class Instances < BaseVPC
+          def initialize(parent)
+            super(parent, 'instances')
+          end
+
           # Get a list of instances
           def all
             get.subkey('instances')
@@ -25,7 +29,7 @@ module IBM
           end
 
           def instance(id)
-            INSTANCES::Instance.new(url(id), @token, @logger)
+            INSTANCES::Instance.new(self, id)
           end
         end
       end

@@ -7,6 +7,10 @@ module IBM
       module VPC
         # Work with multiple images.
         class Images < BaseVPC
+          def initialize(parent)
+            super(parent, 'images')
+          end
+
           def all
             get
           end
@@ -16,13 +20,12 @@ module IBM
           end
 
           def instance(id)
-            Image.new(url(id), @token, @logger)
+            Image.new(self, id)
           end
         end
 
         # Work with a single image.
         class Image < BaseVPC
-
           def details
             get
           end

@@ -8,12 +8,16 @@ module IBM
         module INSTANCES
           # Get a Floating IP.
           class FloatingIps < BaseVPC
+            def initialize(parent)
+              super(parent, 'floating_ips')
+            end
+
             def all
               get
             end
 
             def instance(id)
-              FloatingIp.new(url(id), @token, @logger)
+              FloatingIp.new(self, id)
             end
           end
 

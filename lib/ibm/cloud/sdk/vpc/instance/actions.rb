@@ -8,6 +8,10 @@ module IBM
         module INSTANCES
           # Actions for an instance.
           class Actions < BaseVPC
+            def initialize(parent)
+              super(parent, 'actions')
+            end
+
             def all
               get.subkey('actions')
             end

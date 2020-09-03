@@ -4,16 +4,19 @@
 module IBM
   module Cloud
     module SDK
-      # Work with VPC instances.
       module VPC
         # Work with multiple profiles.
         class Profiles < BaseVPC
+          def initialize(parent)
+            super(parent, 'instance/profiles')
+          end
+
           def all
             get
           end
 
           def instance(name)
-            Profile.new(name, @token, @logger)
+            Profile.new(self, name)
           end
         end
 

@@ -8,6 +8,10 @@ module IBM
         module INSTANCES
           # Get all attached volumes.
           class VolumeAttachments < BaseVPC
+            def initialize(parent)
+              super(parent, 'volume_attachments')
+            end
+
             def all
               get
             end
@@ -17,7 +21,7 @@ module IBM
             end
 
             def instance(id)
-              VolumeAttachment.new(url(id), @token, @logger)
+              VolumeAttachment.new(self, id)
             end
           end
 

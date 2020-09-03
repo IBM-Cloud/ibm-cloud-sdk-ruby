@@ -12,16 +12,24 @@ module IBM
         module INSTANCES
           # Work with a single instance.
           class Instance < BaseVPC
+            def details
+              get
+            end
+
+            def update(payload)
+              post(payload)
+            end
+
             def actions
-              Actions.new(url('actions'), @token, @logger)
+              Actions.new(self)
             end
 
             def network_interfaces
-              NetworkInterfaces.new(url('network_interfaces'), @token, @logger)
+              NetworkInterfaces.new(self)
             end
 
             def volume_attachments
-              VolumeAttachments.new(url('volume_attachments'), @token, @logger)
+              VolumeAttachments.new(self)
             end
           end
         end

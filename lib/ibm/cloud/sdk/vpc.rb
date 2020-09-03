@@ -24,24 +24,27 @@ module IBM
           @logger = logger
         end
 
+        attr_reader :token
+        attr_reader :logger
+
         def endpoint
           "https://#{@region.sub(/-\d$/, '')}.iaas.cloud.ibm.com/v1"
         end
 
         def instances
-          VPC::Instances.new(url('instances'), @token, @logger)
+          VPC::Instances.new(self)
         end
 
         def floating_ips
-          VPC::FloatingIPs.new(url('floating_ips'), @token, @logger)
+          VPC::FloatingIPs.new(self)
         end
 
         def profiles
-          VPC::Profiles.new(url('instance/profiles'), @token, @logger)
+          VPC::Profiles.new(self)
         end
 
         def images
-          VPC::Images.new(url('images'), @token, @logger)
+          VPC::Images.new(self)
         end
       end
     end

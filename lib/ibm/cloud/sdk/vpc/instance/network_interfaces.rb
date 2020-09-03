@@ -10,6 +10,10 @@ module IBM
         module INSTANCES
           # All netowrk interfaces.
           class NetworkInterfaces < BaseVPC
+            def initialize(parent)
+              super(parent, 'network_interfaces')
+            end
+
             def all
               get.subkey('network_interfaces')
               # get
@@ -20,7 +24,7 @@ module IBM
             end
 
             def instance(id)
-              NetworkInterface.new(url(id), @token, @logger)
+              NetworkInterface.new(self, id)
             end
           end
 
@@ -39,7 +43,7 @@ module IBM
             end
 
             def floating_ips
-              FloatingIps.new(url('floating_ips'), @token, @logger)
+              FloatingIps.new(self)
             end
           end
         end

@@ -7,6 +7,10 @@ module IBM
       module VPC
         # Class that deals with groups of floating IPs.
         class FloatingIPs < BaseVPC
+          def initialize(parent)
+            super(parent, 'floating_ips')
+          end
+
           # Get all Floating IPs
           #
           # @return [Array<Hash>] all PVM Instances for this instance
@@ -19,7 +23,7 @@ module IBM
           end
 
           def instance(id)
-            FloatingIP.new(url(id), @token, @logger)
+            FloatingIP.new(self, id)
           end
         end
 
