@@ -31,20 +31,28 @@ module IBM
           "https://#{@region.sub(/-\d$/, '')}.iaas.cloud.ibm.com/v1"
         end
 
+        def floating_ips
+          VPC::FloatingIPs.new(self)
+        end
+
+        def images
+          VPC::Images.new(self)
+        end
+
         def instances
           VPC::Instances.new(self)
         end
 
-        def floating_ips
-          VPC::FloatingIPs.new(self)
+        def keys
+          VPC::Keys.new(self)
         end
 
         def profiles
           VPC::Profiles.new(self)
         end
 
-        def images
-          VPC::Images.new(self)
+        def regions
+          VPC::Regions.new(self)
         end
       end
     end
