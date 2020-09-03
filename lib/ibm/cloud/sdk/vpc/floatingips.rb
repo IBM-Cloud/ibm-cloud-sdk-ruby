@@ -1,3 +1,4 @@
+# typed: false
 # frozen_string_literal: true
 
 module IBM
@@ -6,53 +7,35 @@ module IBM
       module VPC
         # Class that deals with groups of floating IPs.
         class FloatingIPs < BaseVPC
-          # Init the base class
-          def initialize(endpoint, token, crn, tenant)
-            @endpoint = "#{endpoint}/floating_ips"
-            @token = token
-            @crn = crn
-            @tenant = tenant
-          end
-
-          attr_reader :endpoint
-
           # Get all Floating IPs
           #
           # @return [Array<Hash>] all PVM Instances for this instance
           def list
-            get(nil)
+            get
           end
 
           def create(payload)
-            post(nil, payload)
-          end
-
-          def delete(id)
-            delete(id)
+            post(payload)
           end
 
           def instance(id)
-            IBM::Cloud::SDK::VPC::FloatingIP.new(url(id))
+            FloatingIP.new(url(id), @token, @logger)
           end
         end
-      end
 
-      # Class that deals with a single floating IP.
-      class FloatingIP < BaseClass
-        def initialize(endpoint, guid, token, crn, tenant)
-          @endpoint = endpoint
-          @guid = guid
-          @token = token
-          @crn = crn
-          @tenant = tenant
-        end
+        # Class that deals with a single floating IP.
+        class FloatingIP < BaseVPC
+          def details
+            get
+          end
 
-        def details
-          get(nil)
-        end
+          def update(payload)
+            patch(payload)
+          end
 
-        def update(payload)
-          patch(nil, payload)
+          def remove
+            delete
+          end
         end
       end
     end
