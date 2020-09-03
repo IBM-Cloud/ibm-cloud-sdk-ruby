@@ -52,10 +52,6 @@ module IBM
           VPC::Keys.new(self)
         end
 
-        def profiles
-          VPC::Profiles.new(self)
-        end
-
         def regions
           VPC::Regions.new(self)
         end
