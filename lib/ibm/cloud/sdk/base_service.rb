@@ -25,11 +25,7 @@ module IBM
         private
 
         def url(path)
-          if path.start_with?('https')
-            path
-          else
-            "#{endpoint}/#{path}"
-          end
+          "#{endpoint}/#{path}"
         end
 
         def headers

@@ -131,12 +131,20 @@ module IBM
           get("cloud-instances/#{guid}/networks/#{network_id}")
         end
 
+        # Get a available system pools list for IBM Power Cloud DC
+        #
+        # @return [Hash] SystemPool
         def get_system_pool
           get("cloud-instances/#{guid}/system-pools")
         end
 
+        # Get a storage types list in IBM  Power Cloud.
+        # note: this mehod to be refactored under the common 
+        # IBM::Cloud::SDK::PowerIaas.endpoint when the rest api become available.
+        #
+        # @return [Hash] StorageType
         def get_storage_types
-          get("https://#{region.sub(/-\d$/, '')}.power-iaas.cloud.ibm.com/broker/v1/storage-types")
+          JSON.parse(RestClient.get("https://#{region.sub(/-\d$/, '')}.power-iaas.cloud.ibm.com/broker/v1/storage-types", headers))
         end
 
         def create_network(network_hash)
