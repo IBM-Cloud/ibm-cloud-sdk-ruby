@@ -1,9 +1,10 @@
 # typed: true
 # frozen_string_literal: true
 
-require('helpers/log')
-require_relative('vpc/base_vpc')
-require_relative('vpc/instances')
+require_relative 'vpc/base_vpc'
+require_relative 'vpc/images'
+require_relative 'vpc/floatingips'
+require_relative 'vpc/instances'
 
 module IBM
   module Cloud
@@ -17,10 +18,10 @@ module IBM
         # @param token [IAMtoken] the IBM Cloud IAM Token object
         # @param crn [String] the IBM Power Cloud instance CRN
         # @param tenant [String] the IBM Power Cloud account ID
-        def initialize(region, token)
+        def initialize(region, token, logger)
           @region = region
           @token  = token
-          @logger = Log.new(STDOUT, name: 'root', log_level: 'debug')
+          @logger = logger
         end
 
         def endpoint
@@ -28,7 +29,19 @@ module IBM
         end
 
         def instances
-          IBM::Cloud::SDK::VPC::Instances.new("#{endpoint}/instances", @token, @logger)
+          VPC::Instances.new(url('instances'), @token, @logger)
+        end
+
+        def floating_ips
+          VPC::FloatingIPs.new(url('floating_ips'), @token, @logger)
+        end
+
+        def profiles
+          VPC::Profiles.new(url('instance/profiles'), @token, @logger)
+        end
+
+        def images
+          VPC::Images.new(url('images'), @token, @logger)
         end
       end
     end
