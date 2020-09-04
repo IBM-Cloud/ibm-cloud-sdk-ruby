@@ -10,7 +10,6 @@ require_relative 'vpc/floatingips'
 require_relative 'vpc/instances'
 require_relative 'vpc/subnets'
 
-
 module IBM
   module Cloud
     module SDK
@@ -31,6 +30,8 @@ module IBM
 
         attr_reader :token
         attr_reader :logger
+
+        attr_accessor :region
 
         def endpoint
           "https://#{@region.sub(/-\d$/, '')}.iaas.cloud.ibm.com/v1"
@@ -58,6 +59,10 @@ module IBM
 
         def subnets
           VPC::Subnets.new(self)
+        end
+
+        def testing
+          puts 'This is a tested.'
         end
       end
     end
