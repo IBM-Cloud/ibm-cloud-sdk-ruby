@@ -9,6 +9,8 @@ require_relative 'vpc/images'
 require_relative 'vpc/floatingips'
 require_relative 'vpc/instances'
 require_relative 'vpc/subnets'
+require_relative 'vpc/volumes'
+require_relative 'vpc/volume_profiles'
 
 module IBM
   module Cloud
@@ -61,9 +63,14 @@ module IBM
           VPC::Subnets.new(self)
         end
 
-        def testing
-          puts 'This is a tested.'
+        def volumes
+          VPC::Volumes.new(self)
         end
+
+        def volumes_profiles
+          VPC::VolumeProfiles.new(self)
+        end
+
       end
     end
   end
