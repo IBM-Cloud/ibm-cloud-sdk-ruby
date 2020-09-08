@@ -12,7 +12,7 @@ class Sdk
   def initialize(options)
     @options = options
     _set_variables(options)
-    raise RuntimeError('API Key must be set.') if @api_key.nil?
+    raise 'API Key must be set.' if @api_key.nil?
 
     @logger = Log.new(STDOUT, name: 'root', log_level: 'debug')
   end
