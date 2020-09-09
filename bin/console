@@ -13,8 +13,6 @@ class Sdk
     @options = options
     _set_variables(options)
     raise 'API Key must be set.' if @api_key.nil?
-
-    @logger = Log.new(STDOUT, name: 'root', log_level: 'debug')
   end
 
   def _set_variables(options)
@@ -37,7 +35,7 @@ class Sdk
   end
 
   def vpc
-    IBM::Cloud::SDK::Vpc.new(@region, token, @logger) if required %w[region]
+    IBM::Cloud::SDK::Vpc.new(@region, token, nil) if required %w[region]
   end
 
   def power
