@@ -10,7 +10,7 @@ module IBM
 
         def all
           @data = get(nil, @params)
-          @data.subkey(@array_key)
+          # @data.subkey(@array_key)
         end
 
         def params(start: nil, limit: nil, resource_group: nil)
@@ -42,6 +42,10 @@ module IBM
           rescue RuntimeError
             nil
           end
+        end
+
+        def create(payload)
+          post(payload)
         end
       end
     end

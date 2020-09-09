@@ -11,6 +11,14 @@ module IBM
         def details
           get.hash
         end
+
+        def update(payload)
+          patch(payload)
+        end
+
+        def remove
+          delete
+        end
       end
     end
   end
