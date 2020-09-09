@@ -1,8 +1,6 @@
 # typed: true
 # frozen_string_literal: true
 
-require 'ibm/cloud/sdk/iam'
-
 require_relative 'vpc/base_vpc'
 require_relative 'vpc/base_collection'
 require_relative 'vpc/base_instance'
@@ -26,12 +24,11 @@ require_relative 'vpc/volumes'
 require_relative 'vpc/vpcs'
 require_relative 'vpc/vpn_gateways'
 
-
 module IBM
   module Cloud
     module SDK
       # Container that encapsulates the VPC API.
-      class Vpc < BaseVPC
+      class Vpc < BaseService
         # Create an API Client object for the  VPC IaaS service
         #
         # @param region [String] the IBM Power Cloud instance region

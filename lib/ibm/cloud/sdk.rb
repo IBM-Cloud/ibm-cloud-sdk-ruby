@@ -1,12 +1,11 @@
-require "json"
-require "rest-client"
+# typed: true
+# frozen_string_literal: true
 
-require "ibm/cloud/sdk/base_service"
-require "ibm/cloud/sdk/iam"
-require "ibm/cloud/sdk/power_iaas"
-require "ibm/cloud/sdk/resource_controller"
-require "ibm/cloud/sdk/version"
-require "ibm/cloud/sdk/vpc"
+require_relative 'sdk/base_service'
+require_relative 'sdk/iam'
+require_relative 'sdk/power_iaas'
+require_relative 'sdk/resource_controller'
+require_relative 'sdk/vpc'
 
 module IBM
   module Cloud
