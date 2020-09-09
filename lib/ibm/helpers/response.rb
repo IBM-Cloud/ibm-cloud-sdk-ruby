@@ -1,12 +1,9 @@
 # typed: true
 # frozen_string_literal: true
 
-require 'json'
-
 module RestClient
   # Update restclient reponse with additional methods.
   class Response
-
     def array
       r = json
       return r if r.instance_of?(Array)

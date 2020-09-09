@@ -1,4 +1,9 @@
-require "ibm/cloud/sdk"
+# typed: true
+# frozen_string_literal: true
 
-require_relative 'helpers/class'
-require_relative 'helpers/log'
+require 'json'
+require 'rest-client'
+
+require_relative 'ibm/helpers/class'
+require_relative 'ibm/helpers/response'
+require_relative 'ibm/cloud/sdk'

@@ -1,8 +1,6 @@
 # typed: true
 # frozen_string_literal: true
 
-require('helpers/response')
-
 module IBM
   module Cloud
     module SDK
@@ -11,7 +9,7 @@ module IBM
         def initialize(parent, endpoint = nil)
           @endpoint = parent.url(endpoint)
           @token = parent.token
-          @logger = parent.logger.get_logger(self.class)
+          @logger = parent.logger
         end
 
         attr_reader :endpoint
@@ -70,13 +68,6 @@ module IBM
         end
 
         private
-
-        def headers
-          head = {
-            'Authorization' => @token.authorization_header
-          }
-          head
-        end
 
         def metadata(params)
           { params: merge_params(params) }.merge(headers)
