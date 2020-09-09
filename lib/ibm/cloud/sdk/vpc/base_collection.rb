@@ -6,7 +6,6 @@ module IBM
     module SDK
       # Container that encapsulates the VPC API.
       class BaseCollection < BaseVPC
-        extend T::Sig
 
         def all
           @data = get(nil, @params)

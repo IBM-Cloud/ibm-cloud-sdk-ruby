@@ -1,4 +1,6 @@
 # typed: false
+# frozen_string_literal: true
+
 # The base object.
 class Object
   # Filter out the standard methods and only show the interesting methods.

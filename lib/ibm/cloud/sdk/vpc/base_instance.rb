@@ -6,7 +6,6 @@ module IBM
     module SDK
       # Container that encapsulates the VPC API.
       class BaseInstance < BaseVPC
-        extend T::Sig
 
         def details
           get.hash
