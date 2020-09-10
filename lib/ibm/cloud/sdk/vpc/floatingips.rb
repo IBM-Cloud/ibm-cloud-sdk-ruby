@@ -6,41 +6,14 @@ module IBM
     module SDK
       module VPC
         # Class that deals with groups of floating IPs.
-        class FloatingIPs < BaseVPC
+        class FloatingIPs < BaseCollection
           def initialize(parent)
-            super(parent, 'floating_ips')
-          end
-
-          # Get all Floating IPs
-          #
-          # @return [Array<Hash>] all PVM Instances for this instance
-          def list
-            get
-          end
-
-          def create(payload)
-            post(payload)
-          end
-
-          def instance(id)
-            FloatingIP.new(self, id)
+            super(parent, 'floating_ips', child_instance: FloatingIP)
           end
         end
 
         # Class that deals with a single floating IP.
-        class FloatingIP < BaseVPC
-          def details
-            get
-          end
-
-          def update(payload)
-            patch(payload)
-          end
-
-          def remove
-            delete
-          end
-        end
+        class FloatingIP < BaseInstance; end
       end
     end
   end
