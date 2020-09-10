@@ -12,7 +12,7 @@ class Sdk
   def initialize(options)
     @options = options
     _set_variables(options)
-    raise 'API Key must be set.' if @api_key.nil?
+    raise 'API Key must be set.' unless @api_key
   end
 
   def _set_variables(options)
@@ -35,7 +35,7 @@ class Sdk
   end
 
   def vpc
-    IBM::Cloud::SDK::Vpc.new(@region, token, nil) if required %w[region]
+    IBM::Cloud::SDK::Vpc.new(@region, token) if required %w[region]
   end
 
   def power
@@ -45,7 +45,7 @@ class Sdk
   def required(values)
     r = []
     values.each do |v|
-      r.push(v) if (instance_variable_get "@#{v}").nil?
+      r.push(v) unless instance_variable_get("@#{v}")
     end
     if r.length.positive?
       puts "Values required for options #{r.join(', ')} to continue."
