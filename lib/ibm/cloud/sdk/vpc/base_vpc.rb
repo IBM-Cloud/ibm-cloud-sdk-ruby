@@ -5,7 +5,7 @@ module IBM
   module Cloud
     module SDK
       # Container that encapsulates the VPC API.
-      class BaseVPC < BaseService
+      class BaseVPC
         def initialize(parent, endpoint = nil)
           @endpoint = parent.url(endpoint)
           @token = parent.token
@@ -18,51 +18,38 @@ module IBM
 
         attr_reader :logger
 
-        def adhoc(method = 'get', path = nil, params = nil)
-          RestClient::Request.execute(method: method.to_sym, url: url(path), headers: metadata(params))
+        def adhoc(method: 'get', path: nil, params: nil, payload: nil, &block)
+          RestClient::Request.execute(
+            method: method.to_sym, url: url(path), headers: metadata(params), payload: payload, &block
+          )
         rescue RestClient::ExceptionWithResponse => e
-          @logger.error("Exception for #{e.response.request.url} #{e.response.description}")
-          e.response
-        end
-
-        def get(path = nil, params = nil)
-          begin
-            response = RestClient.get(url(path), metadata(params))
-          rescue RestClient::ExceptionWithResponse => e
-            @logger.error("Exception for #{e.response.request.url} #s{e.response.description}")
-            response = e.response
-          end
+          response = e.response
+          @logger.error("Exception for #{response.request.url} #{response.description}")
           response
         end
 
-        def post(payload, path = nil, params = nil)
-          RestClient.post(url(path), payload, metadata(params))
-        rescue RestClient::ExceptionWithResponse => e
-          @logger.error("Exception for #{e.response.request.url} #{e.response.description}")
-          e.response
+        def get(path: nil, params: nil)
+          adhoc(method: 'get', path: path, params: params)
         end
 
-        def put(payload, path = nil, params = nil)
-          RestClient.put(url(path), payload, metadata(params))
-        rescue RestClient::ExceptionWithResponse => e
-          @logger.error("Exception for #{e.response.request.url} #{e.response.description}")
-          e.response
+        def post(payload, path: nil, params: nil)
+          adhoc(method: 'post', path: path, params: params, payload: payload)
         end
 
-        def patch(payload, path = nil, params = nil)
-          RestClient.patch(url(path), payload, metadata(params))
-        rescue RestClient::ExceptionWithResponse => e
-          @logger.error("Exception for #{e.response.request.url} #{e.response.description}")
-          e.response
+        def put(payload, path: nil, params: nil)
+          adhoc(method: 'put', path: path, params: params, payload: payload)
         end
 
-        def delete(path = nil, params = nil)
-          response = RestClient.delete(url(path), metadata(params))
-          JSON.parse(response)
+        def patch(payload, path: nil, params: nil)
+          adhoc(method: 'patch', path: path, params: params, payload: payload)
+        end
+
+        def delete(path: nil, params: nil)
+          adhoc(method: 'delete', path: path, params: params)
         end
 
         def url(path = nil)
-          return endpoint if path.nil?
+          return endpoint unless path
 
           "#{endpoint}/#{path}"
         end
@@ -73,8 +60,13 @@ module IBM
           { params: merge_params(params) }.merge(headers)
         end
 
+        def headers
+          { 'Authorization' => token.authorization_header }
+        end
+
         def merge_params(params)
-          params.nil? && params = {}
+          return version_param unless params
+
           version_param.merge(params)
         end
 
