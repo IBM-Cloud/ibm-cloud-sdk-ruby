@@ -28,32 +28,33 @@ module IBM
   module Cloud
     module SDK
       # Container that encapsulates the VPC API.
-      class Vpc < BaseService
+      class Vpc < BaseVPC
         # Create an API Client object for the  VPC IaaS service
         #
         # @param region [String] the IBM Power Cloud instance region
         # @param token [IAMtoken] the IBM Cloud IAM Token object
-        # @param logger [Logger] an instance of
-        def initialize(region, token, logger)
+        # @param logger [Logger] an instance of an instanciated logger.
+        def initialize(region, token, logger: nil)
           @region = region
           @token  = token
-          @logger = logger
+          @logger = logger if logger
+          @logger ||= Logger.new(STDOUT)
         end
 
-        attr_reader :token
-        attr_reader :logger
-
+        attr_reader :token, :logger
         attr_accessor :region
 
+        # The Region API endpoint.
         def endpoint
           "https://#{@region.sub(/-\d$/, '')}.iaas.cloud.ibm.com/v1"
         end
 
+        # Entry point to the Floating IPs API.
         def floating_ips
           VPC::FloatingIPs.new(self)
         end
 
-        def floawlog_collectors
+        def flowlog_collectors
           VPC::FlowLogCollectors.new(self)
         end
 
