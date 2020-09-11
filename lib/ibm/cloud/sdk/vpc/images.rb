@@ -6,37 +6,14 @@ module IBM
     module SDK
       module VPC
         # Work with multiple images.
-        class Images < BaseVPC
+        class Images < BaseCollection
           def initialize(parent)
-            super(parent, 'images')
-          end
-
-          def all
-            get
-          end
-
-          def create(payload)
-            post(payload)
-          end
-
-          def instance(id)
-            Image.new(self, id)
+            super(parent, 'images', child_class: Image)
           end
         end
 
         # Work with a single image.
-        class Image < BaseVPC
-          def details
-            get
-          end
-
-          def update(payload)
-            patch(payload)
-          end
-
-          def remove
-            delete
-          end
+        class Image < BaseInstance
         end
       end
     end

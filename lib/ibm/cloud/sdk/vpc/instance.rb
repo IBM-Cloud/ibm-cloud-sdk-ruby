@@ -6,22 +6,13 @@ require_relative 'instance/network_interfaces'
 require_relative 'instance/volume_attachments'
 require_relative 'instance/profiles'
 
-
 module IBM
   module Cloud
     module SDK
       module VPC
         module INSTANCES
           # Work with a single instance.
-          class Instance < BaseVPC
-            def details
-              get
-            end
-
-            def update(payload)
-              post(payload)
-            end
-
+          class Instance < BaseInstance
             def actions
               Actions.new(self)
             end

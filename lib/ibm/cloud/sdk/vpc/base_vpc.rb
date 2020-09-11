@@ -12,11 +12,7 @@ module IBM
           @logger = parent.logger
         end
 
-        attr_reader :endpoint
-
-        attr_reader :token
-
-        attr_reader :logger
+        attr_reader :endpoint, :token, :logger
 
         def adhoc(method: 'get', path: nil, params: nil, payload: nil, &block)
           RestClient::Request.execute(

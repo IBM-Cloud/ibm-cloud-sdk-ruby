@@ -8,14 +8,13 @@ module IBM
         # A list of VPNGateway
         class VPNGateways < BaseCollection
           def initialize(parent)
-            @array_key = 'vpn_gateways'
-            @instance = VPNGateway
-            super(parent, @array_key)
+            super(parent, 'vpn_gateways', child_class: VPNGateway)
           end
         end
 
         # A single VPNGateway
         class VPNGateway < BaseInstance
+          # Get a lisst of connections asssociated with this gateway.
           def connections
             VPNGATEWAY::Connections.new(self)
           end

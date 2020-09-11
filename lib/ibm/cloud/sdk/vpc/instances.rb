@@ -9,27 +9,9 @@ module IBM
       # Work with VPC instances.
       module VPC
         # Work with multiple VM instances.
-        class Instances < BaseVPC
+        class Instances < BaseCollection
           def initialize(parent)
-            super(parent, 'instances')
-          end
-
-          # Get a list of instances
-          def all
-            get.subkey('instances')
-          end
-
-          # Get a count of instances.
-          def count
-            get.subkey('total_count')
-          end
-
-          def create(payload)
-            post(payload)
-          end
-
-          def instance(id)
-            INSTANCES::Instance.new(self, id)
+            super(parent, 'instances', child_class: INSTANCES::Instance)
           end
         end
       end

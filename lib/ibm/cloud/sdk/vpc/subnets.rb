@@ -8,14 +8,13 @@ module IBM
         # A list of submetes
         class Subnets < BaseCollection
           def initialize(parent)
-            @array_key = 'subnets'
-            @instance = Subnet
-            super(parent, @array_key)
+            super(parent, 'subnets', child_class: Subnet)
           end
         end
 
         # A single subnet
-        class Subnet < BaseInstance; end
+        class Subnet < BaseInstance
+        end
       end
     end
   end

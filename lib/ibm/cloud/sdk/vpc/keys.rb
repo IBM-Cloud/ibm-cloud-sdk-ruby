@@ -6,21 +6,26 @@ module IBM
     module SDK
       module VPC
         # A collection of SSH keys.
-        class Keys < BaseVPC
+        class Keys < BaseCollection
           def initialize(parent)
-            super(parent, 'keys')
+            super(parent, 'keys', child_class: Key)
+          end
+
+          def fetch(resource_id: nil)
+            params = {}
+            params['resource_group.id'] = resource_id if resource_id
+            get(params: params)
           end
 
           def all(resource_id = nil)
-            params = {}
-            params['resource_group.id'] = resource_id unless resource_id.nil?
-            get(nil, params)
+            fetch(resource_id: resource_id).subkey(@array_key)
           end
 
-          def create(name, public_key, resource_group = nil, type = nil)
+          # :reek:FeatureEnvy
+          def create(name, public_key, resource_group: nil, type: nil)
             payload = { name: name, public_key: public_key }
-            payload[:resource_group] = resource_group unless resource_group.nil?
-            payload[:type] = type unless type.nil?
+            payload[:resource_group] = resource_group if resource_group
+            payload[:type] = type if type
             post(payload)
           end
 
@@ -30,18 +35,7 @@ module IBM
         end
 
         # A single key.
-        class Key < BaseVPC
-          def details
-            get
-          end
-
-          def remove
-            delete
-          end
-
-          def update(payload)
-            patch(payload)
-          end
+        class Key < BaseInstance
         end
       end
     end

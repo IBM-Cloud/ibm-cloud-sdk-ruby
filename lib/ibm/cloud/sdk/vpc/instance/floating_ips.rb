@@ -7,33 +7,14 @@ module IBM
       module VPC
         module INSTANCES
           # Get a Floating IP.
-          class FloatingIps < BaseVPC
+          class FloatingIps < BaseCollection
             def initialize(parent)
-              super(parent, 'floating_ips')
-            end
-
-            def all
-              get
-            end
-
-            def instance(id)
-              FloatingIp.new(self, id)
+              super(parent, 'floating_ips', child_class: FloatingIp)
             end
           end
 
           # Get a single floating IP.
-          class FloatingIp < BaseVPC
-            def details
-              get
-            end
-
-            def update(payload)
-              put(payload)
-            end
-
-            def remove
-              delete
-            end
+          class FloatingIp < BaseInstance
           end
         end
       end

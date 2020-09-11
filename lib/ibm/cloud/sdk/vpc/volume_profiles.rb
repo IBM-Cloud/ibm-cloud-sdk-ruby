@@ -8,9 +8,7 @@ module IBM
         # Work with Volume Profiles.
         class VolumeProfiles < BaseCollection
           def initialize(parent)
-            @array_key = 'volume_profiles'
-            @instance = VolumeProfile
-            super(parent, 'volume/profiles')
+            super(parent, 'volume/profiles', child_class: VolumeProfile, array_key: 'profiles')
           end
         end
 

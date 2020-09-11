@@ -8,17 +8,12 @@ module IBM
         # A list of OperatingSystem
         class OperatingSystems < BaseCollection
           def initialize(parent)
-            @array_key = 'operating_systems'
-            @instance = OperatingSystem
-            super(parent, @array_key)
+            super(parent, 'operating_systems', child_class: OperatingSystem)
           end
         end
 
         # A single OperatingSystem
-        class OperatingSystem < BaseVPC
-          def details
-            get
-          end
+        class OperatingSystem < BaseInstance
         end
       end
     end

@@ -8,9 +8,7 @@ module IBM
         # A list of PublicGateway
         class PublicGateways < BaseCollection
           def initialize(parent)
-            @array_key = 'public_gateways'
-            @instance = PublicGateway
-            super(parent, @array_key)
+            super(parent, 'public_gateways', child_class: PublicGateway)
           end
         end
 

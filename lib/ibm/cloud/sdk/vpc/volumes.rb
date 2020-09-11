@@ -8,25 +8,12 @@ module IBM
         # Work with a collection of volumes.
         class Volumes < BaseCollection
           def initialize(parent)
-            @array_key = 'volumes'
-            @instance = Volume
-            super(parent, @array_key)
-          end
-
-          def create(payload)
-            post(payload)
+            super(parent, 'volumes', child_class: Volume)
           end
         end
 
         # Work with a single volume.
         class Volume < BaseInstance
-          def create(payload)
-            post(payload)
-          end
-
-          def remove
-            delete
-          end
         end
       end
     end

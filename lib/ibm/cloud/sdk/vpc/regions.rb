@@ -6,51 +6,28 @@ module IBM
     module SDK
       module VPC
         # Work with VPC reqions
-        class Regions < BaseVPC
+        class Regions < BaseCollection
           def initialize(parent)
-            super(parent, 'regions')
-          end
-
-          def all
-            get.array
-          end
-
-          def instance(name)
-            Region.new(self, name)
+            super(parent, 'regions', child_class: Region)
           end
         end
 
         # Work with a single region
-        class Region < BaseVPC
-          def details
-            get.hash
-          end
-
+        class Region < BaseInstance
           def zones
             Zones.new(self)
           end
         end
 
         # Zones are included within a region.
-        class Zones < BaseVPC
+        class Zones < BaseCollection
           def initialize(parent)
-            super(parent, 'zones')
-          end
-
-          def all
-            get
-          end
-
-          def zone(name)
-            Zone.new(self, name)
+            super(parent, 'zones', child_class: Zone)
           end
         end
 
         # A single zone.
         class Zone < BaseVPC
-          def details
-            get
-          end
         end
       end
     end

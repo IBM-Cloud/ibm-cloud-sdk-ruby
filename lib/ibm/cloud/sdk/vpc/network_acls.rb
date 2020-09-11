@@ -8,9 +8,7 @@ module IBM
         # A list of NetworkACL
         class NetworkACLs < BaseCollection
           def initialize(parent)
-            @array_key = 'network_acls'
-            @instance = NetworkACL
-            super(parent, @array_key)
+            super(parent, 'network_acls', child_class: NetworkACL)
           end
         end
 

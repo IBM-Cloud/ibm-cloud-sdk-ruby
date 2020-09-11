@@ -8,9 +8,7 @@ module IBM
         # A list of subnets
         class FlowLogCollectors < BaseCollection
           def initialize(parent)
-            @array_key = 'flow_log_collectors'
-            @instance = FlowLogCollectors
-            super(parent, @array_key)
+            super(parent, 'flow_log_collectors', child_class: FlowLogCollectors)
           end
         end
 

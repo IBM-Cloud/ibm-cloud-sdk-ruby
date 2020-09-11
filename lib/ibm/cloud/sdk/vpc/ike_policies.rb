@@ -8,9 +8,7 @@ module IBM
         # A list of IKEPolicy
         class IKEPolicies < BaseCollection
           def initialize(parent)
-            @array_key = 'ike_policies'
-            @instance = IKEPolicy
-            super(parent, @array_key)
+            super(parent, 'ike_policies', child_class: IKEPolicy)
           end
         end
 

@@ -8,9 +8,7 @@ module IBM
         # A list of Vpc
         class Vpcs < BaseCollection
           def initialize(parent)
-            @array_key = 'vpcs'
-            @instance = VpcInstance
-            super(parent, @array_key)
+            super(parent, 'vpcs', child_class: VpcInstance)
           end
         end
 
@@ -37,9 +35,7 @@ module IBM
           # A list of Vpc
           class AddressPrefixes < BaseCollection
             def initialize(parent)
-              @array_key = 'address_prefixes'
-              @instance = AddressPrefix
-              super(parent, @array_key)
+              super(parent, 'address_prefixes', child_class: AddressPrefix)
             end
           end
 
@@ -50,16 +46,13 @@ module IBM
           # A list of Vpc
           class Routes < BaseCollection
             def initialize(parent)
-              @array_key = 'routes'
-              @instance = Route
-              super(parent, @array_key)
+              super(parent, 'routes', child_class: Route)
             end
           end
 
           # A single Vpc
           class Route < BaseInstance
           end
-
         end
       end
     end

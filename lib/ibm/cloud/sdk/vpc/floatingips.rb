@@ -8,7 +8,7 @@ module IBM
         # Class that deals with groups of floating IPs.
         class FloatingIPs < BaseCollection
           def initialize(parent)
-            super(parent, 'floating_ips', child_instance: FloatingIP)
+            super(parent, 'floating_ips', child_class: FloatingIP)
           end
         end
 

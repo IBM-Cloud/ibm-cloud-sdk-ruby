@@ -10,9 +10,7 @@ module IBM
         # A list of LoadBalancer
         class LoadBalancers < BaseCollection
           def initialize(parent)
-            @array_key = 'Rest'
-            @instance = LoadBalancer
-            super(parent, @array_key)
+            super(parent, 'load_balancers', child_class: LoadBalancer)
           end
         end
       end
