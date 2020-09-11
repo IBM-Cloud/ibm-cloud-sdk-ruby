@@ -6,7 +6,6 @@ module IBM
     module SDK
       # Container that encapsulates the VPC API.
       class BaseInstance < BaseVPC
-
         def details
           get.hash
         end

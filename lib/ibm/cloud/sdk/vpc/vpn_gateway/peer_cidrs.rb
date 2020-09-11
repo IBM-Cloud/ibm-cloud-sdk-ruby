@@ -21,7 +21,6 @@ module IBM
 
           # A single Connection
           class PeerCIDR < BaseInstance
-
             def update(payload)
               put(payload)
             end
