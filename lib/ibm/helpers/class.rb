@@ -6,13 +6,14 @@ class Object
   # Filter out the standard methods and only show the interesting methods.
   # @return [Array<String>]
   def im
+    methods = public_methods.sort
     case self.class
     when Class
-      public_methods.sort - Object.public_methods
+      methods - Object.public_methods
     when Module
-      public_methods.sort - Module.public_methods
+      methods - Module.public_methods
     else
-      public_methods.sort - Object.new.public_methods
+      methods - Object.new.public_methods
     end
   end
 end
