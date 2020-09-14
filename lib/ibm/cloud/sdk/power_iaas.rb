@@ -191,6 +191,18 @@ module IBM
           end
         end
 
+        # Create a new SAP PVM Instance
+        #
+        # Create a new PVM instance using an SAP profile. The resultant PVM
+        # instance is the standard 'PVMInstance' type and can be accessed via
+        # the existing *_pvm_instance methods.
+        #
+        # @param sap_profile_id [String] The ID of an SAP profile
+        # @return [Hash] SAP profile
+        def create_sap_pvm_instance(instance_hash)
+          post("cloud-instances/#{guid}/sap", instance_hash.to_json)
+        end
+
         private
 
         attr_reader :crn, :guid, :region, :tenant, :token
