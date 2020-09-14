@@ -172,6 +172,25 @@ module IBM
           delete("tenants/#{tenant}/sshkeys/#{name}")
         end
 
+        # Get an SAP profile
+        #
+        # @param sap_profile_id [String] The ID of an SAP profile
+        # @return [Hash] SAP profile
+        def get_sap_profile(sap_profile_id)
+          get("cloud-instances/#{guid}/sap/#{sap_profile_id}")
+        end
+
+        # Get list of all SAP profiles
+        #
+        # @return [Array<Hash>] all SAP profiles available to this instance
+        def get_sap_profiles
+          sap_profiles = get("cloud-instances/#{guid}/sap")["profiles"] || []
+
+          sap_profiles.map do |sap_profile|
+            get_sap_profile(sap_profile["profileID"])
+          end
+        end
+
         private
 
         attr_reader :crn, :guid, :region, :tenant, :token
