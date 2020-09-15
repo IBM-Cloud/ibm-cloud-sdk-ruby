@@ -113,6 +113,13 @@ module IBM
           get("cloud-instances/#{guid}/volumes/#{volume_id}")
         end
 
+        # Delete a volume
+        #
+        # @param volume_id [String] The ID of a volume
+        def delete_volume(volume_id)
+          delete("cloud-instances/#{guid}/volumes/#{volume_id}")
+        end
+
         # Get all networks in an IBM Power Cloud instance
         #
         # @return [Array<Hash>] all networks for this IBM Power Cloud instance
