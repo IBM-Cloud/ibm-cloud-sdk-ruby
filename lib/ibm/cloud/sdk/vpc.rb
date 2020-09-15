@@ -34,11 +34,17 @@ module IBM
         # @param region [String] the IBM Power Cloud instance region
         # @param token [IAMtoken] the IBM Cloud IAM Token object
         # @param logger [Logger] an instance of an instanciated logger.
-        def initialize(region, token, logger: nil)
+        def initialize(region, api_key, logger: nil)
           @region = region
-          @token  = token
+          @api_key = api_key
+          @token = api_key
+          # @token = IBM::Cloud::SDK::IAM.new(api_key).get_identity_token
           @logger = logger if logger
-          @logger ||= Logger.new(STDOUT)
+          @logger ||= Logger.new($stdout)
+        end
+
+        # Check to see if token expired. Refresh when necessary.
+        def new_token
         end
 
         attr_reader :token, :logger

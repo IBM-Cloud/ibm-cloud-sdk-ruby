@@ -24,8 +24,9 @@ methods = {
 }.freeze
 
 RSpec.describe 'Test vpc API' do
-  token = IBM::Cloud::SDK::IAM.new(ENV['IBM_CLOUD_APIKEY']).get_identity_token
-  vpc = IBM::Cloud::SDK::Vpc.new('us-east', token)
+  # token = IBM::Cloud::SDK::IAM.new(ENV['IBM_CLOUD_APIKEY']).get_identity_token
+  vpc = IBM::CloudSDK.new(ENV['IBM_CLOUD_APIKEY']).vpc
+  # vpc = IBM::Cloud::SDK::Vpc.new('us-east', token)
 
   it 'can be instantiated' do
     expect(vpc).to be_an_instance_of(IBM::Cloud::SDK::Vpc)

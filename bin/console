@@ -25,21 +25,20 @@ class Sdk
     pry
   end
 
-  def token
-    return @token if @token
+  def log_level(level)
+    sdk.logger.level = level
+  end
 
-    @token = IBM::Cloud::SDK::IAM.new(@api_key).get_identity_token if required %w[api_key]
-  rescue RestClient::ExceptionWithResponse => e
-    puts e.response.subkey('errorMessage')
-    exit 1
+  def sdk
+    @sdk ||= IBM::CloudSDK.new(@api_key)
   end
 
   def vpc
-    IBM::Cloud::SDK::Vpc.new(@region, token) if required %w[region]
+    sdk.vpc(@region) if required %w[region]
   end
 
   def power
-    IBM::Cloud::SDK::PowerIaas.new(@region, @guid, token, @crn, @tenant) if required %w[region guid crn tenant]
+    sdk.power(@region, @guid, @crn, @tenant) if required %w[region guid crn tenant]
   end
 
   def required(values)
