@@ -1,0 +1,214 @@
+inherit_from: .rubocop_todo.yml
+
+AllCops:
+  TargetRubyVersion: 2.5
+  NewCops: enable
+
+# Cop supports --auto-correct.
+# Configuration parameters: UseHashRocketsWithSymbolValues, PreferHashRocketsForNonAlnumEndingSymbols.
+# SupportedStyles: ruby19, hash_rockets, no_mixed_keys, ruby19_no_mixed_keys
+Style/HashSyntax:
+  EnforcedStyle: ruby19_no_mixed_keys
+
+# Cop supports --auto-correct.
+# Configuration parameters: TreatCommentsAsGroupSeparators, ConsiderPunctuation, Include.
+# Include: **/*.gemfile, **/Gemfile, **/gems.rb
+Bundler/OrderedGems:
+  AutoCorrect: True
+
+# Cop supports --auto-correct.
+Layout/EmptyLines:
+  AutoCorrect: True
+
+# Cop supports --auto-correct.
+# Configuration parameters: EnforcedStyle.
+# SupportedStyles: empty_lines, empty_lines_except_namespace, empty_lines_special, no_empty_lines, beginning_only, ending_only
+Layout/EmptyLinesAroundClassBody:
+  AutoCorrect: True
+  EnforcedStyle: no_empty_lines
+
+# Configuration parameters: CountComments, CountAsOne.
+Metrics/ClassLength:
+  CountComments: False
+  Max: 110
+
+# Cop supports --auto-correct.
+# Configuration parameters: AutoCorrect, AllowHeredoc, AllowURI, URISchemes, IgnoreCopDirectives, IgnoredPatterns.
+# URISchemes: http, https
+Layout/LineLength:
+  Max: 131
+
+# Configuration parameters: ExpectMatchingDefinition, CheckDefinitionPathHierarchy, Regex, IgnoreExecutableScripts, AllowedAcronyms.
+# AllowedAcronyms: CLI, DSL, ACL, API, ASCII, CPU, CSS, DNS, EOF, GUID, HTML, HTTP, HTTPS, ID, IP, JSON, LHS, QPS, RAM, RHS, RPC, SLA, SMTP, SQL, SSH, TCP, TLS, TTL, UDP, UI, UID, UUID, URI, URL, UTF8, VM, XML, XMPP, XSRF, XSS
+Naming/FileName:
+  Exclude:
+    - 'lib/ibm-cloud-sdk.rb'
+
+# Cop supports --auto-correct.
+# Configuration parameters: EnforcedStyle.
+# SupportedStyles: compact, expanded
+Style/EmptyMethod:
+  EnforcedStyle: expanded
+  AutoCorrect: True
+
+# Cop supports --auto-correct.
+# Configuration parameters: EnforcedStyle.
+# SupportedStyles: always, always_true, never
+Style/FrozenStringLiteralComment:
+  AutoCorrect: True
+  EnforcedStyle: always_true
+  Exclude:
+    - 'lib/ibm/cloud/sdk/power_iaas.rb'
+    - 'lib/ibm/cloud/sdk/resource_controller.rb'
+    - 'lib/ibm/cloud/sdk/resource_controller/resource.rb'
+    - 'lib/ibm/cloud/sdk/version.rb'
+
+
+# Layout/EmptyLinesAroundAttributeAccessor:
+#   Enabled: true
+#   AutoCorrect: true
+
+# Layout/SpaceAroundMethodCallOperator:
+#   Enabled: true
+#   AutoCorrect: true
+
+# Lint/BinaryOperatorWithIdenticalOperands:
+#   Enabled: true
+#   AutoCorrect: true
+
+# Lint/DeprecatedOpenSSLConstant:
+#   Enabled: true
+#   AutoCorrect: true
+
+# Lint/DuplicateElsifCondition:
+#   Enabled: true
+#   AutoCorrect: true
+
+# Lint/DuplicateRescueException:
+#   Enabled: true
+#   AutoCorrect: true
+
+# Lint/EmptyConditionalBody:
+#   Enabled: true
+#   AutoCorrect: true
+
+# Lint/FloatComparison:
+#   Enabled: true
+#   AutoCorrect: true
+
+# Lint/MissingSuper:
+#   Enabled: true
+#   AutoCorrect: true
+
+# Lint/MixedRegexpCaptureTypes:
+#   Enabled: true
+#   AutoCorrect: true
+
+# Lint/OutOfRangeRegexpRef:
+#   Enabled: true
+#   AutoCorrect: true
+
+# Lint/RaiseException:
+#   Enabled: true
+#   AutoCorrect: true
+
+# Lint/SelfAssignment:
+#   Enabled: true
+#   AutoCorrect: true
+
+# Lint/StructNewOverride:
+#   Enabled: true
+#   AutoCorrect: true
+
+# Lint/TopLevelReturnWithArgument:
+#   Enabled: true
+#   AutoCorrect: true
+
+# Lint/UnreachableLoop:
+#   Enabled: true
+#   AutoCorrect: true
+
+# Style/AccessorGrouping:
+#   Enabled: true
+#   AutoCorrect: true
+
+# Style/ArrayCoercion:
+#   Enabled: true
+#   AutoCorrect: true
+
+# Style/BisectedAttrAccessor:
+#   Enabled: true
+#   AutoCorrect: true
+
+# Style/CaseLikeIf:
+#   Enabled: true
+#   AutoCorrect: true
+
+# Style/ExplicitBlockArgument:
+#   Enabled: true
+#   AutoCorrect: true
+
+# Style/ExponentialNotation:
+#   Enabled: true
+#   AutoCorrect: true
+
+# Style/GlobalStdStream:
+#   Enabled: true
+#   AutoCorrect: true
+
+# Style/HashAsLastArrayItem:
+#   Enabled: true
+#   AutoCorrect: true
+
+# Style/HashEachMethods:
+#   Enabled: true
+#   AutoCorrect: true
+
+# Style/HashLikeCase:
+#   Enabled: true
+#   AutoCorrect: true
+
+# Style/HashTransformKeys:
+#   Enabled: true
+#   AutoCorrect: true
+
+# Style/HashTransformValues:
+#   Enabled: true
+#   AutoCorrect: true
+
+# Style/OptionalBooleanParameter:
+#   Enabled: true
+#   AutoCorrect: true
+
+# Style/RedundantAssignment:
+#   Enabled: true
+#   AutoCorrect: true
+
+# Style/RedundantFetchBlock:
+#   Enabled: true
+#   AutoCorrect: true
+
+# Style/RedundantFileExtensionInRequire:
+#   Enabled: true
+#   AutoCorrect: true
+
+# Style/RedundantRegexpCharacterClass:
+#   Enabled: true
+#   AutoCorrect: true
+
+# Style/RedundantRegexpEscape:
+#   Enabled: true
+#   AutoCorrect: true
+
+# Style/SingleArgumentDig:
+#   Enabled: true
+#   AutoCorrect: true
+
+# Style/SlicingWithRange:
+#   Enabled: true
+#   AutoCorrect: true
+
+# Style/StringConcatenation:
+#   Enabled: true
+#   AutoCorrect: true
+

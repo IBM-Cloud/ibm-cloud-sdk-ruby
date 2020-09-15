@@ -1,0 +1,34 @@
+# EditorConfig is awesome: http://EditorConfig.org
+
+# top-most EditorConfig file
+root = true
+
+# Unix-style newlines with a newline ending every file
+[*]
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+# default to 2 space tab indentation.
+indent_style = space
+indent_size = 2
+
+# 2 space indentation for SASS/CSS
+[*.{scss,sass,css,styl}]
+indent_style = space
+indent_size = 4
+
+# Set all web files to tab => space*2
+[**.{js,html,json,rb,yml}]
+indent_style = space
+indent_size = 2
+
+# Set all python to tab => space*4
+[**.{py,ts}]
+indent_style = space
+indent_size = 4
+
+# Set all markdown type file to tab.
+[**.{rst,md,txt}]
+indent_style = tab
+indent_size = 2

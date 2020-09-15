@@ -1,14 +1,147 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
-require "bundler/setup"
-require "ibm/cloud/sdk"
+require 'bundler/setup'
+require 'ibm'
+require 'pry'
+require 'thor'
+require 'rest-client'
 
-# You can add fixtures and/or initialization code here to make experimenting
-# with your gem easier. You can also use a different console, if you like.
+# Encapsulate the API entryponts.
+class Sdk
+  def initialize(options)
+    @options = options
+    _set_variables(options)
+    raise 'API Key must be set.' unless @api_key
+  end
 
-# (If you use this, don't forget to add pry to your Gemfile!)
-# require "pry"
-# Pry.start
+  def _set_variables(options)
+    options.each do |k, v|
+      instance_variable_set "@#{k}", v
+    end
+  end
 
-require "irb"
-IRB.start(__FILE__)
+  def command
+    pry
+  end
+
+  def log_level(level)
+    sdk.logger.level = level
+  end
+
+  def sdk
+    @sdk ||= IBM::CloudSDK.new(@api_key)
+  end
+
+  def vpc
+    sdk.vpc(@region) if required %w[region]
+  end
+
+  def power
+    sdk.power(@region, @guid, @crn, @tenant) if required %w[region guid crn tenant]
+  end
+
+  def required(values)
+    r = []
+    values.each do |v|
+      r.push(v) unless instance_variable_get("@#{v}")
+    end
+    if r.length.positive?
+      puts "Values required for options #{r.join(', ')} to continue."
+      return false
+    end
+    true
+  end
+end
+
+# A Thor CLI.
+class MyCLI < Thor
+  include Thor::Actions
+
+  def self.env_options # rubocop:disable Metrics/MethodLength
+    {
+      api_key: {
+        type: :string,
+        desc: 'The API Key to log into IBM Cloud',
+        env_var: 'IBM_CLOUD_APIKEY'
+      },
+      region: {
+        type: :string,
+        desc: 'The region to connect to',
+        env_var: 'IBM_CLOUD_REGION',
+        default: 'us-east'
+      },
+      crn: {
+        type: :string,
+        desc: 'The CRN for the region.',
+        env_var: 'IBM_CLOUD_CRN'
+      },
+      guid: {
+        type: :string,
+        desc: 'The GUID for the power env.',
+        env_var: 'IBM_CLOUD_GUID'
+      },
+      tenant: {
+        type: :string,
+        desc: 'The tenant for the region.',
+        env_var: 'IBM_CLOUD_TENANT'
+      }
+    }.freeze
+  end
+
+  def self.class_option(sym)
+    opts = env_options[sym]
+    default = ENV[opts[:env_var]] || opts[:default]
+    description = "#{opts[:desc]} Environemnt Variable: #{opts[:env_var]}"
+    super(sym, { desc: description, default: default })
+  end
+
+  class_option :api_key
+  class_option :region
+  class_option :crn
+  class_option :guid
+  class_option :tenant
+
+  desc 'cli', 'Start a Cloud SDK CLI'
+  def cli
+    cli_help
+    Sdk.new(options).command
+  rescue RuntimeError, ArgumentError => e
+    puts e.full_message
+  end
+
+  desc 'variables output ', 'Save the options to a Envionrment variables source file.'
+  def variables(output)
+    script = "# Source this file to set the environment variables necessary for the Cloud SDK.\n"
+    MyCLI.env_options.each do |k, v|
+      script += "export #{v[:env_var]}=#{options[k.to_sym]}\n"
+    end
+    script += "\n"
+    create_file(output, script)
+  end
+
+  # Print help for command.
+  # @param command [String] The command to get help for. default: nil
+  # @param subcommand [Boolean] Whether this is a subcommand. default: false
+  # @return [String]
+  def help(command = nil, subcommand = false)
+    cli_help if command.nil?
+    super(command, subcommand)
+  end
+
+  no_commands do
+    def cli_help
+      puts <<~DESC
+        The console will start a PRY session inside the Engine class which provides access to the IBM Cloud SDK.
+
+        To access the SDK use the following methods without options:
+          * token to get a new token.
+          * vpc to get an instance of the VPC API.
+          * power to get an instance of the Power API.
+      DESC
+    end
+  end
+end
+
+MyCLI.default_command(:cli)
+MyCLI.start(ARGV)

@@ -1,6 +1,10 @@
+# typed: true
+# frozen_string_literal: true
+
 module IBM
   module Cloud
     module SDK
+      # The Base class for defining SDK endpoints.
       class BaseService
         def self.endpoint
           raise NotImplementedError
@@ -29,7 +33,7 @@ module IBM
         end
 
         def headers
-          {"Authorization" => token.authorization_header}
+          { 'Authorization' => token.authorization_header }
         end
       end
     end
