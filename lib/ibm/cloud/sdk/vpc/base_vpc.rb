@@ -50,8 +50,8 @@ module IBM
           params ||= {}
           pt = {
             params: { version: '2020-08-01', generation: 2 }.merge(params)
-
           }
+
           pt[payload_type.to_sym] = payload unless payload.empty?
           pt
         end
