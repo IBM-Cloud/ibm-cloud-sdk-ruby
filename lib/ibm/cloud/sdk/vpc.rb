@@ -47,7 +47,7 @@ module IBM
 
         # The Region API endpoint.
         def endpoint
-          "https://#{:region.sub(/-\d$/, '')}.iaas.cloud.ibm.com/v1"
+          "https://#{region.sub(/-\d$/, '')}.iaas.cloud.ibm.com/v1"
         end
 
         # Entry point to the Floating IPs API.
