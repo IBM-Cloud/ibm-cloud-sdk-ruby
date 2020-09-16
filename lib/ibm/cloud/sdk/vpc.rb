@@ -38,13 +38,8 @@ module IBM
           @region = region
           @api_key = api_key
           @token = api_key
-          # @token = IBM::Cloud::SDK::IAM.new(api_key).get_identity_token
-          @logger = logger if logger
-          @logger ||= Logger.new($stdout)
-        end
 
-        # Check to see if token expired. Refresh when necessary.
-        def new_token
+          @logger = logger || Logger.new($stdout)
         end
 
         attr_reader :token, :logger
@@ -52,7 +47,7 @@ module IBM
 
         # The Region API endpoint.
         def endpoint
-          "https://#{@region.sub(/-\d$/, '')}.iaas.cloud.ibm.com/v1"
+          "https://#{:region.sub(/-\d$/, '')}.iaas.cloud.ibm.com/v1"
         end
 
         # Entry point to the Floating IPs API.
