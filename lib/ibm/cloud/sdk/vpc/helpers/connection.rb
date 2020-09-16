@@ -2,7 +2,6 @@
 
 require 'time'
 require 'http'
-require 'ibm/cloud/sdk/vpc/helpers/response'
 
 module IBM
   module Cloud
@@ -21,7 +20,8 @@ module IBM
           attr_reader :client
 
           def adhoc(verb, uri, opts = {})
-            @client.auth(@token.authorization_header).request(verb.to_sym, uri, opts)
+            response = @client.auth(@token.authorization_header).request(verb.to_sym, uri, opts)
+            Response.new(response)
           end
 
           def authorization_header
@@ -45,7 +45,8 @@ module IBM
                 apikey: @api_key
               }
             }
-            @data = HTTP.post('https://iam.cloud.ibm.com/identity/token', payload).json
+            response = HTTP.post('https://iam.cloud.ibm.com/identity/token', payload)
+            @data = Response.new(response).json
           end
 
           def expired?
@@ -56,6 +57,44 @@ module IBM
           def authorization_header
             fetch if expired?
             "#{@data.fetch(:token_type)} #{@data.fetch(:access_token)}"
+          end
+        end
+
+        class Response
+
+          def initialize(response)
+            @response = response
+          end
+
+          attr_reader :response
+
+          def json
+            JSON.parse(response.body, symbolize_names: true)
+          rescue StandardError
+            raise "Error while parsing response body. #{response.body}"
+          end
+
+          def hash_response
+            check_object(Hash)
+          end
+
+          def array_rasponse
+            check_object(Array)
+          end
+
+          def subkey(key)
+            ret = hash_response
+            sym_key = key.to_sym
+            return ret.fetch(sym_key) if ret.key?(sym_key)
+
+            raise "Key not found in #{ret}."
+          end
+
+          def check_object(obj)
+            ret = json
+            return ret if ret.instance_of?(obj)
+
+            raise "Expected #{obj} in response not #{ret.class}."
           end
         end
       end
