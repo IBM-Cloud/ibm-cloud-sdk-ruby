@@ -8,14 +8,14 @@ module IBM
       class BaseVPC
         def initialize(parent, endpoint = nil)
           @endpoint = parent.url(endpoint)
-          @token = parent.token
+          @connection = parent.connection
           @logger = parent.logger
         end
 
-        attr_reader :endpoint, :token, :logger
+        attr_reader :endpoint, :connection, :logger
 
         def adhoc(method: 'get', path: nil, params: {}, payload_type: 'json', payload: {})
-          @token.adhoc(method.to_sym, url(path), metadata(params, payload_type, payload))
+          @connection.adhoc(method.to_sym, url(path), metadata(params, payload_type, payload))
         end
 
         def get(path: nil, params: {})
@@ -23,7 +23,7 @@ module IBM
         end
 
         def post(payload = {}, path: nil, params: {}, type: 'json')
-          adhoc(method: 'post', path: path, params: params, payload: payload)
+          adhoc(method: 'post', path: path, params: params, payload: payload, payload_type: type)
         end
 
         def put(payload = {}, path: nil, params: {})
