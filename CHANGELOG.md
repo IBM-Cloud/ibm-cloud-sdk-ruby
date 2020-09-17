@@ -1,6 +1,9 @@
 # Changelog
 All notable changes to the gem ibm-cloud-sdk-ruby will be documented here.
 
+## v0.1.4 - 2020-09-17
+- Added support for the IBM Virtual Private Cloud (VPC) service
+
 ## v0.1.3 - 2020-08-31
 ### Added the following rest api calls for Power System Virtual Server service 
 - Add PowerIaas 'delete_volume' method
