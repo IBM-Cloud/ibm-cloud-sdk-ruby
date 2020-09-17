@@ -7,7 +7,7 @@ module IBM
       # Container that encapsulates the VPC API.
       class BaseInstance < BaseVPC
         def details
-          get.hash
+          get.hash_response
         end
 
         def update(payload)
