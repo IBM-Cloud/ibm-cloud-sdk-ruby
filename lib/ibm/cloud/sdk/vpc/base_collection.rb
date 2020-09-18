@@ -54,9 +54,7 @@ module IBM
         # Fetch all data and return in an array.
         # @return [Array] Hashes of the returned data.
         def data
-          data = []
-          all.each { |value| data.append(value) }
-          data
+          all.to_a
         end
 
         def has_count?
