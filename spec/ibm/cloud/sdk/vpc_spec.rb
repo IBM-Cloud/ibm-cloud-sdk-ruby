@@ -7,6 +7,7 @@ methods = {
   flowlog_collectors: IBM::Cloud::SDK::VPC::FlowLogCollectors,
   ike_policies: IBM::Cloud::SDK::VPC::IKEPolicies,
   images: IBM::Cloud::SDK::VPC::Images,
+  instance_profiles: IBM::Cloud::SDK::VPC::InstanceProfiles,
   instances: IBM::Cloud::SDK::VPC::Instances,
   ipsec_policies: IBM::Cloud::SDK::VPC::IPSecPolicies,
   keys: IBM::Cloud::SDK::VPC::Keys,
@@ -23,13 +24,10 @@ methods = {
   vpn_gateways: IBM::Cloud::SDK::VPC::VPNGateways
 }.freeze
 
-
 vpc = IBM::CloudSDK.new(ENV['IBM_CLOUD_APIKEY']).vpc
 
 RSpec.describe 'Test vpc API' do
-  let(:log) {
-    Logger.new(STDOUT).tap { |l| l.level = Logger::DEBUG }
-  }
+  let(:log) { Logger.new($stdout).tap { |l| l.level = Logger::DEBUG } }
 
   it 'can be instantiated' do
     expect(vpc).to be_an_instance_of(IBM::Cloud::SDK::Vpc)
@@ -53,7 +51,7 @@ RSpec.describe 'Test vpc API' do
   end
 end
 
-methods.each do |k, v|
+methods.each do |k, _v|
   RSpec.describe "#{k} vpc API" do
     child = vpc.send(k)
 
@@ -62,29 +60,14 @@ methods.each do |k, v|
       expect(res.status).to eq(200)
     end
 
-    it 'can get data' do
-      expect(child.params(limit: 100).data).to be_an_instance_of(Array)
-    end
-
     if child.has_count?
       it 'has total_count and can get all' do
-        total_count = child.count
+        expect(child.all.to_a.length).to eq(child.count)
+      end
+    end
 
-        i = 0
-        child.all.each do
-          i += 1
-        end
-        expect(i).to eq(total_count)
-      end
-    else
-      it 'does not have total_count and can get all' do
-        total_count = child.data.length
-        i = 0
-        child.all.each do
-          i += 1
-        end
-        expect(i).to eq(total_count)
-      end
+    it 'can get data' do
+      expect(child.params(limit: 100).data).to be_an_instance_of(Array)
     end
 
     it 'can get an instance' do
