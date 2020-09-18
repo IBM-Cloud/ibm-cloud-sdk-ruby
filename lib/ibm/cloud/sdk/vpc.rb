@@ -32,17 +32,16 @@ module IBM
         # Create an API Client object for the  VPC IaaS service
         #
         # @param region [String] the IBM Power Cloud instance region
-        # @param token [IAMtoken] the IBM Cloud IAM Token object
-        # @param logger [Logger] an instance of an instanciated logger.
-        def initialize(region, api_key, logger: nil)
+        # @param connection [IBM::Cloud::SDK::VPC::Connection] A connection object.
+        # @param logger [Logger] An instance of an instanciated logger.
+        def initialize(region, connection, logger: nil)
           @region = region
-          @api_key = api_key
-          @token = api_key
+          @connection = connection
 
-          @logger = logger || Logger.new($stdout)
+          @logger = logger || Logger.new($stdout, level: :warn)
         end
 
-        attr_reader :token, :logger
+        attr_reader :connection, :logger
         attr_accessor :region
 
         # The Region API endpoint.

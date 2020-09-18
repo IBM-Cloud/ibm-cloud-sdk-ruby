@@ -32,6 +32,8 @@ module IBM
             response.code
           end
 
+          alias_method :status, :code
+
           # Return the raw connection object.
           def connection
             response.connection
@@ -73,7 +75,7 @@ module IBM
             sym_key = key.to_sym
             return ret.fetch(sym_key) if ret.key?(sym_key)
 
-            raise "Key not found in #{ret}."
+            raise "Key #{key} not found in #{ret}."
           end
 
           # Check to see if the returned object is the expected object.
