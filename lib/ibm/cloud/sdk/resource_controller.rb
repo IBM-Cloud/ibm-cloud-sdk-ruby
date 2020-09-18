@@ -11,12 +11,6 @@ module IBM
           @token = token
         end
 
-        def get_resources
-          resources = get("resource_instances")["resources"] || []
-
-          resources.map { |instance| Resource.new(instance) }
-        end
-
         def get_resource(guid)
           Resource.new(get("resource_instances/#{guid}"))
         end
