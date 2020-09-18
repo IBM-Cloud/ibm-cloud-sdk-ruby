@@ -57,6 +57,8 @@ module IBM
           all.to_a
         end
 
+        # Determine if the collection has a total_count key in its response.
+        # @return [Boolean]
         def has_count?
           fetch.json&.key?(:total_count)
         end
