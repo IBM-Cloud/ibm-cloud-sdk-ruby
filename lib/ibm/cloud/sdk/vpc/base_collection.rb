@@ -97,7 +97,7 @@ module IBM
           end
           return unless response.key?(:next)
 
-          next_url = response.fetch(:next)&.fetch(:href)
+          next_url = response.dig(:next, :href)
           return unless next_url
 
           each_resource(next_url, &block)
