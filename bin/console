@@ -28,7 +28,7 @@ begin
     desc 'cli', 'Start a Cloud SDK CLI'
     def cli
       IBM::CloudSDK.cli_help
-      IBM::CloudSDK.new(cli_options: options)
+      IBM::CloudSDK.new(cli_options: options).pry
     rescue RuntimeError, ArgumentError => e
       puts e.full_message
     end
@@ -53,7 +53,7 @@ begin
   end
 
   CloudCLI.default_command(:cli)
-  CloudCLI.start(ARGV).pry
+  CloudCLI.start(ARGV)
 rescue LoadError
   require 'irb'
   IRB.start(__FILE__)
