@@ -27,7 +27,8 @@ Gem::Specification.new do |spec|
   spec.add_dependency "http"
   spec.add_development_dependency 'rspec', '~> 3.0'
   spec.add_development_dependency 'rake', '~> 13.0'
-  spec.add_development_dependency 'pry', '~> 0.13'
+  spec.add_development_dependency 'pry', '~> 0.13.1'
+  spec.add_development_dependency 'byebug', '~> 11.1.0'
   spec.add_development_dependency 'pry-byebug', '~> 3.9.0'
   spec.add_development_dependency 'thor', '~> 1.0'
   spec.add_development_dependency 'rubocop', '~> 0.91.0'
