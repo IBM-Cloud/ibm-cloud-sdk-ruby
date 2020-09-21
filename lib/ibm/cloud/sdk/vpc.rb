@@ -9,6 +9,7 @@ require_relative 'vpc/floatingips'
 require_relative 'vpc/flowlogcollectors'
 require_relative 'vpc/ike_policies'
 require_relative 'vpc/images'
+require_relative 'vpc/instance_profiles'
 require_relative 'vpc/instances'
 require_relative 'vpc/ipsec_policies'
 require_relative 'vpc/keys'
@@ -64,6 +65,10 @@ module IBM
 
         def images
           VPC::Images.new(self)
+        end
+
+        def instance_profiles
+          VPC::InstanceProfiles.new(self)
         end
 
         def instances
