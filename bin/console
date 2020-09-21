@@ -15,7 +15,7 @@ begin
     def self.class_option(sym)
       opts = IBM::CloudSDK.env_options[sym]
       default = ENV[opts[:env_var]] || opts[:default]
-      description = "#{opts[:desc]} Environemnt Variable: #{default}"
+      description = "#{opts[:desc]} Environemnt Variable: #{opts[:env_var]}"
       super(sym, { desc: description, default: default })
     end
 
