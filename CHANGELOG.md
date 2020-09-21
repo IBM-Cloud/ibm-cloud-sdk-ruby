@@ -1,6 +1,12 @@
 # Changelog
 All notable changes to the gem ibm-cloud-sdk-ruby will be documented here.
 
+## v0.1.5 - 2020-09-21
+- Added Enumerable based pagination support
+- Move instance profiles
+- Improve resource lookup by GUID
+- Add support to create a PowerIaas volume
+
 ## v0.1.4 - 2020-09-17
 - Added support for the IBM Virtual Private Cloud (VPC) service
 
