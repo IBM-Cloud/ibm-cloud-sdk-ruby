@@ -7,37 +7,14 @@ module IBM
       module VPC
         module INSTANCES
           # Get all attached volumes.
-          class VolumeAttachments < BaseVPC
+          class VolumeAttachments < BaseCollection
             def initialize(parent)
-              super(parent, 'volume_attachments')
-            end
-
-            def all
-              get
-            end
-
-            def create(payload)
-              post(payload)
-            end
-
-            def instance(id)
-              VolumeAttachment.new(self, id)
+              super(parent, 'volume_attachments', child_class: VolumeAttachment)
             end
           end
 
           # A single attached volume.
-          class VolumeAttachment < BaseVPC
-            def details
-              get
-            end
-
-            def update(payload)
-              patch(payload)
-            end
-
-            def remove
-              delete
-            end
+          class VolumeAttachment < BaseInstance
           end
         end
       end
