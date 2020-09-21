@@ -120,6 +120,14 @@ module IBM
           delete("cloud-instances/#{guid}/volumes/#{volume_id}")
         end
 
+        # Create a volume
+        #
+        # @param volume_hash [Hash] New volume attributes
+        # @return [Hash] Volume
+        def create_volume(volume_hash)
+          post("cloud-instances/#{guid}/volumes", volume_hash.to_json)
+        end
+
         # Get all networks in an IBM Power Cloud instance
         #
         # @return [Array<Hash>] all networks for this IBM Power Cloud instance
