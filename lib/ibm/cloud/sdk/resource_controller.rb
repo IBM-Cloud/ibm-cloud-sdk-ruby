@@ -2,6 +2,7 @@ module IBM
   module Cloud
     module SDK
       class ResourceController < BaseService
+        require "ibm/cloud/sdk/resource_controller/resource"
         def endpoint
           "https://resource-controller.cloud.ibm.com/v2"
         end
@@ -10,15 +11,8 @@ module IBM
           @token = token
         end
 
-        def get_resources
-          resources = get("resource_instances")["resources"] || []
-
-          require "ibm/cloud/sdk/resource_controller/resource"
-          resources.map { |instance| Resource.new(instance) }
-        end
-
         def get_resource(guid)
-          get_resources.detect { |resource| resource.guid == guid }
+          Resource.new(get("resource_instances/#{guid}"))
         end
 
         private
