@@ -1,14 +1,60 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
-require "bundler/setup"
-require "ibm/cloud/sdk"
+require 'bundler/setup'
+require 'ibm-cloud-sdk'
 
-# You can add fixtures and/or initialization code here to make experimenting
-# with your gem easier. You can also use a different console, if you like.
+begin
+  require 'pry'
+  require 'thor'
 
-# (If you use this, don't forget to add pry to your Gemfile!)
-# require "pry"
-# Pry.start
+  # A Thor CLI for instaiating the CloudSDK.
+  class CloudCLI < Thor
+    include Thor::Actions
 
-require "irb"
-IRB.start(__FILE__)
+    def self.class_option(sym)
+      opts = IBM::CloudSDK.env_options[sym]
+      default = ENV[opts[:env_var]] || opts[:default]
+      description = "#{opts[:desc]} Environemnt Variable: #{default}"
+      super(sym, { desc: description, default: default })
+    end
+
+    class_option :api_key
+    class_option :region
+    class_option :crn
+    class_option :guid
+    class_option :tenant
+
+    desc 'cli', 'Start a Cloud SDK CLI'
+    def cli
+      IBM::CloudSDK.cli_help
+      IBM::CloudSDK.new(cli_options: options)
+    rescue RuntimeError, ArgumentError => e
+      puts e.full_message
+    end
+
+    desc 'variables output ', 'Save the options to a Envionrment variables source file.'
+    def variables(output)
+      script = "# Source this file to set the environment variables necessary for the Cloud SDK.\n"
+      IBM::CloudSDK.env_options.each do |k, v|
+        script += "export #{v[:env_var]}=#{options[k.to_sym]}\n"
+      end
+      script += "\n"
+      create_file(output, script)
+    end
+
+    # Print help for command.
+    # @param command [String] The command to get help for. default: nil
+    # @param subcommand [Boolean] Whether this is a subcommand. default: false
+    # @return [String]
+    def help(command = nil, subcommand = false)
+      super(command, subcommand)
+    end
+  end
+
+  CloudCLI.default_command(:cli)
+  CloudCLI.start(ARGV).pry
+rescue LoadError
+  require 'irb'
+  IRB.start(__FILE__)
+end

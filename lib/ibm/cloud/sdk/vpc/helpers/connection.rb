@@ -8,7 +8,6 @@ module IBM
   module Cloud
     module SDK
       module VPC
-
         # Contols tokens.
         class Connection
           def initialize(api_key, logger: nil, client: nil)
@@ -36,7 +35,7 @@ module IBM
             @api_key = api_key
             @logger = logger
             @client = client
-            @data = fetch
+            @data = nil
           end
 
           def fetch
