@@ -27,7 +27,7 @@ module IBM
         end
 
         # A single zone.
-        class Zone < BaseVPC
+        class Zone < BaseInstance
         end
       end
     end
