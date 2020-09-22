@@ -9,39 +9,14 @@ module IBM
       module VPC
         module INSTANCES
           # All netowrk interfaces.
-          class NetworkInterfaces < BaseVPC
+          class NetworkInterfaces < BaseCollection
             def initialize(parent)
-              super(parent, 'network_interfaces')
-            end
-
-            def all
-              get.subkey('network_interfaces')
-              # get
-            end
-
-            def update(payload)
-              post(payload)
-            end
-
-            def instance(id)
-              NetworkInterface.new(self, id)
+              super(parent, 'network_interfaces', child_class: NetworkInterface)
             end
           end
 
           # A single network insterface.
-          class NetworkInterface < BaseVPC
-            def remove
-              delete
-            end
-
-            def details
-              get
-            end
-
-            def update(payload)
-              patch(payload)
-            end
-
+          class NetworkInterface < BaseInstance
             def floating_ips
               FloatingIps.new(self)
             end
