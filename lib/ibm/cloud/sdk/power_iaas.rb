@@ -159,7 +159,7 @@ module IBM
         #
         # @return [Hash] StorageType
         def get_storage_types
-          JSON.parse(RestClient.get("https://#{region.sub(/-\d$/, '')}.power-iaas.cloud.ibm.com/broker/v1/storage-types", headers))
+          JSON.parse(RestClient.get("https://#{region.sub(/-\d$/, '')}.power-iaas.cloud.ibm.com/broker/v1/storage-types", headers))[region]
         end
 
         def create_network(network_hash)
