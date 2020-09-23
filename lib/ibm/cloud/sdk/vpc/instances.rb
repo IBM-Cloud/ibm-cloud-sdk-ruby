@@ -4,7 +4,6 @@
 require_relative 'instance/actions'
 require_relative 'instance/network_interfaces'
 require_relative 'instance/volume_attachments'
-require_relative 'instance/profiles'
 
 module IBM
   module Cloud
