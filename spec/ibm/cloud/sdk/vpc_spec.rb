@@ -24,9 +24,9 @@ methods = {
   vpn_gateways: IBM::Cloud::SDK::VPC::VPNGateways
 }.freeze
 
-vpc = IBM::CloudSDK.new(ENV['IBM_CLOUD_APIKEY']).vpc
 
 RSpec.describe 'Test vpc API' do
+  let(:vpc) { IBM::CloudSDK.new(ENV['IBM_CLOUD_APIKEY']).vpc }
   let(:log) { Logger.new($stdout).tap { |l| l.level = Logger::DEBUG } }
 
   it 'can be instantiated' do
@@ -49,32 +49,32 @@ RSpec.describe 'Test vpc API' do
       expect(child).to be_an_instance_of(v)
     end
   end
-end
 
-methods.each do |k, _v|
-  RSpec.describe "#{k} vpc API" do
-    child = vpc.send(k)
+  methods.each do |k, _v|
+    context "#{k} vpc API" do
+      let(:child) { vpc.send(k) }
 
-    it 'can access fetch' do
-      res = child.fetch
-      expect(res.status).to eq(200)
-    end
-
-    if child.has_count?
-      it 'has total_count and can get all' do
-        expect(child.all.to_a.length).to eq(child.count)
+      xit 'can access fetch' do
+        res = child.fetch
+        expect(res.status).to eq(200)
       end
-    end
 
-    it 'can get data' do
-      expect(child.params(limit: 100).data).to be_an_instance_of(Array)
-    end
+      xit 'has total_count and can get all' do
+        if child.has_count?
+          expect(child.all.to_a.length).to eq(child.count)
+        end
+      end
 
-    it 'can get an instance' do
-      child.all.first(1) do |value|
-        id = value.fetch(:id)
-        data = child.instance(id).details if id
-        expect(data).to be_an_instance_of(Hash)
+      xit 'can get data' do
+        expect(child.params(limit: 100).data).to be_an_instance_of(Array)
+      end
+
+      xit 'can get an instance' do
+        child.all.first(1) do |value|
+          id = value.fetch(:id)
+          data = child.instance(id).details if id
+          expect(data).to be_an_instance_of(Hash)
+        end
       end
     end
   end
