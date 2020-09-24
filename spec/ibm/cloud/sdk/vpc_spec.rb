@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'ibm-cloud-sdk'
+require_relative 'vpc_vcr'
 
 methods = {
   floating_ips: IBM::Cloud::SDK::VPC::FloatingIPs,
@@ -24,10 +25,9 @@ methods = {
   vpn_gateways: IBM::Cloud::SDK::VPC::VPNGateways
 }.freeze
 
-vpc = IBM::CloudSDK.new(ENV['IBM_CLOUD_APIKEY']).vpc
-
-RSpec.describe 'Test vpc API' do
+RSpec.describe 'Test vpc API', :vcr do # rubocop:disable Metrics/BlockLength
   let(:log) { Logger.new($stdout).tap { |l| l.level = Logger::DEBUG } }
+  let(:vpc) { VCR.use_cassette('Test_vpc_API/vpc', { tag: :token_request }) { IBM::CloudSDK.new(ENV['IBM_CLOUD_APIKEY']).vpc } }
 
   it 'can be instantiated' do
     expect(vpc).to be_an_instance_of(IBM::Cloud::SDK::Vpc)
@@ -49,32 +49,31 @@ RSpec.describe 'Test vpc API' do
       expect(child).to be_an_instance_of(v)
     end
   end
-end
 
-methods.each do |k, _v|
-  RSpec.describe "#{k} vpc API" do
-    child = vpc.send(k)
+  methods.each do |k, _v|
+    describe "#{k} vpc API", :vcr do
+      @has_count = false
+      let(:child) { vpc.send(k) }
 
-    it 'can access fetch' do
-      res = child.fetch
-      expect(res.status).to eq(200)
-    end
-
-    if child.has_count?
-      it 'has total_count and can get all' do
-        expect(child.all.to_a.length).to eq(child.count)
+      it 'can access fetch' do
+        res = child.fetch
+        expect(res.status).to eq(200)
       end
-    end
 
-    it 'can get data' do
-      expect(child.params(limit: 100).data).to be_an_instance_of(Array)
-    end
+      it 'can access has_count?' do
+        child.has_count?
+      end
 
-    it 'can get an instance' do
-      child.all.first(1) do |value|
-        id = value.fetch(:id)
-        data = child.instance(id).details if id
-        expect(data).to be_an_instance_of(Hash)
+      it 'can get all' do
+        expect(child.all.to_a.length).to eq(child.count) if child.has_count?
+      end
+
+      it 'can get an instance' do
+        child.all.first(1) do |value|
+          id = value.fetch(:id)
+          data = child.instance(id).details if id
+          expect(data).to be_an_instance_of(Hash)
+        end
       end
     end
   end
