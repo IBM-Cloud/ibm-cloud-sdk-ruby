@@ -24,7 +24,7 @@ VCR.configure do |c|
   c.cassette_library_dir = 'spec/vcr'
   c.hook_into :webmock
   c.define_cassette_placeholder('API_KEY') { ENV['IBM_CLOUD_APIKEY'] }
-  c.allow_http_connections_when_no_cassette = true
+  c.allow_http_connections_when_no_cassette = false
   c.configure_rspec_metadata!
 
   # Don't record non 200 responses.
