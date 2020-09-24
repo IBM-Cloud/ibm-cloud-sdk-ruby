@@ -1,0 +1,48 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://iam.cloud.ibm.com/identity/token
+    body:
+      encoding: UTF-8
+      string: grant_type=urn%3Aibm%3Aparams%3Aoauth%3Agrant-type%3Aapikey&apikey=API_KEY
+    headers:
+      Connection:
+      - close
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Host:
+      - iam.cloud.ibm.com
+      User-Agent:
+      - http.rb/4.4.1
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '2498'
+      Transaction-Id:
+      - 8f5f25e2116c43738b112349bf445bf1
+      Cache-Control:
+      - no-cache, no-store
+      Expires:
+      - '0'
+      Pragma:
+      - no-cache
+      Content-Language:
+      - en-US
+      Date:
+      - Wed, 23 Sep 2020 23:31:28 GMT
+      Connection:
+      - close
+      Set-Cookie:
+      - sessioncookie=05d179b2d1e10b5796eebabbcd7de77c; Path=/; Secure; HttpOnly
+    body:
+      encoding: ASCII-8BIT
+      string: '{"access_token":"aaaa","refresh_token":"11111","ims_user_id":1212,"token_type":"Bearer","expires_in":3600,"expiration":1600907485,"refresh_token_expiration":1603495885,"scope":"ibm
+        openid"}'
+  recorded_at: Wed, 23 Sep 2020 23:31:28 GMT
+recorded_with: VCR 6.0.0

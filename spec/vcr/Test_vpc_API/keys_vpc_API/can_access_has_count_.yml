@@ -1,0 +1,67 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://us-east.iaas.cloud.ibm.com/v1/keys?generation=2&version=2020-08-01
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Authorization: Bearer xxxxxx
+      Connection:
+      - close
+      Host:
+      - us-east.iaas.cloud.ibm.com
+      User-Agent:
+      - http.rb/4.4.1
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 23 Sep 2020 23:53:09 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - close
+      Set-Cookie:
+      - __cfduid=d98b89e9d7c2d59b7df0e7d55c208f83c1600905188; expires=Fri, 23-Oct-20
+        23:53:08 GMT; path=/; domain=.iaas.cloud.ibm.com; HttpOnly; SameSite=Lax;
+        Secure
+      Cf-Ray:
+      - 5d782ef4fd8af975-YYZ
+      Cache-Control:
+      - max-age=0, no-cache, no-store, must-revalidate
+      Expires:
+      - "-1"
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      Vary:
+      - Accept-Encoding
+      Cf-Cache-Status:
+      - DYNAMIC
+      Cf-Request-Id:
+      - 055efbad1b0000f975481e5200000001
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Pragma:
+      - no-cache
+      X-Content-Type-Options:
+      - nosniff
+      X-Request-Id:
+      - 543e4055-07d8-48e5-a970-50644c8af249
+      X-Trace-Id:
+      - 6776999ba694917e
+      X-Xss-Protection:
+      - 1; mode=block
+      Server:
+      - cloudflare
+    body:
+      encoding: UTF-8
+      string: '{"keys":[{"id":"r014-0856edbd-da51-4965-8be5-dcce5caeca3e","crn":"crn:v1:bluemix:public:is:us-east:a/c56c9a268d23e1b339ac14774358133c::key:r014-0856edbd-da51-4965-8be5-dcce5caeca3e","href":"https://us-east.iaas.cloud.ibm.com/v1/keys/r014-0856edbd-da51-4965-8be5-dcce5caeca3e","fingerprint":"SHA256:xxxxxxx","name":"random_key_0","public_key":"RSA:
+        VVVVVV","type":"rsa","length":4096,"created_at":"2020-03-31T02:20:17Z","resource_group":{"id":"345c433098294722ba52d9039133e8cf","href":"https://resource-controller.cloud.ibm.com/v2/resource_groups/345c433098294722ba52d9039133e8cf","name":"default"}}]}'
+  recorded_at: Wed, 23 Sep 2020 23:53:09 GMT
+recorded_with: VCR 6.0.0
