@@ -4,6 +4,7 @@
 require_relative 'vpc/base_vpc'
 require_relative 'vpc/base_collection'
 require_relative 'vpc/base_instance'
+require_relative 'vpc/exceptions'
 
 require_relative 'vpc/floatingips'
 require_relative 'vpc/flowlogcollectors'
