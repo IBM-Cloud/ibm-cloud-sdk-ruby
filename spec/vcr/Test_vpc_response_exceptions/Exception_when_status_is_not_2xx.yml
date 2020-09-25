@@ -1,0 +1,67 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://us-east.iaas.cloud.ibm.com/v1/instances?generation=2&version=3
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Authorization: Bearer xxxxxx
+      Connection:
+      - close
+      Host:
+      - us-east.iaas.cloud.ibm.com
+      User-Agent:
+      - http.rb/4.4.1
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Date:
+      - Fri, 25 Sep 2020 21:50:03 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '219'
+      Connection:
+      - close
+      Set-Cookie:
+      - __cfduid=db468b4e04da9e942b94f98ae7091aa401601070603; expires=Sun, 25-Oct-20
+        21:50:03 GMT; path=/; domain=.iaas.cloud.ibm.com; HttpOnly; SameSite=Lax;
+        Secure
+      Cf-Ray:
+      - 5d87f564ffe2f99d-YYZ
+      Cache-Control:
+      - max-age=0, no-cache, no-store, must-revalidate
+      Expires:
+      - "-1"
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      Cf-Cache-Status:
+      - DYNAMIC
+      Cf-Request-Id:
+      - '0568d7b3170000f99df793a200000001'
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Pragma:
+      - no-cache
+      X-Content-Type-Options:
+      - nosniff
+      X-Request-Id:
+      - 02d5a411-638f-4ae1-98ee-a93361b79dba
+      X-Trace-Id:
+      - 24264574be7192b5
+      X-Xss-Protection:
+      - 1; mode=block
+      Server:
+      - cloudflare
+    body:
+      encoding: UTF-8
+      string: '{"errors":[{"code":"invalid_version","message":"The `version` parameter
+        is invalid, it must be of the form `YYYY-MM-DD`.","target":{"name":"version","type":"parameter"}}],"trace":"02d5a411-638f-4ae1-98ee-a93361b79dba"}
+
+        '
+  recorded_at: Fri, 25 Sep 2020 21:50:03 GMT
+recorded_with: VCR 6.0.0
