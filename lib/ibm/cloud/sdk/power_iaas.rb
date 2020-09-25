@@ -21,6 +21,13 @@ module IBM
           "https://#{region.sub(/-\d$/, '')}.power-iaas.cloud.ibm.com/pcloud/v1"
         end
 
+        # Get Power Cloud Instance information
+        #
+        # @return [Hash] CloudInstance
+        def get_pcloud_instance
+          get("cloud-instances/#{guid}")
+        end
+
         # Get all PVM instances in an IBM Power Cloud instance
         #
         # @return [Array<Hash>] all PVM Instances for this instance
@@ -159,7 +166,7 @@ module IBM
         #
         # @return [Hash] StorageType
         def get_storage_types
-          JSON.parse(RestClient.get("https://#{region.sub(/-\d$/, '')}.power-iaas.cloud.ibm.com/broker/v1/storage-types", headers))
+          JSON.parse(RestClient.get("https://#{region.sub(/-\d$/, '')}.power-iaas.cloud.ibm.com/broker/v1/storage-types", headers))[region]
         end
 
         def create_network(network_hash)

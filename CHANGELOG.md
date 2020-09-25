@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to the gem ibm-cloud-sdk-ruby will be documented here.
 
+## v0.1.6 - 2020-09-23
+- Add PowerIaaS method to get instance info
+- Return region specific PowerVS storage types
+- Move VPC instance into instances and add initialization method.
+
 ## v0.1.5 - 2020-09-21
 - Added Enumerable based pagination support
 - Move instance profiles
