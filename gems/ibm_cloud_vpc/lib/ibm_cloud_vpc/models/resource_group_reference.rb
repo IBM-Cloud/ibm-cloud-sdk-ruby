@@ -109,7 +109,7 @@ module IbmCloudVpc
         invalid_properties.push('invalid value for "name", the character length must be great than or equal to 1.')
       end
 
-      pattern = Regexp.new(/^[a-zA-Z0-9-_ ]+$/)
+      pattern = Regexp.new(/^[a-zA-Z0-9\-_ ]+$/)
       if @name !~ pattern
         invalid_properties.push("invalid value for \"name\", must conform to the pattern #{pattern}.")
       end
@@ -127,7 +127,7 @@ module IbmCloudVpc
       return false if @name.nil?
       return false if @name.to_s.length > 40
       return false if @name.to_s.length < 1
-      return false if @name !~ Regexp.new(/^[a-zA-Z0-9-_ ]+$/)
+      return false if @name !~ Regexp.new(/^[a-zA-Z0-9\-_ ]+$/)
       true
     end
 
@@ -171,7 +171,7 @@ module IbmCloudVpc
         fail ArgumentError, 'invalid value for "name", the character length must be great than or equal to 1.'
       end
 
-      pattern = Regexp.new(/^[a-zA-Z0-9-_ ]+$/)
+      pattern = Regexp.new(/^[a-zA-Z0-9\-_ ]+$/)
       if name !~ pattern
         fail ArgumentError, "invalid value for \"name\", must conform to the pattern #{pattern}."
       end
