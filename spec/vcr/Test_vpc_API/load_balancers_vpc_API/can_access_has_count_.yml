@@ -1,0 +1,52 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://us-east.iaas.cloud.ibm.com/v1/load_balancers?generation=2&version=2020-08-01
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Authorization: Bearer xxxxxx
+      Connection:
+      - close
+      Host:
+      - us-east.iaas.cloud.ibm.com
+      User-Agent:
+      - http.rb/4.4.1
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 23 Sep 2020 22:32:32 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '21'
+      Connection:
+      - close
+      Set-Cookie:
+      - __cfduid=df04ff998c50d979f2396bb6de41fd3ba1600900352; expires=Fri, 23-Oct-20
+        22:32:32 GMT; path=/; domain=.iaas.cloud.ibm.com; HttpOnly; SameSite=Lax;
+        Secure
+      Cf-Ray:
+      - 5d77b8e2caf8f97d-YYZ
+      Cf-Cache-Status:
+      - DYNAMIC
+      Cf-Request-Id:
+      - 055eb1e1bb0000f97db7bd9200000001
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Transaction-Id:
+      - 12cde837-c66d-4312-afe7-c9cab61a8d40
+      X-Request-Id:
+      - 12cde837-c66d-4312-afe7-c9cab61a8d40
+      Server:
+      - cloudflare
+    body:
+      encoding: UTF-8
+      string: '{"load_balancers":[]}'
+  recorded_at: Wed, 23 Sep 2020 22:32:32 GMT
+recorded_with: VCR 6.0.0
