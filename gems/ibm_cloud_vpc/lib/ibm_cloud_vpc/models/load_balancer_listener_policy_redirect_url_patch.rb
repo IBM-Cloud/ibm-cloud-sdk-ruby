@@ -92,7 +92,7 @@ module IbmCloudVpc
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      pattern = Regexp.new(/^http(s)?:\\/\\/([^\\/?#]*)([^?#]*)(\?([^#]*))?(#(.*))?$/)
+      pattern = Regexp.new(/^http(s)?:\/\/([^\/?#]*)([^?#]*)(\?([^#]*))?(#(.*))?$/)
       if !@url.nil? && @url !~ pattern
         invalid_properties.push("invalid value for \"url\", must conform to the pattern #{pattern}.")
       end
@@ -105,7 +105,7 @@ module IbmCloudVpc
     def valid?
       http_status_code_validator = EnumAttributeValidator.new('Integer', [301, 302, 303, 307, 308])
       return false unless http_status_code_validator.valid?(@http_status_code)
-      return false if !@url.nil? && @url !~ Regexp.new(/^http(s)?:\\/\\/([^\\/?#]*)([^?#]*)(\?([^#]*))?(#(.*))?$/)
+      return false if !@url.nil? && @url !~ Regexp.new(/^http(s)?:\/\/([^\/?#]*)([^?#]*)(\?([^#]*))?(#(.*))?$/)
       true
     end
 
@@ -122,7 +122,7 @@ module IbmCloudVpc
     # Custom attribute writer method with validation
     # @param [Object] url Value to be assigned
     def url=(url)
-      pattern = Regexp.new(/^http(s)?:\\/\\/([^\\/?#]*)([^?#]*)(\?([^#]*))?(#(.*))?$/)
+      pattern = Regexp.new(/^http(s)?:\/\/([^\/?#]*)([^?#]*)(\?([^#]*))?(#(.*))?$/)
       if !url.nil? && url !~ pattern
         fail ArgumentError, "invalid value for \"url\", must conform to the pattern #{pattern}."
       end

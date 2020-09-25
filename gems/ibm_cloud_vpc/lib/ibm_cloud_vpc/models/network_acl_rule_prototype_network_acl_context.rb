@@ -190,7 +190,7 @@ module IbmCloudVpc
         invalid_properties.push('invalid value for "destination", destination cannot be nil.')
       end
 
-      pattern = Regexp.new(/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])(\\/(3[0-2]|[1-2][0-9]|[0-9]))?$/)
+      pattern = Regexp.new(/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])(\/(3[0-2]|[1-2][0-9]|[0-9]))?$/)
       if @destination !~ pattern
         invalid_properties.push("invalid value for \"destination\", must conform to the pattern #{pattern}.")
       end
@@ -220,7 +220,7 @@ module IbmCloudVpc
         invalid_properties.push('invalid value for "source", source cannot be nil.')
       end
 
-      pattern = Regexp.new(/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])(\\/(3[0-2]|[1-2][0-9]|[0-9]))?$/)
+      pattern = Regexp.new(/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])(\/(3[0-2]|[1-2][0-9]|[0-9]))?$/)
       if @source !~ pattern
         invalid_properties.push("invalid value for \"source\", must conform to the pattern #{pattern}.")
       end
@@ -283,7 +283,7 @@ module IbmCloudVpc
       action_validator = EnumAttributeValidator.new('String', ["allow", "deny"])
       return false unless action_validator.valid?(@action)
       return false if @destination.nil?
-      return false if @destination !~ Regexp.new(/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])(\\/(3[0-2]|[1-2][0-9]|[0-9]))?$/)
+      return false if @destination !~ Regexp.new(/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])(\/(3[0-2]|[1-2][0-9]|[0-9]))?$/)
       return false if @direction.nil?
       direction_validator = EnumAttributeValidator.new('String', ["inbound", "outbound"])
       return false unless direction_validator.valid?(@direction)
@@ -294,7 +294,7 @@ module IbmCloudVpc
       protocol_validator = EnumAttributeValidator.new('String', ["all", "icmp", "tcp", "udp"])
       return false unless protocol_validator.valid?(@protocol)
       return false if @source.nil?
-      return false if @source !~ Regexp.new(/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])(\\/(3[0-2]|[1-2][0-9]|[0-9]))?$/)
+      return false if @source !~ Regexp.new(/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])(\/(3[0-2]|[1-2][0-9]|[0-9]))?$/)
       return false if !@destination_port_max.nil? && @destination_port_max > 65535
       return false if !@destination_port_max.nil? && @destination_port_max < 1
       return false if !@destination_port_min.nil? && @destination_port_min > 65535
@@ -343,7 +343,7 @@ module IbmCloudVpc
         fail ArgumentError, 'destination cannot be nil'
       end
 
-      pattern = Regexp.new(/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])(\\/(3[0-2]|[1-2][0-9]|[0-9]))?$/)
+      pattern = Regexp.new(/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])(\/(3[0-2]|[1-2][0-9]|[0-9]))?$/)
       if destination !~ pattern
         fail ArgumentError, "invalid value for \"destination\", must conform to the pattern #{pattern}."
       end
@@ -397,7 +397,7 @@ module IbmCloudVpc
         fail ArgumentError, 'source cannot be nil'
       end
 
-      pattern = Regexp.new(/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])(\\/(3[0-2]|[1-2][0-9]|[0-9]))?$/)
+      pattern = Regexp.new(/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])(\/(3[0-2]|[1-2][0-9]|[0-9]))?$/)
       if source !~ pattern
         fail ArgumentError, "invalid value for \"source\", must conform to the pattern #{pattern}."
       end

@@ -83,7 +83,7 @@ module IbmCloudVpc
         invalid_properties.push('invalid value for "href", href cannot be nil.')
       end
 
-      pattern = Regexp.new(/^http(s)?:\\/\\/([^\\/?#]*)([^?#]*)(\?([^#]*))?(#(.*))?$/)
+      pattern = Regexp.new(/^http(s)?:\/\/([^\/?#]*)([^?#]*)(\?([^#]*))?(#(.*))?$/)
       if @href !~ pattern
         invalid_properties.push("invalid value for \"href\", must conform to the pattern #{pattern}.")
       end
@@ -121,7 +121,7 @@ module IbmCloudVpc
     # @return true if the model is valid
     def valid?
       return false if @href.nil?
-      return false if @href !~ Regexp.new(/^http(s)?:\\/\\/([^\\/?#]*)([^?#]*)(\?([^#]*))?(#(.*))?$/)
+      return false if @href !~ Regexp.new(/^http(s)?:\/\/([^\/?#]*)([^?#]*)(\?([^#]*))?(#(.*))?$/)
       return false if @id.nil?
       return false if @id !~ Regexp.new(/^[0-9a-f]{32}$/)
       return false if @name.nil?
@@ -138,7 +138,7 @@ module IbmCloudVpc
         fail ArgumentError, 'href cannot be nil'
       end
 
-      pattern = Regexp.new(/^http(s)?:\\/\\/([^\\/?#]*)([^?#]*)(\?([^#]*))?(#(.*))?$/)
+      pattern = Regexp.new(/^http(s)?:\/\/([^\/?#]*)([^?#]*)(\?([^#]*))?(#(.*))?$/)
       if href !~ pattern
         fail ArgumentError, "invalid value for \"href\", must conform to the pattern #{pattern}."
       end

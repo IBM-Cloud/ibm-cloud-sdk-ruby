@@ -127,7 +127,7 @@ module IbmCloudVpc
         invalid_properties.push('invalid value for "cidr", cidr cannot be nil.')
       end
 
-      pattern = Regexp.new(/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])(\\/(3[0-2]|[1-2][0-9]|[0-9]))$/)
+      pattern = Regexp.new(/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])(\/(3[0-2]|[1-2][0-9]|[0-9]))$/)
       if @cidr !~ pattern
         invalid_properties.push("invalid value for \"cidr\", must conform to the pattern #{pattern}.")
       end
@@ -144,7 +144,7 @@ module IbmCloudVpc
         invalid_properties.push('invalid value for "href", href cannot be nil.')
       end
 
-      pattern = Regexp.new(/^http(s)?:\\/\\/([^\\/?#]*)([^?#]*)(\?([^#]*))?(#(.*))?$/)
+      pattern = Regexp.new(/^http(s)?:\/\/([^\/?#]*)([^?#]*)(\?([^#]*))?(#(.*))?$/)
       if @href !~ pattern
         invalid_properties.push("invalid value for \"href\", must conform to the pattern #{pattern}.")
       end
@@ -198,11 +198,11 @@ module IbmCloudVpc
     # @return true if the model is valid
     def valid?
       return false if @cidr.nil?
-      return false if @cidr !~ Regexp.new(/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])(\\/(3[0-2]|[1-2][0-9]|[0-9]))$/)
+      return false if @cidr !~ Regexp.new(/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])(\/(3[0-2]|[1-2][0-9]|[0-9]))$/)
       return false if @created_at.nil?
       return false if @has_subnets.nil?
       return false if @href.nil?
-      return false if @href !~ Regexp.new(/^http(s)?:\\/\\/([^\\/?#]*)([^?#]*)(\?([^#]*))?(#(.*))?$/)
+      return false if @href !~ Regexp.new(/^http(s)?:\/\/([^\/?#]*)([^?#]*)(\?([^#]*))?(#(.*))?$/)
       return false if @id.nil?
       return false if @id.to_s.length > 64
       return false if @id.to_s.length < 1
@@ -223,7 +223,7 @@ module IbmCloudVpc
         fail ArgumentError, 'cidr cannot be nil'
       end
 
-      pattern = Regexp.new(/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])(\\/(3[0-2]|[1-2][0-9]|[0-9]))$/)
+      pattern = Regexp.new(/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])(\/(3[0-2]|[1-2][0-9]|[0-9]))$/)
       if cidr !~ pattern
         fail ArgumentError, "invalid value for \"cidr\", must conform to the pattern #{pattern}."
       end
@@ -238,7 +238,7 @@ module IbmCloudVpc
         fail ArgumentError, 'href cannot be nil'
       end
 
-      pattern = Regexp.new(/^http(s)?:\\/\\/([^\\/?#]*)([^?#]*)(\?([^#]*))?(#(.*))?$/)
+      pattern = Regexp.new(/^http(s)?:\/\/([^\/?#]*)([^?#]*)(\?([^#]*))?(#(.*))?$/)
       if href !~ pattern
         fail ArgumentError, "invalid value for \"href\", must conform to the pattern #{pattern}."
       end
@@ -411,7 +411,7 @@ module IbmCloudVpc
           is_nullable = self.class.openapi_nullable.include?(attr)
           next if !is_nullable || (is_nullable && !instance_variable_defined?(:"@#{attr}"))
         end
-        
+
         hash[param] = _to_hash(value)
       end
       hash

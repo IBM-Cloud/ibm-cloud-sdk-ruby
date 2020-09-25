@@ -176,7 +176,7 @@ module IbmCloudVpc
         invalid_properties.push('invalid value for "ipv4_cidr_block", ipv4_cidr_block cannot be nil.')
       end
 
-      pattern = Regexp.new(/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])(\\/(3[0-2]|[1-2][0-9]|[0-9]))$/)
+      pattern = Regexp.new(/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])(\/(3[0-2]|[1-2][0-9]|[0-9]))$/)
       if @ipv4_cidr_block !~ pattern
         invalid_properties.push("invalid value for \"ipv4_cidr_block\", must conform to the pattern #{pattern}.")
       end
@@ -198,7 +198,7 @@ module IbmCloudVpc
       return false if @total_ipv4_address_count < 8
       return false if @zone.nil?
       return false if @ipv4_cidr_block.nil?
-      return false if @ipv4_cidr_block !~ Regexp.new(/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])(\\/(3[0-2]|[1-2][0-9]|[0-9]))$/)
+      return false if @ipv4_cidr_block !~ Regexp.new(/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])(\/(3[0-2]|[1-2][0-9]|[0-9]))$/)
       _one_of_found = false
       self.class.openapi_one_of.each do |_class|
         _one_of = IbmCloudVpc.const_get(_class).build_from_hash(self.to_hash)
@@ -272,7 +272,7 @@ module IbmCloudVpc
         fail ArgumentError, 'ipv4_cidr_block cannot be nil'
       end
 
-      pattern = Regexp.new(/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])(\\/(3[0-2]|[1-2][0-9]|[0-9]))$/)
+      pattern = Regexp.new(/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])(\/(3[0-2]|[1-2][0-9]|[0-9]))$/)
       if ipv4_cidr_block !~ pattern
         fail ArgumentError, "invalid value for \"ipv4_cidr_block\", must conform to the pattern #{pattern}."
       end

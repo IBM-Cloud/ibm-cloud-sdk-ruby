@@ -65,7 +65,7 @@ module IbmCloudVpc
         invalid_properties.push('invalid value for "href", href cannot be nil.')
       end
 
-      pattern = Regexp.new(/^cos:\\/\\/([^\\/?#]*)([^?#]*)$/)
+      pattern = Regexp.new(/^cos:\/\/([^\/?#]*)([^?#]*)$/)
       if @href !~ pattern
         invalid_properties.push("invalid value for \"href\", must conform to the pattern #{pattern}.")
       end
@@ -77,7 +77,7 @@ module IbmCloudVpc
     # @return true if the model is valid
     def valid?
       return false if @href.nil?
-      return false if @href !~ Regexp.new(/^cos:\\/\\/([^\\/?#]*)([^?#]*)$/)
+      return false if @href !~ Regexp.new(/^cos:\/\/([^\/?#]*)([^?#]*)$/)
       true
     end
 
@@ -88,7 +88,7 @@ module IbmCloudVpc
         fail ArgumentError, 'href cannot be nil'
       end
 
-      pattern = Regexp.new(/^cos:\\/\\/([^\\/?#]*)([^?#]*)$/)
+      pattern = Regexp.new(/^cos:\/\/([^\/?#]*)([^?#]*)$/)
       if href !~ pattern
         fail ArgumentError, "invalid value for \"href\", must conform to the pattern #{pattern}."
       end
@@ -208,7 +208,7 @@ module IbmCloudVpc
           is_nullable = self.class.openapi_nullable.include?(attr)
           next if !is_nullable || (is_nullable && !instance_variable_defined?(:"@#{attr}"))
         end
-        
+
         hash[param] = _to_hash(value)
       end
       hash

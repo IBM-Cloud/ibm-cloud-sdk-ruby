@@ -93,7 +93,7 @@ module IbmCloudVpc
         invalid_properties.push('invalid value for "cidr", cidr cannot be nil.')
       end
 
-      pattern = Regexp.new(/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])(\\/(3[0-2]|[1-2][0-9]|[0-9]))$/)
+      pattern = Regexp.new(/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])(\/(3[0-2]|[1-2][0-9]|[0-9]))$/)
       if @cidr !~ pattern
         invalid_properties.push("invalid value for \"cidr\", must conform to the pattern #{pattern}.")
       end
@@ -122,7 +122,7 @@ module IbmCloudVpc
     # @return true if the model is valid
     def valid?
       return false if @cidr.nil?
-      return false if @cidr !~ Regexp.new(/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])(\\/(3[0-2]|[1-2][0-9]|[0-9]))$/)
+      return false if @cidr !~ Regexp.new(/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])(\/(3[0-2]|[1-2][0-9]|[0-9]))$/)
       return false if !@name.nil? && @name.to_s.length > 63
       return false if !@name.nil? && @name.to_s.length < 1
       return false if !@name.nil? && @name !~ Regexp.new(/^([a-z]|[a-z][-a-z0-9]*[a-z0-9])$/)
@@ -137,7 +137,7 @@ module IbmCloudVpc
         fail ArgumentError, 'cidr cannot be nil'
       end
 
-      pattern = Regexp.new(/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])(\\/(3[0-2]|[1-2][0-9]|[0-9]))$/)
+      pattern = Regexp.new(/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])(\/(3[0-2]|[1-2][0-9]|[0-9]))$/)
       if cidr !~ pattern
         fail ArgumentError, "invalid value for \"cidr\", must conform to the pattern #{pattern}."
       end

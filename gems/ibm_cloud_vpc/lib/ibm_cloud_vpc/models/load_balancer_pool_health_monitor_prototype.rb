@@ -167,7 +167,7 @@ module IbmCloudVpc
         invalid_properties.push('invalid value for "type", type cannot be nil.')
       end
 
-      pattern = Regexp.new(/^http(s)?:\\/\\/([^\\/?#]*)([^?#]*)(\?([^#]*))?(#(.*))?$/)
+      pattern = Regexp.new(/^http(s)?:\/\/([^\/?#]*)([^?#]*)(\?([^#]*))?(#(.*))?$/)
       if !@url_path.nil? && @url_path !~ pattern
         invalid_properties.push("invalid value for \"url_path\", must conform to the pattern #{pattern}.")
       end
@@ -190,7 +190,7 @@ module IbmCloudVpc
       return false if @type.nil?
       type_validator = EnumAttributeValidator.new('String', ["http", "tcp", "https"])
       return false unless type_validator.valid?(@type)
-      return false if !@url_path.nil? && @url_path !~ Regexp.new(/^http(s)?:\\/\\/([^\\/?#]*)([^?#]*)(\?([^#]*))?(#(.*))?$/)
+      return false if !@url_path.nil? && @url_path !~ Regexp.new(/^http(s)?:\/\/([^\/?#]*)([^?#]*)(\?([^#]*))?(#(.*))?$/)
       true
     end
 
@@ -261,7 +261,7 @@ module IbmCloudVpc
     # Custom attribute writer method with validation
     # @param [Object] url_path Value to be assigned
     def url_path=(url_path)
-      pattern = Regexp.new(/^http(s)?:\\/\\/([^\\/?#]*)([^?#]*)(\?([^#]*))?(#(.*))?$/)
+      pattern = Regexp.new(/^http(s)?:\/\/([^\/?#]*)([^?#]*)(\?([^#]*))?(#(.*))?$/)
       if !url_path.nil? && url_path !~ pattern
         fail ArgumentError, "invalid value for \"url_path\", must conform to the pattern #{pattern}."
       end

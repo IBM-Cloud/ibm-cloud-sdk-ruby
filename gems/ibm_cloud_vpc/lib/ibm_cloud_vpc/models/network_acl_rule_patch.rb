@@ -191,7 +191,7 @@ module IbmCloudVpc
         invalid_properties.push('invalid value for "code", must be greater than or equal to 0.')
       end
 
-      pattern = Regexp.new(/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])(\\/(3[0-2]|[1-2][0-9]|[0-9]))?$/)
+      pattern = Regexp.new(/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])(\/(3[0-2]|[1-2][0-9]|[0-9]))?$/)
       if !@destination.nil? && @destination !~ pattern
         invalid_properties.push("invalid value for \"destination\", must conform to the pattern #{pattern}.")
       end
@@ -225,7 +225,7 @@ module IbmCloudVpc
         invalid_properties.push("invalid value for \"name\", must conform to the pattern #{pattern}.")
       end
 
-      pattern = Regexp.new(/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])(\\/(3[0-2]|[1-2][0-9]|[0-9]))?$/)
+      pattern = Regexp.new(/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])(\/(3[0-2]|[1-2][0-9]|[0-9]))?$/)
       if !@source.nil? && @source !~ pattern
         invalid_properties.push("invalid value for \"source\", must conform to the pattern #{pattern}.")
       end
@@ -264,7 +264,7 @@ module IbmCloudVpc
       return false unless action_validator.valid?(@action)
       return false if !@code.nil? && @code > 255
       return false if !@code.nil? && @code < 0
-      return false if !@destination.nil? && @destination !~ Regexp.new(/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])(\\/(3[0-2]|[1-2][0-9]|[0-9]))?$/)
+      return false if !@destination.nil? && @destination !~ Regexp.new(/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])(\/(3[0-2]|[1-2][0-9]|[0-9]))?$/)
       return false if !@destination_port_max.nil? && @destination_port_max > 65535
       return false if !@destination_port_max.nil? && @destination_port_max < 1
       return false if !@destination_port_min.nil? && @destination_port_min > 65535
@@ -274,7 +274,7 @@ module IbmCloudVpc
       return false if !@name.nil? && @name.to_s.length > 63
       return false if !@name.nil? && @name.to_s.length < 1
       return false if !@name.nil? && @name !~ Regexp.new(/^([a-z]|[a-z][-a-z0-9]*[a-z0-9])$/)
-      return false if !@source.nil? && @source !~ Regexp.new(/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])(\\/(3[0-2]|[1-2][0-9]|[0-9]))?$/)
+      return false if !@source.nil? && @source !~ Regexp.new(/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])(\/(3[0-2]|[1-2][0-9]|[0-9]))?$/)
       return false if !@source_port_max.nil? && @source_port_max > 65535
       return false if !@source_port_max.nil? && @source_port_max < 1
       return false if !@source_port_min.nil? && @source_port_min > 65535
@@ -311,7 +311,7 @@ module IbmCloudVpc
     # Custom attribute writer method with validation
     # @param [Object] destination Value to be assigned
     def destination=(destination)
-      pattern = Regexp.new(/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])(\\/(3[0-2]|[1-2][0-9]|[0-9]))?$/)
+      pattern = Regexp.new(/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])(\/(3[0-2]|[1-2][0-9]|[0-9]))?$/)
       if !destination.nil? && destination !~ pattern
         fail ArgumentError, "invalid value for \"destination\", must conform to the pattern #{pattern}."
       end
@@ -379,7 +379,7 @@ module IbmCloudVpc
     # Custom attribute writer method with validation
     # @param [Object] source Value to be assigned
     def source=(source)
-      pattern = Regexp.new(/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])(\\/(3[0-2]|[1-2][0-9]|[0-9]))?$/)
+      pattern = Regexp.new(/^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])(\/(3[0-2]|[1-2][0-9]|[0-9]))?$/)
       if !source.nil? && source !~ pattern
         fail ArgumentError, "invalid value for \"source\", must conform to the pattern #{pattern}."
       end
@@ -552,7 +552,7 @@ module IbmCloudVpc
           is_nullable = self.class.openapi_nullable.include?(attr)
           next if !is_nullable || (is_nullable && !instance_variable_defined?(:"@#{attr}"))
         end
-        
+
         hash[param] = _to_hash(value)
       end
       hash

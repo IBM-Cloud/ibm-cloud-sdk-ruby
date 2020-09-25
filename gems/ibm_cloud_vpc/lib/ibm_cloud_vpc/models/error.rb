@@ -100,7 +100,7 @@ module IbmCloudVpc
         invalid_properties.push('invalid value for "message", message cannot be nil.')
       end
 
-      pattern = Regexp.new(/^http(s)?:\\/\\/([^\\/?#]*)([^?#]*)(\?([^#]*))?(#(.*))?$/)
+      pattern = Regexp.new(/^http(s)?:\/\/([^\/?#]*)([^?#]*)(\?([^#]*))?(#(.*))?$/)
       if !@more_info.nil? && @more_info !~ pattern
         invalid_properties.push("invalid value for \"more_info\", must conform to the pattern #{pattern}.")
       end
@@ -114,7 +114,7 @@ module IbmCloudVpc
       return false if @code.nil?
       return false if @code !~ Regexp.new(/^[a-z][a-z0-9]*(_[a-z0-9]+)*$/)
       return false if @message.nil?
-      return false if !@more_info.nil? && @more_info !~ Regexp.new(/^http(s)?:\\/\\/([^\\/?#]*)([^?#]*)(\?([^#]*))?(#(.*))?$/)
+      return false if !@more_info.nil? && @more_info !~ Regexp.new(/^http(s)?:\/\/([^\/?#]*)([^?#]*)(\?([^#]*))?(#(.*))?$/)
       true
     end
 
@@ -136,7 +136,7 @@ module IbmCloudVpc
     # Custom attribute writer method with validation
     # @param [Object] more_info Value to be assigned
     def more_info=(more_info)
-      pattern = Regexp.new(/^http(s)?:\\/\\/([^\\/?#]*)([^?#]*)(\?([^#]*))?(#(.*))?$/)
+      pattern = Regexp.new(/^http(s)?:\/\/([^\/?#]*)([^?#]*)(\?([^#]*))?(#(.*))?$/)
       if !more_info.nil? && more_info !~ pattern
         fail ArgumentError, "invalid value for \"more_info\", must conform to the pattern #{pattern}."
       end
