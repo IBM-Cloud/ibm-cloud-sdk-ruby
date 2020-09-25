@@ -42,7 +42,7 @@ http_interactions:
       - sessioncookie=05d179b2d1e10b5796eebabbcd7de77c; Path=/; Secure; HttpOnly
     body:
       encoding: ASCII-8BIT
-      string: '{"access_token":"aaaa","refresh_token":"11111","ims_user_id":1212,"token_type":"Bearer","expires_in":3600,"expiration":1600907485,"refresh_token_expiration":1603495885,"scope":"ibm
+      string: '{"access_token":"aaaa","refresh_token":"11111","ims_user_id":1212,"token_type":"Bearer","expires_in":3600,"expiration":1893456000,"refresh_token_expiration":1603495885,"scope":"ibm
         openid"}'
   recorded_at: Wed, 23 Sep 2020 23:31:28 GMT
 recorded_with: VCR 6.0.0
