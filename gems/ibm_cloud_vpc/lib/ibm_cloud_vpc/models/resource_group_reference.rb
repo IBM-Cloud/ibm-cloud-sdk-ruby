@@ -153,11 +153,6 @@ module IbmCloudVpc
         fail ArgumentError, 'id cannot be nil'
       end
 
-      pattern = Regexp.new(/^[0-9a-f]{32}$/)
-      if id !~ pattern
-        fail ArgumentError, "invalid value for \"id\", must conform to the pattern #{pattern}."
-      end
-
       @id = id
     end
 
@@ -298,7 +293,7 @@ module IbmCloudVpc
           is_nullable = self.class.openapi_nullable.include?(attr)
           next if !is_nullable || (is_nullable && !instance_variable_defined?(:"@#{attr}"))
         end
-        
+
         hash[param] = _to_hash(value)
       end
       hash

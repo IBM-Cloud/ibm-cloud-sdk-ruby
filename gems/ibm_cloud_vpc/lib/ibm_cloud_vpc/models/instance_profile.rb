@@ -330,6 +330,15 @@ module IbmCloudVpc
           end
         end
       else # model
+        type = if value.key?(:type) && value.key?(:value)
+          "InstanceProfileBandwidthFixed"
+        elsif value.key?(:type) && value.key?(:min) && value.key?(:max)
+          "InstanceProfileBandwidthRange"
+        elsif value.key?(:type) && value.key?(:values) && value.key?(:default)
+          "InstanceProfileBandwidthEnum"
+        else
+          "InstanceProfileBandwidthDependent"
+        end
         IbmCloudVpc.const_get(type).build_from_hash(value)
       end
     end
@@ -356,7 +365,7 @@ module IbmCloudVpc
           is_nullable = self.class.openapi_nullable.include?(attr)
           next if !is_nullable || (is_nullable && !instance_variable_defined?(:"@#{attr}"))
         end
-        
+
         hash[param] = _to_hash(value)
       end
       hash

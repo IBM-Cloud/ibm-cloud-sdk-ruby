@@ -44,6 +44,28 @@ module IbmCloudVpc
     # The inclusive lower bound of TCP/UDP port range
     attr_accessor :port_min
 
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
+
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -488,6 +510,14 @@ module IbmCloudVpc
           end
         end
       else # model
+        type = if value.key?(:address)
+          "IP"
+        elsif value.key?(:cidr_block)
+          "CIDR"
+        else
+          "SecurityGroupReference"
+        end
+
         IbmCloudVpc.const_get(type).build_from_hash(value)
       end
     end
@@ -514,7 +544,7 @@ module IbmCloudVpc
           is_nullable = self.class.openapi_nullable.include?(attr)
           next if !is_nullable || (is_nullable && !instance_variable_defined?(:"@#{attr}"))
         end
-        
+
         hash[param] = _to_hash(value)
       end
       hash
