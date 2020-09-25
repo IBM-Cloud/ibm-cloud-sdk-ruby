@@ -34,7 +34,7 @@ VCR.configure do |c|
   c.configure_rspec_metadata!
   c.before_record do |interaction|
     # Don't save results if results are not in 200-series.
-    interaction.ignore! if interaction.response.status.code > 200 || interaction.response.status.code >= 300
+    interaction.ignore! if interaction.response.status.code < 200 || interaction.response.status.code >= 300
     interaction.request.headers['Authorization'] = 'Bearer xxxxxx' if interaction.request.headers.key?('Authorization')
 
     # Clean up token save.
