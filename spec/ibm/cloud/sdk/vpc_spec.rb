@@ -25,9 +25,9 @@ methods = {
   vpn_gateways: IBM::Cloud::SDK::VPC::VPNGateways
 }.freeze
 
-RSpec.describe 'Test vpc API', :vcr do # rubocop:disable Metrics/BlockLength
+RSpec.describe 'Test vpc API', vcr: { tag: :require_2xx } do # rubocop:disable Metrics/BlockLength
   let(:log) { Logger.new($stdout).tap { |l| l.level = Logger::DEBUG } }
-  let(:vpc) { VCR.use_cassette('Test_vpc_API/vpc', { tag: :token_request }) { IBM::CloudSDK.new(ENV['IBM_CLOUD_APIKEY']).vpc } }
+  let(:vpc) { VCR.use_cassette('Test_vpc_API/vpc', { tags: %i[require_2xx token_request] }) { IBM::CloudSDK.new(ENV['IBM_CLOUD_APIKEY']).vpc } }
 
   it 'can be instantiated' do
     expect(vpc).to be_an_instance_of(IBM::Cloud::SDK::Vpc)
@@ -51,7 +51,7 @@ RSpec.describe 'Test vpc API', :vcr do # rubocop:disable Metrics/BlockLength
   end
 
   methods.each do |k, _v|
-    describe "#{k} vpc API", :vcr do
+    describe "#{k} vpc API", vcr: { tags: %I[require_2xx VPC_#{k}] } do
       @has_count = false
       let(:child) { vpc.send(k) }
 
