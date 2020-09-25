@@ -55,7 +55,7 @@ module IBM
           # @return [Response] Allows for method to be chainable.
           # @raise [Exceptions::HttpStatusError] Raise if status checks failed.
           def raise_for_status?
-            return self if code >= 200 && code < 300
+            return self if (200..299).include?(code)
             return self if code == 404
 
             raise Exceptions::HttpStatusError.new(self)
