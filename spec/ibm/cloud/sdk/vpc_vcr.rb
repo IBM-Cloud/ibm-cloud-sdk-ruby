@@ -30,36 +30,39 @@ VCR.configure do |c|
   c.cassette_library_dir = 'spec/vcr'
   c.hook_into :webmock
   c.define_cassette_placeholder('API_KEY') { ENV['IBM_CLOUD_APIKEY'] }
+  # If IBM_CLOUD_DISABLE_VCR is in your env then all recordings will be ignored.
+  c.ignore_request { ENV['IBM_CLOUD_DISABLE_VCR'] }
   c.allow_http_connections_when_no_cassette = false
   c.configure_rspec_metadata!
+
+  # Default Before every recording.
   c.before_record do |interaction|
-    # Don't save results if results are not in 200-series.
-    interaction.ignore! if interaction.response.status.code < 200 || interaction.response.status.code >= 300
+    # Mask bearer token in recorded file.
     interaction.request.headers['Authorization'] = 'Bearer xxxxxx' if interaction.request.headers.key?('Authorization')
-
-    # Clean up token save.
-    if interaction.request.uri.end_with?('identity/token')
-      begin
-        replace_token_contents(interaction.response)
-      rescue => e # rubocop:disable Style/RescueStandardError # Don't know what errors are here so catch them all.
-        # If there is an exception during fetching we don't want to save the results.
-        puts("Exception raised during fetching of token #{e}")
-        interaction.ignore!
-      end
-    end
-
     # Replace IP V4 Addresses
     interaction.response.body.gsub!(/([0-9]{1,3}\.){3}/, '127.0.0.')
+  end
 
-    # Clean up keys of any data.
-    if interaction.request.uri.match?('v1/keys')
-      begin
-        replace_ssh_keys(interaction.response)
-      rescue => e # rubocop:disable Style/RescueStandardError # Don't know what errors are here so catch them all.
-        # If there is an exception during fetching we don't want to save the results.
-        puts("Exception raised during fetching of ssh keys #{e}")
-        interaction.ignore!
-      end
-    end
+  # If a VCR is tagged with require_2xx then it will only save the VCR if it is a valid 200 response.
+  c.before_record(:require_2xx) do |interaction|
+    # Don't save results if results are not in 200-series.
+    interaction.ignore! unless (200..299).include?(interaction.response.status.code)
+  end
+
+  c.before_record(:token_request) do |interaction|
+    replace_token_contents(interaction.response)
+  rescue => e # rubocop:disable Style/RescueStandardError # Don't know what errors are here so catch them all.
+    # If there is an exception during fetching we don't want to save the results.
+    puts("Exception raised during fetching of token #{e}")
+    interaction.ignore!
+  end
+
+  # Filter the VPC /vi/keys response.
+  c.before_record(:VPC_keys) do |interaction|
+    replace_ssh_keys(interaction.response)
+  rescue => e # rubocop:disable Style/RescueStandardError # Don't know what errors are here so catch them all.
+    # If there is an exception during fetching we don't want to save the results.
+    puts("Exception raised during fetching of ssh keys #{e}")
+    interaction.ignore!
   end
 end
