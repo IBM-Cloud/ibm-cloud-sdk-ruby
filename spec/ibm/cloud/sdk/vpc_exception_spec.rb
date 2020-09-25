@@ -25,4 +25,13 @@ RSpec.describe 'Test vpc response exceptions', :vcr do
   rescue IBM::Cloud::SDK::VPC::Exceptions::ExceptionWithResponse => e
     expect(e).to respond_to?(:response)
   end
+
+  it 'Exception when status is not 2xx' do
+    expect { vpc.adhoc(path: 'instances', params: { version: 3 }) }.to raise_error(IBM::Cloud::SDK::VPC::Exceptions::HttpStatusError)
+  end
+
+  it 'No exception when status is 2xx' do
+    expect(vpc.adhoc(path: 'instances')).to be_an_instance_of(IBM::Cloud::SDK::VPC::Response)
+  end
+
 end
