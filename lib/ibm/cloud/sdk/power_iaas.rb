@@ -70,6 +70,16 @@ module IBM
           )
         end
 
+        # Perform 'immediate-shutdown' action on a PVMInstance
+        #
+        # @param pvm_instance_id [String] PVM instance ID
+        def immediate_shutdown_pvm_instance(instance_id)
+          post(
+            "cloud-instances/#{guid}/pvm-instances/#{instance_id}/action",
+            {"action" => "immediate-shutdown"}.to_json
+          )
+        end
+
         # Perform 'reboot' action on a PVMInstance
         #
         # This action has been deprecated and replaced by 'soft-reboot'
@@ -80,6 +90,36 @@ module IBM
           post(
             "cloud-instances/#{guid}/pvm-instances/#{instance_id}/action",
             {"action" => "reboot"}.to_json
+          )
+        end
+
+        # Perform 'soft-reboot' action on a PVMInstance
+        #
+        # @param pvm_instance_id [String] PVM instance ID
+        def soft_reboot_pvm_instance(instance_id)
+          post(
+            "cloud-instances/#{guid}/pvm-instances/#{instance_id}/action",
+            {"action" => "soft-reboot"}.to_json
+          )
+        end
+
+        # Perform 'hard-reboot' action on a PVMInstance
+        #
+        # @param pvm_instance_id [String] PVM instance ID
+        def hard_reboot_pvm_instance(instance_id)
+          post(
+            "cloud-instances/#{guid}/pvm-instances/#{instance_id}/action",
+            {"action" => "hard-reboot"}.to_json
+          )
+        end
+
+        # Perform 'reset-state' action on a PVMInstance
+        #
+        # @param pvm_instance_id [String] PVM instance ID
+        def reset_state_pvm_instance(instance_id)
+          post(
+            "cloud-instances/#{guid}/pvm-instances/#{instance_id}/action",
+            {"action" => "reset-state"}.to_json
           )
         end
 
