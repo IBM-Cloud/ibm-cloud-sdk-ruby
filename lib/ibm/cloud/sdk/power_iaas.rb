@@ -200,6 +200,22 @@ module IBM
           post("cloud-instances/#{guid}/volumes", volume_hash.to_json)
         end
 
+        # Attach a volume
+        #
+        # @param pvm_instance_id [String] PVM Instance ID
+        # @param  volume_id [String] Volume ID
+        def attach_volume(pvm_instance_id, volume_id)
+          post("cloud-instances/#{guid}/volumes/#{volumd_id}")
+        end
+
+        # Detach a volume
+        #
+        # @param pvm_instance_id [String] PVM Instance ID
+        # @param  volume_id [String] Volume ID
+        def detach_volume(pvm_instance_id, volume_id)
+          delete("cloud-instances/#{guid}/volumes/#{volumd_id}")
+        end
+
         # Get all networks in an IBM Power Cloud instance
         #
         # @return [Array<Hash>] all networks for this IBM Power Cloud instance
