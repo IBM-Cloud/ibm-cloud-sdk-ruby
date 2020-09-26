@@ -25,10 +25,10 @@ module IBM
           # Send a HTTP request. Checks the validity of the response.
           # @param verb [String] THe HTTP verb to use for this request.
           # @param uri [String] The Full URL to send.
-          # @options opts [Hash] :params Parameters for URL encoding parameters.
-          # @options opts [Hash] :json Used when sending a hash as application/json content type.
-          # @options opts [Hash] :form Used when sending a hash as a form.
-          # @options opts [Hash] :headers Used to modify headers for request.
+          # @option opts [Hash] :params Parameters for URL encoding parameters.
+          # @option opts [Hash] :json Used when sending a hash as application/json content type.
+          # @option opts [Hash] :form Used when sending a hash as a form.
+          # @option opts [Hash] :headers Used to modify headers for request.
           # @return [IBM::Cloud::SDK::VPC::Response] Wrapped response to query.
           # @raise [IBM::Cloud::SDK::VPC::Exceptions::HttpStatusError] Response code is not either in 200-series or 404.
           def adhoc(verb, uri, opts = {})
