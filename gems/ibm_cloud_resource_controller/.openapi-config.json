@@ -1,0 +1,7 @@
+{
+  "gemName": "ibm_cloud_resource_controller",
+  "gemAuthor": "IBM Cloud Developers",
+  "gemSummary": "IBM Cloud Resource Controller API",
+  "gemDescription": "Ruby gem for IBM Cloud Resource Controller API",
+  "gemLicense": "Apache-2.0"
+}
