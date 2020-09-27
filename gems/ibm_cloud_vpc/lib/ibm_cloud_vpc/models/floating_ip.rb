@@ -443,6 +443,12 @@ module IbmCloudVpc
           end
         end
       else # model
+        type = if value.key?(:href) && value.key?(:primary_ipv4_address)
+          "NetworkInterfaceReference"
+        else
+          "PublicGatewayReference"
+        end
+
         IbmCloudVpc.const_get(type).build_from_hash(value)
       end
     end

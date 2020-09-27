@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **network_id** | **String** | Unique Network ID | 
 **name** | **String** | Network Name | 
 **vlan_id** | **Float** | VLAN ID | 
-**type** | **String** | Type of Network {vlan, vxlan} | [default to &#39;vlan&#39;]
+**type** | **String** | Type of Network {pub-vlan, vlan, vxlan} | [default to &#39;vlan&#39;]
 **jumbo** | **Boolean** | MTU Jumbo Network enabled | 
 **href** | **String** | Link to Network resource | 
 
