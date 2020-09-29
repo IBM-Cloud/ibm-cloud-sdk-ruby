@@ -1,8 +1,11 @@
 require_relative 'logging'
+
 module IBM
   module Cloud
     module SDK
       class PowerIaas < BaseService
+        include Logging
+
         # Create an API Client object for the Power IaaS service
         #
         # @param region [String] the IBM Power Cloud instance region
@@ -16,7 +19,7 @@ module IBM
           @region = region
           @token  = token
           @tenant = tenant
-          RestClient.log = Logging.logger
+          RestClient.log = logger
         end
 
         def endpoint

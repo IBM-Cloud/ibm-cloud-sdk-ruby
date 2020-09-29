@@ -1,3 +1,5 @@
+require_relative 'null_logger'
+
 module IBM
   module Cloud
     module SDK
