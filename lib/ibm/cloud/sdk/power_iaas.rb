@@ -15,7 +15,7 @@ module IBM
           @region = region
           @token  = token
           @tenant = tenant
-          RestClient.log = log
+          RestClient.log = IBM::Cloud::SDK::Logging.logger
         end
 
         def endpoint
