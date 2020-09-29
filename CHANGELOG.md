@@ -1,6 +1,9 @@
 # Changelog
 All notable changes to the gem ibm-cloud-sdk-ruby will be documented here.
 
+## Unreleased - 2020-09-28
+- Added Logging in IBM Cloud
+
 ## v0.1.6 - 2020-09-23
 - Add PowerIaaS method to get instance info
 - Return region specific PowerVS storage types
