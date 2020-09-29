@@ -1,8 +1,11 @@
 # Changelog
 All notable changes to the gem ibm-cloud-sdk-ruby will be documented here.
 
-## Unreleased - 2020-09-28
+## v0.1.7 - 2020-09-28
 - Added Logging in IBM Cloud
+- Add VCR to vpc spec
+- Add exception when status of response is not in 200 range or 404
+- Power IaaS Update docstrings, VM actions volumes
 
 ## v0.1.6 - 2020-09-23
 - Add PowerIaaS method to get instance info
