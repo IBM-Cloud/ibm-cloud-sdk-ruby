@@ -2,7 +2,7 @@ module IBM
   module Cloud
     module SDK
       class << self
-          attr_writer :logger
+        attr_writer :logger
       end
 
       def self.logger
