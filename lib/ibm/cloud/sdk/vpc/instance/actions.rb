@@ -5,7 +5,7 @@ module IBM
   module Cloud
     module SDK
       module VPC
-        module INSTANCES
+        module INSTANCE
           # Actions for an instance.
           class Actions < BaseCollection
             def initialize(parent)

@@ -7,7 +7,7 @@ module IBM
   module Cloud
     module SDK
       module VPC
-        module INSTANCES
+        module INSTANCE
           # All netowrk interfaces.
           class NetworkInterfaces < BaseCollection
             def initialize(parent)
