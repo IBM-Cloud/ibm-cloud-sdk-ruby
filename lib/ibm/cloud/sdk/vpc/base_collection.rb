@@ -70,7 +70,7 @@ module IBM
         # Get the total count if it exists in the response. Returns nil otherwise.
         # @return [Integer] The total count reuturned by the server.
         def count
-          fetch.json&.fetch(:total_count)
+          fetch.json&.fetch(:total_count, nil)
         end
 
         # A generic post method to create a resource on the collection.
