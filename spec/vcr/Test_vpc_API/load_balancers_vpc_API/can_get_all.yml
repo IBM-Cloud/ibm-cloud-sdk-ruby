@@ -1,52 +1,97 @@
 ---
 http_interactions:
 - request:
+    method: post
+    uri: https://iam.cloud.ibm.com/identity/token
+    body:
+      encoding: UTF-8
+      string: grant_type=urn%3Aibm%3Aparams%3Aoauth%3Agrant-type%3Aapikey&apikey=API_KEY
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '2460'
+      Transaction-Id:
+      - ed149b7d2db54a5ea4fa655d6d5eab5a
+      Cache-Control:
+      - no-cache, no-store
+      Expires:
+      - '0'
+      Pragma:
+      - no-cache
+      Content-Language:
+      - en-US
+      Date:
+      - Thu, 01 Oct 2020 23:34:17 GMT
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - sessioncookie=eae45e398a21d7cf494227da2e8e0b59; Path=/; Secure; HttpOnly
+    body:
+      encoding: ASCII-8BIT
+      string: '{"access_token":"aaaa","refresh_token":"11111","ims_user_id":"22222","token_type":"Bearer","expires_in":3600,"expiration":1893456000,"scope":"ibm
+        openid"}'
+  recorded_at: Thu, 01 Oct 2020 23:34:17 GMT
+- request:
     method: get
     uri: https://us-east.iaas.cloud.ibm.com/v1/load_balancers?generation=2&version=2020-08-01
     body:
-      encoding: UTF-8
+      encoding: US-ASCII
       string: ''
     headers:
       Authorization: Bearer xxxxxx
-      Connection:
-      - close
-      Host:
-      - us-east.iaas.cloud.ibm.com
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
       User-Agent:
-      - http.rb/4.4.1
+      - Ruby
   response:
     status:
       code: 200
       message: OK
     headers:
       Date:
-      - Wed, 23 Sep 2020 22:32:32 GMT
+      - Thu, 01 Oct 2020 23:34:18 GMT
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
       - '21'
       Connection:
-      - close
+      - keep-alive
       Set-Cookie:
-      - __cfduid=dbde2c7d1cdcbbb923ef7332382905fa21600900352; expires=Fri, 23-Oct-20
-        22:32:32 GMT; path=/; domain=.iaas.cloud.ibm.com; HttpOnly; SameSite=Lax;
+      - __cfduid=dfdbafa33799ca7e8ec3ccb4d724aeabb1601595257; expires=Sat, 31-Oct-20
+        23:34:17 GMT; path=/; domain=.iaas.cloud.ibm.com; HttpOnly; SameSite=Lax;
         Secure
       Cf-Ray:
-      - 5d77b8e3ea4fab64-YYZ
+      - 5db9fe5a5b87cab4-YYZ
       Cf-Cache-Status:
       - DYNAMIC
       Cf-Request-Id:
-      - 055eb1e2730000ab64e43a9200000001
+      - '05881d4c750000cab4583b5200000001'
       Expect-Ct:
       - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
       Transaction-Id:
-      - 72200bce-9ae4-4a8e-95ac-a946ddf2e5d7
+      - 1831e718-a8fb-41a0-9562-61a7b2357ad1
       X-Request-Id:
-      - 72200bce-9ae4-4a8e-95ac-a946ddf2e5d7
+      - 1831e718-a8fb-41a0-9562-61a7b2357ad1
+      Vary:
+      - Accept-Encoding
       Server:
       - cloudflare
     body:
       encoding: UTF-8
       string: '{"load_balancers":[]}'
-  recorded_at: Wed, 23 Sep 2020 22:32:32 GMT
+  recorded_at: Thu, 01 Oct 2020 23:34:18 GMT
 recorded_with: VCR 6.0.0

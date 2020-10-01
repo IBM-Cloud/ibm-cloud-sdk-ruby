@@ -1,38 +1,81 @@
 ---
 http_interactions:
 - request:
+    method: post
+    uri: https://iam.cloud.ibm.com/identity/token
+    body:
+      encoding: UTF-8
+      string: grant_type=urn%3Aibm%3Aparams%3Aoauth%3Agrant-type%3Aapikey&apikey=API_KEY
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '2460'
+      Transaction-Id:
+      - a6e0df4b95634d1ba0ee2c8f92b594c8
+      Cache-Control:
+      - no-cache, no-store
+      Expires:
+      - '0'
+      Pragma:
+      - no-cache
+      Content-Language:
+      - en-US
+      Date:
+      - Thu, 01 Oct 2020 23:33:50 GMT
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - sessioncookie=fe923abbb865e5d6562b7a2cc7fb6134; Path=/; Secure; HttpOnly
+    body:
+      encoding: ASCII-8BIT
+      string: '{"access_token":"aaaa","refresh_token":"11111","ims_user_id":"22222","token_type":"Bearer","expires_in":3600,"expiration":1893456000,"scope":"ibm
+        openid"}'
+  recorded_at: Thu, 01 Oct 2020 23:33:50 GMT
+- request:
     method: get
     uri: https://us-east.iaas.cloud.ibm.com/v1/instance/profiles?generation=2&version=2020-08-01
     body:
-      encoding: UTF-8
+      encoding: US-ASCII
       string: ''
     headers:
       Authorization: Bearer xxxxxx
-      Connection:
-      - close
-      Host:
-      - us-east.iaas.cloud.ibm.com
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
       User-Agent:
-      - http.rb/4.4.1
+      - Ruby
   response:
     status:
       code: 200
       message: OK
     headers:
       Date:
-      - Wed, 23 Sep 2020 22:32:28 GMT
+      - Thu, 01 Oct 2020 23:33:50 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
       - chunked
       Connection:
-      - close
+      - keep-alive
       Set-Cookie:
-      - __cfduid=d7d3deaed75c79d14685c17e3febf83b41600900347; expires=Fri, 23-Oct-20
-        22:32:27 GMT; path=/; domain=.iaas.cloud.ibm.com; HttpOnly; SameSite=Lax;
+      - __cfduid=d3deeb1909388cff4fc00a6263b45fc4f1601595230; expires=Sat, 31-Oct-20
+        23:33:50 GMT; path=/; domain=.iaas.cloud.ibm.com; HttpOnly; SameSite=Lax;
         Secure
       Cf-Ray:
-      - 5d77b8c568cfca90-YYZ
+      - 5db9fdae2958cac8-YYZ
       Cache-Control:
       - max-age=0, no-cache, no-store, must-revalidate
       Expires:
@@ -44,7 +87,7 @@ http_interactions:
       Cf-Cache-Status:
       - DYNAMIC
       Cf-Request-Id:
-      - 055eb1cf5c0000ca90c0037200000001
+      - '05881ce0da0000cac82ebf7200000001'
       Expect-Ct:
       - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
       Pragma:
@@ -52,17 +95,17 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       X-Request-Id:
-      - 321e2812-921d-463b-8b91-1744353e60d6
+      - f4f3062f-f521-49da-a7d7-07bc4dfc54e4
       X-Trace-Id:
-      - 3189ceacbc8dbf4e
+      - 52db7da2621c6e2b
       X-Xss-Protection:
       - 1; mode=block
       Server:
       - cloudflare
     body:
-      encoding: UTF-8
+      encoding: ASCII-8BIT
       string: '{"profiles":[{"name":"bx2-2x8","href":"https://us-east.iaas.cloud.ibm.com/v1/instance/profiles/bx2-2x8","bandwidth":{"type":"fixed","value":4000},"port_speed":{"type":"fixed","value":16000},"memory":{"type":"fixed","value":8},"os_architecture":{"type":"enum","default":"amd64","values":["amd64"]},"vcpu_architecture":{"type":"fixed","value":"amd64"},"vcpu_count":{"type":"fixed","value":2},"family":"balanced"},{"name":"bx2-4x16","href":"https://us-east.iaas.cloud.ibm.com/v1/instance/profiles/bx2-4x16","bandwidth":{"type":"fixed","value":8000},"port_speed":{"type":"fixed","value":16000},"memory":{"type":"fixed","value":16},"os_architecture":{"type":"enum","default":"amd64","values":["amd64"]},"vcpu_architecture":{"type":"fixed","value":"amd64"},"vcpu_count":{"type":"fixed","value":4},"family":"balanced"},{"name":"bx2-8x32","href":"https://us-east.iaas.cloud.ibm.com/v1/instance/profiles/bx2-8x32","bandwidth":{"type":"fixed","value":16000},"port_speed":{"type":"fixed","value":16000},"memory":{"type":"fixed","value":32},"os_architecture":{"type":"enum","default":"amd64","values":["amd64"]},"vcpu_architecture":{"type":"fixed","value":"amd64"},"vcpu_count":{"type":"fixed","value":8},"family":"balanced"},{"name":"bx2-16x64","href":"https://us-east.iaas.cloud.ibm.com/v1/instance/profiles/bx2-16x64","bandwidth":{"type":"fixed","value":32000},"port_speed":{"type":"fixed","value":16000},"memory":{"type":"fixed","value":64},"os_architecture":{"type":"enum","default":"amd64","values":["amd64"]},"vcpu_architecture":{"type":"fixed","value":"amd64"},"vcpu_count":{"type":"fixed","value":16},"family":"balanced"},{"name":"bx2-32x128","href":"https://us-east.iaas.cloud.ibm.com/v1/instance/profiles/bx2-32x128","bandwidth":{"type":"fixed","value":64000},"port_speed":{"type":"fixed","value":16000},"memory":{"type":"fixed","value":128},"os_architecture":{"type":"enum","default":"amd64","values":["amd64"]},"vcpu_architecture":{"type":"fixed","value":"amd64"},"vcpu_count":{"type":"fixed","value":32},"family":"balanced"},{"name":"bx2-48x192","href":"https://us-east.iaas.cloud.ibm.com/v1/instance/profiles/bx2-48x192","bandwidth":{"type":"fixed","value":80000},"port_speed":{"type":"fixed","value":16000},"memory":{"type":"fixed","value":192},"os_architecture":{"type":"enum","default":"amd64","values":["amd64"]},"vcpu_architecture":{"type":"fixed","value":"amd64"},"vcpu_count":{"type":"fixed","value":48},"family":"balanced"},{"name":"cx2-2x4","href":"https://us-east.iaas.cloud.ibm.com/v1/instance/profiles/cx2-2x4","bandwidth":{"type":"fixed","value":4000},"port_speed":{"type":"fixed","value":16000},"memory":{"type":"fixed","value":4},"os_architecture":{"type":"enum","default":"amd64","values":["amd64"]},"vcpu_architecture":{"type":"fixed","value":"amd64"},"vcpu_count":{"type":"fixed","value":2},"family":"compute"},{"name":"cx2-4x8","href":"https://us-east.iaas.cloud.ibm.com/v1/instance/profiles/cx2-4x8","bandwidth":{"type":"fixed","value":8000},"port_speed":{"type":"fixed","value":16000},"memory":{"type":"fixed","value":8},"os_architecture":{"type":"enum","default":"amd64","values":["amd64"]},"vcpu_architecture":{"type":"fixed","value":"amd64"},"vcpu_count":{"type":"fixed","value":4},"family":"compute"},{"name":"cx2-8x16","href":"https://us-east.iaas.cloud.ibm.com/v1/instance/profiles/cx2-8x16","bandwidth":{"type":"fixed","value":16000},"port_speed":{"type":"fixed","value":16000},"memory":{"type":"fixed","value":16},"os_architecture":{"type":"enum","default":"amd64","values":["amd64"]},"vcpu_architecture":{"type":"fixed","value":"amd64"},"vcpu_count":{"type":"fixed","value":8},"family":"compute"},{"name":"cx2-16x32","href":"https://us-east.iaas.cloud.ibm.com/v1/instance/profiles/cx2-16x32","bandwidth":{"type":"fixed","value":32000},"port_speed":{"type":"fixed","value":16000},"memory":{"type":"fixed","value":32},"os_architecture":{"type":"enum","default":"amd64","values":["amd64"]},"vcpu_architecture":{"type":"fixed","value":"amd64"},"vcpu_count":{"type":"fixed","value":16},"family":"compute"},{"name":"cx2-32x64","href":"https://us-east.iaas.cloud.ibm.com/v1/instance/profiles/cx2-32x64","bandwidth":{"type":"fixed","value":64000},"port_speed":{"type":"fixed","value":16000},"memory":{"type":"fixed","value":64},"os_architecture":{"type":"enum","default":"amd64","values":["amd64"]},"vcpu_architecture":{"type":"fixed","value":"amd64"},"vcpu_count":{"type":"fixed","value":32},"family":"compute"},{"name":"cx2-48x96","href":"https://us-east.iaas.cloud.ibm.com/v1/instance/profiles/cx2-48x96","bandwidth":{"type":"fixed","value":80000},"port_speed":{"type":"fixed","value":16000},"memory":{"type":"fixed","value":96},"os_architecture":{"type":"enum","default":"amd64","values":["amd64"]},"vcpu_architecture":{"type":"fixed","value":"amd64"},"vcpu_count":{"type":"fixed","value":48},"family":"compute"},{"name":"mx2-2x16","href":"https://us-east.iaas.cloud.ibm.com/v1/instance/profiles/mx2-2x16","bandwidth":{"type":"fixed","value":4000},"port_speed":{"type":"fixed","value":16000},"memory":{"type":"fixed","value":16},"os_architecture":{"type":"enum","default":"amd64","values":["amd64"]},"vcpu_architecture":{"type":"fixed","value":"amd64"},"vcpu_count":{"type":"fixed","value":2},"family":"memory"},{"name":"mx2-4x32","href":"https://us-east.iaas.cloud.ibm.com/v1/instance/profiles/mx2-4x32","bandwidth":{"type":"fixed","value":8000},"port_speed":{"type":"fixed","value":16000},"memory":{"type":"fixed","value":32},"os_architecture":{"type":"enum","default":"amd64","values":["amd64"]},"vcpu_architecture":{"type":"fixed","value":"amd64"},"vcpu_count":{"type":"fixed","value":4},"family":"memory"},{"name":"mx2-8x64","href":"https://us-east.iaas.cloud.ibm.com/v1/instance/profiles/mx2-8x64","bandwidth":{"type":"fixed","value":16000},"port_speed":{"type":"fixed","value":16000},"memory":{"type":"fixed","value":64},"os_architecture":{"type":"enum","default":"amd64","values":["amd64"]},"vcpu_architecture":{"type":"fixed","value":"amd64"},"vcpu_count":{"type":"fixed","value":8},"family":"memory"},{"name":"mx2-16x128","href":"https://us-east.iaas.cloud.ibm.com/v1/instance/profiles/mx2-16x128","bandwidth":{"type":"fixed","value":32000},"port_speed":{"type":"fixed","value":16000},"memory":{"type":"fixed","value":128},"os_architecture":{"type":"enum","default":"amd64","values":["amd64"]},"vcpu_architecture":{"type":"fixed","value":"amd64"},"vcpu_count":{"type":"fixed","value":16},"family":"memory"},{"name":"mx2-32x256","href":"https://us-east.iaas.cloud.ibm.com/v1/instance/profiles/mx2-32x256","bandwidth":{"type":"fixed","value":64000},"port_speed":{"type":"fixed","value":16000},"memory":{"type":"fixed","value":256},"os_architecture":{"type":"enum","default":"amd64","values":["amd64"]},"vcpu_architecture":{"type":"fixed","value":"amd64"},"vcpu_count":{"type":"fixed","value":32},"family":"memory"},{"name":"mx2-48x384","href":"https://us-east.iaas.cloud.ibm.com/v1/instance/profiles/mx2-48x384","bandwidth":{"type":"fixed","value":80000},"port_speed":{"type":"fixed","value":16000},"memory":{"type":"fixed","value":384},"os_architecture":{"type":"enum","default":"amd64","values":["amd64"]},"vcpu_architecture":{"type":"fixed","value":"amd64"},"vcpu_count":{"type":"fixed","value":48},"family":"memory"}]}
 
         '
-  recorded_at: Wed, 23 Sep 2020 22:32:28 GMT
+  recorded_at: Thu, 01 Oct 2020 23:33:50 GMT
 recorded_with: VCR 6.0.0

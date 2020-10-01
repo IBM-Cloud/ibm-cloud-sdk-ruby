@@ -1,38 +1,81 @@
 ---
 http_interactions:
 - request:
+    method: post
+    uri: https://iam.cloud.ibm.com/identity/token
+    body:
+      encoding: UTF-8
+      string: grant_type=urn%3Aibm%3Aparams%3Aoauth%3Agrant-type%3Aapikey&apikey=API_KEY
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '2460'
+      Transaction-Id:
+      - 2bb201fa86fb4fe9822f704d3096bd52
+      Cache-Control:
+      - no-cache, no-store
+      Expires:
+      - '0'
+      Pragma:
+      - no-cache
+      Content-Language:
+      - en-US
+      Date:
+      - Thu, 01 Oct 2020 23:33:46 GMT
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - sessioncookie=fe923abbb865e5d6562b7a2cc7fb6134; Path=/; Secure; HttpOnly
+    body:
+      encoding: ASCII-8BIT
+      string: '{"access_token":"aaaa","refresh_token":"11111","ims_user_id":"22222","token_type":"Bearer","expires_in":3600,"expiration":1893456000,"scope":"ibm
+        openid"}'
+  recorded_at: Thu, 01 Oct 2020 23:33:47 GMT
+- request:
     method: get
     uri: https://us-east.iaas.cloud.ibm.com/v1/images?generation=2&version=2020-08-01
     body:
-      encoding: UTF-8
+      encoding: US-ASCII
       string: ''
     headers:
       Authorization: Bearer xxxxxx
-      Connection:
-      - close
-      Host:
-      - us-east.iaas.cloud.ibm.com
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
       User-Agent:
-      - http.rb/4.4.1
+      - Ruby
   response:
     status:
       code: 200
       message: OK
     headers:
       Date:
-      - Wed, 23 Sep 2020 22:32:27 GMT
+      - Thu, 01 Oct 2020 23:33:47 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
       - chunked
       Connection:
-      - close
+      - keep-alive
       Set-Cookie:
-      - __cfduid=d4615cc619718f8eacb773d9e18ffe1621600900347; expires=Fri, 23-Oct-20
-        22:32:27 GMT; path=/; domain=.iaas.cloud.ibm.com; HttpOnly; SameSite=Lax;
+      - __cfduid=dd8a1322b11f7e3bdab20a2da2b097fb31601595227; expires=Sat, 31-Oct-20
+        23:33:47 GMT; path=/; domain=.iaas.cloud.ibm.com; HttpOnly; SameSite=Lax;
         Secure
       Cf-Ray:
-      - 5d77b8c1ee15caa0-YYZ
+      - 5db9fd99aca2f99d-YYZ
       Cache-Control:
       - max-age=0, no-cache, no-store, must-revalidate
       Expires:
@@ -44,23 +87,23 @@ http_interactions:
       Cf-Cache-Status:
       - DYNAMIC
       Cf-Request-Id:
-      - 055eb1cd330000caa009bda200000001
+      - '05881cd40a0000f99da706a200000001'
       Expect-Ct:
       - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
       Pragma:
       - no-cache
       Transaction-Id:
-      - 1bcfb790d88facdbab6b91219869338e
+      - e393350f9568978410b2303d871e741d
       X-Content-Type-Options:
       - nosniff
       X-Request-Id:
-      - 1bcfb790d88facdbab6b91219869338e
+      - e393350f9568978410b2303d871e741d
       X-Xss-Protection:
       - 1; mode=block
       Server:
       - cloudflare
     body:
-      encoding: UTF-8
+      encoding: ASCII-8BIT
       string: '{"first":{"href":"https://us-east.iaas.cloud.ibm.com/v1/images?limit=50"},"limit":50,"images":[{"id":"r014-c37c9a73-a12f-4ac0-a619-c31e2aa4215a","crn":"crn:v1:bluemix:public:is:us-east:a/811f8abfbd32425597dc7ba40da98fa6::image:r014-c37c9a73-a12f-4ac0-a619-c31e2aa4215a","href":"https://us-east.iaas.cloud.ibm.com/v1/images/r014-c37c9a73-a12f-4ac0-a619-c31e2aa4215a","name":"ibm-redhat-8-1-minimal-amd64-1","minimum_provisioned_size":100,"resource_group":{"id":"5807b5832a8741179b2e06ca2d2b3b96","href":"https://resource-controller.cloud.ibm.com/v1/resource_groups/5807b5832a8741179b2e06ca2d2b3b96"},"created_at":"2020-08-10T15:01:51Z","file":{"size":2},"operating_system":{"href":"https://us-east.iaas.cloud.ibm.com/v1/operating_systems/red-8-amd64","name":"red-8-amd64","architecture":"amd64","display_name":"Red
         Hat Enterprise Linux 8.x - Minimal Install (amd64)","family":"Red Hat Enterprise
         Linux","vendor":"Red Hat","version":"8.x - Minimal Install"},"status":"available","visibility":"public","encryption":"none"},{"id":"r014-5e390f7b-0469-4ac1-b589-2fea307c1c5a","crn":"crn:v1:bluemix:public:is:us-east:::image:r014-5e390f7b-0469-4ac1-b589-2fea307c1c5a","href":"https://us-east.iaas.cloud.ibm.com/v1/images/r014-5e390f7b-0469-4ac1-b589-2fea307c1c5a","name":"ibm-debian-9-12-minimal-amd64-2","minimum_provisioned_size":100,"resource_group":{"id":"","href":"https://resource-controller.cloud.ibm.com/v1/resource_groups/"},"created_at":"2020-05-12T14:47:03Z","file":{"size":2},"operating_system":{"href":"https://us-east.iaas.cloud.ibm.com/v1/operating_systems/debian-9-amd64","name":"debian-9-amd64","architecture":"amd64","display_name":"Debian
@@ -140,5 +183,5 @@ http_interactions:
         LTS Bionic Beaver Minimal Install"},"status":"deprecated","visibility":"public","encryption":"none"},{"id":"r014-14140f94-fcc4-11e9-96e7-a72723715315","crn":"crn:v1:bluemix:public:is:us-east:::image:r014-14140f94-fcc4-11e9-96e7-a72723715315","href":"https://us-east.iaas.cloud.ibm.com/v1/images/r014-14140f94-fcc4-11e9-96e7-a72723715315","name":"ibm-ubuntu-18-04-1-minimal-amd64-1","minimum_provisioned_size":100,"resource_group":{"id":"","href":"https://resource-controller.cloud.ibm.com/v1/resource_groups/"},"created_at":"2019-06-08T00:00:00Z","file":{"size":2},"operating_system":{"href":"https://us-east.iaas.cloud.ibm.com/v1/operating_systems/ubuntu-18-04-amd64","name":"ubuntu-18-04-amd64","architecture":"amd64","display_name":"Ubuntu
         Linux 18.04 LTS Bionic Beaver Minimal Install (amd64)","family":"Ubuntu Linux","vendor":"Canonical","version":"18.04
         LTS Bionic Beaver Minimal Install"},"status":"deprecated","visibility":"public","encryption":"none"}]}'
-  recorded_at: Wed, 23 Sep 2020 22:32:27 GMT
+  recorded_at: Thu, 01 Oct 2020 23:33:47 GMT
 recorded_with: VCR 6.0.0

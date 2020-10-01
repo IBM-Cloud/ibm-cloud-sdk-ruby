@@ -1,99 +1,81 @@
 ---
 http_interactions:
 - request:
-    method: get
-    uri: https://us-east.iaas.cloud.ibm.com/v1/flow_log_collectors?generation=2&version=2020-08-01
+    method: post
+    uri: https://iam.cloud.ibm.com/identity/token
     body:
       encoding: UTF-8
-      string: ''
+      string: grant_type=urn%3Aibm%3Aparams%3Aoauth%3Agrant-type%3Aapikey&apikey=API_KEY
     headers:
-      Authorization: Bearer xxxxxx
-      Connection:
-      - close
-      Host:
-      - us-east.iaas.cloud.ibm.com
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
       User-Agent:
-      - http.rb/4.4.1
+      - Ruby
   response:
     status:
       code: 200
       message: OK
     headers:
-      Date:
-      - Wed, 23 Sep 2020 22:32:24 GMT
       Content-Type:
-      - application/json; charset=utf-8
+      - application/json
       Content-Length:
-      - '140'
-      Connection:
-      - close
-      Set-Cookie:
-      - __cfduid=d92c80eb9dcee70874d2847e83578fdb31600900344; expires=Fri, 23-Oct-20
-        22:32:24 GMT; path=/; domain=.iaas.cloud.ibm.com; HttpOnly; SameSite=Lax;
-        Secure
-      Cf-Ray:
-      - 5d77b8b32f82f979-YYZ
+      - '2460'
+      Transaction-Id:
+      - 4faacb7a74d5491b9fbdb9409c489f8b
       Cache-Control:
-      - max-age=0, no-cache, no-store, must-revalidate
+      - no-cache, no-store
       Expires:
-      - "-1"
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubDomains
-      Cf-Cache-Status:
-      - DYNAMIC
-      Cf-Request-Id:
-      - 055eb1c3f70000f979360d0200000001
-      Expect-Ct:
-      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      - '0'
       Pragma:
       - no-cache
-      X-Content-Type-Options:
-      - nosniff
-      X-Request-Id:
-      - b06f2646-84a2-4f6c-b36c-5edbffabaca5
-      X-Xss-Protection:
-      - 1; mode=block
-      Server:
-      - cloudflare
+      Content-Language:
+      - en-US
+      Date:
+      - Thu, 01 Oct 2020 23:33:24 GMT
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - sessioncookie=6bce74f4b20aa49018139f61a66aa0cb; Path=/; Secure; HttpOnly
     body:
-      encoding: UTF-8
-      string: '{"limit":50,"first":{"href":"https://us-east.iaas.cloud.ibm.com/v1/flow_log_collectors?limit=50"},"total_count":0,"flow_log_collectors":[]}
-
-        '
-  recorded_at: Wed, 23 Sep 2020 22:32:24 GMT
+      encoding: ASCII-8BIT
+      string: '{"access_token":"aaaa","refresh_token":"11111","ims_user_id":"22222","token_type":"Bearer","expires_in":3600,"expiration":1893456000,"scope":"ibm
+        openid"}'
+  recorded_at: Thu, 01 Oct 2020 23:33:24 GMT
 - request:
     method: get
     uri: https://us-east.iaas.cloud.ibm.com/v1/flow_log_collectors?generation=2&version=2020-08-01
     body:
-      encoding: UTF-8
+      encoding: US-ASCII
       string: ''
     headers:
       Authorization: Bearer xxxxxx
-      Connection:
-      - close
-      Host:
-      - us-east.iaas.cloud.ibm.com
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
       User-Agent:
-      - http.rb/4.4.1
+      - Ruby
   response:
     status:
       code: 200
       message: OK
     headers:
       Date:
-      - Wed, 23 Sep 2020 22:32:25 GMT
+      - Thu, 01 Oct 2020 23:33:24 GMT
       Content-Type:
       - application/json; charset=utf-8
-      Content-Length:
-      - '140'
+      Transfer-Encoding:
+      - chunked
       Connection:
-      - close
+      - keep-alive
       Set-Cookie:
-      - __cfduid=d9124d790e07c1302e469598cee1cb2311600900344; expires=Fri, 23-Oct-20
-        22:32:24 GMT; path=/; domain=.iaas.cloud.ibm.com; HttpOnly; SameSite=Lax;
+      - __cfduid=dc184678f7023184890bdf0b12511da211601595204; expires=Sat, 31-Oct-20
+        23:33:24 GMT; path=/; domain=.iaas.cloud.ibm.com; HttpOnly; SameSite=Lax;
         Secure
       Cf-Ray:
-      - 5d77b8b43abaca94-YYZ
+      - 5db9fd0c2b0af991-YYZ
       Cache-Control:
       - max-age=0, no-cache, no-store, must-revalidate
       Expires:
@@ -103,7 +85,7 @@ http_interactions:
       Cf-Cache-Status:
       - DYNAMIC
       Cf-Request-Id:
-      - 055eb1c4a20000ca94970c4200000001
+      - '05881c7b940000f991659c6200000001'
       Expect-Ct:
       - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
       Pragma:
@@ -111,15 +93,80 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       X-Request-Id:
-      - 6d432995-1538-4110-b947-c13c0d1bf553
+      - 4cac6c9a-9ac7-446b-b466-c23639863a8d
       X-Xss-Protection:
       - 1; mode=block
+      Vary:
+      - Accept-Encoding
       Server:
       - cloudflare
     body:
-      encoding: UTF-8
+      encoding: ASCII-8BIT
       string: '{"limit":50,"first":{"href":"https://us-east.iaas.cloud.ibm.com/v1/flow_log_collectors?limit=50"},"total_count":0,"flow_log_collectors":[]}
 
         '
-  recorded_at: Wed, 23 Sep 2020 22:32:25 GMT
+  recorded_at: Thu, 01 Oct 2020 23:33:24 GMT
+- request:
+    method: get
+    uri: https://us-east.iaas.cloud.ibm.com/v1/flow_log_collectors?generation=2&version=2020-08-01
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization: Bearer xxxxxx
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 01 Oct 2020 23:33:24 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=dc184678f7023184890bdf0b12511da211601595204; expires=Sat, 31-Oct-20
+        23:33:24 GMT; path=/; domain=.iaas.cloud.ibm.com; HttpOnly; SameSite=Lax;
+        Secure
+      Cf-Ray:
+      - 5db9fd0dfee5f991-YYZ
+      Cache-Control:
+      - max-age=0, no-cache, no-store, must-revalidate
+      Expires:
+      - "-1"
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      Cf-Cache-Status:
+      - DYNAMIC
+      Cf-Request-Id:
+      - '05881c7cb80000f9915d123200000001'
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Pragma:
+      - no-cache
+      X-Content-Type-Options:
+      - nosniff
+      X-Request-Id:
+      - 37334fe7-fe44-4332-bde0-99ac180842e1
+      X-Xss-Protection:
+      - 1; mode=block
+      Vary:
+      - Accept-Encoding
+      Server:
+      - cloudflare
+    body:
+      encoding: ASCII-8BIT
+      string: '{"limit":50,"first":{"href":"https://us-east.iaas.cloud.ibm.com/v1/flow_log_collectors?limit=50"},"total_count":0,"flow_log_collectors":[]}
+
+        '
+  recorded_at: Thu, 01 Oct 2020 23:33:24 GMT
 recorded_with: VCR 6.0.0
