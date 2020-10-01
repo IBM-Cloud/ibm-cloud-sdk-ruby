@@ -1,6 +1,9 @@
 # Changelog
 All notable changes to the gem ibm-cloud-sdk-ruby will be documented here.
 
+## v0.1.8 - 2020-10-01
+- Add second level instances
+
 ## v0.1.7 - 2020-09-28
 - Added Logging in IBM Cloud
 - Add VCR to vpc spec
