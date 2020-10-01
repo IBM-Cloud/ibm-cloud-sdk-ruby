@@ -80,11 +80,6 @@ module IBM
           adhoc(method: 'post', payload_type: payload_type, payload: payload)
         end
 
-        # Access a specific instance by either id or name depending on API.
-        def instance(id)
-          @instance.new(self, endpoint: id)
-        end
-
         private
 
         def adhoc_get(url, params)
