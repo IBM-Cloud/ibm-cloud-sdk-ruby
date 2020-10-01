@@ -1,10 +1,8 @@
 # typed: true
 # frozen_string_literal: true
 
-require_relative 'vpc/base_vpc'
-require_relative 'vpc/base_collection'
-require_relative 'vpc/base_instance'
-require_relative 'vpc/exceptions'
+require 'ibm/cloud/sdk_http'
+require_relative 'vpc/http_vpc'
 
 require_relative 'vpc/floatingips'
 require_relative 'vpc/flowlogcollectors'
@@ -30,20 +28,22 @@ module IBM
   module Cloud
     module SDK
       # Container that encapsulates the VPC API.
-      class Vpc < BaseVPC
+      class Vpc
+        include VPC::VpcHTTP
+
         # Create an API Client object for the  VPC IaaS service
         #
         # @param region [String] the IBM Power Cloud instance region
         # @param connection [IBM::Cloud::SDK::VPC::Connection] A connection object.
         # @param logger [Logger] An instance of an instanciated logger.
-        def initialize(region, connection, logger: nil)
+        def initialize(region, token, logger: nil)
           @region = region
-          @connection = connection
+          @token = token
 
           @logger = logger || Logger.new($stdout, level: :warn)
         end
 
-        attr_reader :connection, :logger
+        attr_reader :logger, :token
         attr_accessor :region
 
         # The Region API endpoint.
