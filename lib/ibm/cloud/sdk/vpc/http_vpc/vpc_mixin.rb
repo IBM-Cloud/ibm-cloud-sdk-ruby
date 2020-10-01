@@ -11,10 +11,12 @@ module IBM
         module VpcHTTP
           include IBM::Cloud::SDKHTTP::BaseHTTPMixin
 
-          def metadata(params = {})
-            params ||= {}
+          def metadata(query = nil, payload = nil)
+            query ||= {}
+            payload ||= {}
             {
-              query: { version: '2020-08-01', generation: 2 }.merge(params),
+              query: { version: '2020-08-01', generation: 2 }.merge(query),
+              body: payload,
               headers: { "Authorization": @token.authorization_header }
             }
           end

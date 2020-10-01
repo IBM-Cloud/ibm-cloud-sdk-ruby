@@ -19,8 +19,7 @@ module IBM
         end
 
         def get(path: nil, params: {})
-          response = self.class.get(url(path), metadata(params))
-          generate_response(response)
+          adhoc(method: 'get', path: path, params: params)
         end
 
         attr_reader :endpoint
@@ -33,19 +32,19 @@ module IBM
           adhoc(method: 'put', path: path, params: params, payload: payload)
         end
 
-        # def patch(payload = {},  path: nil, params: {})
-        #   adhoc(method: 'patch', path: path, params: params, payload: payload)
-        # end
+        def patch(payload = {},  path: nil, params: {})
+          adhoc(method: 'patch', path: path, params: params, payload: payload)
+        end
 
-        # def delete(path: nil, params: {})
-        #   adhoc(method: 'delete', path: path, params: params)
-        # end
+        def delete(path: nil, params: {})
+          adhoc(method: 'delete', path: path, params: params)
+        end
 
-        def metadata(params, payload)
-          params ||= {}
+        def metadata(query = nil, payload = nil)
+          query ||= {}
           payload ||= {}
           {
-            params: params,
+            query: query,
             body: payload,
             headers: { "Authorization": @token.authorization_header }
           }
