@@ -24,6 +24,8 @@ module IBM
           merge!(data)
         end
 
+        attr_reader :logger, :endpoint, :token
+
         def details
           get.hash_response
         end
