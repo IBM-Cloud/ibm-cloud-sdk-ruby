@@ -28,11 +28,6 @@ module IBM
           def count
             fetch.json&.fetch(:total_count)
           end
-
-          # Access a specific instance by either id or name depending on API.
-          def instance(id)
-            @instance.new(self, endpoint: id)
-          end
         end
       end
     end
