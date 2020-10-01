@@ -2,6 +2,7 @@
 # frozen_string_literal: true
 
 require_relative 'base_http_mixin'
+require_relative 'has_child'
 
 module IBM
   module Cloud
@@ -26,8 +27,11 @@ module IBM
 
           # Set the array key and child class.
           @array_key ||= array_key
+
           @instance ||= child_class
           @instance_id ||= child_id
+
+          (class << self; include ChildMixin; end) if child_class
 
           @endpoint = parent.url(endpoint)
           @logger = parent.logger
