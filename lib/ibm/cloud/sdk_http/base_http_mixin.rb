@@ -14,8 +14,12 @@ module IBM
         end
 
         def adhoc(method: 'get', path: nil, params: {}, payload: {})
+          unchecked_response(method: method, path: path, params: params, payload: payload).raise_for_status?
+        end
+
+        def unchecked_response(method: 'get', path: nil, params: {}, payload: {})
           response = self.class.send(method.to_sym, url(path), metadata(params, payload))
-          generate_response(response)
+          SDKResponse.new(response)
         end
 
         def get(path: nil, params: {})
@@ -54,12 +58,6 @@ module IBM
           return endpoint unless path
 
           "#{endpoint}/#{path}"
-        end
-
-        private
-
-        def generate_response(response)
-          SDKResponse.new(response).raise_for_status?
         end
       end
     end
