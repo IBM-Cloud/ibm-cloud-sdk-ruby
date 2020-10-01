@@ -5,7 +5,7 @@ module IBM
   module Cloud
     module SDK
       module VPC
-        module INSTANCES
+        module INSTANCE
           # Get all attached volumes.
           class VolumeAttachments < BaseCollection
             def initialize(parent)

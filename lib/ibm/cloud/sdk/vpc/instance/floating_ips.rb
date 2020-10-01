@@ -5,7 +5,7 @@ module IBM
   module Cloud
     module SDK
       module VPC
-        module INSTANCES
+        module INSTANCE
           # Get a Floating IP.
           class FloatingIps < BaseCollection
             def initialize(parent)

@@ -6,6 +6,18 @@ require 'webmock/rspec'
 
 ENV['IBM_CLOUD_APIKEY'] = 'API_KEY' unless ENV['IBM_CLOUD_APIKEY']
 
+# Set the save location of IAM token response.
+# @note Uses 'IBM_CLOUD_TOKEN' environment variable to set location.
+#
+# We do not want to save the access token to git, but it is required for subsequent REST API calls.
+# To combat this problem an environment variable can be set to offline. This will retrieve the token and write it to a 'iam_token' file.
+# Once the entire test has been recorded we can delete this file can be deleted and the saved token file will be used in its stead.
+# @return [String] The token save location for this test run.
+def token_cassette
+  return 'iam_token' if ENV['IBM_CLOUD_DISABLE_TOKEN'] == 'true'
+
+  'Test_vpc_API/vpc'
+end
 # Iterate through the SSH keys and replace all values.
 # Being very careful with this one as fixing a data leak would be costly.
 def replace_ssh_keys(response)

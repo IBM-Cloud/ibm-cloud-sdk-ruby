@@ -50,10 +50,6 @@ module IBM
             INSTANCE::VolumeAttachments.new(self)
           end
 
-          def profiles
-            INSTANCE::Profiles.new(self)
-          end
-
           def initialization
             adhoc(method: 'get', path: 'initialization').json
           end

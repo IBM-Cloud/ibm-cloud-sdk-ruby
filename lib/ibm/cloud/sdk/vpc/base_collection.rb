@@ -1,6 +1,8 @@
 # typed: true
 # frozen_string_literal: true
 
+require_relative('base_mixins/has_child')
+
 module IBM
   module Cloud
     module SDK
@@ -20,6 +22,8 @@ module IBM
           # Set the array key and child class.
           @array_key ||= array_key
           @instance ||= child_class
+
+          (class << self; include ChildMixin; end) if child_class
 
           super(parent, endpoint)
         end
@@ -66,7 +70,7 @@ module IBM
         # Get the total count if it exists in the response. Returns nil otherwise.
         # @return [Integer] The total count reuturned by the server.
         def count
-          fetch.json&.fetch(:total_count)
+          fetch.json&.fetch(:total_count, nil)
         end
 
         # A generic post method to create a resource on the collection.
@@ -75,11 +79,6 @@ module IBM
         # @return [IBM::Cloud::SDK::VPC::Response] The http response object.
         def create(payload, payload_type = 'json')
           adhoc(method: 'post', payload_type: payload_type, payload: payload)
-        end
-
-        # Access a specific instance by either id or name depending on API.
-        def instance(id)
-          @instance.new(self, id)
         end
 
         private
