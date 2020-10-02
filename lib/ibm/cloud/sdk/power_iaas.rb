@@ -210,7 +210,7 @@ module IBM
         # @param pvm_instance_id [String] PVM Instance ID
         # @param  volume_id [String] Volume ID
         def attach_volume(pvm_instance_id, volume_id)
-          post("cloud-instances/#{guid}/volumes/#{volumd_id}")
+          post("cloud-instances/#{guid}/pvm-instances/#{pvm_instance_id}/volumes/#{volume_id}", {})
         end
 
         # Detach a volume
@@ -218,7 +218,7 @@ module IBM
         # @param pvm_instance_id [String] PVM Instance ID
         # @param  volume_id [String] Volume ID
         def detach_volume(pvm_instance_id, volume_id)
-          delete("cloud-instances/#{guid}/volumes/#{volumd_id}")
+          delete("cloud-instances/#{guid}/pvm-instances/#{pvm_instance_id}/volumes/#{volume_id}")
         end
 
         # Get all networks in an IBM Power Cloud instance
