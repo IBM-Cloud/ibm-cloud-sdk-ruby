@@ -29,6 +29,7 @@ module IBM
     module SDK
       # Container that encapsulates the VPC API.
       class Vpc
+        include HTTParty
         include VPC::VpcHTTP
 
         # Create an API Client object for the  VPC IaaS service
