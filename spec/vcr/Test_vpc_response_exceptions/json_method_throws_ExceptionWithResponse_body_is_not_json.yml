@@ -1,38 +1,81 @@
 ---
 http_interactions:
 - request:
+    method: post
+    uri: https://iam.cloud.ibm.com/identity/token
+    body:
+      encoding: UTF-8
+      string: grant_type=urn%3Aibm%3Aparams%3Aoauth%3Agrant-type%3Aapikey&apikey=API_KEY
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '2460'
+      Transaction-Id:
+      - 840e98d45d3849fa909c9fb2dc6e817b
+      Cache-Control:
+      - no-cache, no-store
+      Expires:
+      - '0'
+      Pragma:
+      - no-cache
+      Content-Language:
+      - en-US
+      Date:
+      - Fri, 02 Oct 2020 00:04:01 GMT
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - sessioncookie=5d5a97e1fa1710ee675f83f45b208754; Path=/; Secure; HttpOnly
+    body:
+      encoding: ASCII-8BIT
+      string: '{"access_token":"aaaa","refresh_token":"11111","ims_user_id":"22222","token_type":"Bearer","expires_in":3600,"expiration":1893456000,"scope":"ibm
+        openid"}'
+  recorded_at: Fri, 02 Oct 2020 00:04:01 GMT
+- request:
     method: get
     uri: https://us-east.iaas.cloud.ibm.com/v1?generation=2&version=2020-08-01
     body:
-      encoding: UTF-8
+      encoding: US-ASCII
       string: ''
     headers:
       Authorization: Bearer xxxxxx
-      Connection:
-      - close
-      Host:
-      - us-east.iaas.cloud.ibm.com
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
       User-Agent:
-      - http.rb/4.4.1
+      - Ruby
   response:
     status:
       code: 404
       message: Not Found
     headers:
       Date:
-      - Fri, 25 Sep 2020 21:22:58 GMT
+      - Fri, 02 Oct 2020 00:04:01 GMT
       Content-Type:
       - text/html
       Transfer-Encoding:
       - chunked
       Connection:
-      - close
+      - keep-alive
       Set-Cookie:
-      - __cfduid=d0a9e5b55a9bc12fa2620ce335ed44cd21601068978; expires=Sun, 25-Oct-20
-        21:22:58 GMT; path=/; domain=.iaas.cloud.ibm.com; HttpOnly; SameSite=Lax;
+      - __cfduid=d67f2d88ed2353ba496695c45541d09c11601597041; expires=Sun, 01-Nov-20
+        00:04:01 GMT; path=/; domain=.iaas.cloud.ibm.com; HttpOnly; SameSite=Lax;
         Secure
       Cf-Ray:
-      - 5d87cdbbabfdab94-YYZ
+      - 5dba29e5389cf975-YYZ
       Cache-Control:
       - max-age=0, no-cache, no-store, must-revalidate
       Expires:
@@ -42,7 +85,7 @@ http_interactions:
       Cf-Cache-Status:
       - DYNAMIC
       Cf-Request-Id:
-      - '0568bee9440000ab94ad2d1200000001'
+      - '05883883470000f97543b6d200000001'
       Expect-Ct:
       - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
       Pragma:
@@ -51,11 +94,13 @@ http_interactions:
       - nosniff
       X-Xss-Protection:
       - 1; mode=block
+      Vary:
+      - Accept-Encoding
       Server:
       - cloudflare
     body:
       encoding: ASCII-8BIT
       string: "<html>\r\n<head><title>404 Not Found</title></head>\r\n<body>\r\n<center><h1>404
         Not Found</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n"
-  recorded_at: Fri, 25 Sep 2020 21:22:58 GMT
+  recorded_at: Fri, 02 Oct 2020 00:04:01 GMT
 recorded_with: VCR 6.0.0
