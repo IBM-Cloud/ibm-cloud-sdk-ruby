@@ -71,7 +71,7 @@ module IBM
         # @return [String] HTTP Reason
         # @return [nil] Response does not have reaspn method that responds.
         def reason
-          response&.reason
+          response&.response&.msg
         end
 
         # Return the sent url as a string.
