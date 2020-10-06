@@ -31,13 +31,15 @@ module IBM
           @instance ||= child_class
           @instance_id ||= child_id
 
+          @connection = parent.connection
+
           (class << self; include ChildMixin; end) if child_class
 
           @endpoint = parent.url(endpoint)
           @logger = parent.logger
         end
 
-        attr_reader :logger, :endpoint, :token
+        attr_reader :logger, :endpoint, :token, :connection
 
         # A chainable method to set query filters on the collection.
         # @example vpc.images.params(limit: 1).all
@@ -93,7 +95,7 @@ module IBM
         # Get without any additional logic.
         # @param url [String] Full URL to send to server.
         def adhoc_get(url)
-          res = self.class.get(url, metadata(@params))
+          res = @connection.send('get', url, metadata(@params))
           SDKResponse.new(res).raise_for_status?.json
         end
 

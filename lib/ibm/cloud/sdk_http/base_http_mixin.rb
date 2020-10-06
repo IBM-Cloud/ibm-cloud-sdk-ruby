@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require_relative 'iam_token'
 require_relative 'sdk_response'
 
 module IBM
@@ -9,7 +8,10 @@ module IBM
     module SDKHTTP
       # Generic methods for accessing VPC.
       module BaseHTTPMixin
+        @connection = nil
+
         def self.included(base)
+          base.send :extend, HTTParty
           base.send :include, HTTParty
         end
 
@@ -18,7 +20,7 @@ module IBM
         end
 
         def unchecked_response(method: 'get', path: nil, params: {}, payload: {})
-          response = self.class.send(method.to_sym, url(path), metadata(params, payload))
+          response = @connection.send(method.to_sym, url(path), metadata(params, payload))
           SDKResponse.new(response)
         end
 

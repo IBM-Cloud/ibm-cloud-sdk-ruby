@@ -1,24 +1,22 @@
 # frozen_string_literal: true
 
-require 'httparty'
-
 module IBM
   module Cloud
     # Module holds basic HTTP functionality.
     module SDKHTTP
       # Used to authenticate with IAM.
       class IAMToken
-        include HTTParty
-        # base_uri 'https://iam.cloud.ibm.com/identity/token'
+        include BaseHTTPMixin
 
-        def initialize(api_key, logger: nil)
+        def initialize(api_key, connection, logger: nil)
           @api_key = api_key
           @logger = logger
+          @connection = connection
           @response = nil
           @data = nil
         end
 
-        attr_reader :response
+        attr_reader :response, :connection
 
         def fetch
           payload = {
@@ -27,7 +25,7 @@ module IBM
               apikey: @api_key
             }
           }
-          response = self.class.post('https://iam.cloud.ibm.com/identity/token', payload)
+          response = @connection.send('post', 'https://iam.cloud.ibm.com/identity/token', payload)
           @response = SDKResponse.new(response)
         end
 

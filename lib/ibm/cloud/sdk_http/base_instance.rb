@@ -18,13 +18,14 @@ module IBM
           super()
 
           endpoint ||= data[id_key.to_sym]
+          @connection = parent.connection
           @token = parent.token
           @endpoint = parent.url(endpoint)
           @logger = parent.logger
           merge!(data)
         end
 
-        attr_reader :logger, :endpoint, :token
+        attr_reader :logger, :endpoint, :token, :connection
 
         def details
           get.hash_response
