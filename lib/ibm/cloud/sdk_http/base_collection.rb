@@ -82,22 +82,34 @@ module IBM
 
         private
 
-        def adhoc_get(url, params)
+        # Return a wrapped instnace if set.
+        # @param value [Hash] The hash returned from server.
+        def hash_instance(value)
+          return @instance.new(self, data: value, id_key: @instance_id) if @instance
+
+          value
+        end
+
+        # Get without any additional logic.
+        # @param url [String] Full URL to send to server.
+        def adhoc_get(url)
           res = self.class.get(url, metadata(@params))
-          SDKResponse.new(res).json
+          SDKResponse.new(res).raise_for_status?.json
         end
 
         # Create a generator that removes the need for pagination.
+        # @param url [String] Full URL to send to server.
+        # @return [Enumerator] Object to page through results.
+        # @yield [BaseInstance] An instance of the instance class.
+        # @yield [Hash] When no BaseInstance set.
         def each_resource(url, &block)
           return enum_for(:each_resource, url) unless block_given?
           return unless url
 
-          response = adhoc_get(url, @params)
+          response = adhoc_get(url)
           resources = response.fetch(@array_key.to_sym)
 
-          resources&.each do |value|
-            yield @instance.new(self, data: value, id_key: @instance_id)
-          end
+          resources&.each { |value| yield hash_instance(value) }
           return unless response.key?(:next)
 
           next_url = response.dig(:next, :href)
