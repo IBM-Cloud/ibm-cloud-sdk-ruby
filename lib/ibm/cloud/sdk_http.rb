@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require_relative 'sdk_http/connection'
 require_relative 'sdk_http/exceptions'
 require_relative 'sdk_http/base_collection'
 require_relative 'sdk_http/base_instance'
