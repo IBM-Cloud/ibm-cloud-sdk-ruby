@@ -29,7 +29,6 @@ module IBM
     module SDK
       # Container that encapsulates the VPC API.
       class Vpc
-        include HTTParty
         include VPC::VpcHTTP
 
         # Create an API Client object for the  VPC IaaS service
@@ -37,14 +36,15 @@ module IBM
         # @param region [String] the IBM Power Cloud instance region
         # @param connection [IBM::Cloud::SDK::VPC::Connection] A connection object.
         # @param logger [Logger] An instance of an instanciated logger.
-        def initialize(region, token, logger: nil)
+        def initialize(region, connection, token, logger: nil)
           @region = region
           @token = token
+          @connection = connection
 
           @logger = logger || Logger.new($stdout, level: :warn)
         end
 
-        attr_reader :logger, :token
+        attr_reader :logger, :token, :connection
         attr_accessor :region
 
         # The Region API endpoint.
