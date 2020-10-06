@@ -9,7 +9,7 @@ module IBM
       module VPC
         # Generic methods for accessing VPC.
         module VpcHTTP
-          include IBM::Cloud::SDKHTTP::BaseHTTPMixin
+          include SDKHTTP::BaseHTTPMixin
 
           def metadata(query = nil, payload = nil)
             query ||= {}

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative 'vpc_mixin'
+require_relative 'vpc_http'
 
 module IBM
   module Cloud
