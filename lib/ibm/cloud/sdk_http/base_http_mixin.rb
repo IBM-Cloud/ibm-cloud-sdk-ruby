@@ -20,8 +20,7 @@ module IBM
         end
 
         def unchecked_response(method: 'get', path: nil, params: {}, payload: {})
-          response = @connection.send(method.to_sym, url(path), metadata(params, payload))
-          SDKResponse.new(response)
+          @connection.request(method.to_sym, url(path), metadata(params, payload))
         end
 
         def get(path: nil, params: {})

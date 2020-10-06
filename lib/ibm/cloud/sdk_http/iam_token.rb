@@ -25,8 +25,7 @@ module IBM
               apikey: @api_key
             }
           }
-          response = @connection.send('post', 'https://iam.cloud.ibm.com/identity/token', payload)
-          @response = SDKResponse.new(response)
+          @response = @connection.request('post', 'https://iam.cloud.ibm.com/identity/token', payload)
         end
 
         def data

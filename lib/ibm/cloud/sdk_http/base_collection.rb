@@ -95,8 +95,7 @@ module IBM
         # Get without any additional logic.
         # @param url [String] Full URL to send to server.
         def adhoc_get(url)
-          res = @connection.send('get', url, metadata(@params))
-          SDKResponse.new(res).raise_for_status?.json
+          @connection.request('get', url, metadata(@params)).raise_for_status?.json
         end
 
         # Create a generator that removes the need for pagination.
