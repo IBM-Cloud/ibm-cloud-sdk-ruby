@@ -38,14 +38,14 @@ module IBM
               @params ||= {}
               @params[:account_id] = account_id if account_id
               @params[:tag_type] = tag_type if tag_type && %w[user service].include?(tag_type)
-              @params[:full_data] = full_data if full_data
+              @params[:full_data] = full_data if full_data.instance_of?(TrueClass)
               @params[:providers] = providers if providers && %w[ghost ims].include?(providers)
               @params[:attached_to] = attached_to if attached_to
               @params[:offset] = offset if offset.positive?
-              @params[:limit] = limit if limit && [1..1000].include?(limit) && limint != 100
+              @params[:limit] = limit if limit && (1..1000).include?(limit) && limit != 100
               @params[:timeout] = timeout if timeout
               @params[:order_by_name] = order_by_name if order_by_name && %w[desc].include?(order_by_name)
-              @params[:attached_only] = attached_only if attached_only
+              @params[:attached_only] = attached_only if attached_only.instance_of?(TrueClass)
               self
             end
             # rubocop:enable Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity, Layout/LineLength
