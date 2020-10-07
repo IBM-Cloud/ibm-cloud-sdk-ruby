@@ -10,7 +10,7 @@ module IBM
         # @param id [String] ID of Name to search on depending on API.
         # @return [] The instance object.
         def instance(id)
-          @instance.new(self, endpoint: id)
+          @instance.new(self, endpoint: id).refresh
         end
 
         # Return the first_instance returned from a collection get.
