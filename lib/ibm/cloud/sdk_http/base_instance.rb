@@ -31,6 +31,7 @@ module IBM
         def refresh
           clear
           merge!(details)
+          self
         end
 
         def update(payload)
