@@ -10,11 +10,6 @@ module IBM
       module BaseHTTPMixin
         @connection = nil
 
-        def self.included(base)
-          base.send :extend, HTTParty
-          base.send :include, HTTParty
-        end
-
         def adhoc(method: 'get', path: nil, params: {}, payload: {})
           unchecked_response(method: method, path: path, params: params, payload: payload).raise_for_status?
         end
