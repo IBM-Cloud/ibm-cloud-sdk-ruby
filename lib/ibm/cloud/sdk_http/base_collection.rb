@@ -56,7 +56,7 @@ module IBM
         # Retrieve the collection from the cloud.
         # @return [IBM::Cloud::SDK::VPC::Response] The http response object.
         def fetch
-          @data ||= get(params: @params)
+          @data ||= get
         end
 
         # Get an iterable for the resource collection.
