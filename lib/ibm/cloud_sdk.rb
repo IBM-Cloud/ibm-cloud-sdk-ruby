@@ -17,6 +17,11 @@ module IBM
 
     attr_reader :logger, :token, :connection
 
+    def log_level=(lvl)
+      @logger.level = lvl
+      @connection.default_options[:log_level] = lvl
+    end
+
     # Add a proxy to the configuration.
     # @param uri [URI::Generic] A URI object with proxy configuration.
     def add_proxy(uri)
