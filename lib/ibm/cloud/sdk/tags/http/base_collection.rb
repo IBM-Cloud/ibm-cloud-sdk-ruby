@@ -50,6 +50,9 @@ module IBM
             end
             # rubocop:enable Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity, Layout/LineLength
 
+            def reset_params
+              @params = {}
+            end
             private
 
             # Create a generator that removes the need for pagination.
@@ -68,7 +71,10 @@ module IBM
 
               resources&.each { |value| yield value } # rubocop:disable Style/ExplicitBlockArgument
 
-              return if resources.empty?
+              if resources.empty?
+                reset_params
+                return
+              end
 
               each_resource(url, current_count, &block)
             end
