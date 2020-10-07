@@ -52,6 +52,7 @@ module IBM
 
         def url(path = nil)
           return endpoint unless path
+          return path if URI.parse(path).relative? == false
 
           "#{endpoint}/#{path}"
         end
