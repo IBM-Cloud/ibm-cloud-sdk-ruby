@@ -84,7 +84,7 @@ module IBM
 
         private
 
-        # Return a wrapped instnace if set.
+        # Return a wrapped instance if set.
         # @param value [Hash] The hash returned from server.
         def hash_instance(value)
           return @instance.new(self, data: value, id_key: @instance_id) if @instance
