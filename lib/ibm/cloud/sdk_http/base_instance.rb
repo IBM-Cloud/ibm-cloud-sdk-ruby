@@ -29,6 +29,7 @@ module IBM
         end
 
         def refresh
+          clear
           merge!(details)
         end
 
