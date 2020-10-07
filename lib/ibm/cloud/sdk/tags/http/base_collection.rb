@@ -35,13 +35,13 @@ module IBM
               order_by_name: 'asc',
               attached_only: false
             )
-              @params = {}
+              @params ||= {}
               @params[:account_id] = account_id if account_id
               @params[:tag_type] = tag_type if tag_type && %w[user service].include?(tag_type)
               @params[:full_data] = full_data if full_data
               @params[:providers] = providers if providers && %w[ghost ims].include?(providers)
               @params[:attached_to] = attached_to if attached_to
-              @params[:offset] = offset if offset.positve?
+              @params[:offset] = offset if offset.positive?
               @params[:limit] = limit if limit && [1..1000].include?(limit) && limint != 100
               @params[:timeout] = timeout if timeout
               @params[:order_by_name] = order_by_name if order_by_name && %w[desc].include?(order_by_name)
