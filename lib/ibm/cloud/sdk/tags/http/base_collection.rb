@@ -54,6 +54,12 @@ module IBM
               @params = {}
             end
 
+            # Return the total count as retrieved from the API.
+            # @return [Integer] value in total_count
+            def total_count
+              fetch.json.[](:total_count)
+            end
+
             # Get all tags attached to a CRN.
             # @param crn [String] The CRN for the instance.
             def attached_to(crn)
