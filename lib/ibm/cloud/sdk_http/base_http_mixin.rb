@@ -16,7 +16,7 @@ module IBM
         end
 
         def adhoc(method: 'get', path: nil, params: {}, payload: {})
-          unchecked_response(method: method, path: path, params: params, payload: payload).raise_for_status?
+          unchecked_response(method: method, path: path, params: params, payload: payload).raise_for_status!
         end
 
         def unchecked_response(method: 'get', path: nil, params: {}, payload: {})

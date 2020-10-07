@@ -53,7 +53,7 @@ module IBM
         # Chainable method to verify the status code. Raise an exception for non 200-series or 404 status codes.
         # @return [Response] Allows for method to be chainable.
         # @raise [Exceptions::HttpStatusError] Raise if status checks failed.
-        def raise_for_status?
+        def raise_for_status!
           return self if (200..299).include?(code)
           return self if code == 404
 

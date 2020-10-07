@@ -30,7 +30,7 @@ module IBM
 
         def data
           fetch unless @response
-          @response.raise_for_status?.json
+          @response.raise_for_status!.json
         end
 
         # Check to see if the access_token is expired. Fetch a new token if none exists.
