@@ -24,7 +24,7 @@ module IBM
         def json
           JSON.parse(body, symbolize_names: true)
         rescue StandardError
-          raise Exceptions::ExceptionWithResponse.new(self, "#{url} Error while parsing response body. #{response.body}")
+          raise Exceptions::ExceptionWithResponse.new("#{url} Error while parsing response body. #{response.body}", self)
         end
 
         # Return the raw response string.
@@ -113,7 +113,7 @@ module IBM
           return ret.fetch(sym_key) if ret.key?(sym_key)
 
           msg = "Key #{key} not found in #{ret}."
-          raise Exceptions::ExceptionWithResponse.new(self, msg)
+          raise Exceptions::ExceptionWithResponse.new(msg, self)
         end
 
         # Check to see if the returned object is the expected object.
@@ -124,7 +124,7 @@ module IBM
           return ret if ret.instance_of?(obj)
 
           msg = "Expected #{obj} in response for #{url}. The returned object is a #{ret.class}."
-          raise Exceptions::ExceptionWithResponse.new(self, msg)
+          raise Exceptions::ExceptionWithResponse.new(msg, self)
         end
       end
     end

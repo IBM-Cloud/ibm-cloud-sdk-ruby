@@ -6,10 +6,10 @@ module IBM
       # Module to contain all custom exception classes.
       module Exceptions
         # An exception for http with a response attribute.
-        # @param response [IBM::Cloud::SDK::VPC::Response] The original response object.
         # @param msg [String] A human readable message.
+        # @param response [IBM::Cloud::SDK::VPC::Response] The original response object.
         class ExceptionWithResponse < RuntimeError
-          def initialize(response, msg)
+          def initialize(msg, response)
             @response = response
             super(msg)
           end
@@ -22,7 +22,7 @@ module IBM
         class HttpStatusError < ExceptionWithResponse
           def initialize(response)
             msg = "Invalid status #{response.code} for url \"#{response.url}\", #{response.reason}. #{response.body}"
-            super(response, msg)
+            super(msg, response)
           end
         end
       end
