@@ -7,8 +7,9 @@ require_relative 'tags/http'
 module IBM
   module Cloud
     module SDK
+      # A collection interface into the Tags API.
       class Tags < TAG::HTTP::BaseCollection
-        def initialize(connection, token, logger: nil)
+        def initialize(connection, token, logger: nil) # rubocop:disable Lint/MissingSuper
           @token = token
           @connection = connection
 
