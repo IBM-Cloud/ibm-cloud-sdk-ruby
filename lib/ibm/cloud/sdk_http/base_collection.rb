@@ -14,9 +14,6 @@ module IBM
       # @param array_key [string] The key that the API response holds the endpoint data. When nil the endpoint will be used.
       # @param child_class [Object] The Object to be used when instanciating the single instance for this class.
       class BaseCollection
-        def self.included(base)
-          base.send :include, BaseHTTPMixin
-        end
         include BaseHTTPMixin
 
         def initialize(parent, endpoint, array_key: nil, child_class: nil, child_id: 'id')
