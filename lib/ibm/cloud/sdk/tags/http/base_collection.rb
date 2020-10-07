@@ -53,6 +53,13 @@ module IBM
             def reset_params
               @params = {}
             end
+
+            # Get all tags attached to a CRN.
+            # @param crn [String] The CRN for the instance.
+            def attached_to(crn)
+              params(attached_to: crn).all
+            end
+
             private
 
             # Create a generator that removes the need for pagination.
