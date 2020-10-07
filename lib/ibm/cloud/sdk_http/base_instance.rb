@@ -8,9 +8,6 @@ module IBM
     module SDKHTTP
       # Container that encapsulates the VPC API.
       class BaseInstance < Hash
-        def self.included(base)
-          base.send :include, BaseHTTPMixin
-        end
         include BaseHTTPMixin
 
         def initialize(parent, data: {}, id_key: 'id', endpoint: nil)
