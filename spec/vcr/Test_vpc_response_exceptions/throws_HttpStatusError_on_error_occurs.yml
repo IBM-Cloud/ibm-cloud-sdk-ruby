@@ -7,14 +7,12 @@ http_interactions:
       encoding: UTF-8
       string: grant_type=urn%3Aibm%3Aparams%3Aoauth%3Agrant-type%3Aapikey&apikey=asssfafaf
     headers:
-      Connection:
-      - close
-      Content-Type:
-      - application/x-www-form-urlencoded
-      Host:
-      - iam.cloud.ibm.com
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
       User-Agent:
-      - http.rb/4.4.1
+      - Ruby
   response:
     status:
       code: 400
@@ -23,9 +21,9 @@ http_interactions:
       Content-Type:
       - application/json
       Content-Length:
-      - '515'
+      - '508'
       Transaction-Id:
-      - 9b114822e90b4ae69413c74574c54b01
+      - 6c620cfc999e41b886061900aacb92b0
       Cache-Control:
       - no-cache, no-store
       Expires:
@@ -35,15 +33,15 @@ http_interactions:
       Content-Language:
       - en-US
       Date:
-      - Fri, 25 Sep 2020 21:06:06 GMT
+      - Fri, 02 Oct 2020 00:03:57 GMT
       Connection:
       - close
       Set-Cookie:
-      - sessioncookie=fe923abbb865e5d6562b7a2cc7fb6134; Path=/; Secure; HttpOnly
+      - sessioncookie=a649067d4fae0d0d8a779de1326e0171; Path=/; Secure; HttpOnly
     body:
       encoding: ASCII-8BIT
       string: '{"errorCode":"BXNIM0415E","errorMessage":"Provided API key could not
-        be found","context":{"requestId":"9b114822e90b4ae69413c74574c54b01","requestType":"incoming.Identity_Token","userAgent":"http.rb/4.4.1","url":"https://iam.cloud.ibm.com","instanceId":"iamid-5.9-8603-461329e-8db965548-tf5bc","threadId":"6a15e","host":"iamid-5.9-8603-461329e-8db965548-tf5bc","startTime":"25.09.2020
-        21:06:06:735 GMT","endTime":"25.09.2020 21:06:06:801 GMT","elapsedTime":"66","locale":"en_US","clusterName":"iam-id-prdal12-8brn"}}'
-  recorded_at: Fri, 25 Sep 2020 21:06:06 GMT
+        be found","context":{"requestId":"6c620cfc999e41b886061900aacb92b0","requestType":"incoming.Identity_Token","userAgent":"Ruby","url":"https://iam.cloud.ibm.com","instanceId":"iamid-5.9-8603-461329e-8db965548-d92d7","threadId":"20689e","host":"iamid-5.9-8603-461329e-8db965548-d92d7","startTime":"02.10.2020
+        00:03:57:306 GMT","endTime":"02.10.2020 00:03:57:370 GMT","elapsedTime":"64","locale":"en_US","clusterName":"iam-id-predal13-5E53"},"access_token":"aaaa","refresh_token":"11111","ims_user_id":"22222","expiration":1893456000}'
+  recorded_at: Fri, 02 Oct 2020 00:03:57 GMT
 recorded_with: VCR 6.0.0

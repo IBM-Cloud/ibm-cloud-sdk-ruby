@@ -13,7 +13,7 @@ module IBM
         end
 
         # Work with VPC reqions
-        class SecurityGroup < BaseCollection
+        class SecurityGroup < BaseInstance
           def network_interfaces
             SECURITYGROUP::NetworkInterfaces.new(self)
           end

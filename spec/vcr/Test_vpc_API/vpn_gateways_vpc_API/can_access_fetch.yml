@@ -1,52 +1,97 @@
 ---
 http_interactions:
 - request:
+    method: post
+    uri: https://iam.cloud.ibm.com/identity/token
+    body:
+      encoding: UTF-8
+      string: grant_type=urn%3Aibm%3Aparams%3Aoauth%3Agrant-type%3Aapikey&apikey=API_KEY
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '2460'
+      Transaction-Id:
+      - 8b5d5fed5c034722bb0bb56b6384ed32
+      Cache-Control:
+      - no-cache, no-store
+      Expires:
+      - '0'
+      Pragma:
+      - no-cache
+      Content-Language:
+      - en-US
+      Date:
+      - Thu, 01 Oct 2020 23:35:23 GMT
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - sessioncookie=153bc2cfa19837fd83727a4d7fe5fe1f; Path=/; Secure; HttpOnly
+    body:
+      encoding: ASCII-8BIT
+      string: '{"access_token":"aaaa","refresh_token":"11111","ims_user_id":"22222","token_type":"Bearer","expires_in":3600,"expiration":1893456000,"scope":"ibm
+        openid"}'
+  recorded_at: Thu, 01 Oct 2020 23:35:23 GMT
+- request:
     method: get
     uri: https://us-east.iaas.cloud.ibm.com/v1/vpn_gateways?generation=2&version=2020-08-01
     body:
-      encoding: UTF-8
+      encoding: US-ASCII
       string: ''
     headers:
       Authorization: Bearer xxxxxx
-      Connection:
-      - close
-      Host:
-      - us-east.iaas.cloud.ibm.com
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
       User-Agent:
-      - http.rb/4.4.1
+      - Ruby
   response:
     status:
       code: 200
       message: OK
     headers:
       Date:
-      - Wed, 23 Sep 2020 22:32:51 GMT
+      - Thu, 01 Oct 2020 23:35:23 GMT
       Content-Type:
       - application/json
-      Content-Length:
-      - '189'
+      Transfer-Encoding:
+      - chunked
       Connection:
-      - close
+      - keep-alive
       Set-Cookie:
-      - __cfduid=d895f85fc95fe093dcf46590dfc897cf41600900371; expires=Fri, 23-Oct-20
-        22:32:51 GMT; path=/; domain=.iaas.cloud.ibm.com; HttpOnly; SameSite=Lax;
+      - __cfduid=d2a68b3ff32f7cfd953b819a4f622b9841601595323; expires=Sat, 31-Oct-20
+        23:35:23 GMT; path=/; domain=.iaas.cloud.ibm.com; HttpOnly; SameSite=Lax;
         Secure
       Cf-Ray:
-      - 5d77b95a3c4cf981-YYZ
+      - 5db9fff39fa1f97d-YYZ
       Cf-Cache-Status:
       - DYNAMIC
       Cf-Request-Id:
-      - 055eb22c5f0000f981c8848200000001
+      - '05881e4c3a0000f97d961f8200000001'
       Expect-Ct:
       - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
       Transaction-Id:
-      - 2abe220c-ad02-436a-92a8-746c3418adca
+      - 14708bf5-4d3b-4f3c-a38f-78a18cb0f577
       X-Request-Id:
-      - 2abe220c-ad02-436a-92a8-746c3418adca
+      - 14708bf5-4d3b-4f3c-a38f-78a18cb0f577
+      Vary:
+      - Accept-Encoding
       Server:
       - cloudflare
     body:
       encoding: ASCII-8BIT
       string: '{"first":{"href":"https://us-east.iaas.cloud.ibm.com/v1/vpn_gateways?version=2020-08-01\u0026generation=2\u0026limit=50\u0026sort=-created_at"},"limit":50,"total_count":0,"vpn_gateways":[]}'
-  recorded_at: Wed, 23 Sep 2020 22:32:51 GMT
+  recorded_at: Thu, 01 Oct 2020 23:35:23 GMT
 recorded_with: VCR 6.0.0

@@ -1,38 +1,81 @@
 ---
 http_interactions:
 - request:
+    method: post
+    uri: https://iam.cloud.ibm.com/identity/token
+    body:
+      encoding: UTF-8
+      string: grant_type=urn%3Aibm%3Aparams%3Aoauth%3Agrant-type%3Aapikey&apikey=API_KEY
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '2460'
+      Transaction-Id:
+      - e85c7691dd0745358aac3d4ec810a31f
+      Cache-Control:
+      - no-cache, no-store
+      Expires:
+      - '0'
+      Pragma:
+      - no-cache
+      Content-Language:
+      - en-US
+      Date:
+      - Thu, 01 Oct 2020 23:34:38 GMT
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - sessioncookie=8a50a7128711c3e90b8263453be5d886; Path=/; Secure; HttpOnly
+    body:
+      encoding: ASCII-8BIT
+      string: '{"access_token":"aaaa","refresh_token":"11111","ims_user_id":"22222","token_type":"Bearer","expires_in":3600,"expiration":1893456000,"scope":"ibm
+        openid"}'
+  recorded_at: Thu, 01 Oct 2020 23:34:38 GMT
+- request:
     method: get
     uri: https://us-east.iaas.cloud.ibm.com/v1/regions?generation=2&version=2020-08-01
     body:
-      encoding: UTF-8
+      encoding: US-ASCII
       string: ''
     headers:
       Authorization: Bearer xxxxxx
-      Connection:
-      - close
-      Host:
-      - us-east.iaas.cloud.ibm.com
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
       User-Agent:
-      - http.rb/4.4.1
+      - Ruby
   response:
     status:
       code: 200
       message: OK
     headers:
       Date:
-      - Wed, 23 Sep 2020 22:32:41 GMT
+      - Thu, 01 Oct 2020 23:34:41 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
       - chunked
       Connection:
-      - close
+      - keep-alive
       Set-Cookie:
-      - __cfduid=d04dd3b8c25f608822ad09a6cc41692d31600900359; expires=Fri, 23-Oct-20
-        22:32:39 GMT; path=/; domain=.iaas.cloud.ibm.com; HttpOnly; SameSite=Lax;
+      - __cfduid=d1675802dfa1153d5d22ff27bea7218311601595279; expires=Sat, 31-Oct-20
+        23:34:39 GMT; path=/; domain=.iaas.cloud.ibm.com; HttpOnly; SameSite=Lax;
         Secure
       Cf-Ray:
-      - 5d77b90ddbc5f989-YYZ
+      - 5db9fedda86eab6a-YYZ
       Cache-Control:
       - max-age=0, no-cache, no-store, must-revalidate
       Expires:
@@ -44,7 +87,7 @@ http_interactions:
       Cf-Cache-Status:
       - DYNAMIC
       Cf-Request-Id:
-      - 055eb1fca90000f98989353200000001
+      - '05881d9e8c0000ab6af927f200000001'
       Expect-Ct:
       - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
       Pragma:
@@ -52,15 +95,15 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       X-Request-Id:
-      - 47450f27-d916-4b51-9a4b-1705265bc511
+      - '0293704f-6d66-431f-b05e-b7bb2adb0a83'
       X-Xss-Protection:
       - 1; mode=block
       Server:
       - cloudflare
     body:
-      encoding: UTF-8
+      encoding: ASCII-8BIT
       string: '{"regions":[{"name":"au-syd","href":"https://us-east.iaas.cloud.ibm.com/v1/regions/au-syd","endpoint":"https://au-syd.iaas.cloud.ibm.com","status":"available"},{"name":"eu-de","href":"https://us-east.iaas.cloud.ibm.com/v1/regions/eu-de","endpoint":"https://eu-de.iaas.cloud.ibm.com","status":"available"},{"name":"eu-gb","href":"https://us-east.iaas.cloud.ibm.com/v1/regions/eu-gb","endpoint":"https://eu-gb.iaas.cloud.ibm.com","status":"available"},{"name":"jp-tok","href":"https://us-east.iaas.cloud.ibm.com/v1/regions/jp-tok","endpoint":"https://jp-tok.iaas.cloud.ibm.com","status":"available"},{"name":"us-east","href":"https://us-east.iaas.cloud.ibm.com/v1/regions/us-east","endpoint":"https://us-east.iaas.cloud.ibm.com","status":"available"},{"name":"us-south","href":"https://us-east.iaas.cloud.ibm.com/v1/regions/us-south","endpoint":"https://us-south.iaas.cloud.ibm.com","status":"available"}]}
 
         '
-  recorded_at: Wed, 23 Sep 2020 22:32:41 GMT
+  recorded_at: Thu, 01 Oct 2020 23:34:41 GMT
 recorded_with: VCR 6.0.0

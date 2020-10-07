@@ -34,7 +34,7 @@ end
 
 def replace_token_contents(response)
   data = JSON.parse(response.body, symbolize_names: true)
-  data.merge!({ refresh_token: '11111', ims_user_id: '22222', expiration: 1893456000 })
+  data.merge!({ access_token: 'aaaa', refresh_token: '11111', ims_user_id: '22222', expiration: 1893456000 })
   response.body = data.to_json.force_encoding('ASCII-8BIT')
 end
 
@@ -53,6 +53,7 @@ VCR.configure do |c|
     interaction.request.headers['Authorization'] = 'Bearer xxxxxx' if interaction.request.headers.key?('Authorization')
     # Replace IP V4 Addresses
     interaction.response.body.gsub!(/([0-9]{1,3}\.){3}/, '127.0.0.')
+    replace_token_contents(interaction.response) if interaction.request.uri.match?('identity/token')
   end
 
   # If a VCR is tagged with require_2xx then it will only save the VCR if it is a valid 200 response.
@@ -71,7 +72,7 @@ VCR.configure do |c|
 
   # Filter the VPC /vi/keys response.
   c.before_record(:VPC_keys) do |interaction|
-    replace_ssh_keys(interaction.response)
+    replace_ssh_keys(interaction.response) unless interaction.request.uri.match?('identity/token')
   rescue => e # rubocop:disable Style/RescueStandardError # Don't know what errors are here so catch them all.
     # If there is an exception during fetching we don't want to save the results.
     puts("Exception raised during fetching of ssh keys #{e}")
