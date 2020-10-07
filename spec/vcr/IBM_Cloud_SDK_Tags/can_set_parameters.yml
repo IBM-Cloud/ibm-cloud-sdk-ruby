@@ -1,0 +1,187 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://iam.cloud.ibm.com/identity/token
+    body:
+      encoding: UTF-8
+      string: grant_type=urn%3Aibm%3Aparams%3Aoauth%3Agrant-type%3Aapikey&apikey=API_KEY
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '2498'
+      Transaction-Id:
+      - 9db6e87a8eff48dfa9083e57d341d291
+      Cache-Control:
+      - no-cache, no-store
+      Expires:
+      - '0'
+      Pragma:
+      - no-cache
+      Content-Language:
+      - en-US
+      Date:
+      - Wed, 07 Oct 2020 21:36:22 GMT
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - sessioncookie=50bb27ae93dd124e2a6bce24e2752e72; Path=/; Secure; HttpOnly
+    body:
+      encoding: ASCII-8BIT
+      string: '{"access_token":"aaaa","refresh_token":"11111","ims_user_id":"22222","token_type":"Bearer","expires_in":3600,"expiration":1893456000,"refresh_token_expiration":1604698579,"scope":"ibm
+        openid"}'
+  recorded_at: Wed, 07 Oct 2020 21:36:22 GMT
+- request:
+    method: get
+    uri: https://tags.global-search-tagging.cloud.ibm.com/v3/tags
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization: Bearer xxxxxx
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      Transaction-Id:
+      - gst-be4584e5-9388-45fa-8bbf-f6766ac9c5ca
+      X-Global-Transaction-Id:
+      - gst-be4584e5-9388-45fa-8bbf-f6766ac9c5ca
+      Ghost-Endpoint:
+      - ibm:yp:us-south:Kubernetes
+      Ghost-Instance:
+      - Kubernetes_7c99464848-gwsqb
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"200e-it1qcAIDnop54RNguXAI8/jWeO8"
+      X-Envoy-Upstream-Service-Time:
+      - '72'
+      Server:
+      - istio-envoy
+      Vary:
+      - Accept-Encoding
+      Date:
+      - Wed, 07 Oct 2020 21:36:22 GMT
+      Content-Length:
+      - '8206'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"total_count":357,"offset":0,"limit":100,"items":[{"name":"bootie"},{"name":"cam42"},{"name":"cam42onroks311"},{"name":"cam42onroks43"},{"name":"cp4mcm-mcmp"},{"name":"dba"},{"name":"env:cam4201"},{"name":"env:camsvt"},{"name":"env:camsvt-ocp311"},{"name":"env:test
+        mytag:mytagval"},{"name":"environment: dev"},{"name":"environment: test"},{"name":"ibm-kubernetes-service"},{"name":"job_activity_identifier:
+        00571a60-b0e1-11ea-a2d4-679d451ec2a7_1virtualf677d831"},{"name":"job_activity_identifier:
+        009f4d60-ab43-11ea-9aa2-4b5cd0f030f2_1virtualf677d831"},{"name":"job_activity_identifier:
+        08930030-b9a7-11ea-a33a-d1c18090aa6e_1virtualf677d831"},{"name":"job_activity_identifier:
+        0dea49f0-acf3-11ea-b104-31f290444601_1virtualf677d831"},{"name":"job_activity_identifier:
+        0defa9e0-b964-11ea-b0c7-992fbb03b5aa_1virtualf677d831"},{"name":"job_activity_identifier:
+        0e0cda60-af96-11ea-91aa-49bd2bf8a690_1virtualf677d831"},{"name":"job_activity_identifier:
+        0ed2bdf0-a9ad-11ea-a923-8136139bf349_1virtualf677d831"},{"name":"job_activity_identifier:
+        0fae7080-b6a9-11ea-a0f8-f74522e909d5_1virtualf677d831"},{"name":"job_activity_identifier:
+        10229270-b461-11ea-a104-91ce2749d764_multiplecc5b47a7"},{"name":"job_activity_identifier:
+        107be0c0-ad34-11ea-b312-41c7d051d8a4_multiplecc5b47a7"},{"name":"job_activity_identifier:
+        110d4210-abc5-11ea-a8c9-6fffb485d7ab_1virtualf677d831"},{"name":"job_activity_identifier:
+        1a74d730-b018-11ea-9480-5daa49268a8d_1virtualf677d831"},{"name":"job_activity_identifier:
+        1cfbfcb0-b449-11ea-925b-cfd13b81e378_multiplecc5b47a7"},{"name":"job_activity_identifier:
+        1e3149f0-b4ad-11ea-8919-8342eeaed20b_1virtualf677d831"},{"name":"job_activity_identifier:
+        207682b0-b102-11ea-a7ea-376157a167af_1virtualf677d831"},{"name":"job_activity_identifier:
+        20ae7710-ac2a-11ea-b343-9fa221f4849e_1virtualf677d831"},{"name":"job_activity_identifier:
+        21778180-b5f0-11ea-8b58-bbd634cc41d7_multiplecc5b47a7"},{"name":"job_activity_identifier:
+        25e481b0-b405-11ea-9f5b-25a8a6c6a856_1virtualf677d831"},{"name":"job_activity_identifier:
+        272161b0-b72a-11ea-a656-37133234f6a8_1virtualf677d831"},{"name":"job_activity_identifier:
+        2762ec80-bb25-11ea-8466-3fbd561e7160_meanstac79ffc96e"},{"name":"job_activity_identifier:
+        27ac06f0-b273-11ea-bf24-07739e09a60a_1virtualf677d831"},{"name":"job_activity_identifier:
+        284fdd40-b7f3-11ea-865d-f7ceb03151e9_1virtualf677d831"},{"name":"job_activity_identifier:
+        29be0090-b4f0-11ea-ba86-f9d989c636ff_1virtualf677d831"},{"name":"job_activity_identifier:
+        29c55820-b533-11ea-986d-cbf56f1a8f2f_1virtualf677d831"},{"name":"job_activity_identifier:
+        32794040-aea7-11ea-abd7-3be923f7d83d_1virtualf677d831"},{"name":"job_activity_identifier:
+        3599b300-b07c-11ea-b132-85b47b0dc0f9_1virtualf677d831"},{"name":"job_activity_identifier:
+        3ac1b390-aff6-11ea-a558-85851020ebac_1virtualf677d831"},{"name":"job_activity_identifier:
+        4165fdc0-aba8-11ea-9588-5fbf476b98aa_1virtualf677d831"},{"name":"job_activity_identifier:
+        433ac9e0-b5d1-11ea-8b58-bbd634cc41d7_1virtualf677d831"},{"name":"job_activity_identifier:
+        4524b250-ad3b-11ea-be59-99e55d7674bf_1virtualf677d831"},{"name":"job_activity_identifier:
+        4618f8c0-adbc-11ea-b32d-e50fc526a7c0_1virtualf677d831"},{"name":"job_activity_identifier:
+        47facd50-b33c-11ea-8be5-d9ba3fbe5389_1virtualf677d831"},{"name":"job_activity_identifier:
+        492e91f0-b145-11ea-a321-5b0d88d26cca_1virtualf677d831"},{"name":"job_activity_identifier:
+        503b3d50-b89c-11ea-bd12-cb817e5885c7_1virtualf677d831"},{"name":"job_activity_identifier:
+        5393c280-b5fc-11ea-82b8-39866704105d_1virtualf677d831"},{"name":"job_activity_identifier:
+        555c79f0-ac4b-11ea-9cab-f96eabbd10da_1virtualf677d831"},{"name":"job_activity_identifier:
+        56216fd0-b1aa-11ea-bc3b-8515ce05b5bd_1virtualf677d831"},{"name":"job_activity_identifier:
+        56a3c8e0-b510-11ea-ba86-f9d989c636ff_multiplecc5b47a7"},{"name":"job_activity_identifier:
+        57119360-b985-11ea-a484-5fb8f531ba8b_1virtualf677d831"},{"name":"job_activity_identifier:
+        59921670-acd1-11ea-83aa-43a627caf559_1virtualf677d831"},{"name":"job_activity_identifier:
+        5c2484f0-aa0f-11ea-b0ff-6d1f8920bb5f_multiplecc5b47a7"},{"name":"job_activity_identifier:
+        5cd6ed00-b37b-11ea-b5a0-7f7ddc801765_multiplecc5b47a7"},{"name":"job_activity_identifier:
+        5ec00020-b56f-11ea-a7eb-39cfb9d16efe_virtualsd2b7f0ba"},{"name":"job_activity_identifier:
+        5fd9c090-b8bc-11ea-8b69-2331a008b2de_1virtualf677d831"},{"name":"job_activity_identifier:
+        68c730c0-b83a-11ea-a19f-b59e6efcd59c_1virtualf677d831"},{"name":"job_activity_identifier:
+        68e9c0e0-ad9a-11ea-a8b9-f30d9d3f80ac_1virtualf677d831"},{"name":"job_activity_identifier:
+        6bbf3d40-ae85-11ea-bb2d-dd803fa1c97a_1virtualf677d831"},{"name":"job_activity_identifier:
+        6c733d90-af8e-11ea-8970-9129ac6423ef_multiplecc5b47a7"},{"name":"job_activity_identifier:
+        6d023d40-b517-11ea-810b-55d46d31edb8_1virtualf677d831"},{"name":"job_activity_identifier:
+        6d99d360-b127-11ea-ac14-e98177a132fc_1virtualf677d831"},{"name":"job_activity_identifier:
+        6e485800-b76b-11ea-b733-c347d385b7a4_multiplecc5b47a7"},{"name":"job_activity_identifier:
+        6fb1e220-b120-11ea-a7ea-376157a167af_multiplecc5b47a7"},{"name":"job_activity_identifier:
+        709b45b0-b039-11ea-9e32-2d8b4cf10672_1virtualf677d831"},{"name":"job_activity_identifier:
+        72758bc0-aada-11ea-b8ac-192959056e84_1virtualf677d831"},{"name":"job_activity_identifier:
+        76cb96a0-ab62-11ea-a29c-69218d4f116b_1virtualf677d831"},{"name":"job_activity_identifier:
+        79ee8560-b682-11ea-bea2-bb46dce46373_1virtualf677d831"},{"name":"job_activity_identifier:
+        7a41e2b0-aec5-11ea-abd7-3be923f7d83d_multiplecc5b47a7"},{"name":"job_activity_identifier:
+        7e15ae70-adfe-11ea-b585-b732f60c92ae_multiplecc5b47a7"},{"name":"job_activity_identifier:
+        7e8d30a0-b1e9-11ea-997d-ab7628551b80_multiplecc5b47a7"},{"name":"job_activity_identifier:
+        84491530-ae20-11ea-bb6a-215c9795aae7_1virtualf677d831"},{"name":"job_activity_identifier:
+        880864b0-a9ce-11ea-8305-f50b2a74c6f5_1virtualf677d831"},{"name":"job_activity_identifier:
+        8d8f9030-b6c5-11ea-8885-693461af270c_1virtualf677d831"},{"name":"job_activity_identifier:
+        8defc580-b1cb-11ea-997d-ab7628551b80_1virtualf677d831"},{"name":"job_activity_identifier:
+        8e7bbbd0-b63f-11ea-953e-2546174e6fd7_1virtualf677d831"},{"name":"job_activity_identifier:
+        8ed1e250-b714-11ea-88ea-0b0893c9c6bb_virtualsd2b7f0ba"},{"name":"job_activity_identifier:
+        95239c30-acd2-11ea-b23b-538135d883d3_meanstac79ffc96e"},{"name":"job_activity_identifier:
+        9684e190-addd-11ea-b585-b732f60c92ae_1virtualf677d831"},{"name":"job_activity_identifier:
+        9e362580-b6a1-11ea-bea2-bb46dce46373_multiplecc5b47a7"},{"name":"job_activity_identifier:
+        a1165240-b294-11ea-8bf2-839f79b825e2_1virtualf677d831"},{"name":"job_activity_identifier:
+        a234a210-b74b-11ea-b733-c347d385b7a4_1virtualf677d831"},{"name":"job_activity_identifier:
+        a2b0caa0-b450-11ea-8b27-dbd1acca2341_1virtualf677d831"},{"name":"job_activity_identifier:
+        a38a99b0-b9ff-11ea-a17f-8b84e0af5c27_1virtualf677d831"},{"name":"job_activity_identifier:
+        a59cb560-b7d1-11ea-b4bd-6b3c845157a6_1virtualf677d831"},{"name":"job_activity_identifier:
+        a62e8e80-b5f7-11ea-ab57-37622f811a5d_1virtualf677d831"},{"name":"job_activity_identifier:
+        a6668480-b0bf-11ea-9ff2-4974bd83efb3_1virtualf677d831"},{"name":"job_activity_identifier:
+        a84447f0-aecc-11ea-9ab9-61ae8fc8bf54_1virtualf677d831"},{"name":"job_activity_identifier:
+        aa67d690-b814-11ea-b225-a3e27fea00ea_1virtualf677d831"},{"name":"job_activity_identifier:
+        ac852ac0-abff-11ea-b5f5-cb0f448960ef_meanstac79ffc96e"},{"name":"job_activity_identifier:
+        b00f8cb0-afb2-11ea-aff3-a16884aa59b7_1virtualf677d831"},{"name":"job_activity_identifier:
+        b1efafe0-b8dd-11ea-b189-7b328750f26a_1virtualf677d831"},{"name":"job_activity_identifier:
+        b2d182c0-aa97-11ea-8c93-491550becb6c_1virtualf677d831"},{"name":"job_activity_identifier:
+        b6f7c330-a9ef-11ea-bc92-c9a2eea50073_1virtualf677d831"},{"name":"job_activity_identifier:
+        b79af380-b902-11ea-81c9-bd7cc68bad11_1virtualf677d831"},{"name":"job_activity_identifier:
+        b80bdf40-b2d7-11ea-a87f-c9d3fe4cad21_1virtualf677d831"},{"name":"job_activity_identifier:
+        be0eeb80-aa17-11ea-aa7d-db1cbde594f9_1virtualf677d831"},{"name":"job_activity_identifier:
+        be6b84d0-ad14-11ea-b312-41c7d051d8a4_1virtualf677d831"},{"name":"job_activity_identifier:
+        c09e9670-af4e-11ea-9559-af107ab67eef_1virtualf677d831"}]}'
+  recorded_at: Wed, 07 Oct 2020 21:36:22 GMT
+recorded_with: VCR 6.0.0
