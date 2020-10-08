@@ -62,7 +62,7 @@ module IBM
           # Get all tags attached to a CRN.
           # @param crn [String] The CRN for the instance.
           def attached_to(crn)
-            return [] if crn.empty?
+            return [] if crn.to_s.empty?
 
             params(attached_to: crn).all
           end
