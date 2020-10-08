@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative '../http_vpc'
+require_relative '../http'
 
 module IBM
   module Cloud
@@ -12,10 +12,12 @@ module IBM
           include SDKHTTP::BaseHTTPMixin
 
           def metadata(query = nil, payload = nil)
-            query ||= {}
+            @params ||= {}
+            @params.merge!(query) if query
+
             payload ||= {}
             {
-              query: { version: '2020-08-01', generation: 2 }.merge(query),
+              query: { version: '2020-08-01', generation: 2 }.merge(@params),
               body: payload,
               headers: { "Authorization": @token.authorization_header }
             }
