@@ -41,10 +41,11 @@ module IBM
         end
 
         def metadata(query = nil, payload = nil)
+          @params ||= {}
           query ||= {}
           payload ||= {}
           {
-            query: query,
+            query: @params.merge(query),
             body: payload,
             headers: { "Authorization": @token.authorization_header }
           }
@@ -52,6 +53,7 @@ module IBM
 
         def url(path = nil)
           return endpoint unless path
+          return path if URI.parse(path).relative? == false
 
           "#{endpoint}/#{path}"
         end
