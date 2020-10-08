@@ -4,6 +4,7 @@ require 'httparty'
 
 require_relative 'cloud/sdk_http'
 require_relative 'cloud/sdk/vpc'
+require_relative 'cloud/sdk/tags'
 
 module IBM
   # Holds the SDK pieces.
@@ -25,7 +26,8 @@ module IBM
       @connection.class.http_proxy(path, uri.port, uri.user, uri.password)
     end
 
-    def power
+    def tags
+      @tags ||= IBM::Cloud::SDK::Tags.new(@connection, @token, logger: @logger)
     end
 
     # Get an instance of the VPC API.
