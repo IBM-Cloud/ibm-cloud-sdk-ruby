@@ -2,7 +2,7 @@
 # frozen_string_literal: true
 
 require 'ibm/cloud/sdk_http'
-require_relative 'vpc/http_vpc'
+require_relative 'vpc/http'
 
 require_relative 'vpc/floatingips'
 require_relative 'vpc/flowlogcollectors'
