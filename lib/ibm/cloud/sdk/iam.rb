@@ -1,13 +1,18 @@
+require_relative 'logging'
+
 module IBM
   module Cloud
     module SDK
       class IAM < BaseService
+        include Logging
+
         def endpoint
           "https://iam.cloud.ibm.com".freeze
         end
 
         def initialize(api_key)
           @api_key = api_key
+          RestClient.log = logger
         end
 
         def get_identity_token
