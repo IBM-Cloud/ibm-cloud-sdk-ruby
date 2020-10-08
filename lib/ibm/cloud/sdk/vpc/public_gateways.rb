@@ -6,14 +6,14 @@ module IBM
     module SDK
       module VPC
         # A list of PublicGateway
-        class PublicGateways < BaseCollection
+        class PublicGateways < VPCCollection
           def initialize(parent)
             super(parent, 'public_gateways', child_class: PublicGateway)
           end
         end
 
         # A single PublicGateway
-        class PublicGateway < BaseInstance
+        class PublicGateway < VPCInstance
         end
       end
     end

@@ -6,14 +6,14 @@ module IBM
     module SDK
       module VPC
         # A collection of SSH keys.
-        class Keys < BaseCollection
+        class Keys < VPCCollection
           def initialize(parent)
             super(parent, 'keys', child_class: Key)
           end
         end
 
         # A single key.
-        class Key < BaseInstance
+        class Key < VPCInstance
         end
       end
     end

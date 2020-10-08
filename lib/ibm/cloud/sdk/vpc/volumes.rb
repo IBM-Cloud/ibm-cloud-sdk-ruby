@@ -6,14 +6,14 @@ module IBM
     module SDK
       module VPC
         # Work with a collection of volumes.
-        class Volumes < BaseCollection
+        class Volumes < VPCCollection
           def initialize(parent)
             super(parent, 'volumes', child_class: Volume)
           end
         end
 
         # Work with a single volume.
-        class Volume < BaseInstance
+        class Volume < VPCInstance
         end
       end
     end

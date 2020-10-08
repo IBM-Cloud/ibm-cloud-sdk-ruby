@@ -9,7 +9,7 @@ module IBM
     module SDK
       module VPC
         # Container that encapsulates the VPC API.
-        class BaseInstance < SDKHTTP::BaseInstance
+        class VPCInstance < SDKHTTP::BaseInstance
           include VpcHTTP
 
           # Get the CRN for the resource.

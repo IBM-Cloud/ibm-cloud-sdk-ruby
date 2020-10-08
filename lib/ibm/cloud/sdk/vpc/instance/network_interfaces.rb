@@ -9,14 +9,14 @@ module IBM
       module VPC
         module INSTANCE
           # All netowrk interfaces.
-          class NetworkInterfaces < BaseCollection
+          class NetworkInterfaces < VPCCollection
             def initialize(parent)
               super(parent, 'network_interfaces', child_class: NetworkInterface)
             end
           end
 
           # A single network insterface.
-          class NetworkInterface < BaseInstance
+          class NetworkInterface < VPCInstance
             def floating_ips
               FloatingIps.new(self)
             end

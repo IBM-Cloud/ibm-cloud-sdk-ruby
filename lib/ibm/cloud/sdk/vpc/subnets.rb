@@ -6,14 +6,14 @@ module IBM
     module SDK
       module VPC
         # A list of submetes
-        class Subnets < BaseCollection
+        class Subnets < VPCCollection
           def initialize(parent)
             super(parent, 'subnets', child_class: Subnet)
           end
         end
 
         # A single subnet
-        class Subnet < BaseInstance
+        class Subnet < VPCInstance
         end
       end
     end

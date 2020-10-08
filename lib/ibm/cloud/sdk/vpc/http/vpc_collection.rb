@@ -14,7 +14,7 @@ module IBM
         # @param endpoint [string] A path from the parent to the desired endpoint. In most cases is should be 1 word.
         # @param array_key [string] The key that the API response holds the endpoint data. When nil the endpoint will be used.
         # @param child_class [Object] The Object to be used when instanciating the single instance for this class.
-        class BaseCollection < SDKHTTP::BaseCollection
+        class VPCCollection < SDKHTTP::BaseCollection
           include VpcHTTP
 
           # A chainable method to set query filters on the collection.
@@ -57,7 +57,7 @@ module IBM
           # @param url [String] Full URL to send to server.
           # @return [Enumerator] Object to page through results.
           # @yield [BaseInstance] An instance of the instance class.
-          # @yield [Hash] When no BaseInstance set.
+          # @yield [Hash] When no VPCInstance set.
           def each_resource(url, &block)
             return enum_for(:each_resource, url) unless block_given?
             return unless url

@@ -6,14 +6,14 @@ module IBM
     module SDK
       module VPC
         # A list of subnets
-        class FlowLogCollectors < BaseCollection
+        class FlowLogCollectors < VPCCollection
           def initialize(parent)
             super(parent, 'flow_log_collectors', child_class: FlowLogCollectors)
           end
         end
 
         # A single subnet
-        class FlowLogCollector < BaseInstance; end
+        class FlowLogCollector < VPCInstance; end
       end
     end
   end

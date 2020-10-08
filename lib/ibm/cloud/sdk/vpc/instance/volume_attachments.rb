@@ -7,14 +7,14 @@ module IBM
       module VPC
         module INSTANCE
           # Get all attached volumes.
-          class VolumeAttachments < BaseCollection
+          class VolumeAttachments < VPCCollection
             def initialize(parent)
               super(parent, 'volume_attachments', child_class: VolumeAttachment)
             end
           end
 
           # A single attached volume.
-          class VolumeAttachment < BaseInstance
+          class VolumeAttachment < VPCInstance
           end
         end
       end

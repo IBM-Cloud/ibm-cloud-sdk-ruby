@@ -8,7 +8,7 @@ module IBM
     module SDK
       module VPC
         # A single LoadBalancer
-        class LoadBalancer < BaseInstance
+        class LoadBalancer < VPCInstance
           def statistics
             get('statistics')
           end

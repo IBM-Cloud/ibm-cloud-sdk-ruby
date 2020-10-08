@@ -6,14 +6,14 @@ module IBM
     module SDK
       module VPC
         # Work with multiple images.
-        class Images < BaseCollection
+        class Images < VPCCollection
           def initialize(parent)
             super(parent, 'images', child_class: Image)
           end
         end
 
         # Work with a single image.
-        class Image < BaseInstance
+        class Image < VPCInstance
         end
       end
     end

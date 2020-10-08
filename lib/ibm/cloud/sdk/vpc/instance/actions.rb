@@ -7,7 +7,7 @@ module IBM
       module VPC
         module INSTANCE
           # Actions for an instance.
-          class Actions < BaseCollection
+          class Actions < VPCCollection
             def initialize(parent)
               super(parent, 'actions')
             end

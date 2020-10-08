@@ -6,14 +6,14 @@ module IBM
     module SDK
       module VPC
         # A list of IKEPolicy
-        class IKEPolicies < BaseCollection
+        class IKEPolicies < VPCCollection
           def initialize(parent)
             super(parent, 'ike_policies', child_class: IKEPolicy)
           end
         end
 
         # A single IKEPolicy
-        class IKEPolicy < BaseInstance
+        class IKEPolicy < VPCInstance
           def connections
             get('connections')
           end

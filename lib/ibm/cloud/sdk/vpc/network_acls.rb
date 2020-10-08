@@ -6,14 +6,14 @@ module IBM
     module SDK
       module VPC
         # A list of NetworkACL
-        class NetworkACLs < BaseCollection
+        class NetworkACLs < VPCCollection
           def initialize(parent)
             super(parent, 'network_acls', child_class: NetworkACL)
           end
         end
 
         # A single NetworkACL
-        class NetworkACL < BaseInstance
+        class NetworkACL < VPCInstance
           def rules
             NETWORKACL::Rules.new(self)
           end
@@ -21,7 +21,7 @@ module IBM
 
         module NETWORKACL
           # A list of NetworkACL
-          class Rules < BaseCollection
+          class Rules < VPCCollection
             def initialize(parent)
               @array_key = 'network_acls'
               @instance = NetworkACL
@@ -30,7 +30,7 @@ module IBM
           end
 
           # A single NetworkACL
-          class Rule < BaseInstance
+          class Rule < VPCInstance
           end
         end
       end

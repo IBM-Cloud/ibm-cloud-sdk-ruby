@@ -9,7 +9,7 @@ module IBM
       module VPC
         module LOADBALANCER
           # A list of Policies
-          class Policies < BaseCollection
+          class Policies < VPCCollection
             def initialize(parent)
               @array_key = 'policies'
               @instance = Policy
@@ -18,7 +18,7 @@ module IBM
           end
 
           # A single Policy
-          class Policy < BaseInstance
+          class Policy < VPCInstance
             def rules
               Rules.new(self)
             end

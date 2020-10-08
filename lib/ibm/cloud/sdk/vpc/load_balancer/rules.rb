@@ -7,7 +7,7 @@ module IBM
       module VPC
         module LOADBALANCER
           # A list of Rule
-          class Rules < BaseCollection
+          class Rules < VPCCollection
             def initialize(parent)
               @array_key = 'rules'
               @instance = Rule
@@ -16,7 +16,7 @@ module IBM
           end
 
           # A single Rule
-          class Rule < BaseInstance
+          class Rule < VPCInstance
           end
         end
       end
