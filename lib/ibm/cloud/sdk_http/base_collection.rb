@@ -38,8 +38,15 @@ module IBM
 
         attr_reader :logger, :endpoint, :token, :connection
 
-        def params
-          raise NotImplementedError('Sample only, the params method needs to be customized in child class.')
+        # In a Child base class add the possible query parameters for the API and return self to make it chainable.
+        # When implemented usage would be Collection.params(limit: 2).get
+        # @return [BaseCollection] The instanticated class.
+        def params(limit: nil)
+          raise NotImplementedError('Sample only. The params method needs to be customized in child class.')
+          # rubocop:disable Lint/UnreachableCode
+          @params[:limit] = limit if limit
+          self
+          # rubocop:enable Lint/UnreachableCode
         end
 
         def reset_params
@@ -88,7 +95,7 @@ module IBM
         # @yield [BaseInstance] An instance of the instance class.
         # @yield [Hash] When no BaseInstance set.
         def each_resource(url, &block)
-          raise NotImplementedError('Sample only the each_resource method needs to be customized in child class.')
+          raise NotImplementedError('Sample only. The each_resource method needs to be customized in child class.')
           # rubocop:disable Lint/UnreachableCode
           # Sample implementation based on VPC.
           return enum_for(:each_resource, url) unless block_given?
