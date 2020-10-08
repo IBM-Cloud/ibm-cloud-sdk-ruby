@@ -89,31 +89,31 @@ module IBM
           value
         end
 
-        # Get without any additional logic.
-        # @param url [String] Full URL to send to server.
-        def adhoc_get(url)
-          @connection.request('get', url, metadata(@params)).raise_for_status!.json
-        end
-
         # Create a generator that removes the need for pagination.
         # @param url [String] Full URL to send to server.
         # @return [Enumerator] Object to page through results.
         # @yield [BaseInstance] An instance of the instance class.
         # @yield [Hash] When no BaseInstance set.
         def each_resource(url, &block)
+          raise NotImplementedError('Sample only the each_resource method needs to be customized in child class.')
+          # rubocop:disable Lint/UnreachableCode
+          # Sample implementation based on VPC.
           return enum_for(:each_resource, url) unless block_given?
           return unless url
 
-          response = adhoc_get(url)
+          response = get(path: url)
           resources = response.fetch(@array_key.to_sym)
 
           resources&.each { |value| yield hash_instance(value) }
+          # VPC has a next key that holds the next URL.
           return unless response.key?(:next)
 
+          # The next data structure is a hash with a href member.
           next_url = response.dig(:next, :href)
           return unless next_url
 
           each_resource(next_url, &block)
+          # rubocop:enable Lint/UnreachableCode
         end
       end
     end
