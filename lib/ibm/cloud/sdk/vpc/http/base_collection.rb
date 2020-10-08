@@ -1,7 +1,7 @@
 # typed: true
 # frozen_string_literal: true
 
-require_relative '../http_vpc'
+require_relative '../http'
 require_relative 'vpc_http'
 
 module IBM

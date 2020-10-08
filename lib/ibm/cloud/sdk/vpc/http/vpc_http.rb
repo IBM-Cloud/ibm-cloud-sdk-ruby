@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative '../http_vpc'
+require_relative '../http'
 
 module IBM
   module Cloud
