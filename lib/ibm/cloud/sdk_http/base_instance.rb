@@ -13,7 +13,6 @@ module IBM
         include BaseHTTPMixin
 
         def initialize(parent, data: {}, id_key: 'id', endpoint: nil)
-          # Call super to init the underlying class.
           @data = data
 
           endpoint ||= data[id_key.to_sym]
