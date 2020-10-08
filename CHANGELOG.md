@@ -1,6 +1,14 @@
 # Changelog
 All notable changes to the gem ibm-cloud-sdk-ruby will be documented here.
 
+## v0.1.10 - 2020-10-08
+- Change VPC http provider to HTTParty
+- Add Tags API and clean up VPC
+- Log ResourceController and IAM calls
+
+## v0.1.9 - 2020-10-02
+- Fix PowerVS Volume Attach/Detach calls
+
 ## v0.1.8 - 2020-10-01
 - Add second level instances
 
