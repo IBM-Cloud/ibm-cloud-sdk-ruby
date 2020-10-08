@@ -17,6 +17,20 @@ module IBM
         class BaseCollection < SDKHTTP::BaseCollection
           include VpcHTTP
 
+          # A chainable method to set query filters on the collection.
+          # @example vpc.images.params(limit: 1).all
+          #
+          # @param start [String] A server-supplied token determining what resource to start the page on.
+          # @param limit [Integer] The number of resources to return on a page  allowed values are between 1 and 100
+          # @param resource_group [String] Filters the collection to resources within one of the resource groups identified in a comma-separated list of resource group identifiers
+          # @return [BaseCollection] This class with the param instance variable set.
+          def params(start: nil, limit: nil, resource_group: nil)
+            @params[:start] = start if start
+            @params[:limit] = limit if limit
+            @params[:resource_group] = resource_group if resource_group
+            self
+          end
+
           # Determine if the collection has a total_count key in its response.
           # @return [Boolean]
           def has_count?
