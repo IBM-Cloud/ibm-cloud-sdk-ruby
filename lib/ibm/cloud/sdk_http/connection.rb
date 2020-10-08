@@ -11,7 +11,7 @@ module IBM
         include HTTParty
 
         def initialize(logger)
-          self.class.logger(logger)
+          self.class.logger(logger, :debug, :curl)
         end
 
         def default_options
