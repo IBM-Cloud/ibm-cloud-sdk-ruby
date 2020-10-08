@@ -49,4 +49,11 @@ RSpec.describe IBM::Cloud::SDK::Tags, vcr: { tag: :require_2xx } do
     t.reset_params
     expect(t.instance_variable_get(:@params).length).to eq(0)
   end
+
+  it 'instance_of returns empty list when param empty.' do
+    expect(tags.attached_to(nil)).to be_an_instance_of(Array)
+    expect(tags.attached_to(nil).empty?).to be true
+    expect(tags.attached_to('')).to be_an_instance_of(Array)
+    expect(tags.attached_to('').empty?).to be true
+  end
 end
