@@ -34,6 +34,7 @@ module IBM
         # @return [BaseInstance] This instance for chaining.
         def refresh
           @data.replace(details)
+          self
         end
 
         # Send an update to the server for this resource.
