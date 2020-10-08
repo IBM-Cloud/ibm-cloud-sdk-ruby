@@ -75,19 +75,19 @@ RSpec.describe 'Test vpc_instance API', vcr: { tag: :require_2xx } do # rubocop:
   let(:vpc) { VCR.use_cassette(token_cassette, { tags: %i[require_2xx token_request] }) { IBM::CloudSDK.new(ENV['IBM_CLOUD_APIKEY']).vpc } }
 
   it 'can be instantiated' do
-    expect(vpc.instances.first_instance).to be_an_instance_of(IBM::Cloud::SDK::VPC::Instance)
+    expect(vpc.instances.params(limit: 1).all.first).to be_an_instance_of(IBM::Cloud::SDK::VPC::Instance)
   end
 
   methods.each do |k, v|
     describe "Test subclass #{k}", :vcr do
-      let(:child) { vpc.instances.first_instance.send(k) }
+      let(:child) { vpc.instances.params(limit: 1).all.first.send(k) }
       include_examples 'children tests', k, v
     end
   end
 
   methods[:network_interfaces][:child_classes].each do |k, v|
     describe "Test network_interfaces subclass #{k}", :vcr do
-      let(:child) { vpc.instances.first_instance.network_interfaces.first_instance.send(k) }
+      let(:child) { vpc.instances.params(limit: 1).all.first.network_interfaces.params(limit: 1).all.first.send(k) }
       include_examples 'children tests', k, v
     end
   end
