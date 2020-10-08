@@ -6,14 +6,14 @@ module IBM
     module SDK
       module VPC
         # Work with multiple profiles.
-        class InstanceProfiles < BaseCollection
+        class InstanceProfiles < VPCCollection
           def initialize(parent)
             super(parent, 'instance/profiles', child_class: InstanceProfile, array_key: 'profiles')
           end
         end
 
         # Get a single profile.
-        class InstanceProfile < BaseInstance
+        class InstanceProfile < VPCInstance
         end
       end
     end

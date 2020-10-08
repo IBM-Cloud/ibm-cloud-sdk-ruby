@@ -8,7 +8,7 @@ module IBM
     module SDK
       module VPC
         # A list of Pool
-        class Pools < BaseCollection
+        class Pools < VPCCollection
           def initialize(parent)
             @array_key = 'pools'
             @instance = Pool
@@ -17,7 +17,7 @@ module IBM
         end
 
         # A single Pool
-        class Pool < BaseInstance
+        class Pool < VPCInstance
           def members
             Members.new(self)
           end

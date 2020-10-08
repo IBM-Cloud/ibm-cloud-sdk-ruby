@@ -9,7 +9,7 @@ module IBM
       module VPC
         module LOADBALANCER
           # A list of Listener
-          class Listeners < BaseCollection
+          class Listeners < VPCCollection
             def initialize(parent)
               @array_key = 'listeners'
               @instance = Listener
@@ -18,7 +18,7 @@ module IBM
           end
 
           # A single Listener
-          class Listener < BaseInstance
+          class Listener < VPCInstance
             def policies
               LOADBALANCER::Policies.new(self)
             end

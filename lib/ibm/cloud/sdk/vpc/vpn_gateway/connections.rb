@@ -10,7 +10,7 @@ module IBM
       module VPC
         module VPNGATEWAY
           # A list of Connection
-          class Connections < BaseCollection
+          class Connections < VPCCollection
             def initialize(parent)
               @array_key = 'connections'
               @instance = Connection
@@ -19,7 +19,7 @@ module IBM
           end
 
           # A single Connection
-          class Connection < BaseInstance
+          class Connection < VPCInstance
             def local_cidrs
               LocalCIDRs.new(self)
             end

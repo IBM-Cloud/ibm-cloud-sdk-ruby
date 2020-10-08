@@ -6,14 +6,14 @@ module IBM
     module SDK
       module VPC
         # A list of OperatingSystem
-        class OperatingSystems < BaseCollection
+        class OperatingSystems < VPCCollection
           def initialize(parent)
             super(parent, 'operating_systems', child_class: OperatingSystem)
           end
         end
 
         # A single OperatingSystem
-        class OperatingSystem < BaseInstance
+        class OperatingSystem < VPCInstance
         end
       end
     end

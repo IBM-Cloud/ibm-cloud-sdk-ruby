@@ -6,14 +6,14 @@ module IBM
     module SDK
       module VPC
         # Class that deals with groups of floating IPs.
-        class FloatingIPs < BaseCollection
+        class FloatingIPs < VPCCollection
           def initialize(parent)
             super(parent, 'floating_ips', child_class: FloatingIP)
           end
         end
 
         # Class that deals with a single floating IP.
-        class FloatingIP < BaseInstance; end
+        class FloatingIP < VPCInstance; end
       end
     end
   end

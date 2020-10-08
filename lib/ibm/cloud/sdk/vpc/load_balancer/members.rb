@@ -6,7 +6,7 @@ module IBM
     module SDK
       module VPC
         # A list of Member
-        class Members < BaseCollection
+        class Members < VPCCollection
           def initialize(parent)
             @array_key = 'members'
             @instance = Member
@@ -15,7 +15,7 @@ module IBM
         end
 
         # A single Member
-        class Member < BaseInstance
+        class Member < VPCInstance
         end
       end
     end

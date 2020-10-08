@@ -11,7 +11,7 @@ module IBM
       # Work with VPC instances.
       module VPC
         # Work with multiple VM instances.
-        class Instances < BaseCollection
+        class Instances < VPCCollection
           def initialize(parent)
             super(parent, 'instances', child_class: Instance)
           end
@@ -37,7 +37,7 @@ module IBM
         end
 
         # Work with a single instance.
-        class Instance < BaseInstance
+        class Instance < VPCInstance
           def actions
             INSTANCE::Actions.new(self)
           end

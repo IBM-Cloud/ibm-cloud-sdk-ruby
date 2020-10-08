@@ -6,14 +6,14 @@ module IBM
     module SDK
       module VPC
         # A list of Vpc
-        class Vpcs < BaseCollection
+        class Vpcs < VPCCollection
           def initialize(parent)
             super(parent, 'vpcs', child_class: VpcInstance)
           end
         end
 
         # A single Vpc
-        class VpcInstance < BaseInstance
+        class VpcInstance < VPCInstance
           def default_network_acl
             get('default_network_acl')
           end
@@ -33,25 +33,25 @@ module IBM
 
         module VPCS
           # A list of Vpc
-          class AddressPrefixes < BaseCollection
+          class AddressPrefixes < VPCCollection
             def initialize(parent)
               super(parent, 'address_prefixes', child_class: AddressPrefix)
             end
           end
 
           # A single Vpc
-          class AddressPrefix < BaseInstance
+          class AddressPrefix < VPCInstance
           end
 
           # A list of Vpc
-          class Routes < BaseCollection
+          class Routes < VPCCollection
             def initialize(parent)
               super(parent, 'routes', child_class: Route)
             end
           end
 
           # A single Vpc
-          class Route < BaseInstance
+          class Route < VPCInstance
           end
         end
       end

@@ -8,7 +8,7 @@ module IBM
     module SDK
       module VPC
         # A list of LoadBalancer
-        class LoadBalancers < BaseCollection
+        class LoadBalancers < VPCCollection
           def initialize(parent)
             super(parent, 'load_balancers', child_class: LoadBalancer)
           end

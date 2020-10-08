@@ -6,14 +6,14 @@ module IBM
     module SDK
       module VPC
         # Work with Volume Profiles.
-        class VolumeProfiles < BaseCollection
+        class VolumeProfiles < VPCCollection
           def initialize(parent)
             super(parent, 'volume/profiles', child_class: VolumeProfile, array_key: 'profiles')
           end
         end
 
         # Work with a single volume profile.
-        class VolumeProfile < BaseInstance
+        class VolumeProfile < VPCInstance
         end
       end
     end

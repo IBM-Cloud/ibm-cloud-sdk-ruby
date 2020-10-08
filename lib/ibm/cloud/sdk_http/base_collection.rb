@@ -18,7 +18,7 @@ module IBM
 
         def initialize(parent, endpoint, array_key: nil, child_class: nil, child_id: 'id')
           # Setup empty base instance variables.
-          @params = nil
+          @params = {}
           @token = parent.token
           array_key ||= endpoint
 
@@ -38,25 +38,25 @@ module IBM
 
         attr_reader :logger, :endpoint, :token, :connection
 
-        # A chainable method to set query filters on the collection.
-        # @example vpc.images.params(limit: 1).all
-        #
-        # @param start [String] A server-supplied token determining what resource to start the page on.
-        # @param limit [Integer] The number of resources to return on a page  allowed values are between 1 and 100
-        # @param resource_group [String] Filters the collection to resources within one of the resource groups identified in a comma-separated list of resource group identifiers
-        # @return [BaseCollection] This class with the param instance variable set.
-        def params(start: nil, limit: nil, resource_group: nil)
-          @params = {}
-          @params[:start] = start if start
+        # In a Child base class add the possible query parameters for the API and return self to make it chainable.
+        # When implemented usage would be Collection.params(limit: 2).get
+        # @return [BaseCollection] The instanticated class.
+        def params(limit: nil)
+          raise NotImplementedError('Sample only. The params method needs to be customized in child class.')
+          # rubocop:disable Lint/UnreachableCode
           @params[:limit] = limit if limit
-          @params[:resource_group] = resource_group if resource_group
           self
+          # rubocop:enable Lint/UnreachableCode
+        end
+
+        def reset_params
+          @params.clear
         end
 
         # Retrieve the collection from the cloud.
         # @return [IBM::Cloud::SDK::VPC::Response] The http response object.
         def fetch
-          @data ||= get(params: @params)
+          @data ||= get
         end
 
         # Get an iterable for the resource collection.
@@ -89,31 +89,31 @@ module IBM
           value
         end
 
-        # Get without any additional logic.
-        # @param url [String] Full URL to send to server.
-        def adhoc_get(url)
-          @connection.request('get', url, metadata(@params)).raise_for_status!.json
-        end
-
         # Create a generator that removes the need for pagination.
         # @param url [String] Full URL to send to server.
         # @return [Enumerator] Object to page through results.
         # @yield [BaseInstance] An instance of the instance class.
         # @yield [Hash] When no BaseInstance set.
         def each_resource(url, &block)
+          raise NotImplementedError('Sample only. The each_resource method needs to be customized in child class.')
+          # rubocop:disable Lint/UnreachableCode
+          # Sample implementation based on VPC.
           return enum_for(:each_resource, url) unless block_given?
           return unless url
 
-          response = adhoc_get(url)
+          response = get(path: url)
           resources = response.fetch(@array_key.to_sym)
 
           resources&.each { |value| yield hash_instance(value) }
+          # VPC has a next key that holds the next URL.
           return unless response.key?(:next)
 
+          # The next data structure is a hash with a href member.
           next_url = response.dig(:next, :href)
           return unless next_url
 
           each_resource(next_url, &block)
+          # rubocop:enable Lint/UnreachableCode
         end
       end
     end

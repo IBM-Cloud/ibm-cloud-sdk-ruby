@@ -7,7 +7,7 @@ module IBM
       module VPC
         module VPNGATEWAY
           # A list of Connection
-          class PeerCIDRs < BaseCollection
+          class PeerCIDRs < VPCCollection
             def initialize(parent)
               @array_key = 'peer_cidrs'
               @instance = Connection
@@ -20,7 +20,7 @@ module IBM
           end
 
           # A single Connection
-          class PeerCIDR < BaseInstance
+          class PeerCIDR < VPCInstance
             def update(payload)
               put(payload)
             end
