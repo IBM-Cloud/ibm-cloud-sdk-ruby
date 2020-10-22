@@ -11,16 +11,10 @@ module IBM
         module VpcHTTP
           include SDKHTTP::BaseHTTPMixin
 
-          def metadata(query = nil, payload = nil)
-            @params ||= {}
-            @params.merge!(query) if query
-
-            payload ||= {}
-            {
-              query: { version: '2020-08-01', generation: 2 }.merge(@params),
-              body: payload,
-              headers: { "Authorization": @token.authorization_header }
-            }
+          def metadata(query = nil, payload = nil, payload_type = 'json')
+            default_params = { version: '2020-08-01', generation: 2 }
+            default_params.merge!(query) if query
+            super(default_params, payload, payload_type)
           end
         end
       end
