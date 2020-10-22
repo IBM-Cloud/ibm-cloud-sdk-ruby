@@ -49,6 +49,9 @@ module IBM
               @response = response
               @data = response.json
               @keys = %i[type force created_at]
+              @deprecated = %i[completed_at started_at status id href]
+
+              clear_deprecated
               add_inst_vars(@keys)
             end
 
@@ -61,10 +64,10 @@ module IBM
             end
 
             # The HTTP response object.
-            attr_accessor :response
+            attr_accessor :response, :data
 
             extend Forwardable
-            def_delegators :@data, :[], :dig, :each_pair, :fetch, :has_key?, :has_value?, :include?, :index, :inspect, :key?, :keys, :length, :merge, :merge!, :clear, :to_h, :value?, :values, :pretty_print
+            def_delegators :@data, :[], :dig, :each_pair, :each, :fetch, :has_key?, :has_value?, :include?, :index, :inspect, :key?, :keys, :length, :merge, :merge!, :clear, :to_h, :value?, :values, :pretty_print
 
             private
 
@@ -73,6 +76,13 @@ module IBM
               keys.each do |k|
                 instance_variable_set "@#{k}", @data[k]
                 self.class.attr_accessor k unless respond_to?(k)
+              end
+            end
+
+            # Remove deprecated keys from hash.
+            def clear_deprecated
+              @data.each do |k, _v|
+                @data.delete(k) if @deprecated.include?(k)
               end
             end
           end
