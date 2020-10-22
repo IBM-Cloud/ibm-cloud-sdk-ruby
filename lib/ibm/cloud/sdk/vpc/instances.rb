@@ -38,20 +38,110 @@ module IBM
 
         # Work with a single instance.
         class Instance < VPCInstance
+          TRANSITIONAL_STATES = %(pausing pending restarting resuming starting stopping)
+          ERROR_STATE = 'failed'
+          RUNNING_STATE = 'running'
+          STOPPED_STATES = %('stopped', 'paused')
+
+          # The id of this VM.
+          def id
+            @data[:id]
+          end
+
+          # The name of this VM.
+          def name
+            @data[:name]
+          end
+
+          # The status of the virtual server instance. Possible values: [failed,paused,pausing,pending,restarting,resuming,running,starting,stopped,stopping]
+          def status
+            @data[:status]
+          end
+
+          # Whether the state of the VM is in failed state.
+          # @return [Boolean]
+          def failed?
+            status == ERROR_STATE
+          end
+
+          # Whether the state of the VM is in the started state.
+          # @return [Boolean]
+          def started?
+            status == RUNNING_STATE
+          end
+
+          # Whether the state of the VM is in a stopped or paused state.
+          # @return [Boolean]
+          def stopped?
+            STOPPED_STATES.include?(status)
+          end
+
+          # Whether the state of the VM is in a transitional state.
+          # @return [Boolean]
+          def transtional?
+            TRANSITIONAL_STATES.include?(status)
+          end
+
+          # Interact with instance actions.
+          # @return [INSTANCE::Actions]
           def actions
             INSTANCE::Actions.new(self)
           end
 
+          # Interact with instance network interfaces.
+          # @return [INSTANCE::NetworkInterfaces]
           def network_interfaces
             INSTANCE::NetworkInterfaces.new(self)
           end
 
+          # Interact with instance volume attachements.
+          # @return [INSTANCE::VolumeAttachments]
           def volume_attachments
             INSTANCE::VolumeAttachments.new(self)
           end
 
+          # Return the data used for initializing this VM.
           def initialization
             adhoc(method: 'get', path: 'initialization').json
+          end
+
+          # Wait for the VM instance to be in a stable state.
+          # @param started [Boolean] When true wait for started, when false wait for stopped.
+          # @param sleep_time [Integer] The time to sleep between refreshes.
+          # @param timeout [Integer] The number of seconds before raising an error.
+          # @return [Boolean] The return of the status check.
+          # @raise [RuntimeError] Instance goes into failed state.
+          # @raise [RuntimeError] Timeout has been reached.
+          def wait_for(started: true, sleep_time: 5, timeout: 600)
+            refresh
+            # When in transitional state wait for it to be stable.
+            until test_state(started)
+              raise "VM #{id} is in a failed state." if failed?
+
+              timeout = sleep_counter(sleep_time, timeout)
+              raise "Time out while waiting #{id} to be stable." if timeout <= 0
+
+              refresh
+            end
+            test_state(started)
+          end
+
+          private
+
+          # Used with wait_for return true if started is true and vm is started, or started is false and vm is stopped.
+          # @return [Boolean]
+          def test_state(started)
+            return true if started && started?
+            return true if started == false && stopped?
+
+            false
+          end
+
+          # Sleep for the specificed time and decrement timout by that number.
+          # @return [Integer] The current timeout.
+          def sleep_counter(sleep_time, timeout)
+            sleep sleep_time
+            timeout - sleep_time
           end
         end
       end
