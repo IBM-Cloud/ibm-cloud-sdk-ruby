@@ -22,7 +22,7 @@ module IBM
           # A single Connection
           class PeerCIDR < VPCInstance
             def update(payload)
-              put(payload)
+              put(payload: payload)
             end
           end
         end
