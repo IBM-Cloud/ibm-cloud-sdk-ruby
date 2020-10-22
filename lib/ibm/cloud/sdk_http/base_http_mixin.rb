@@ -10,45 +10,51 @@ module IBM
       module BaseHTTPMixin
         @connection = nil
 
-        def adhoc(method: 'get', path: nil, params: {}, payload: {})
+        def adhoc(method: 'get', path: nil, params: nil, payload: nil)
           unchecked_response(method: method, path: path, params: params, payload: payload).raise_for_status!
         end
 
-        def unchecked_response(method: 'get', path: nil, params: {}, payload: {})
+        def unchecked_response(method: 'get', path: nil, params: nil, payload: nil)
           @connection.request(method.to_sym, url(path), metadata(params, payload))
         end
 
-        def get(path: nil, params: {})
+        def get(path: nil, params: nil)
           adhoc(method: 'get', path: path, params: params)
         end
 
         attr_reader :endpoint
 
-        def post(payload = {}, path: nil, params: {})
+        def post(payload: nil, path: nil, params: nil)
           adhoc(method: 'post', path: path, params: params, payload: payload)
         end
 
-        def put(payload = {}, path: nil, params: {})
+        def put(payload: nil, path: nil, params: nil)
           adhoc(method: 'put', path: path, params: params, payload: payload)
         end
 
-        def patch(payload = {},  path: nil, params: {})
+        def patch(payload: nil, path: nil, params: nil)
           adhoc(method: 'patch', path: path, params: params, payload: payload)
         end
 
-        def delete(path: nil, params: {})
+        def delete(path: nil, params: nil)
           adhoc(method: 'delete', path: path, params: params)
         end
 
-        def metadata(query = nil, payload = nil)
+        def metadata(query = nil, payload = nil, payload_type = 'json')
           @params ||= {}
-          query ||= {}
-          payload ||= {}
-          {
-            query: @params.merge(query),
-            body: payload,
+          @params.merge!(query) if query
+
+          send_parameters = {
+            query: @params,
             headers: { "Authorization": @token.authorization_header }
           }
+
+          # Add payload if it is not nil.
+          if payload && payload.empty? == false
+            payload = payload.to_json if payload_type == 'json'
+            send_parameters[:body] = payload
+          end
+          send_parameters
         end
 
         def url(path = nil)
