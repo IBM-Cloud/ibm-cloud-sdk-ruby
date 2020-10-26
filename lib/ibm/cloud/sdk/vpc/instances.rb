@@ -78,7 +78,7 @@ module IBM
 
           # Whether the state of the VM is in a transitional state.
           # @return [Boolean]
-          def transtional?
+          def transitional?
             TRANSITIONAL_STATES.include?(status)
           end
 
