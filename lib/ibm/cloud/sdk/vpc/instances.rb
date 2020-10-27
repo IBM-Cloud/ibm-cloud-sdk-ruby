@@ -109,6 +109,7 @@ module IBM
           # @param started [Boolean] When true wait for started, when false wait for stopped.
           # @param sleep_time [Integer] The time to sleep between refreshes.
           # @param timeout [Integer] The number of seconds before raising an error.
+          # @param block [Proc] A block to test against. Must return a boolean.
           # @return [Boolean] The return of the status check.
           # @raise [RuntimeError] Instance goes into failed state.
           # @raise [RuntimeError] Timeout has been reached.
