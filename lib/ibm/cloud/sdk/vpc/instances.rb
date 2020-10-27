@@ -112,28 +112,31 @@ module IBM
           # @return [Boolean] The return of the status check.
           # @raise [RuntimeError] Instance goes into failed state.
           # @raise [RuntimeError] Timeout has been reached.
-          def wait_for(started: true, sleep_time: 5, timeout: 600)
-            refresh
-            # When in transitional state wait for it to be stable.
-            until test_state(started)
+          def wait_for(started: true, sleep_time: 5, timeout: 600, &block)
+            @logger.info("Starting wait for, instance #{id} starts in state #{status}.")
+            until test_state(started: started, &block)
               raise "VM #{id} is in a failed state." if failed?
 
               timeout = sleep_counter(sleep_time, timeout)
               raise "Time out while waiting #{id} to be stable." if timeout <= 0
-
-              refresh
             end
-            test_state(started)
+            @logger.info("Finished wait for instance #{id} ends in state #{status}.")
+            test_state(&block)
           end
 
           private
 
           # Used with wait_for return true if started is true and vm is started, or started is false and vm is stopped.
           # @return [Boolean]
-          def test_state(started)
-            return true if started && started?
-            return true if started == false && stopped?
-
+          def test_state(started: true, &block)
+            refresh
+            @logger.info("Testing state of instance #{id} with status #{status}")
+            if block_given?
+              return true if block.call
+            else
+              return true if started && started?
+              return true if started == false && stopped?
+            end
             false
           end
 
