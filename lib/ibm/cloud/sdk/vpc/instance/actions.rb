@@ -17,25 +17,26 @@ module IBM
 
             # Send an action request to start the instance.
             def start
-              send_action('start')
+              create('start')
             end
 
             # Send an action request to stop the instance.
             # @param force [Boolean] Clear the queue and run this action.
             def stop(force: false)
-              send_action('stop', force: force)
+              create('stop', force: force)
             end
 
             # Send an action request to reboot the instance.
             # @param force [Boolean] Clear the queue and run this action.
             def reboot(force: false)
-              send_action('reboot', force: force)
+              create('reboot', force: force)
             end
 
             # Send a custom action request.
             # @param action [String] The type of action. Allowable values: [reboot, start, stop]
             # @param force [Boolean] If set to true, the action will be forced immediately, and all queued actions deleted. Ignored for the start action.
-            def send_action(action, force: false)
+            def create(action, force: false)
+              @logger.info("Sending action request for #{action} with force #{force}.")
               payload = { type: action }
               payload[:force] = force if force
               response = post(payload: payload)
