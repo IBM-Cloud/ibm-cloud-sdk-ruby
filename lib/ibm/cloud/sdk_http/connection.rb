@@ -11,7 +11,13 @@ module IBM
         include HTTParty
 
         def initialize(logger)
-          self.class.logger(logger, :debug, :curl)
+          @logger = logger
+          self.class.logger(logger, :debug, :apache)
+        end
+
+        # Set the logger type to curl which has more information.
+        def verbose_logger=(verbosity)
+          default_options[:log_format] = verbosity ? :curl : :apache
         end
 
         def default_options
