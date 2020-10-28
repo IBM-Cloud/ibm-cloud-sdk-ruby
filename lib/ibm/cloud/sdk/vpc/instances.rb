@@ -110,7 +110,6 @@ module IBM
           # @param sleep_time [Integer] The time to sleep between refreshes.
           # @param timeout [Integer] The number of seconds before raising an error.
           # @param block [Proc] A block to test against. Must return a boolean.
-          # @return [Boolean] The return of the status check.
           # @raise [RuntimeError] Instance goes into failed state.
           # @raise [RuntimeError] Timeout has been reached.
           def wait_for(started: true, sleep_time: 5, timeout: 600, &block)
@@ -122,7 +121,6 @@ module IBM
               raise "Time out while waiting #{id} to be stable." if timeout <= 0
             end
             @logger.info("Finished wait for instance #{id} ends in state #{status}.")
-            test_state(&block)
           end
 
           private
