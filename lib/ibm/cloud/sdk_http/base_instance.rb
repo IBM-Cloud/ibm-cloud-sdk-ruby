@@ -39,7 +39,7 @@ module IBM
 
         # Send an update to the server for this resource.
         def update(payload)
-          patch(payload)
+          patch(payload: payload)
         end
 
         # Send a delete request to the server for this resource.
