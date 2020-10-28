@@ -111,7 +111,7 @@ module IBM
           # @param block [Proc] A block to test against. Must return a boolean.
           # @raise [RuntimeError] Instance goes into failed state.
           # @raise [RuntimeError] Timeout has been reached.
-          def wait_for(sleep_time: 5, timeout: 600, &block)
+          def wait_for!(sleep_time: 5, timeout: 600, &block)
             @logger.info("Starting wait for instance #{id}. Starts in state #{status}.")
             loop do
               refresh
@@ -127,15 +127,19 @@ module IBM
           # Wait for the VM instance to be have a started status.
           # @param sleep_time [Integer] The time to sleep between refreshes.
           # @param timeout [Integer] The number of seconds before raising an error.
-          def wait_for_started(sleep_time: 5, timeout: 600)
-            wait_for(sleep_time: sleep_time, timeout: timeout, &:started?)
+          # @raise [RuntimeError] Instance goes into failed state.
+          # @raise [RuntimeError] Timeout has been reached.
+          def wait_for_started!(sleep_time: 5, timeout: 600)
+            wait_for!(sleep_time: sleep_time, timeout: timeout, &:started?)
           end
 
           # Wait for the VM instance to be have a stopped status.
           # @param sleep_time [Integer] The time to sleep between refreshes.
           # @param timeout [Integer] The number of seconds before raising an error.
-          def wait_for_stopped(sleep_time: 5, timeout: 600)
-            wait_for(sleep_time: sleep_time, timeout: timeout, &:stopped?)
+          # @raise [RuntimeError] Instance goes into failed state.
+          # @raise [RuntimeError] Timeout has been reached.
+          def wait_for_stopped!(sleep_time: 5, timeout: 600)
+            wait_for!(sleep_time: sleep_time, timeout: timeout, &:stopped?)
           end
 
           private
