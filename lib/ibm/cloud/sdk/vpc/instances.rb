@@ -38,10 +38,10 @@ module IBM
 
         # Work with a single instance.
         class Instance < VPCInstance
-          TRANSITIONAL_STATES = %(pausing pending restarting resuming starting stopping)
+          TRANSITIONAL_STATES = %w[pausing pending restarting resuming starting stopping].freeze
           ERROR_STATE = 'failed'
           RUNNING_STATE = 'running'
-          STOPPED_STATES = %('stopped', 'paused')
+          STOPPED_STATES = %w[stopped paused].freeze
 
           # The id of this VM.
           def id
