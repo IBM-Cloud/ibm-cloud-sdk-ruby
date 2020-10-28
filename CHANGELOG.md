@@ -1,6 +1,9 @@
 # Changelog
 All notable changes to the gem ibm-cloud-sdk-ruby will be documented here.
 
+## v0.1.11 - 2020-10-28
+- Add start, stop, and reboot actions on VPC instances
+
 ## v0.1.10 - 2020-10-08
 - Change VPC http provider to HTTParty
 - Add Tags API and clean up VPC
