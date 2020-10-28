@@ -106,38 +106,39 @@ module IBM
           end
 
           # Wait for the VM instance to be in a stable state.
-          # @param started [Boolean] When true wait for started, when false wait for stopped.
           # @param sleep_time [Integer] The time to sleep between refreshes.
           # @param timeout [Integer] The number of seconds before raising an error.
           # @param block [Proc] A block to test against. Must return a boolean.
           # @raise [RuntimeError] Instance goes into failed state.
           # @raise [RuntimeError] Timeout has been reached.
-          def wait_for(started: true, sleep_time: 5, timeout: 600, &block)
-            @logger.info("Starting wait for, instance #{id} starts in state #{status}.")
-            until test_state(started: started, &block)
+          def wait_for(sleep_time: 5, timeout: 600, &block)
+            @logger.info("Starting wait for instance #{id}. Starts in state #{status}.")
+            loop do
+              refresh
               raise "VM #{id} is in a failed state." if failed?
+              break if block.call(self)
 
               timeout = sleep_counter(sleep_time, timeout)
               raise "Time out while waiting #{id} to be stable." if timeout <= 0
             end
-            @logger.info("Finished wait for instance #{id} ends in state #{status}.")
+            @logger.info("Finished wait for instance #{id}. Ends in state #{status}.")
+          end
+
+          # Wait for the VM instance to be have a started status.
+          # @param sleep_time [Integer] The time to sleep between refreshes.
+          # @param timeout [Integer] The number of seconds before raising an error.
+          def wait_for_started(sleep_time: 5, timeout: 600)
+            wait_for(sleep_time: sleep_time, timeout: timeout, &:started?)
+          end
+
+          # Wait for the VM instance to be have a stopped status.
+          # @param sleep_time [Integer] The time to sleep between refreshes.
+          # @param timeout [Integer] The number of seconds before raising an error.
+          def wait_for_stopped(sleep_time: 5, timeout: 600)
+            wait_for(sleep_time: sleep_time, timeout: timeout, &:stopped?)
           end
 
           private
-
-          # Used with wait_for return true if started is true and vm is started, or started is false and vm is stopped.
-          # @return [Boolean]
-          def test_state(started: true, &block)
-            refresh
-            @logger.info("Testing state of instance #{id} with status #{status}")
-            if block_given?
-              return true if block.call
-            else
-              return true if started && started?
-              return true if started == false && stopped?
-            end
-            false
-          end
 
           # Sleep for the specificed time and decrement timout by that number.
           # @return [Integer] The current timeout.
