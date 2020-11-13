@@ -20,16 +20,19 @@ namespace :openapi do
     target_symlink = "openapi-generator-cli"
 
     unless File.exist?(target_file)
-      puts "Downloading openapi-generator-cli-#{version}.jar..."
+      output_file = "openapi-generator-cli-#{version}"
 
-      uri = URI("https://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli/#{version}/openapi-generator-cli-#{version}.jar")
+      puts "Downloading #{output_file}..."
 
-      require "net/http"
-      response = Net::HTTP.get_response(uri)
-      response.value
+      uri = URI("https://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli/#{version}/#{output_file}")
 
-      File.write("openapi-generator-cli-#{version}", response.body)
-      puts "Downloading openapi-generator-cli-#{version}.jar...Complete"
+      open(output_file, "wb") do |f|
+        download(uri) do |chunk|
+          f.write(chunk)
+        end
+      end
+
+      puts "Downloading #{output_file}...Complete"
     end
 
     File.unlink(target_symlink) if File.exist?(target_symlink)
@@ -45,17 +48,11 @@ namespace :openapi do
 
       puts "Downloading #{uri}..."
 
-      require "net/http"
-      response = Net::HTTP.start(uri.hostname, uri.port, :use_ssl => uri.scheme == "https") do |http|
-        request = Net::HTTP::Get.new(uri)
-        request["User-Agent"] = "not-ruby"
-
-        http.request(request)
+      open(output_file, "w") do |f|
+        download(uri) { |chunk| f.write(chunk) }
       end
 
       puts "Downloading #{uri}...Complete"
-
-      File.write(output_file, response.body)
     end
   end
 
@@ -66,6 +63,27 @@ namespace :openapi do
       config_file  = "#{output_path}/.openapi-config.json"
 
       system("java -jar openapi-generator-cli generate --skip-validate-spec -i #{openapi_json} -c #{config_file} -g ruby -o #{output_path}")
+    end
+  end
+
+  private
+
+  def download(uri)
+    require "net/http"
+
+    Net::HTTP.start(uri.hostname, uri.port, :use_ssl => uri.scheme == "https") do |http|
+      request = Net::HTTP::Get.new(uri)
+      request["User-Agent"] = "Not-Ruby"
+
+      http.request(request) do |response|
+        if block_given?
+          response.read_body do |chunk|
+            yield chunk
+          end
+        else
+          response.body
+        end
+      end
     end
   end
 end
