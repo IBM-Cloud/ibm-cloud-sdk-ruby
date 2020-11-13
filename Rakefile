@@ -19,19 +19,19 @@ namespace :openapi do
     target_file    = "openapi-generator-cli-#{version}"
     target_symlink = "openapi-generator-cli"
 
-    next if File.exist?(target_file)
+    unless File.exist?(target_file)
+      puts "Downloading openapi-generator-cli-#{version}.jar..."
 
-    puts "Downloading openapi-generator-cli-#{version}.jar..."
+      uri = URI("https://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli/#{version}/openapi-generator-cli-#{version}.jar")
 
-    uri = URI("https://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli/#{version}/openapi-generator-cli-#{version}.jar")
+      require "net/http"
+      response = Net::HTTP.get_response(uri)
+      response.value
 
-    require "net/http"
-    response = Net::HTTP.get_response(uri)
-    response.value
+      File.write("openapi-generator-cli-#{version}", response.body)
+      puts "Downloading openapi-generator-cli-#{version}.jar...Complete"
+    end
 
-    puts "Downloading openapi-generator-cli-#{version}.jar...Complete"
-
-    File.write("openapi-generator-cli-#{version}", response.body)
     File.unlink(target_symlink) if File.exist?(target_symlink)
     File.symlink(target_file, target_symlink)
   end
