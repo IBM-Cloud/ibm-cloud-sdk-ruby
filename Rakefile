@@ -40,12 +40,22 @@ namespace :openapi do
     require "json"
 
     IBM_CLOUD_GEMS.each do |api_gem, openapi_json|
-      url          = "https://cloud.ibm.com/apidocs/#{openapi_json}"
+      uri          = URI("https://cloud.ibm.com/apidocs/#{openapi_json}")
       output_file  = openapi_json.sub("/", "-")
 
-      puts "Downloading #{url}..."
-      system("curl #{url} > #{output_file} 2>/dev/null")
-      puts "Downloading #{url}...Complete"
+      puts "Downloading #{uri}..."
+
+      require "net/http"
+      response = Net::HTTP.start(uri.hostname, uri.port, :use_ssl => uri.scheme == "https") do |http|
+        request = Net::HTTP::Get.new(uri)
+        request["User-Agent"] = "not-ruby"
+
+        http.request(request)
+      end
+
+      puts "Downloading #{uri}...Complete"
+
+      File.write(output_file, response.body)
     end
   end
 
