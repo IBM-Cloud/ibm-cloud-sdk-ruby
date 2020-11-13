@@ -26,11 +26,7 @@ namespace :openapi do
 
       uri = URI("https://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli/#{version}/#{output_file}")
 
-      open(output_file, "wb") do |f|
-        download(uri) do |chunk|
-          f.write(chunk)
-        end
-      end
+      open(output_file, "wb") { |f| download(uri, f) }
 
       puts "Downloading #{output_file}...Complete"
     end
@@ -48,9 +44,7 @@ namespace :openapi do
 
       puts "Downloading #{uri}..."
 
-      open(output_file, "w") do |f|
-        download(uri) { |chunk| f.write(chunk) }
-      end
+      open(output_file, "w") { |f| download(uri, f) }
 
       puts "Downloading #{uri}...Complete"
     end
@@ -68,7 +62,7 @@ namespace :openapi do
 
   private
 
-  def download(uri)
+  def download(uri, io)
     require "net/http"
 
     Net::HTTP.start(uri.hostname, uri.port, :use_ssl => uri.scheme == "https") do |http|
@@ -76,10 +70,8 @@ namespace :openapi do
       request["User-Agent"] = "Not-Ruby"
 
       http.request(request) do |response|
-        if block_given?
-          response.read_body do |chunk|
-            yield chunk
-          end
+        if io
+          response.read_body { |chunk| io.write(chunk) }
         else
           response.body
         end
