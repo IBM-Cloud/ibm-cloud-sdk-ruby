@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **account_id** | **String** | An alpha-numeric value identifying the account ID. | [optional] 
 **resource_group_id** | **String** | The short ID of the resource group. | [optional] 
 **source_crn** | **String** | The CRN of resource instance or alias associated to the key. | [optional] 
+**role** | **String** | The role CRN. | [optional] 
 **state** | **String** | The state of the key. | [optional] 
 **credentials** | [**Credentials**](Credentials.md) | The credentials for the key. Additional key-value pairs are passed through from the resource brokers.  Refer to service’s documentation for additional details. | [optional] 
 **iam_compatible** | **Boolean** | Specifies whether the key’s credentials support IAM. | [optional] 
@@ -19,6 +20,9 @@ Name | Type | Description | Notes
 **created_at** | **DateTime** | The date when the key was created. | [optional] 
 **updated_at** | **DateTime** | The date when the key was last updated. | [optional] 
 **deleted_at** | **DateTime** | The date when the key was deleted. | [optional] 
+**created_by** | **String** | The subject who created the key. | [optional] 
+**updated_by** | **String** | The subject who updated the key. | [optional] 
+**deleted_by** | **String** | The subject who deleted the key. | [optional] 
 
 ## Code Sample
 
@@ -33,13 +37,17 @@ instance = IbmCloudResourceController::ResourceKey.new(id: null,
                                  account_id: null,
                                  resource_group_id: null,
                                  source_crn: null,
+                                 role: null,
                                  state: null,
                                  credentials: null,
                                  iam_compatible: null,
                                  resource_instance_url: null,
                                  created_at: null,
                                  updated_at: null,
-                                 deleted_at: null)
+                                 deleted_at: null,
+                                 created_by: null,
+                                 updated_by: null,
+                                 deleted_by: null)
 ```
 
 

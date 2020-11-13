@@ -22,6 +22,9 @@ Name | Type | Description | Notes
 **created_at** | **DateTime** | The date when the alias was created. | [optional] 
 **updated_at** | **DateTime** | The date when the alias was last updated. | [optional] 
 **deleted_at** | **DateTime** | The date when the alias was deleted. | [optional] 
+**created_by** | **String** | The subject who created the alias. | [optional] 
+**updated_by** | **String** | The subject who updated the alias. | [optional] 
+**deleted_by** | **String** | The subject who deleted the alias. | [optional] 
 
 ## Code Sample
 
@@ -45,7 +48,10 @@ instance = IbmCloudResourceController::ResourceAlias.new(id: null,
                                  resource_keys_url: null,
                                  created_at: null,
                                  updated_at: null,
-                                 deleted_at: null)
+                                 deleted_at: null,
+                                 created_by: null,
+                                 updated_by: null,
+                                 deleted_by: null)
 ```
 
 

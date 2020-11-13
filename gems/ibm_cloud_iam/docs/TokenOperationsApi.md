@@ -4,9 +4,9 @@ All URIs are relative to *https://iam.cloud.ibm.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**get_token_api_key**](TokenOperationsApi.md#get_token_api_key) | **POST** /identity/token#apikey | Create an IAM access token for a user or service ID using an API key.
-[**get_token_api_key_delegated_refresh_token**](TokenOperationsApi.md#get_token_api_key_delegated_refresh_token) | **POST** /identity/token#apikey-delegated-refresh-token | Create an IAM access token and delegated refresh token for a user or service ID.
-[**get_token_iam_authz**](TokenOperationsApi.md#get_token_iam_authz) | **POST** /identity/token#iam-authz | Create an IAM access token based on an authorization policy.
+[**get_token_api_key**](TokenOperationsApi.md#get_token_api_key) | **POST** /identity/token#apikey | Create an IAM access token for a user or service ID using an API key
+[**get_token_api_key_delegated_refresh_token**](TokenOperationsApi.md#get_token_api_key_delegated_refresh_token) | **POST** /identity/token#apikey-delegated-refresh-token | Create an IAM access token and delegated refresh token for a user or service ID
+[**get_token_iam_authz**](TokenOperationsApi.md#get_token_iam_authz) | **POST** /identity/token#iam-authz | Create an IAM access token based on an authorization policy
 [**get_token_password**](TokenOperationsApi.md#get_token_password) | **POST** /identity/token#password | Create an IAM access token for a user using username / password credentials and an optional account identifier.
 
 
@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 > TokenResponse get_token_api_key(grant_type, apikey)
 
-Create an IAM access token for a user or service ID using an API key.
+Create an IAM access token for a user or service ID using an API key
 
 Creates a non-opaque access token for an API key.
 
@@ -30,7 +30,7 @@ grant_type = 'grant_type_example' # String | Grant type for this API call. You m
 apikey = 'apikey_example' # String | The value of the api key
 
 begin
-  #Create an IAM access token for a user or service ID using an API key.
+  #Create an IAM access token for a user or service ID using an API key
   result = api_instance.get_token_api_key(grant_type, apikey)
   p result
 rescue IbmCloudIam::ApiError => e
@@ -64,7 +64,7 @@ No authorization required
 
 > TokenResponse get_token_api_key_delegated_refresh_token(grant_type, apikey, response_type, receiver_client_ids, opts)
 
-Create an IAM access token and delegated refresh token for a user or service ID.
+Create an IAM access token and delegated refresh token for a user or service ID
 
 Creates a non-opaque access token and a delegated refresh token for an API key.
 
@@ -84,7 +84,7 @@ opts = {
 }
 
 begin
-  #Create an IAM access token and delegated refresh token for a user or service ID.
+  #Create an IAM access token and delegated refresh token for a user or service ID
   result = api_instance.get_token_api_key_delegated_refresh_token(grant_type, apikey, response_type, receiver_client_ids, opts)
   p result
 rescue IbmCloudIam::ApiError => e
@@ -121,7 +121,7 @@ No authorization required
 
 > TokenResponse get_token_iam_authz(grant_type, access_token, desired_iam_id)
 
-Create an IAM access token based on an authorization policy.
+Create an IAM access token based on an authorization policy
 
 Creates a non-opaque access token, if an appropriate authorization policy is in place. This kind of IAM access token is typically used for access between services.
 
@@ -137,7 +137,7 @@ access_token = 'access_token_example' # String | The IAM access token of the ide
 desired_iam_id = 'desired_iam_id_example' # String | The IAM ID of the IAM access token identity that should be created. The desired_iam_id identifies a resource identity. The IAM ID consists of the prefix crn- and the CRN of the target identity, e.g. crn-crn:v1:bluemix:public:cloud-object-storage:global:a/59bcbfa6ea2f006b4ed7094c1a08dcdd:1a0ec336-f391-4091-a6fb-5e084a4c56f4::.
 
 begin
-  #Create an IAM access token based on an authorization policy.
+  #Create an IAM access token based on an authorization policy
   result = api_instance.get_token_iam_authz(grant_type, access_token, desired_iam_id)
   p result
 rescue IbmCloudIam::ApiError => e

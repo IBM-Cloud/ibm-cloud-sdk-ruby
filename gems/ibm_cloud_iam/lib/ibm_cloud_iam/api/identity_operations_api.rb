@@ -486,7 +486,7 @@ module IbmCloudIam
       return data, status_code, headers
     end
 
-    # Get API keys for a given service or user IAM ID and account ID.
+    # Get API keys for a given service or user IAM ID and account ID
     # Returns the list of API key details for a given service or user IAM ID and account ID. Users can manage user API keys for themself, or service ID API keys for  service IDs that are bound to an entity they have access to. In case of  service IDs and their API keys, a user must be either an account owner,  a IBM Cloud org manager or IBM Cloud space developer in order to manage  service IDs of the entity.
     # @param [Hash] opts the optional parameters
     # @option opts [String] :account_id Account ID of the API keys(s) to query. If a service IAM ID is specified in iam_id then account_id must match the account of the IAM ID. If a user IAM ID is specified in iam_id then then account_id must match the account of the Authorization token.
@@ -505,7 +505,7 @@ module IbmCloudIam
       data
     end
 
-    # Get API keys for a given service or user IAM ID and account ID.
+    # Get API keys for a given service or user IAM ID and account ID
     # Returns the list of API key details for a given service or user IAM ID and account ID. Users can manage user API keys for themself, or service ID API keys for  service IDs that are bound to an entity they have access to. In case of  service IDs and their API keys, a user must be either an account owner,  a IBM Cloud org manager or IBM Cloud space developer in order to manage  service IDs of the entity.
     # @param [Hash] opts the optional parameters
     # @option opts [String] :account_id Account ID of the API keys(s) to query. If a service IAM ID is specified in iam_id then account_id must match the account of the IAM ID. If a user IAM ID is specified in iam_id then then account_id must match the account of the Authorization token.
@@ -736,10 +736,10 @@ module IbmCloudIam
     # @param id [String] Unique ID of the service ID.
     # @param [Hash] opts the optional parameters
     # @option opts [String] :authorization Authorization Token used for the request. The supported token type is a Cloud IAM Access Token. If the token is omitted the request will fail with BXNIM0308E: &#39;No authorization header found&#39;. Please make sure that the provided token has the required authority for the request.
-    # @return [ServiceId]
+    # @return [nil]
     def lock_service_id(id, opts = {})
-      data, _status_code, _headers = lock_service_id_with_http_info(id, opts)
-      data
+      lock_service_id_with_http_info(id, opts)
+      nil
     end
 
     # Lock the service ID
@@ -747,7 +747,7 @@ module IbmCloudIam
     # @param id [String] Unique ID of the service ID.
     # @param [Hash] opts the optional parameters
     # @option opts [String] :authorization Authorization Token used for the request. The supported token type is a Cloud IAM Access Token. If the token is omitted the request will fail with BXNIM0308E: &#39;No authorization header found&#39;. Please make sure that the provided token has the required authority for the request.
-    # @return [Array<(ServiceId, Integer, Hash)>] ServiceId data, response status code and response headers
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def lock_service_id_with_http_info(id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: IdentityOperationsApi.lock_service_id ...'
@@ -764,8 +764,6 @@ module IbmCloudIam
 
       # header parameters
       header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
       header_params[:'Authorization'] = opts[:'authorization'] if !opts[:'authorization'].nil?
 
       # form parameters
@@ -775,7 +773,7 @@ module IbmCloudIam
       post_body = opts[:body] 
 
       # return_type
-      return_type = opts[:return_type] || 'ServiceId' 
+      return_type = opts[:return_type] 
 
       # auth_names
       auth_names = opts[:auth_names] || []
@@ -864,10 +862,10 @@ module IbmCloudIam
     # @param id [String] Unique ID of the service ID.
     # @param [Hash] opts the optional parameters
     # @option opts [String] :authorization Authorization Token used for the request. The supported token type is a Cloud IAM Access Token. If the token is omitted the request will fail with BXNIM0308E: &#39;No authorization header found&#39;. Please make sure that the provided token has the required authority for the request.
-    # @return [ServiceId]
+    # @return [nil]
     def unlock_service_id(id, opts = {})
-      data, _status_code, _headers = unlock_service_id_with_http_info(id, opts)
-      data
+      unlock_service_id_with_http_info(id, opts)
+      nil
     end
 
     # Unlock the service ID
@@ -875,7 +873,7 @@ module IbmCloudIam
     # @param id [String] Unique ID of the service ID.
     # @param [Hash] opts the optional parameters
     # @option opts [String] :authorization Authorization Token used for the request. The supported token type is a Cloud IAM Access Token. If the token is omitted the request will fail with BXNIM0308E: &#39;No authorization header found&#39;. Please make sure that the provided token has the required authority for the request.
-    # @return [Array<(ServiceId, Integer, Hash)>] ServiceId data, response status code and response headers
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def unlock_service_id_with_http_info(id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: IdentityOperationsApi.unlock_service_id ...'
@@ -892,8 +890,6 @@ module IbmCloudIam
 
       # header parameters
       header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
       header_params[:'Authorization'] = opts[:'authorization'] if !opts[:'authorization'].nil?
 
       # form parameters
@@ -903,7 +899,7 @@ module IbmCloudIam
       post_body = opts[:body] 
 
       # return_type
-      return_type = opts[:return_type] || 'ServiceId' 
+      return_type = opts[:return_type] 
 
       # auth_names
       auth_names = opts[:auth_names] || []

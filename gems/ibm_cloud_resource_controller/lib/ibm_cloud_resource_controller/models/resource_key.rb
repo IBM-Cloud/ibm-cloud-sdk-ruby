@@ -39,6 +39,9 @@ module IbmCloudResourceController
     # The CRN of resource instance or alias associated to the key.
     attr_accessor :source_crn
 
+    # The role CRN.
+    attr_accessor :role
+
     # The state of the key.
     attr_accessor :state
 
@@ -60,6 +63,15 @@ module IbmCloudResourceController
     # The date when the key was deleted.
     attr_accessor :deleted_at
 
+    # The subject who created the key.
+    attr_accessor :created_by
+
+    # The subject who updated the key.
+    attr_accessor :updated_by
+
+    # The subject who deleted the key.
+    attr_accessor :deleted_by
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -71,13 +83,17 @@ module IbmCloudResourceController
         :'account_id' => :'account_id',
         :'resource_group_id' => :'resource_group_id',
         :'source_crn' => :'source_crn',
+        :'role' => :'role',
         :'state' => :'state',
         :'credentials' => :'credentials',
         :'iam_compatible' => :'iam_compatible',
         :'resource_instance_url' => :'resource_instance_url',
         :'created_at' => :'created_at',
         :'updated_at' => :'updated_at',
-        :'deleted_at' => :'deleted_at'
+        :'deleted_at' => :'deleted_at',
+        :'created_by' => :'created_by',
+        :'updated_by' => :'updated_by',
+        :'deleted_by' => :'deleted_by'
       }
     end
 
@@ -92,13 +108,17 @@ module IbmCloudResourceController
         :'account_id' => :'String',
         :'resource_group_id' => :'String',
         :'source_crn' => :'String',
+        :'role' => :'String',
         :'state' => :'String',
         :'credentials' => :'Credentials',
         :'iam_compatible' => :'Boolean',
         :'resource_instance_url' => :'String',
         :'created_at' => :'DateTime',
         :'updated_at' => :'DateTime',
-        :'deleted_at' => :'DateTime'
+        :'deleted_at' => :'DateTime',
+        :'created_by' => :'String',
+        :'updated_by' => :'String',
+        :'deleted_by' => :'String'
       }
     end
 
@@ -155,6 +175,10 @@ module IbmCloudResourceController
         self.source_crn = attributes[:'source_crn']
       end
 
+      if attributes.key?(:'role')
+        self.role = attributes[:'role']
+      end
+
       if attributes.key?(:'state')
         self.state = attributes[:'state']
       end
@@ -181,6 +205,18 @@ module IbmCloudResourceController
 
       if attributes.key?(:'deleted_at')
         self.deleted_at = attributes[:'deleted_at']
+      end
+
+      if attributes.key?(:'created_by')
+        self.created_by = attributes[:'created_by']
+      end
+
+      if attributes.key?(:'updated_by')
+        self.updated_by = attributes[:'updated_by']
+      end
+
+      if attributes.key?(:'deleted_by')
+        self.deleted_by = attributes[:'deleted_by']
       end
     end
 
@@ -210,13 +246,17 @@ module IbmCloudResourceController
           account_id == o.account_id &&
           resource_group_id == o.resource_group_id &&
           source_crn == o.source_crn &&
+          role == o.role &&
           state == o.state &&
           credentials == o.credentials &&
           iam_compatible == o.iam_compatible &&
           resource_instance_url == o.resource_instance_url &&
           created_at == o.created_at &&
           updated_at == o.updated_at &&
-          deleted_at == o.deleted_at
+          deleted_at == o.deleted_at &&
+          created_by == o.created_by &&
+          updated_by == o.updated_by &&
+          deleted_by == o.deleted_by
     end
 
     # @see the `==` method
@@ -228,7 +268,7 @@ module IbmCloudResourceController
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, guid, crn, url, name, account_id, resource_group_id, source_crn, state, credentials, iam_compatible, resource_instance_url, created_at, updated_at, deleted_at].hash
+      [id, guid, crn, url, name, account_id, resource_group_id, source_crn, role, state, credentials, iam_compatible, resource_instance_url, created_at, updated_at, deleted_at, created_by, updated_by, deleted_by].hash
     end
 
     # Builds the object from hash

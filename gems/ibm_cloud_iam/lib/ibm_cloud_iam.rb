@@ -18,6 +18,7 @@ require 'ibm_cloud_iam/configuration'
 
 # Models
 require 'ibm_cloud_iam/models/api_key'
+require 'ibm_cloud_iam/models/api_key_inside_create_service_id_request'
 require 'ibm_cloud_iam/models/api_key_list'
 require 'ibm_cloud_iam/models/create_api_key_request'
 require 'ibm_cloud_iam/models/create_service_id_request'

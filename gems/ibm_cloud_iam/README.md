@@ -86,7 +86,7 @@ Class | Method | HTTP request | Description
 *IbmCloudIam::IdentityOperationsApi* | [**get_api_key**](docs/IdentityOperationsApi.md#get_api_key) | **GET** /v1/apikeys/{id} | Get details of an API key
 *IbmCloudIam::IdentityOperationsApi* | [**get_api_keys_details**](docs/IdentityOperationsApi.md#get_api_keys_details) | **GET** /v1/apikeys/details | Get details of an API key by its value
 *IbmCloudIam::IdentityOperationsApi* | [**get_service_id**](docs/IdentityOperationsApi.md#get_service_id) | **GET** /v1/serviceids/{id} | Get details of a service ID
-*IbmCloudIam::IdentityOperationsApi* | [**list_api_keys**](docs/IdentityOperationsApi.md#list_api_keys) | **GET** /v1/apikeys | Get API keys for a given service or user IAM ID and account ID.
+*IbmCloudIam::IdentityOperationsApi* | [**list_api_keys**](docs/IdentityOperationsApi.md#list_api_keys) | **GET** /v1/apikeys | Get API keys for a given service or user IAM ID and account ID
 *IbmCloudIam::IdentityOperationsApi* | [**list_service_ids**](docs/IdentityOperationsApi.md#list_service_ids) | **GET** /v1/serviceids/ | List service IDs
 *IbmCloudIam::IdentityOperationsApi* | [**lock_api_key**](docs/IdentityOperationsApi.md#lock_api_key) | **POST** /v1/apikeys/{id}/lock | Lock the API key
 *IbmCloudIam::IdentityOperationsApi* | [**lock_service_id**](docs/IdentityOperationsApi.md#lock_service_id) | **POST** /v1/serviceids/{id}/lock | Lock the service ID
@@ -94,15 +94,16 @@ Class | Method | HTTP request | Description
 *IbmCloudIam::IdentityOperationsApi* | [**unlock_service_id**](docs/IdentityOperationsApi.md#unlock_service_id) | **DELETE** /v1/serviceids/{id}/lock | Unlock the service ID
 *IbmCloudIam::IdentityOperationsApi* | [**update_api_key**](docs/IdentityOperationsApi.md#update_api_key) | **PUT** /v1/apikeys/{id} | Updates an API key
 *IbmCloudIam::IdentityOperationsApi* | [**update_service_id**](docs/IdentityOperationsApi.md#update_service_id) | **PUT** /v1/serviceids/{id} | Update service ID
-*IbmCloudIam::TokenOperationsApi* | [**get_token_api_key**](docs/TokenOperationsApi.md#get_token_api_key) | **POST** /identity/token#apikey | Create an IAM access token for a user or service ID using an API key.
-*IbmCloudIam::TokenOperationsApi* | [**get_token_api_key_delegated_refresh_token**](docs/TokenOperationsApi.md#get_token_api_key_delegated_refresh_token) | **POST** /identity/token#apikey-delegated-refresh-token | Create an IAM access token and delegated refresh token for a user or service ID.
-*IbmCloudIam::TokenOperationsApi* | [**get_token_iam_authz**](docs/TokenOperationsApi.md#get_token_iam_authz) | **POST** /identity/token#iam-authz | Create an IAM access token based on an authorization policy.
+*IbmCloudIam::TokenOperationsApi* | [**get_token_api_key**](docs/TokenOperationsApi.md#get_token_api_key) | **POST** /identity/token#apikey | Create an IAM access token for a user or service ID using an API key
+*IbmCloudIam::TokenOperationsApi* | [**get_token_api_key_delegated_refresh_token**](docs/TokenOperationsApi.md#get_token_api_key_delegated_refresh_token) | **POST** /identity/token#apikey-delegated-refresh-token | Create an IAM access token and delegated refresh token for a user or service ID
+*IbmCloudIam::TokenOperationsApi* | [**get_token_iam_authz**](docs/TokenOperationsApi.md#get_token_iam_authz) | **POST** /identity/token#iam-authz | Create an IAM access token based on an authorization policy
 *IbmCloudIam::TokenOperationsApi* | [**get_token_password**](docs/TokenOperationsApi.md#get_token_password) | **POST** /identity/token#password | Create an IAM access token for a user using username / password credentials and an optional account identifier.
 
 
 ## Documentation for Models
 
  - [IbmCloudIam::ApiKey](docs/ApiKey.md)
+ - [IbmCloudIam::ApiKeyInsideCreateServiceIdRequest](docs/ApiKeyInsideCreateServiceIdRequest.md)
  - [IbmCloudIam::ApiKeyList](docs/ApiKeyList.md)
  - [IbmCloudIam::CreateApiKeyRequest](docs/CreateApiKeyRequest.md)
  - [IbmCloudIam::CreateServiceIdRequest](docs/CreateServiceIdRequest.md)

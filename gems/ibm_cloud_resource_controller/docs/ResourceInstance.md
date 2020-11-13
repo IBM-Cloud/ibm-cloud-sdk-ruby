@@ -28,8 +28,15 @@ Name | Type | Description | Notes
 **resource_bindings_url** | **String** | The relative path to the resource bindings for the instance. | [optional] 
 **resource_keys_url** | **String** | The relative path to the resource keys for the instance. | [optional] 
 **created_at** | **DateTime** | The date when the instance was created. | [optional] 
+**created_by** | **String** | The subject who created the instance. | [optional] 
 **updated_at** | **DateTime** | The date when the instance was last updated. | [optional] 
+**updated_by** | **String** | The subject who updated the instance. | [optional] 
 **deleted_at** | **DateTime** | The date when the instance was deleted. | [optional] 
+**deleted_by** | **String** | The subject who deleted the instance. | [optional] 
+**scheduled_reclaim_at** | **DateTime** | The date when the instance was scheduled for reclamation. | [optional] 
+**scheduled_reclaim_by** | **String** | The subject who initiated the instance reclamation. | [optional] 
+**restored_at** | **DateTime** | The date when the instance under reclamation was restored. | [optional] 
+**restored_by** | **String** | The subject who restored the instance back from reclamation. | [optional] 
 
 ## Code Sample
 
@@ -60,8 +67,15 @@ instance = IbmCloudResourceController::ResourceInstance.new(id: null,
                                  resource_bindings_url: null,
                                  resource_keys_url: null,
                                  created_at: null,
+                                 created_by: null,
                                  updated_at: null,
-                                 deleted_at: null)
+                                 updated_by: null,
+                                 deleted_at: null,
+                                 deleted_by: null,
+                                 scheduled_reclaim_at: null,
+                                 scheduled_reclaim_by: null,
+                                 restored_at: null,
+                                 restored_by: null)
 ```
 
 

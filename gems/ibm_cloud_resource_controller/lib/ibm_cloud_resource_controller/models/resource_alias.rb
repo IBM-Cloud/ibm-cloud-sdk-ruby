@@ -69,6 +69,15 @@ module IbmCloudResourceController
     # The date when the alias was deleted.
     attr_accessor :deleted_at
 
+    # The subject who created the alias.
+    attr_accessor :created_by
+
+    # The subject who updated the alias.
+    attr_accessor :updated_by
+
+    # The subject who deleted the alias.
+    attr_accessor :deleted_by
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -89,7 +98,10 @@ module IbmCloudResourceController
         :'resource_keys_url' => :'resource_keys_url',
         :'created_at' => :'created_at',
         :'updated_at' => :'updated_at',
-        :'deleted_at' => :'deleted_at'
+        :'deleted_at' => :'deleted_at',
+        :'created_by' => :'created_by',
+        :'updated_by' => :'updated_by',
+        :'deleted_by' => :'deleted_by'
       }
     end
 
@@ -113,7 +125,10 @@ module IbmCloudResourceController
         :'resource_keys_url' => :'String',
         :'created_at' => :'DateTime',
         :'updated_at' => :'DateTime',
-        :'deleted_at' => :'DateTime'
+        :'deleted_at' => :'DateTime',
+        :'created_by' => :'String',
+        :'updated_by' => :'String',
+        :'deleted_by' => :'String'
       }
     end
 
@@ -209,6 +224,18 @@ module IbmCloudResourceController
       if attributes.key?(:'deleted_at')
         self.deleted_at = attributes[:'deleted_at']
       end
+
+      if attributes.key?(:'created_by')
+        self.created_by = attributes[:'created_by']
+      end
+
+      if attributes.key?(:'updated_by')
+        self.updated_by = attributes[:'updated_by']
+      end
+
+      if attributes.key?(:'deleted_by')
+        self.deleted_by = attributes[:'deleted_by']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -246,7 +273,10 @@ module IbmCloudResourceController
           resource_keys_url == o.resource_keys_url &&
           created_at == o.created_at &&
           updated_at == o.updated_at &&
-          deleted_at == o.deleted_at
+          deleted_at == o.deleted_at &&
+          created_by == o.created_by &&
+          updated_by == o.updated_by &&
+          deleted_by == o.deleted_by
     end
 
     # @see the `==` method
@@ -258,7 +288,7 @@ module IbmCloudResourceController
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, guid, crn, url, name, account_id, resource_group_id, resource_group_crn, target_crn, state, resource_instance_id, region_instance_id, resource_instance_url, resource_bindings_url, resource_keys_url, created_at, updated_at, deleted_at].hash
+      [id, guid, crn, url, name, account_id, resource_group_id, resource_group_crn, target_crn, state, resource_instance_id, region_instance_id, resource_instance_url, resource_bindings_url, resource_keys_url, created_at, updated_at, deleted_at, created_by, updated_by, deleted_by].hash
     end
 
     # Builds the object from hash

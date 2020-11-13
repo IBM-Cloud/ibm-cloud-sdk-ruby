@@ -19,7 +19,7 @@ module IbmCloudIam
     def initialize(api_client = ApiClient.default)
       @api_client = api_client
     end
-    # Create an IAM access token for a user or service ID using an API key.
+    # Create an IAM access token for a user or service ID using an API key
     # Creates a non-opaque access token for an API key.
     # @param grant_type [String] Grant type for this API call. You must set the grant type to &#x60;urn:ibm:params:oauth:grant-type:apikey&#x60;.
     # @param apikey [String] The value of the api key
@@ -30,7 +30,7 @@ module IbmCloudIam
       data
     end
 
-    # Create an IAM access token for a user or service ID using an API key.
+    # Create an IAM access token for a user or service ID using an API key
     # Creates a non-opaque access token for an API key.
     # @param grant_type [String] Grant type for this API call. You must set the grant type to &#x60;urn:ibm:params:oauth:grant-type:apikey&#x60;.
     # @param apikey [String] The value of the api key
@@ -91,7 +91,7 @@ module IbmCloudIam
       return data, status_code, headers
     end
 
-    # Create an IAM access token and delegated refresh token for a user or service ID.
+    # Create an IAM access token and delegated refresh token for a user or service ID
     # Creates a non-opaque access token and a delegated refresh token for an API key.
     # @param grant_type [String] Grant type for this API call. You must set the grant type to &#x60;urn:ibm:params:oauth:grant-type:apikey&#x60;.
     # @param apikey [String] The value of the API key.
@@ -105,7 +105,7 @@ module IbmCloudIam
       data
     end
 
-    # Create an IAM access token and delegated refresh token for a user or service ID.
+    # Create an IAM access token and delegated refresh token for a user or service ID
     # Creates a non-opaque access token and a delegated refresh token for an API key.
     # @param grant_type [String] Grant type for this API call. You must set the grant type to &#x60;urn:ibm:params:oauth:grant-type:apikey&#x60;.
     # @param apikey [String] The value of the API key.
@@ -180,7 +180,7 @@ module IbmCloudIam
       return data, status_code, headers
     end
 
-    # Create an IAM access token based on an authorization policy.
+    # Create an IAM access token based on an authorization policy
     # Creates a non-opaque access token, if an appropriate authorization policy is in place. This kind of IAM access token is typically used for access between services.
     # @param grant_type [String] Grant type for this API call. You must set the grant type to &#x60;urn:ibm:params:oauth:grant-type:iam-authz&#x60;.
     # @param access_token [String] The IAM access token of the identity that has the appropriate authorization to create an IAM access token for a given resource.
@@ -192,7 +192,7 @@ module IbmCloudIam
       data
     end
 
-    # Create an IAM access token based on an authorization policy.
+    # Create an IAM access token based on an authorization policy
     # Creates a non-opaque access token, if an appropriate authorization policy is in place. This kind of IAM access token is typically used for access between services.
     # @param grant_type [String] Grant type for this API call. You must set the grant type to &#x60;urn:ibm:params:oauth:grant-type:iam-authz&#x60;.
     # @param access_token [String] The IAM access token of the identity that has the appropriate authorization to create an IAM access token for a given resource.

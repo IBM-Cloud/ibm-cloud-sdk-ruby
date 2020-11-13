@@ -13,41 +13,37 @@ OpenAPI Generator version: 5.0.0-beta2
 require 'date'
 
 module IbmCloudIam
-  # Input body parameters for the Create service ID V1 REST request.
-  class CreateServiceIdRequest
-    # ID of the account the service ID belongs to.
-    attr_accessor :account_id
-
-    # Name of the Service Id. The name is not checked for uniqueness. Therefore multiple names with the same value can exist. Access is done via the UUID of the Service Id.
+  # Parameters for the API key in the Create service Id V1 REST request.
+  class ApiKeyInsideCreateServiceIdRequest
+    # Name of the API key. The name is not checked for uniqueness. Therefore multiple names with the same value can exist. Access is done via the UUID of the API key.
     attr_accessor :name
 
-    # The optional description of the Service Id. The 'description' property is only available if a description was provided during a create of a Service Id.
+    # The optional description of the API key. The 'description' property is only available if a description was provided during a create of an API key.
     attr_accessor :description
 
-    # Optional list of CRNs (string array) which point to the services connected to the service ID.
-    attr_accessor :unique_instance_crns
-
+    # You can optionally passthrough the API key value for this API key. If passed, NO validation of that apiKey value is done, i.e. the value can be non-URL safe. If omitted, the API key management will create an URL safe opaque API key value. The value of the API key is checked for uniqueness. Please ensure enough variations when passing in this value.
     attr_accessor :apikey
+
+    # Send true or false to set whether the API key value is retrievable in the future by using the Get details of an API key request. If you create an API key for a user, you must specify `false` or omit the value. We don't allow storing of API keys for users.
+    attr_accessor :store_value
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'account_id' => :'account_id',
         :'name' => :'name',
         :'description' => :'description',
-        :'unique_instance_crns' => :'unique_instance_crns',
-        :'apikey' => :'apikey'
+        :'apikey' => :'apikey',
+        :'store_value' => :'store_value'
       }
     end
 
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'account_id' => :'String',
         :'name' => :'String',
         :'description' => :'String',
-        :'unique_instance_crns' => :'Array<String>',
-        :'apikey' => :'ApiKeyInsideCreateServiceIdRequest'
+        :'apikey' => :'String',
+        :'store_value' => :'Boolean'
       }
     end
 
@@ -61,20 +57,16 @@ module IbmCloudIam
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `IbmCloudIam::CreateServiceIdRequest` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `IbmCloudIam::ApiKeyInsideCreateServiceIdRequest` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `IbmCloudIam::CreateServiceIdRequest`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `IbmCloudIam::ApiKeyInsideCreateServiceIdRequest`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
-
-      if attributes.key?(:'account_id')
-        self.account_id = attributes[:'account_id']
-      end
 
       if attributes.key?(:'name')
         self.name = attributes[:'name']
@@ -84,14 +76,12 @@ module IbmCloudIam
         self.description = attributes[:'description']
       end
 
-      if attributes.key?(:'unique_instance_crns')
-        if (value = attributes[:'unique_instance_crns']).is_a?(Array)
-          self.unique_instance_crns = value
-        end
-      end
-
       if attributes.key?(:'apikey')
         self.apikey = attributes[:'apikey']
+      end
+
+      if attributes.key?(:'store_value')
+        self.store_value = attributes[:'store_value']
       end
     end
 
@@ -99,10 +89,6 @@ module IbmCloudIam
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if @account_id.nil?
-        invalid_properties.push('invalid value for "account_id", account_id cannot be nil.')
-      end
-
       if @name.nil?
         invalid_properties.push('invalid value for "name", name cannot be nil.')
       end
@@ -113,7 +99,6 @@ module IbmCloudIam
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if @account_id.nil?
       return false if @name.nil?
       true
     end
@@ -123,11 +108,10 @@ module IbmCloudIam
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          account_id == o.account_id &&
           name == o.name &&
           description == o.description &&
-          unique_instance_crns == o.unique_instance_crns &&
-          apikey == o.apikey
+          apikey == o.apikey &&
+          store_value == o.store_value
     end
 
     # @see the `==` method
@@ -139,7 +123,7 @@ module IbmCloudIam
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [account_id, name, description, unique_instance_crns, apikey].hash
+      [name, description, apikey, store_value].hash
     end
 
     # Builds the object from hash

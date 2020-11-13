@@ -11,7 +11,7 @@ Method | HTTP request | Description
 [**get_api_key**](IdentityOperationsApi.md#get_api_key) | **GET** /v1/apikeys/{id} | Get details of an API key
 [**get_api_keys_details**](IdentityOperationsApi.md#get_api_keys_details) | **GET** /v1/apikeys/details | Get details of an API key by its value
 [**get_service_id**](IdentityOperationsApi.md#get_service_id) | **GET** /v1/serviceids/{id} | Get details of a service ID
-[**list_api_keys**](IdentityOperationsApi.md#list_api_keys) | **GET** /v1/apikeys | Get API keys for a given service or user IAM ID and account ID.
+[**list_api_keys**](IdentityOperationsApi.md#list_api_keys) | **GET** /v1/apikeys | Get API keys for a given service or user IAM ID and account ID
 [**list_service_ids**](IdentityOperationsApi.md#list_service_ids) | **GET** /v1/serviceids/ | List service IDs
 [**lock_api_key**](IdentityOperationsApi.md#lock_api_key) | **POST** /v1/apikeys/{id}/lock | Lock the API key
 [**lock_service_id**](IdentityOperationsApi.md#lock_service_id) | **POST** /v1/serviceids/{id}/lock | Lock the service ID
@@ -391,7 +391,7 @@ No authorization required
 
 > ApiKeyList list_api_keys(opts)
 
-Get API keys for a given service or user IAM ID and account ID.
+Get API keys for a given service or user IAM ID and account ID
 
 Returns the list of API key details for a given service or user IAM ID and account ID. Users can manage user API keys for themself, or service ID API keys for  service IDs that are bound to an entity they have access to. In case of  service IDs and their API keys, a user must be either an account owner,  a IBM Cloud org manager or IBM Cloud space developer in order to manage  service IDs of the entity.
 
@@ -416,7 +416,7 @@ opts = {
 }
 
 begin
-  #Get API keys for a given service or user IAM ID and account ID.
+  #Get API keys for a given service or user IAM ID and account ID
   result = api_instance.list_api_keys(opts)
   p result
 rescue IbmCloudIam::ApiError => e
@@ -569,7 +569,7 @@ No authorization required
 
 ## lock_service_id
 
-> ServiceId lock_service_id(id, opts)
+> lock_service_id(id, opts)
 
 Lock the service ID
 
@@ -589,8 +589,7 @@ opts = {
 
 begin
   #Lock the service ID
-  result = api_instance.lock_service_id(id, opts)
-  p result
+  api_instance.lock_service_id(id, opts)
 rescue IbmCloudIam::ApiError => e
   puts "Exception when calling IdentityOperationsApi->lock_service_id: #{e}"
 end
@@ -606,7 +605,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ServiceId**](ServiceId.md)
+nil (empty response body)
 
 ### Authorization
 
@@ -615,7 +614,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: Not defined
 
 
 ## unlock_api_key
@@ -670,7 +669,7 @@ No authorization required
 
 ## unlock_service_id
 
-> ServiceId unlock_service_id(id, opts)
+> unlock_service_id(id, opts)
 
 Unlock the service ID
 
@@ -690,8 +689,7 @@ opts = {
 
 begin
   #Unlock the service ID
-  result = api_instance.unlock_service_id(id, opts)
-  p result
+  api_instance.unlock_service_id(id, opts)
 rescue IbmCloudIam::ApiError => e
   puts "Exception when calling IdentityOperationsApi->unlock_service_id: #{e}"
 end
@@ -707,7 +705,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ServiceId**](ServiceId.md)
+nil (empty response body)
 
 ### Authorization
 
@@ -716,7 +714,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: Not defined
 
 
 ## update_api_key

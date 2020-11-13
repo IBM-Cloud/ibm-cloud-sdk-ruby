@@ -87,11 +87,32 @@ module IbmCloudResourceController
     # The date when the instance was created.
     attr_accessor :created_at
 
+    # The subject who created the instance.
+    attr_accessor :created_by
+
     # The date when the instance was last updated.
     attr_accessor :updated_at
 
+    # The subject who updated the instance.
+    attr_accessor :updated_by
+
     # The date when the instance was deleted.
     attr_accessor :deleted_at
+
+    # The subject who deleted the instance.
+    attr_accessor :deleted_by
+
+    # The date when the instance was scheduled for reclamation.
+    attr_accessor :scheduled_reclaim_at
+
+    # The subject who initiated the instance reclamation.
+    attr_accessor :scheduled_reclaim_by
+
+    # The date when the instance under reclamation was restored.
+    attr_accessor :restored_at
+
+    # The subject who restored the instance back from reclamation.
+    attr_accessor :restored_by
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -120,8 +141,15 @@ module IbmCloudResourceController
         :'resource_bindings_url' => :'resource_bindings_url',
         :'resource_keys_url' => :'resource_keys_url',
         :'created_at' => :'created_at',
+        :'created_by' => :'created_by',
         :'updated_at' => :'updated_at',
-        :'deleted_at' => :'deleted_at'
+        :'updated_by' => :'updated_by',
+        :'deleted_at' => :'deleted_at',
+        :'deleted_by' => :'deleted_by',
+        :'scheduled_reclaim_at' => :'scheduled_reclaim_at',
+        :'scheduled_reclaim_by' => :'scheduled_reclaim_by',
+        :'restored_at' => :'restored_at',
+        :'restored_by' => :'restored_by'
       }
     end
 
@@ -152,8 +180,15 @@ module IbmCloudResourceController
         :'resource_bindings_url' => :'String',
         :'resource_keys_url' => :'String',
         :'created_at' => :'DateTime',
+        :'created_by' => :'String',
         :'updated_at' => :'DateTime',
-        :'deleted_at' => :'DateTime'
+        :'updated_by' => :'String',
+        :'deleted_at' => :'DateTime',
+        :'deleted_by' => :'String',
+        :'scheduled_reclaim_at' => :'DateTime',
+        :'scheduled_reclaim_by' => :'String',
+        :'restored_at' => :'DateTime',
+        :'restored_by' => :'String'
       }
     end
 
@@ -280,12 +315,40 @@ module IbmCloudResourceController
         self.created_at = attributes[:'created_at']
       end
 
+      if attributes.key?(:'created_by')
+        self.created_by = attributes[:'created_by']
+      end
+
       if attributes.key?(:'updated_at')
         self.updated_at = attributes[:'updated_at']
       end
 
+      if attributes.key?(:'updated_by')
+        self.updated_by = attributes[:'updated_by']
+      end
+
       if attributes.key?(:'deleted_at')
         self.deleted_at = attributes[:'deleted_at']
+      end
+
+      if attributes.key?(:'deleted_by')
+        self.deleted_by = attributes[:'deleted_by']
+      end
+
+      if attributes.key?(:'scheduled_reclaim_at')
+        self.scheduled_reclaim_at = attributes[:'scheduled_reclaim_at']
+      end
+
+      if attributes.key?(:'scheduled_reclaim_by')
+        self.scheduled_reclaim_by = attributes[:'scheduled_reclaim_by']
+      end
+
+      if attributes.key?(:'restored_at')
+        self.restored_at = attributes[:'restored_at']
+      end
+
+      if attributes.key?(:'restored_by')
+        self.restored_by = attributes[:'restored_by']
       end
     end
 
@@ -331,8 +394,15 @@ module IbmCloudResourceController
           resource_bindings_url == o.resource_bindings_url &&
           resource_keys_url == o.resource_keys_url &&
           created_at == o.created_at &&
+          created_by == o.created_by &&
           updated_at == o.updated_at &&
-          deleted_at == o.deleted_at
+          updated_by == o.updated_by &&
+          deleted_at == o.deleted_at &&
+          deleted_by == o.deleted_by &&
+          scheduled_reclaim_at == o.scheduled_reclaim_at &&
+          scheduled_reclaim_by == o.scheduled_reclaim_by &&
+          restored_at == o.restored_at &&
+          restored_by == o.restored_by
     end
 
     # @see the `==` method
@@ -344,7 +414,7 @@ module IbmCloudResourceController
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, guid, crn, url, name, account_id, resource_group_id, resource_group_crn, resource_id, resource_plan_id, target_crn, parameters, state, type, sub_type, allow_cleanup, locked, last_operation, dashboard_url, plan_history, resource_aliases_url, resource_bindings_url, resource_keys_url, created_at, updated_at, deleted_at].hash
+      [id, guid, crn, url, name, account_id, resource_group_id, resource_group_crn, resource_id, resource_plan_id, target_crn, parameters, state, type, sub_type, allow_cleanup, locked, last_operation, dashboard_url, plan_history, resource_aliases_url, resource_bindings_url, resource_keys_url, created_at, created_by, updated_at, updated_by, deleted_at, deleted_by, scheduled_reclaim_at, scheduled_reclaim_by, restored_at, restored_by].hash
     end
 
     # Builds the object from hash

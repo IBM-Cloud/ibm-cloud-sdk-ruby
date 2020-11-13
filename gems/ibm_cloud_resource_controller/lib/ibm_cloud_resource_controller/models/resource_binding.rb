@@ -42,6 +42,9 @@ module IbmCloudResourceController
     # The CRN of target resource, e.g. application, in a specific environment.
     attr_accessor :target_crn
 
+    # The role CRN.
+    attr_accessor :role
+
     # The short ID of the binding in specific targeted environment, e.g. `service_binding_id` in a given IBM Cloud environment.
     attr_accessor :region_binding_id
 
@@ -66,6 +69,15 @@ module IbmCloudResourceController
     # The date when the binding was deleted.
     attr_accessor :deleted_at
 
+    # The subject who created the binding.
+    attr_accessor :created_by
+
+    # The subject who updated the binding.
+    attr_accessor :updated_by
+
+    # The subject who deleted the binding.
+    attr_accessor :deleted_by
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -78,6 +90,7 @@ module IbmCloudResourceController
         :'resource_group_id' => :'resource_group_id',
         :'source_crn' => :'source_crn',
         :'target_crn' => :'target_crn',
+        :'role' => :'role',
         :'region_binding_id' => :'region_binding_id',
         :'state' => :'state',
         :'credentials' => :'credentials',
@@ -85,7 +98,10 @@ module IbmCloudResourceController
         :'resource_alias_url' => :'resource_alias_url',
         :'created_at' => :'created_at',
         :'updated_at' => :'updated_at',
-        :'deleted_at' => :'deleted_at'
+        :'deleted_at' => :'deleted_at',
+        :'created_by' => :'created_by',
+        :'updated_by' => :'updated_by',
+        :'deleted_by' => :'deleted_by'
       }
     end
 
@@ -101,6 +117,7 @@ module IbmCloudResourceController
         :'resource_group_id' => :'String',
         :'source_crn' => :'String',
         :'target_crn' => :'String',
+        :'role' => :'String',
         :'region_binding_id' => :'String',
         :'state' => :'String',
         :'credentials' => :'Credentials',
@@ -108,7 +125,10 @@ module IbmCloudResourceController
         :'resource_alias_url' => :'String',
         :'created_at' => :'DateTime',
         :'updated_at' => :'DateTime',
-        :'deleted_at' => :'DateTime'
+        :'deleted_at' => :'DateTime',
+        :'created_by' => :'String',
+        :'updated_by' => :'String',
+        :'deleted_by' => :'String'
       }
     end
 
@@ -169,6 +189,10 @@ module IbmCloudResourceController
         self.target_crn = attributes[:'target_crn']
       end
 
+      if attributes.key?(:'role')
+        self.role = attributes[:'role']
+      end
+
       if attributes.key?(:'region_binding_id')
         self.region_binding_id = attributes[:'region_binding_id']
       end
@@ -200,6 +224,18 @@ module IbmCloudResourceController
       if attributes.key?(:'deleted_at')
         self.deleted_at = attributes[:'deleted_at']
       end
+
+      if attributes.key?(:'created_by')
+        self.created_by = attributes[:'created_by']
+      end
+
+      if attributes.key?(:'updated_by')
+        self.updated_by = attributes[:'updated_by']
+      end
+
+      if attributes.key?(:'deleted_by')
+        self.deleted_by = attributes[:'deleted_by']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -229,6 +265,7 @@ module IbmCloudResourceController
           resource_group_id == o.resource_group_id &&
           source_crn == o.source_crn &&
           target_crn == o.target_crn &&
+          role == o.role &&
           region_binding_id == o.region_binding_id &&
           state == o.state &&
           credentials == o.credentials &&
@@ -236,7 +273,10 @@ module IbmCloudResourceController
           resource_alias_url == o.resource_alias_url &&
           created_at == o.created_at &&
           updated_at == o.updated_at &&
-          deleted_at == o.deleted_at
+          deleted_at == o.deleted_at &&
+          created_by == o.created_by &&
+          updated_by == o.updated_by &&
+          deleted_by == o.deleted_by
     end
 
     # @see the `==` method
@@ -248,7 +288,7 @@ module IbmCloudResourceController
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, guid, crn, url, name, account_id, resource_group_id, source_crn, target_crn, region_binding_id, state, credentials, iam_compatible, resource_alias_url, created_at, updated_at, deleted_at].hash
+      [id, guid, crn, url, name, account_id, resource_group_id, source_crn, target_crn, role, region_binding_id, state, credentials, iam_compatible, resource_alias_url, created_at, updated_at, deleted_at, created_by, updated_by, deleted_by].hash
     end
 
     # Builds the object from hash
