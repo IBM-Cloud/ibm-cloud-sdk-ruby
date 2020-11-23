@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **network_id** | **String** | Unique Network ID | 
 **name** | **String** | Network Name | 
-**type** | **String** | Type of Network {pub-vlan, vlan, vxlan} | [default to &#39;vlan&#39;]
+**type** | **String** | Type of Network {vlan, vxlan} | [default to &#39;vlan&#39;]
 **vlan_id** | **Float** | VLAN ID | 
 **cidr** | **String** | Network in CIDR notation (192.168.0.0/24) | 
 **gateway** | **String** | Gateway IP Address | [optional] 

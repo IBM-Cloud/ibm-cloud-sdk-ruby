@@ -259,7 +259,7 @@ module IbmCloudIam
       return data, status_code, headers
     end
 
-    # Create an IAM access token for a user using username / password credentials and an optional account identifier.
+    # Create an IAM access token for a user using username / password credentials and an optional account identifier
     # Creates a non-opaque access token for a username and password. To be able to call IBM Cloud APIs, the token must be made account-specific. For this purpose, also pass the 32 character long identifier for your account in the API call. This API call is possible only for non-federated IBMid users.
     # @param authorization [String] Basic Authorization Header containing a valid client ID and secret. If this header is omitted the request fails with BXNIM0308E: &#39;No authorization header found&#39;. You can use the client ID and secret that is used by the IBM Cloud CLI: &#x60;bx / bx&#x60;
     # @param grant_type [String] Grant type for this API call. You must set the grant type to &#x60;password&#x60;.
@@ -273,7 +273,7 @@ module IbmCloudIam
       data
     end
 
-    # Create an IAM access token for a user using username / password credentials and an optional account identifier.
+    # Create an IAM access token for a user using username / password credentials and an optional account identifier
     # Creates a non-opaque access token for a username and password. To be able to call IBM Cloud APIs, the token must be made account-specific. For this purpose, also pass the 32 character long identifier for your account in the API call. This API call is possible only for non-federated IBMid users.
     # @param authorization [String] Basic Authorization Header containing a valid client ID and secret. If this header is omitted the request fails with BXNIM0308E: &#39;No authorization header found&#39;. You can use the client ID and secret that is used by the IBM Cloud CLI: &#x60;bx / bx&#x60;
     # @param grant_type [String] Grant type for this API call. You must set the grant type to &#x60;password&#x60;.

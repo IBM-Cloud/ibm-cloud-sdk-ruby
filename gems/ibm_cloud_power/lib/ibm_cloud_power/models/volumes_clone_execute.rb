@@ -13,21 +13,26 @@ OpenAPI Generator version: 5.0.0-beta2
 require 'date'
 
 module IbmCloudPower
-  class VolumesCloneResponse
-    # A map of volume IDs to cloned volume IDs
-    attr_accessor :cloned_volumes
+  class VolumesCloneExecute
+    # Base name of the new cloned volume(s). Cloned Volume names will be prefixed with 'clone-'     and suffixed with ‘-#####’ (where ##### is a 5 digit random number) If multiple volumes cloned they will be further suffixed with an incremental number starting with 1.   Example volume names using name=\"volume-abcdef\"     single volume clone will be named \"clone-volume-abcdef-83081“     multi volume clone will be named \"clone-volume-abcdef-73721-1”, \"clone-volume-abcdef-73721-2”, ... 
+    attr_accessor :name
+
+    # default False, Execute failure rolls back clone activity but leaves prepared snapshot True, Execute failure rolls back clone activity and removes the prepared snapshot 
+    attr_accessor :rollback_prepare
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'cloned_volumes' => :'clonedVolumes'
+        :'name' => :'name',
+        :'rollback_prepare' => :'rollbackPrepare'
       }
     end
 
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'cloned_volumes' => :'Hash<String, String>'
+        :'name' => :'String',
+        :'rollback_prepare' => :'Boolean'
       }
     end
 
@@ -41,21 +46,23 @@ module IbmCloudPower
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `IbmCloudPower::VolumesCloneResponse` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `IbmCloudPower::VolumesCloneExecute` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `IbmCloudPower::VolumesCloneResponse`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `IbmCloudPower::VolumesCloneExecute`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'cloned_volumes')
-        if (value = attributes[:'cloned_volumes']).is_a?(Hash)
-          self.cloned_volumes = value
-        end
+      if attributes.key?(:'name')
+        self.name = attributes[:'name']
+      end
+
+      if attributes.key?(:'rollback_prepare')
+        self.rollback_prepare = attributes[:'rollback_prepare']
       end
     end
 
@@ -63,12 +70,17 @@ module IbmCloudPower
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if @name.nil?
+        invalid_properties.push('invalid value for "name", name cannot be nil.')
+      end
+
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if @name.nil?
       true
     end
 
@@ -77,7 +89,8 @@ module IbmCloudPower
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          cloned_volumes == o.cloned_volumes
+          name == o.name &&
+          rollback_prepare == o.rollback_prepare
     end
 
     # @see the `==` method
@@ -89,7 +102,7 @@ module IbmCloudPower
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [cloned_volumes].hash
+      [name, rollback_prepare].hash
     end
 
     # Builds the object from hash

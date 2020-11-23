@@ -556,7 +556,7 @@ No authorization required
 
 ## pcloud_pvminstances_post
 
-> Array&lt;PVMInstance&gt; pcloud_pvminstances_post(cloud_instance_id, body)
+> Array&lt;PVMInstance&gt; pcloud_pvminstances_post(cloud_instance_id, body, opts)
 
 Create a new PVM instance
 
@@ -571,10 +571,13 @@ require 'ibm_cloud_power'
 api_instance = IbmCloudPower::PCloudPVMInstancesApi.new
 cloud_instance_id = 'cloud_instance_id_example' # String | Cloud Instance ID of a PCloud Instance
 body = IbmCloudPower::PVMInstanceCreate.new # PVMInstanceCreate | Parameters for the creation of a new tenant
+opts = {
+  skip_host_validation: true # Boolean | Option to skip host validation on PVMInstance Create API
+}
 
 begin
   #Create a new PVM instance
-  result = api_instance.pcloud_pvminstances_post(cloud_instance_id, body)
+  result = api_instance.pcloud_pvminstances_post(cloud_instance_id, body, opts)
   p result
 rescue IbmCloudPower::ApiError => e
   puts "Exception when calling PCloudPVMInstancesApi->pcloud_pvminstances_post: #{e}"
@@ -588,6 +591,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **cloud_instance_id** | **String**| Cloud Instance ID of a PCloud Instance | 
  **body** | [**PVMInstanceCreate**](PVMInstanceCreate.md)| Parameters for the creation of a new tenant | 
+ **skip_host_validation** | **Boolean**| Option to skip host validation on PVMInstance Create API | [optional] 
 
 ### Return type
 

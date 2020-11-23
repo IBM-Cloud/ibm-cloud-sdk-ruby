@@ -13,21 +13,56 @@ OpenAPI Generator version: 5.0.0-beta2
 require 'date'
 
 module IbmCloudPower
-  class VolumesCloneResponse
-    # A map of volume IDs to cloned volume IDs
-    attr_accessor :cloned_volumes
+  class VolumesClone
+    # ID assigned to a volumes-clone request
+    attr_accessor :volumes_clone_id
+
+    # Name assigned to a volumes-clone request
+    attr_accessor :name
+
+    # Current status of the volumes-clone request
+    attr_accessor :status
+
+    # Current action performed for the volumes-clone request
+    attr_accessor :action
+
+    # The percent completion for the current action
+    attr_accessor :percent_complete
+
+    # Failure reason for a failed volumes-clone request
+    attr_accessor :failure_message
+
+    # Creation Date
+    attr_accessor :creation_date
+
+    # Last Update Date
+    attr_accessor :last_update_date
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'cloned_volumes' => :'clonedVolumes'
+        :'volumes_clone_id' => :'volumesCloneID',
+        :'name' => :'name',
+        :'status' => :'status',
+        :'action' => :'action',
+        :'percent_complete' => :'percentComplete',
+        :'failure_message' => :'failureMessage',
+        :'creation_date' => :'creationDate',
+        :'last_update_date' => :'lastUpdateDate'
       }
     end
 
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'cloned_volumes' => :'Hash<String, String>'
+        :'volumes_clone_id' => :'String',
+        :'name' => :'String',
+        :'status' => :'String',
+        :'action' => :'String',
+        :'percent_complete' => :'Integer',
+        :'failure_message' => :'String',
+        :'creation_date' => :'DateTime',
+        :'last_update_date' => :'DateTime'
       }
     end
 
@@ -41,21 +76,47 @@ module IbmCloudPower
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `IbmCloudPower::VolumesCloneResponse` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `IbmCloudPower::VolumesClone` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `IbmCloudPower::VolumesCloneResponse`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `IbmCloudPower::VolumesClone`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'cloned_volumes')
-        if (value = attributes[:'cloned_volumes']).is_a?(Hash)
-          self.cloned_volumes = value
-        end
+      if attributes.key?(:'volumes_clone_id')
+        self.volumes_clone_id = attributes[:'volumes_clone_id']
+      end
+
+      if attributes.key?(:'name')
+        self.name = attributes[:'name']
+      end
+
+      if attributes.key?(:'status')
+        self.status = attributes[:'status']
+      end
+
+      if attributes.key?(:'action')
+        self.action = attributes[:'action']
+      end
+
+      if attributes.key?(:'percent_complete')
+        self.percent_complete = attributes[:'percent_complete']
+      end
+
+      if attributes.key?(:'failure_message')
+        self.failure_message = attributes[:'failure_message']
+      end
+
+      if attributes.key?(:'creation_date')
+        self.creation_date = attributes[:'creation_date']
+      end
+
+      if attributes.key?(:'last_update_date')
+        self.last_update_date = attributes[:'last_update_date']
       end
     end
 
@@ -63,12 +124,17 @@ module IbmCloudPower
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if @percent_complete.nil?
+        invalid_properties.push('invalid value for "percent_complete", percent_complete cannot be nil.')
+      end
+
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if @percent_complete.nil?
       true
     end
 
@@ -77,7 +143,14 @@ module IbmCloudPower
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          cloned_volumes == o.cloned_volumes
+          volumes_clone_id == o.volumes_clone_id &&
+          name == o.name &&
+          status == o.status &&
+          action == o.action &&
+          percent_complete == o.percent_complete &&
+          failure_message == o.failure_message &&
+          creation_date == o.creation_date &&
+          last_update_date == o.last_update_date
     end
 
     # @see the `==` method
@@ -89,7 +162,7 @@ module IbmCloudPower
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [cloned_volumes].hash
+      [volumes_clone_id, name, status, action, percent_complete, failure_message, creation_date, last_update_date].hash
     end
 
     # Builds the object from hash

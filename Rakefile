@@ -16,12 +16,10 @@ namespace :openapi do
   task :download_cli, [:version] do |_t, args|
     version = args[:version] || "5.0.0-beta2"
 
-    target_file    = "openapi-generator-cli-#{version}"
+    output_file    = "openapi-generator-cli-#{version}.jar"
     target_symlink = "openapi-generator-cli"
 
-    unless File.exist?(target_file)
-      output_file = "openapi-generator-cli-#{version}"
-
+    unless File.exist?(output_file)
       puts "Downloading #{output_file}..."
 
       uri = URI("https://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli/#{version}/#{output_file}")
@@ -32,7 +30,7 @@ namespace :openapi do
     end
 
     File.unlink(target_symlink) if File.exist?(target_symlink)
-    File.symlink(target_file, target_symlink)
+    File.symlink(output_file, target_symlink)
   end
 
   task :download_openapi_specs do

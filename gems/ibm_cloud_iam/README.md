@@ -97,7 +97,7 @@ Class | Method | HTTP request | Description
 *IbmCloudIam::TokenOperationsApi* | [**get_token_api_key**](docs/TokenOperationsApi.md#get_token_api_key) | **POST** /identity/token#apikey | Create an IAM access token for a user or service ID using an API key
 *IbmCloudIam::TokenOperationsApi* | [**get_token_api_key_delegated_refresh_token**](docs/TokenOperationsApi.md#get_token_api_key_delegated_refresh_token) | **POST** /identity/token#apikey-delegated-refresh-token | Create an IAM access token and delegated refresh token for a user or service ID
 *IbmCloudIam::TokenOperationsApi* | [**get_token_iam_authz**](docs/TokenOperationsApi.md#get_token_iam_authz) | **POST** /identity/token#iam-authz | Create an IAM access token based on an authorization policy
-*IbmCloudIam::TokenOperationsApi* | [**get_token_password**](docs/TokenOperationsApi.md#get_token_password) | **POST** /identity/token#password | Create an IAM access token for a user using username / password credentials and an optional account identifier.
+*IbmCloudIam::TokenOperationsApi* | [**get_token_password**](docs/TokenOperationsApi.md#get_token_password) | **POST** /identity/token#password | Create an IAM access token for a user using username / password credentials and an optional account identifier
 
 
 ## Documentation for Models

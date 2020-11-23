@@ -792,6 +792,7 @@ module IbmCloudPower
     # @param cloud_instance_id [String] Cloud Instance ID of a PCloud Instance
     # @param body [PVMInstanceCreate] Parameters for the creation of a new tenant
     # @param [Hash] opts the optional parameters
+    # @option opts [Boolean] :skip_host_validation Option to skip host validation on PVMInstance Create API
     # @return [Array<PVMInstance>]
     def pcloud_pvminstances_post(cloud_instance_id, body, opts = {})
       data, _status_code, _headers = pcloud_pvminstances_post_with_http_info(cloud_instance_id, body, opts)
@@ -803,6 +804,7 @@ module IbmCloudPower
     # @param cloud_instance_id [String] Cloud Instance ID of a PCloud Instance
     # @param body [PVMInstanceCreate] Parameters for the creation of a new tenant
     # @param [Hash] opts the optional parameters
+    # @option opts [Boolean] :skip_host_validation Option to skip host validation on PVMInstance Create API
     # @return [Array<(Array<PVMInstance>, Integer, Hash)>] Array<PVMInstance> data, response status code and response headers
     def pcloud_pvminstances_post_with_http_info(cloud_instance_id, body, opts = {})
       if @api_client.config.debugging
@@ -821,6 +823,7 @@ module IbmCloudPower
 
       # query parameters
       query_params = opts[:query_params] || {}
+      query_params[:'skipHostValidation'] = opts[:'skip_host_validation'] if !opts[:'skip_host_validation'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}

@@ -7,7 +7,7 @@ Method | HTTP request | Description
 [**get_token_api_key**](TokenOperationsApi.md#get_token_api_key) | **POST** /identity/token#apikey | Create an IAM access token for a user or service ID using an API key
 [**get_token_api_key_delegated_refresh_token**](TokenOperationsApi.md#get_token_api_key_delegated_refresh_token) | **POST** /identity/token#apikey-delegated-refresh-token | Create an IAM access token and delegated refresh token for a user or service ID
 [**get_token_iam_authz**](TokenOperationsApi.md#get_token_iam_authz) | **POST** /identity/token#iam-authz | Create an IAM access token based on an authorization policy
-[**get_token_password**](TokenOperationsApi.md#get_token_password) | **POST** /identity/token#password | Create an IAM access token for a user using username / password credentials and an optional account identifier.
+[**get_token_password**](TokenOperationsApi.md#get_token_password) | **POST** /identity/token#password | Create an IAM access token for a user using username / password credentials and an optional account identifier
 
 
 
@@ -172,7 +172,7 @@ No authorization required
 
 > TokenResponse get_token_password(authorization, grant_type, username, password, opts)
 
-Create an IAM access token for a user using username / password credentials and an optional account identifier.
+Create an IAM access token for a user using username / password credentials and an optional account identifier
 
 Creates a non-opaque access token for a username and password. To be able to call IBM Cloud APIs, the token must be made account-specific. For this purpose, also pass the 32 character long identifier for your account in the API call. This API call is possible only for non-federated IBMid users.
 
@@ -192,7 +192,7 @@ opts = {
 }
 
 begin
-  #Create an IAM access token for a user using username / password credentials and an optional account identifier.
+  #Create an IAM access token for a user using username / password credentials and an optional account identifier
   result = api_instance.get_token_password(authorization, grant_type, username, password, opts)
   p result
 rescue IbmCloudIam::ApiError => e

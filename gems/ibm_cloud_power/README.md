@@ -157,6 +157,7 @@ Class | Method | HTTP request | Description
  - [IbmCloudPower::CloneTaskReference](docs/CloneTaskReference.md)
  - [IbmCloudPower::CloneTaskStatus](docs/CloneTaskStatus.md)
  - [IbmCloudPower::ClonedVolume](docs/ClonedVolume.md)
+ - [IbmCloudPower::ClonedVolumeDetail](docs/ClonedVolumeDetail.md)
  - [IbmCloudPower::CloudInstance](docs/CloudInstance.md)
  - [IbmCloudPower::CloudInstanceCreate](docs/CloudInstanceCreate.md)
  - [IbmCloudPower::CloudInstanceReference](docs/CloudInstanceReference.md)
@@ -234,11 +235,18 @@ Class | Method | HTTP request | Description
  - [IbmCloudPower::UpdateVolume](docs/UpdateVolume.md)
  - [IbmCloudPower::VirtualCores](docs/VirtualCores.md)
  - [IbmCloudPower::Volume](docs/Volume.md)
+ - [IbmCloudPower::VolumeInfo](docs/VolumeInfo.md)
  - [IbmCloudPower::VolumeReference](docs/VolumeReference.md)
  - [IbmCloudPower::Volumes](docs/Volumes.md)
+ - [IbmCloudPower::VolumesClone](docs/VolumesClone.md)
  - [IbmCloudPower::VolumesCloneAsyncRequest](docs/VolumesCloneAsyncRequest.md)
+ - [IbmCloudPower::VolumesCloneCancel](docs/VolumesCloneCancel.md)
+ - [IbmCloudPower::VolumesCloneCreate](docs/VolumesCloneCreate.md)
+ - [IbmCloudPower::VolumesCloneDetail](docs/VolumesCloneDetail.md)
+ - [IbmCloudPower::VolumesCloneExecute](docs/VolumesCloneExecute.md)
  - [IbmCloudPower::VolumesCloneRequest](docs/VolumesCloneRequest.md)
  - [IbmCloudPower::VolumesCloneResponse](docs/VolumesCloneResponse.md)
+ - [IbmCloudPower::VolumesClones](docs/VolumesClones.md)
 
 
 ## Documentation for Authorization

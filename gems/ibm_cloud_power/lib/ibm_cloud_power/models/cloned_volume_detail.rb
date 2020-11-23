@@ -13,21 +13,24 @@ OpenAPI Generator version: 5.0.0-beta2
 require 'date'
 
 module IbmCloudPower
-  class VolumesCloneResponse
-    # A map of volume IDs to cloned volume IDs
-    attr_accessor :cloned_volumes
+  class ClonedVolumeDetail
+    attr_accessor :source
+
+    attr_accessor :clone
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'cloned_volumes' => :'clonedVolumes'
+        :'source' => :'source',
+        :'clone' => :'clone'
       }
     end
 
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'cloned_volumes' => :'Hash<String, String>'
+        :'source' => :'VolumeInfo',
+        :'clone' => :'VolumeInfo'
       }
     end
 
@@ -41,21 +44,23 @@ module IbmCloudPower
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `IbmCloudPower::VolumesCloneResponse` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `IbmCloudPower::ClonedVolumeDetail` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `IbmCloudPower::VolumesCloneResponse`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `IbmCloudPower::ClonedVolumeDetail`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'cloned_volumes')
-        if (value = attributes[:'cloned_volumes']).is_a?(Hash)
-          self.cloned_volumes = value
-        end
+      if attributes.key?(:'source')
+        self.source = attributes[:'source']
+      end
+
+      if attributes.key?(:'clone')
+        self.clone = attributes[:'clone']
       end
     end
 
@@ -63,12 +68,22 @@ module IbmCloudPower
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if @source.nil?
+        invalid_properties.push('invalid value for "source", source cannot be nil.')
+      end
+
+      if @clone.nil?
+        invalid_properties.push('invalid value for "clone", clone cannot be nil.')
+      end
+
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if @source.nil?
+      return false if @clone.nil?
       true
     end
 
@@ -77,7 +92,8 @@ module IbmCloudPower
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          cloned_volumes == o.cloned_volumes
+          source == o.source &&
+          clone == o.clone
     end
 
     # @see the `==` method
@@ -89,7 +105,7 @@ module IbmCloudPower
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [cloned_volumes].hash
+      [source, clone].hash
     end
 
     # Builds the object from hash

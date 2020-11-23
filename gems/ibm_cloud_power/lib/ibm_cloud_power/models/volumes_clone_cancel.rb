@@ -13,21 +13,21 @@ OpenAPI Generator version: 5.0.0-beta2
 require 'date'
 
 module IbmCloudPower
-  class VolumesCloneResponse
-    # A map of volume IDs to cloned volume IDs
-    attr_accessor :cloned_volumes
+  class VolumesCloneCancel
+    # default False, Cancel will only be allowed if the status is ‘prepared’, or ‘available’ True, Cancel will be allowed when the status is NOT completed, cancelling, cancelled, or failed       
+    attr_accessor :force
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'cloned_volumes' => :'clonedVolumes'
+        :'force' => :'force'
       }
     end
 
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'cloned_volumes' => :'Hash<String, String>'
+        :'force' => :'Boolean'
       }
     end
 
@@ -41,21 +41,19 @@ module IbmCloudPower
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `IbmCloudPower::VolumesCloneResponse` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `IbmCloudPower::VolumesCloneCancel` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `IbmCloudPower::VolumesCloneResponse`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `IbmCloudPower::VolumesCloneCancel`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'cloned_volumes')
-        if (value = attributes[:'cloned_volumes']).is_a?(Hash)
-          self.cloned_volumes = value
-        end
+      if attributes.key?(:'force')
+        self.force = attributes[:'force']
       end
     end
 
@@ -77,7 +75,7 @@ module IbmCloudPower
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          cloned_volumes == o.cloned_volumes
+          force == o.force
     end
 
     # @see the `==` method
@@ -89,7 +87,7 @@ module IbmCloudPower
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [cloned_volumes].hash
+      [force].hash
     end
 
     # Builds the object from hash
