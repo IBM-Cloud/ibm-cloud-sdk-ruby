@@ -1,7 +1,0 @@
-{
-  "gemName": "ibm_cloud_vpc",
-  "gemAuthor": "IBM Cloud Developers",
-  "gemSummary": "IBM Cloud Virtual Private Servers",
-  "gemDescription": "Ruby gem for IBM Cloud Virtual Private Servers",
-  "gemLicense": "Apache-2.0"
-}

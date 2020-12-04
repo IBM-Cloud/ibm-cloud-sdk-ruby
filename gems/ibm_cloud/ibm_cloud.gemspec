@@ -27,5 +27,5 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency("ibm_cloud_iam")
   spec.add_dependency("ibm_cloud_power")
-  spec.add_dependency("ibm_cloud_vpc")
+  spec.add_dependency("ibm_cloud_resource_controller")
 end
