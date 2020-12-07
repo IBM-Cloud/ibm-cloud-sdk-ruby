@@ -1,0 +1,10 @@
+language: ruby
+cache: bundler
+rvm:
+  - 2.5.8
+  - 2.6.6
+script:
+  - bundle install --path vendor/bundle
+  - bundle exec rspec
+  - gem build ibm_cloud_iam.gemspec
+  - gem install ./ibm_cloud_iam-1.0.0.gem

@@ -1,0 +1,7 @@
+{
+  "gemName": "ibm_cloud_iam",
+  "gemAuthor": "IBM Cloud Developers",
+  "gemSummary": "IBM Cloud IAM Identity Services",
+  "gemDescription": "Ruby gem for IBM Cloud IAM Identity Services",
+  "gemLicense": "Apache-2.0"
+}
