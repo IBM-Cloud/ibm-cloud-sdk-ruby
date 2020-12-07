@@ -33,8 +33,6 @@ namespace :openapi do
   end
 
   task :download_openapi_specs do
-    require "json"
-
     IBM_CLOUD_GEMS.each do |api_gem, openapi_json|
       uri          = URI("https://cloud.ibm.com/apidocs/#{openapi_json}")
       output_file  = openapi_json.sub("/", "-")
