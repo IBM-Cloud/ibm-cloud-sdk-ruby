@@ -1,0 +1,7 @@
+{
+  "gemName": "ibm_cloud_vpc",
+  "gemAuthor": "IBM Cloud Developers",
+  "gemSummary": "IBM Cloud VPC",
+  "gemDescription": "Ruby gem for IBM Cloud VPC",
+  "gemLicense": "Apache-2.0"
+}
