@@ -25,6 +25,7 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
+  spec.add_dependency("ibm_cloud_global_tagging")
   spec.add_dependency("ibm_cloud_iam")
   spec.add_dependency("ibm_cloud_power")
   spec.add_dependency("ibm_cloud_resource_controller")
