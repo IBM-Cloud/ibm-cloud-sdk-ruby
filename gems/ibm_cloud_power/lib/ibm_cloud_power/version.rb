@@ -11,5 +11,5 @@ OpenAPI Generator version: 5.0.0-beta2
 =end
 
 module IbmCloudPower
-  VERSION = '1.0.1'
+  VERSION = '1.0.2'
 end
