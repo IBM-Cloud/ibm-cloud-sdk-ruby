@@ -1,0 +1,7 @@
+{
+  "gemName": "ibm_cloud_object_storage",
+  "gemAuthor": "IBM Cloud Developers",
+  "gemSummary": "IBM Cloud Object Storage",
+  "gemDescription": "Ruby gem for IBM Cloud Object Storage",
+  "gemLicense": "Apache-2.0"
+}

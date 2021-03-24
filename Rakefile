@@ -11,6 +11,7 @@ namespace :openapi do
     "ibm_cloud_iam"                 => "iam-identity-token-api.json",
     "ibm_cloud_power"               => "power-cloud.json",
     "ibm_cloud_resource_controller" => "resource-controller/resource-controller.json",
+    "ibm_cloud_object_storage"      => "cos/cos-compatibility.json",
   }
 
   task :download_cli, [:version] do |_t, args|
