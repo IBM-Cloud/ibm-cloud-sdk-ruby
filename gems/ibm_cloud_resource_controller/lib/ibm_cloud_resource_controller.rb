@@ -8,4 +8,5 @@ module IbmCloudResourceController
   require_relative "./ibm_cloud_resource_controller/authenticators.rb"
   require_relative "./ibm_cloud_resource_controller/common.rb"
   require_relative "./ibm_cloud_resource_controller/resource_controller_v2.rb"
+  require_relative "./ibm_cloud_resource_controller/resource_manager_v2.rb"
 end
