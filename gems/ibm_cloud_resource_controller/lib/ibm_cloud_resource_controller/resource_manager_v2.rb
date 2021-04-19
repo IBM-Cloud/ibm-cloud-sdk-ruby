@@ -24,7 +24,7 @@ require "json"
 require "ibm_cloud_sdk_core"
 require_relative "./common.rb"
 
-module IbmCloudResourceManager
+module IbmCloudResourceController
   ##
   # The Resource Manager V2 service.
   class ResourceManagerV2 < IBMCloudSdkCore::BaseService
