@@ -22,6 +22,7 @@ Gem::Specification.new do |s|
   s.authors     = ["IBM Cloud Developers"]
   s.email       = ["kylej@us.ibm.com"]
   s.homepage    = "https://openapi-generator.tech"
+  s.licenses    = ["Apache-2.0"]
   s.summary     = "IBM Cloud Power Cloud"
   s.description = "Ruby gem for IBM Cloud Power Cloud"
   s.license     = 'Apache-2.0'
