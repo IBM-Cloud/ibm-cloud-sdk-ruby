@@ -8,6 +8,7 @@ Gem::Specification.new do |spec|
   spec.summary       = %q{IBM Cloud SDK}
   spec.description   = %q{A Ruby gem for IBM Cloud APIs.}
   spec.homepage      = "Put your gem's website or public repo URL here."
+  spec.licenses      = ["Apache-2.0"]
   spec.required_ruby_version = Gem::Requirement.new(">= 2.3.0")
 
   spec.metadata["allowed_push_host"] = "Set to 'http://mygemserver.com'"
