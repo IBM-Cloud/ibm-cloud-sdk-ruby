@@ -38,7 +38,7 @@ module IbmCloudPower
     # Last Update Date
     attr_accessor :last_update_date
 
-    # List of cloned volumes created from the volumes-clone request
+    # List of cloned volumes created from the volumes-clone request. The clone volumes information is included only after the Execute step has completed successfully. The source and clone volume names might not be provided as this information is retrieved in a separate API call and might not complete in a timely manner.
     attr_accessor :cloned_volumes
 
     # Attribute mapping from ruby-style variable name to JSON key.

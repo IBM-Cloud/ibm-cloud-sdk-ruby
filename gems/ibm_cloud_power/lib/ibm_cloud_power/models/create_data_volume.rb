@@ -14,11 +14,8 @@ require 'date'
 
 module IbmCloudPower
   class CreateDataVolume
-    # Type of Disk, required if affinityPolicy not used
+    # Type of disk, required if affinityPolicy is not provided, otherwise ignored
     attr_accessor :disk_type
-
-    # Volume pool where the volume will be located
-    attr_accessor :volume_pool
 
     # Volume Name
     attr_accessor :name
@@ -29,11 +26,14 @@ module IbmCloudPower
     # Indicates if the volume is shareable between VMs
     attr_accessor :shareable
 
-    # Affinity policy for data volume being created; requires affinityVolume to be specified
+    # Affinity policy for data volume being created; requires affinityPVMInstance or affinityVolume to be specified;
     attr_accessor :affinity_policy
 
-    # Volume (ID or Name)to base volume affinity policy against; required if affinityPolicy provided
+    # Volume (ID or Name) to base volume affinity policy against; required if affinityPolicy is provided and affinityPVMInstance is not provided
     attr_accessor :affinity_volume
+
+    # PVM Instance (ID or Name) to base volume affinity policy against; required if affinityPolicy is provided and affinityVolume is not provided
+    attr_accessor :affinity_pvm_instance
 
     class EnumAttributeValidator
       attr_reader :datatype
@@ -61,12 +61,12 @@ module IbmCloudPower
     def self.attribute_map
       {
         :'disk_type' => :'diskType',
-        :'volume_pool' => :'volumePool',
         :'name' => :'name',
         :'size' => :'size',
         :'shareable' => :'shareable',
         :'affinity_policy' => :'affinityPolicy',
-        :'affinity_volume' => :'affinityVolume'
+        :'affinity_volume' => :'affinityVolume',
+        :'affinity_pvm_instance' => :'affinityPVMInstance'
       }
     end
 
@@ -74,12 +74,12 @@ module IbmCloudPower
     def self.openapi_types
       {
         :'disk_type' => :'String',
-        :'volume_pool' => :'String',
         :'name' => :'String',
         :'size' => :'Float',
         :'shareable' => :'Boolean',
         :'affinity_policy' => :'String',
-        :'affinity_volume' => :'String'
+        :'affinity_volume' => :'String',
+        :'affinity_pvm_instance' => :'String'
       }
     end
 
@@ -108,10 +108,6 @@ module IbmCloudPower
         self.disk_type = attributes[:'disk_type']
       end
 
-      if attributes.key?(:'volume_pool')
-        self.volume_pool = attributes[:'volume_pool']
-      end
-
       if attributes.key?(:'name')
         self.name = attributes[:'name']
       end
@@ -130,6 +126,10 @@ module IbmCloudPower
 
       if attributes.key?(:'affinity_volume')
         self.affinity_volume = attributes[:'affinity_volume']
+      end
+
+      if attributes.key?(:'affinity_pvm_instance')
+        self.affinity_pvm_instance = attributes[:'affinity_pvm_instance']
       end
     end
 
@@ -174,12 +174,12 @@ module IbmCloudPower
       return true if self.equal?(o)
       self.class == o.class &&
           disk_type == o.disk_type &&
-          volume_pool == o.volume_pool &&
           name == o.name &&
           size == o.size &&
           shareable == o.shareable &&
           affinity_policy == o.affinity_policy &&
-          affinity_volume == o.affinity_volume
+          affinity_volume == o.affinity_volume &&
+          affinity_pvm_instance == o.affinity_pvm_instance
     end
 
     # @see the `==` method
@@ -191,7 +191,7 @@ module IbmCloudPower
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [disk_type, volume_pool, name, size, shareable, affinity_policy, affinity_volume].hash
+      [disk_type, name, size, shareable, affinity_policy, affinity_volume, affinity_pvm_instance].hash
     end
 
     # Builds the object from hash

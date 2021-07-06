@@ -353,7 +353,136 @@ module IbmCloudPower
       return data, status_code, headers
     end
 
-    # Detailed information of an available image
+    # Detailed info of an available stock image
+    # @param cloud_instance_id [String] Cloud Instance ID of a PCloud Instance
+    # @param image_id [String] Image ID of a image
+    # @param [Hash] opts the optional parameters
+    # @return [Image]
+    def pcloud_cloudinstances_stockimages_get(cloud_instance_id, image_id, opts = {})
+      data, _status_code, _headers = pcloud_cloudinstances_stockimages_get_with_http_info(cloud_instance_id, image_id, opts)
+      data
+    end
+
+    # Detailed info of an available stock image
+    # @param cloud_instance_id [String] Cloud Instance ID of a PCloud Instance
+    # @param image_id [String] Image ID of a image
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(Image, Integer, Hash)>] Image data, response status code and response headers
+    def pcloud_cloudinstances_stockimages_get_with_http_info(cloud_instance_id, image_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: PCloudImagesApi.pcloud_cloudinstances_stockimages_get ...'
+      end
+      # verify the required parameter 'cloud_instance_id' is set
+      if @api_client.config.client_side_validation && cloud_instance_id.nil?
+        fail ArgumentError, "Missing the required parameter 'cloud_instance_id' when calling PCloudImagesApi.pcloud_cloudinstances_stockimages_get"
+      end
+      # verify the required parameter 'image_id' is set
+      if @api_client.config.client_side_validation && image_id.nil?
+        fail ArgumentError, "Missing the required parameter 'image_id' when calling PCloudImagesApi.pcloud_cloudinstances_stockimages_get"
+      end
+      # resource path
+      local_var_path = '/pcloud/v1/cloud-instances/{cloud_instance_id}/stock-images/{image_id}'.sub('{' + 'cloud_instance_id' + '}', CGI.escape(cloud_instance_id.to_s)).sub('{' + 'image_id' + '}', CGI.escape(image_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:body] 
+
+      # return_type
+      return_type = opts[:return_type] || 'Image' 
+
+      # auth_names
+      auth_names = opts[:auth_names] || []
+
+      new_options = opts.merge(
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PCloudImagesApi#pcloud_cloudinstances_stockimages_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # List all available stock images
+    # @param cloud_instance_id [String] Cloud Instance ID of a PCloud Instance
+    # @param [Hash] opts the optional parameters
+    # @option opts [Boolean] :sap Include SAP images with get available stock images
+    # @return [Images]
+    def pcloud_cloudinstances_stockimages_getall(cloud_instance_id, opts = {})
+      data, _status_code, _headers = pcloud_cloudinstances_stockimages_getall_with_http_info(cloud_instance_id, opts)
+      data
+    end
+
+    # List all available stock images
+    # @param cloud_instance_id [String] Cloud Instance ID of a PCloud Instance
+    # @param [Hash] opts the optional parameters
+    # @option opts [Boolean] :sap Include SAP images with get available stock images
+    # @return [Array<(Images, Integer, Hash)>] Images data, response status code and response headers
+    def pcloud_cloudinstances_stockimages_getall_with_http_info(cloud_instance_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: PCloudImagesApi.pcloud_cloudinstances_stockimages_getall ...'
+      end
+      # verify the required parameter 'cloud_instance_id' is set
+      if @api_client.config.client_side_validation && cloud_instance_id.nil?
+        fail ArgumentError, "Missing the required parameter 'cloud_instance_id' when calling PCloudImagesApi.pcloud_cloudinstances_stockimages_getall"
+      end
+      # resource path
+      local_var_path = '/pcloud/v1/cloud-instances/{cloud_instance_id}/stock-images'.sub('{' + 'cloud_instance_id' + '}', CGI.escape(cloud_instance_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'sap'] = opts[:'sap'] if !opts[:'sap'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:body] 
+
+      # return_type
+      return_type = opts[:return_type] || 'Images' 
+
+      # auth_names
+      auth_names = opts[:auth_names] || []
+
+      new_options = opts.merge(
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PCloudImagesApi#pcloud_cloudinstances_stockimages_getall\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Deprecated for /pcloud/v1/cloud-instances/${CLOUD_INSTANCE_ID}/stock-images/{image_id} - Detailed info of an available stock image
     # @param image_id [String] Image ID of a image
     # @param [Hash] opts the optional parameters
     # @return [Images]
@@ -362,7 +491,7 @@ module IbmCloudPower
       data
     end
 
-    # Detailed information of an available image
+    # Deprecated for /pcloud/v1/cloud-instances/${CLOUD_INSTANCE_ID}/stock-images/{image_id} - Detailed info of an available stock image
     # @param image_id [String] Image ID of a image
     # @param [Hash] opts the optional parameters
     # @return [Array<(Images, Integer, Hash)>] Images data, response status code and response headers
@@ -413,7 +542,7 @@ module IbmCloudPower
       return data, status_code, headers
     end
 
-    # List all images available for copying into cloud instances
+    # Deprecated for /pcloud/v1/cloud-instances/${CLOUD_INSTANCE_ID}/stock-images - List all available stock images
     # @param [Hash] opts the optional parameters
     # @option opts [Boolean] :sap Include SAP images with get available stock images
     # @return [Images]
@@ -422,7 +551,7 @@ module IbmCloudPower
       data
     end
 
-    # List all images available for copying into cloud instances
+    # Deprecated for /pcloud/v1/cloud-instances/${CLOUD_INSTANCE_ID}/stock-images - List all available stock images
     # @param [Hash] opts the optional parameters
     # @option opts [Boolean] :sap Include SAP images with get available stock images
     # @return [Array<(Images, Integer, Hash)>] Images data, response status code and response headers

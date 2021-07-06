@@ -35,6 +35,7 @@ Name | Type | Description | Notes
 **operating_system** | **String** | OS system information (usually version and build) | [optional] 
 **sap_profile** | [**SAPProfileReference**](SAPProfileReference.md) |  | [optional] 
 **virtual_cores** | [**VirtualCores**](VirtualCores.md) |  | [optional] 
+**placement_group** | **String** | The placement group of the server | [optional] [default to &#39;none&#39;]
 
 ## Code Sample
 
@@ -71,7 +72,8 @@ instance = IbmCloudPower::PVMInstance.new(pvm_instance_id: null,
                                  os_type: null,
                                  operating_system: null,
                                  sap_profile: null,
-                                 virtual_cores: null)
+                                 virtual_cores: null,
+                                 placement_group: null)
 ```
 
 

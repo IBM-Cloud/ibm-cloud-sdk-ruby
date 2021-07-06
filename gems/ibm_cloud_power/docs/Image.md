@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **description** | **String** | Description | [optional] 
 **size** | **Float** | Image Size | 
 **storage_type** | **String** | Storage type for image | 
+**storage_pool** | **String** | Storage pool where the image is located | 
 **creation_date** | **DateTime** | Creation Date | 
 **last_update_date** | **DateTime** | Last Update Date | 
 **specifications** | [**ImageSpecifications**](ImageSpecifications.md) |  | [optional] 
@@ -28,6 +29,7 @@ instance = IbmCloudPower::Image.new(image_id: null,
                                  description: null,
                                  size: null,
                                  storage_type: null,
+                                 storage_pool: null,
                                  creation_date: null,
                                  last_update_date: null,
                                  specifications: null,

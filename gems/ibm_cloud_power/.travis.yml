@@ -1,8 +1,9 @@
 language: ruby
 cache: bundler
 rvm:
-  - 2.5.8
-  - 2.6.6
+  - 2.3
+  - 2.4
+  - 2.5
 script:
   - bundle install --path vendor/bundle
   - bundle exec rspec

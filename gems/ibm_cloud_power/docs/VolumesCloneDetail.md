@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **failure_message** | **String** | Failure reason for a failed volumes-clone request | [optional] 
 **creation_date** | **DateTime** | Creation Date | [optional] 
 **last_update_date** | **DateTime** | Last Update Date | [optional] 
-**cloned_volumes** | [**Array&lt;ClonedVolumeDetail&gt;**](ClonedVolumeDetail.md) | List of cloned volumes created from the volumes-clone request | [optional] 
+**cloned_volumes** | [**Array&lt;ClonedVolumeDetail&gt;**](ClonedVolumeDetail.md) | List of cloned volumes created from the volumes-clone request. The clone volumes information is included only after the Execute step has completed successfully. The source and clone volume names might not be provided as this information is retrieved in a separate API call and might not complete in a timely manner. | [optional] 
 
 ## Code Sample
 

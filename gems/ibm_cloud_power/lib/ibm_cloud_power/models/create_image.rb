@@ -14,13 +14,13 @@ require 'date'
 
 module IbmCloudPower
   class CreateImage
-    # Source of the image
+    # Source of the image. The root-project value is used to import an available stock image into a PCloud instance image catalog. The url value is used to import a custom image from a Cloud storage account into a PCloud instance image catalog.
     attr_accessor :source
 
-    # Image ID of existing source image; required for copy image
+    # Image ID of existing stock image; required for copy image
     attr_accessor :image_id
 
-    # Name to give created image; required for import image
+    # Name to specify a custom image that is imported from Cloud Object Storage. You must not use this property when you import an available stock image. Stock image names cannot be changed.
     attr_accessor :image_name
 
     # (deprecated - replaced by region, imageFilename and bucketName) Path to image starting with service endpoint and ending with image filename

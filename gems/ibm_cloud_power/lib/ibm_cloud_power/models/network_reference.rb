@@ -23,7 +23,7 @@ module IbmCloudPower
     # VLAN ID
     attr_accessor :vlan_id
 
-    # Type of Network {pub-vlan, vlan, vxlan}
+    # Type of Network {vlan, pub-vlan}
     attr_accessor :type
 
     # MTU Jumbo Network enabled
@@ -164,7 +164,7 @@ module IbmCloudPower
       return false if @name.nil?
       return false if @vlan_id.nil?
       return false if @type.nil?
-      type_validator = EnumAttributeValidator.new('String', ["pub-vlan", "vlan", "vxlan"])
+      type_validator = EnumAttributeValidator.new('String', ["vlan", "vxlan"])
       return false unless type_validator.valid?(@type)
       return false if @jumbo.nil?
       return false if @href.nil?
@@ -174,7 +174,7 @@ module IbmCloudPower
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] type Object to be assigned
     def type=(type)
-      validator = EnumAttributeValidator.new('String', ["pub-vlan", "vlan", "vxlan"])
+      validator = EnumAttributeValidator.new('String', ["vlan", "vxlan"])
       unless validator.valid?(type)
         fail ArgumentError, "invalid value for \"type\", must be one of #{validator.allowable_values}."
       end

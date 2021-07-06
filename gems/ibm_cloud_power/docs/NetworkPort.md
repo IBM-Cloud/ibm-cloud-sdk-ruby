@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **status** | **String** | Te | 
 **mac_address** | **String** | The mac address of the network interface | 
 **ip_address** | **String** | The ip address of this port | 
+**external_ip** | **String** | The external ip address (for pub-vlan networks) | [optional] 
 **pvm_instance** | [**NetworkPortPvmInstance**](NetworkPortPvmInstance.md) |  | [optional] 
 **href** | **String** | Link to port resource | [optional] 
 
@@ -22,6 +23,7 @@ instance = IbmCloudPower::NetworkPort.new(port_id: null,
                                  status: null,
                                  mac_address: null,
                                  ip_address: null,
+                                 external_ip: null,
                                  pvm_instance: null,
                                  href: null)
 ```

@@ -18,11 +18,12 @@ Name | Type | Description | Notes
 **key_pair_name** | **String** | The name of the SSH key pair provided to the server for authenticating users (looked up in the tenant&#39;s list of keys) | [optional] 
 **sys_type** | **String** | System type used to host the instance | [optional] 
 **migratable** | **Boolean** | Indicates if the server is allowed to migrate between hosts | [optional] [default to true]
-**user_data** | **String** | Cloud init user defined data | [optional] 
-**storage_type** | **String** | Storage type for server deployment | [optional] 
+**user_data** | **String** | Cloud-init user-defined data. The user-defined data is made available to the VM instance as a config drive. | [optional] 
+**storage_type** | **String** | Storage type for server deployment. Only valid when you deploy one of the IBM supplied **stock** images. Storage type for a custom image (an imported image or an image that is created from a VM capture) defaults to the storage type the image was created in | [optional] 
 **software_licenses** | [**SoftwareLicenses**](SoftwareLicenses.md) |  | [optional] 
 **pin_policy** | [**PinPolicy**](PinPolicy.md) |  | [optional] 
 **virtual_cores** | [**VirtualCores**](VirtualCores.md) |  | [optional] 
+**placement_group** | **String** | The placement group for the server | [optional] 
 
 ## Code Sample
 
@@ -47,7 +48,8 @@ instance = IbmCloudPower::PVMInstanceCreate.new(server_name: null,
                                  storage_type: null,
                                  software_licenses: null,
                                  pin_policy: null,
-                                 virtual_cores: null)
+                                 virtual_cores: null,
+                                 placement_group: null)
 ```
 
 

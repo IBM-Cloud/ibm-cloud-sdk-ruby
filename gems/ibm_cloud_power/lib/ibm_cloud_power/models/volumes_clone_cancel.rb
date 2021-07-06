@@ -14,7 +14,7 @@ require 'date'
 
 module IbmCloudPower
   class VolumesCloneCancel
-    # default False, Cancel will only be allowed if the status is ‘prepared’, or ‘available’ True, Cancel will be allowed when the status is NOT completed, cancelling, cancelled, or failed       
+    # default False, Cancel will only be allowed if the status is 'prepared', or 'available' True, Cancel will be allowed when the status is NOT completed, cancelling, cancelled, or failed 
     attr_accessor :force
 
     # Attribute mapping from ruby-style variable name to JSON key.

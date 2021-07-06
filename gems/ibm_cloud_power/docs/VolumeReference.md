@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **boot_volume** | **Boolean** | Indicates if the volume is the server&#39;s boot volume | [optional] 
 **delete_on_termination** | **Boolean** | Indicates if the volume should be deleted when the server terminates | [optional] 
 **disk_type** | **String** | Type of Disk | 
+**volume_type** | **String** | Volume type, name of storage template used to create the volume | [optional] 
 **wwn** | **String** | Volume world wide name | 
 **creation_date** | **DateTime** | Creation Date | 
 **last_update_date** | **DateTime** | Last Update Date | 
@@ -33,6 +34,7 @@ instance = IbmCloudPower::VolumeReference.new(volume_id: null,
                                  boot_volume: null,
                                  delete_on_termination: null,
                                  disk_type: null,
+                                 volume_type: null,
                                  wwn: null,
                                  creation_date: null,
                                  last_update_date: null,

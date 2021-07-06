@@ -102,6 +102,9 @@ module IbmCloudPower
 
     attr_accessor :virtual_cores
 
+    # The placement group of the server
+    attr_accessor :placement_group
+
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -157,7 +160,8 @@ module IbmCloudPower
         :'os_type' => :'osType',
         :'operating_system' => :'operatingSystem',
         :'sap_profile' => :'sapProfile',
-        :'virtual_cores' => :'virtualCores'
+        :'virtual_cores' => :'virtualCores',
+        :'placement_group' => :'placementGroup'
       }
     end
 
@@ -194,7 +198,8 @@ module IbmCloudPower
         :'os_type' => :'String',
         :'operating_system' => :'String',
         :'sap_profile' => :'SAPProfileReference',
-        :'virtual_cores' => :'VirtualCores'
+        :'virtual_cores' => :'VirtualCores',
+        :'placement_group' => :'String'
       }
     end
 
@@ -356,6 +361,12 @@ module IbmCloudPower
       if attributes.key?(:'virtual_cores')
         self.virtual_cores = attributes[:'virtual_cores']
       end
+
+      if attributes.key?(:'placement_group')
+        self.placement_group = attributes[:'placement_group']
+      else
+        self.placement_group = 'none'
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -421,7 +432,7 @@ module IbmCloudPower
       return false if @image_id.nil?
       return false if @processors.nil?
       return false if @proc_type.nil?
-      proc_type_validator = EnumAttributeValidator.new('String', ["dedicated", "shared", "capped"])
+      proc_type_validator = EnumAttributeValidator.new('String', ["dedicated", "shared", "capped", ""])
       return false unless proc_type_validator.valid?(@proc_type)
       return false if @memory.nil?
       return false if @disk_size.nil?
@@ -478,7 +489,8 @@ module IbmCloudPower
           os_type == o.os_type &&
           operating_system == o.operating_system &&
           sap_profile == o.sap_profile &&
-          virtual_cores == o.virtual_cores
+          virtual_cores == o.virtual_cores &&
+          placement_group == o.placement_group
     end
 
     # @see the `==` method
@@ -490,7 +502,7 @@ module IbmCloudPower
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [pvm_instance_id, server_name, image_id, processors, minproc, maxproc, proc_type, memory, minmem, maxmem, disk_size, network_i_ds, volume_i_ds, addresses, networks, status, progress, fault, creation_date, updated_date, sys_type, health, migratable, storage_type, software_licenses, srcs, pin_policy, os_type, operating_system, sap_profile, virtual_cores].hash
+      [pvm_instance_id, server_name, image_id, processors, minproc, maxproc, proc_type, memory, minmem, maxmem, disk_size, network_i_ds, volume_i_ds, addresses, networks, status, progress, fault, creation_date, updated_date, sys_type, health, migratable, storage_type, software_licenses, srcs, pin_policy, os_type, operating_system, sap_profile, virtual_cores, placement_group].hash
     end
 
     # Builds the object from hash
