@@ -32,6 +32,9 @@ module IbmCloudPower
     # Storage type for image
     attr_accessor :storage_type
 
+    # Storage pool where the image is located
+    attr_accessor :storage_pool
+
     # Creation Date
     attr_accessor :creation_date
 
@@ -57,6 +60,7 @@ module IbmCloudPower
         :'description' => :'description',
         :'size' => :'size',
         :'storage_type' => :'storageType',
+        :'storage_pool' => :'storagePool',
         :'creation_date' => :'creationDate',
         :'last_update_date' => :'lastUpdateDate',
         :'specifications' => :'specifications',
@@ -75,6 +79,7 @@ module IbmCloudPower
         :'description' => :'String',
         :'size' => :'Float',
         :'storage_type' => :'String',
+        :'storage_pool' => :'String',
         :'creation_date' => :'DateTime',
         :'last_update_date' => :'DateTime',
         :'specifications' => :'ImageSpecifications',
@@ -129,6 +134,10 @@ module IbmCloudPower
         self.storage_type = attributes[:'storage_type']
       end
 
+      if attributes.key?(:'storage_pool')
+        self.storage_pool = attributes[:'storage_pool']
+      end
+
       if attributes.key?(:'creation_date')
         self.creation_date = attributes[:'creation_date']
       end
@@ -178,6 +187,10 @@ module IbmCloudPower
         invalid_properties.push('invalid value for "storage_type", storage_type cannot be nil.')
       end
 
+      if @storage_pool.nil?
+        invalid_properties.push('invalid value for "storage_pool", storage_pool cannot be nil.')
+      end
+
       if @creation_date.nil?
         invalid_properties.push('invalid value for "creation_date", creation_date cannot be nil.')
       end
@@ -196,6 +209,7 @@ module IbmCloudPower
       return false if @name.nil?
       return false if @size.nil?
       return false if @storage_type.nil?
+      return false if @storage_pool.nil?
       return false if @creation_date.nil?
       return false if @last_update_date.nil?
       true
@@ -212,6 +226,7 @@ module IbmCloudPower
           description == o.description &&
           size == o.size &&
           storage_type == o.storage_type &&
+          storage_pool == o.storage_pool &&
           creation_date == o.creation_date &&
           last_update_date == o.last_update_date &&
           specifications == o.specifications &&
@@ -229,7 +244,7 @@ module IbmCloudPower
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [image_id, name, state, description, size, storage_type, creation_date, last_update_date, specifications, volumes, servers, taskref].hash
+      [image_id, name, state, description, size, storage_type, storage_pool, creation_date, last_update_date, specifications, volumes, servers, taskref].hash
     end
 
     # Builds the object from hash

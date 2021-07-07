@@ -34,7 +34,7 @@ module IbmCloudPower
     # The name of the SSH Key to provide to the server for authenticating
     attr_accessor :ssh_key_name
 
-    # Cloud init user defined data
+    # Cloud-init user-defined data. The user-defined data is made available to the VM instance as a config drive.
     attr_accessor :user_data
 
     attr_accessor :pin_policy

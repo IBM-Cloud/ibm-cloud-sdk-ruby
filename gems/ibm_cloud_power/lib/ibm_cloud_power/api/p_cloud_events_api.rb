@@ -91,7 +91,7 @@ module IbmCloudPower
     # Get events from this cloud instance since a specific timestamp
     # You must append the '?time=' query parameter to the cURL URL to get a list of events.
     # @param cloud_instance_id [String] Cloud Instance ID of a PCloud Instance
-    # @param time [String] A time in either ISO 8601 or unix epoch format
+    # @param time [String] (deprecated - use from_time) A time in either ISO 8601 or unix epoch format
     # @param [Hash] opts the optional parameters
     # @option opts [String] :accept_language The language requested for the return document
     # @return [Events]
@@ -103,7 +103,7 @@ module IbmCloudPower
     # Get events from this cloud instance since a specific timestamp
     # You must append the &#39;?time&#x3D;&#39; query parameter to the cURL URL to get a list of events.
     # @param cloud_instance_id [String] Cloud Instance ID of a PCloud Instance
-    # @param time [String] A time in either ISO 8601 or unix epoch format
+    # @param time [String] (deprecated - use from_time) A time in either ISO 8601 or unix epoch format
     # @param [Hash] opts the optional parameters
     # @option opts [String] :accept_language The language requested for the return document
     # @return [Array<(Events, Integer, Hash)>] Events data, response status code and response headers

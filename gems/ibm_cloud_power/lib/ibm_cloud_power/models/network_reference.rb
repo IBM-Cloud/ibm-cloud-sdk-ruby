@@ -23,7 +23,7 @@ module IbmCloudPower
     # VLAN ID
     attr_accessor :vlan_id
 
-    # Type of Network {pub-vlan, vlan, vxlan}
+    # Type of Network {vlan, pub-vlan}
     attr_accessor :type
 
     # MTU Jumbo Network enabled

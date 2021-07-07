@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**source** | **String** | Source of the image | 
-**image_id** | **String** | Image ID of existing source image; required for copy image | [optional] 
-**image_name** | **String** | Name to give created image; required for import image | [optional] 
+**source** | **String** | Source of the image. The root-project value is used to import an available stock image into a PCloud instance image catalog. The url value is used to import a custom image from a Cloud storage account into a PCloud instance image catalog. | 
+**image_id** | **String** | Image ID of existing stock image; required for copy image | [optional] 
+**image_name** | **String** | Name to specify a custom image that is imported from Cloud Object Storage. You must not use this property when you import an available stock image. Stock image names cannot be changed. | [optional] 
 **image_path** | **String** | (deprecated - replaced by region, imageFilename and bucketName) Path to image starting with service endpoint and ending with image filename | [optional] 
 **region** | **String** | Cloud Storage Region; only required to access IBM Cloud Storage | [optional] 
 **image_filename** | **String** | Cloud Storage image filename; required for import image | [optional] 

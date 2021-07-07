@@ -26,14 +26,17 @@ module IbmCloudPower
     # Indicates if the volume is shareable between VMs
     attr_accessor :shareable
 
-    # Type of Disk, required if affinityPolicy not used
+    # Type of Disk; required if affinityPolicy is not provided, otherwise ignored
     attr_accessor :disk_type
 
-    # Affinity policy for data volume being created; requires affinityVolume to be specified
+    # Affinity policy for data volume being created; requires affinityPVMInstance or affinityVolume to be specified;
     attr_accessor :affinity_policy
 
-    # Volume (ID or Name)to base volume affinity policy against; required if affinityPolicy provided
+    # Volume (ID or Name) to base volume affinity policy against; required if affinityPolicy is provided and affinityPVMInstance is not provided
     attr_accessor :affinity_volume
+
+    # PVM Instance (ID or Name)to base volume affinity policy against; required if affinityPolicy is provided and affinityVolume is not provided
+    attr_accessor :affinity_pvm_instance
 
     class EnumAttributeValidator
       attr_reader :datatype
@@ -66,7 +69,8 @@ module IbmCloudPower
         :'shareable' => :'shareable',
         :'disk_type' => :'diskType',
         :'affinity_policy' => :'affinityPolicy',
-        :'affinity_volume' => :'affinityVolume'
+        :'affinity_volume' => :'affinityVolume',
+        :'affinity_pvm_instance' => :'affinityPVMInstance'
       }
     end
 
@@ -79,7 +83,8 @@ module IbmCloudPower
         :'shareable' => :'Boolean',
         :'disk_type' => :'String',
         :'affinity_policy' => :'String',
-        :'affinity_volume' => :'String'
+        :'affinity_volume' => :'String',
+        :'affinity_pvm_instance' => :'String'
       }
     end
 
@@ -131,6 +136,10 @@ module IbmCloudPower
       if attributes.key?(:'affinity_volume')
         self.affinity_volume = attributes[:'affinity_volume']
       end
+
+      if attributes.key?(:'affinity_pvm_instance')
+        self.affinity_pvm_instance = attributes[:'affinity_pvm_instance']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -179,7 +188,8 @@ module IbmCloudPower
           shareable == o.shareable &&
           disk_type == o.disk_type &&
           affinity_policy == o.affinity_policy &&
-          affinity_volume == o.affinity_volume
+          affinity_volume == o.affinity_volume &&
+          affinity_pvm_instance == o.affinity_pvm_instance
     end
 
     # @see the `==` method
@@ -191,7 +201,7 @@ module IbmCloudPower
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, size, count, shareable, disk_type, affinity_policy, affinity_volume].hash
+      [name, size, count, shareable, disk_type, affinity_policy, affinity_volume, affinity_pvm_instance].hash
     end
 
     # Builds the object from hash

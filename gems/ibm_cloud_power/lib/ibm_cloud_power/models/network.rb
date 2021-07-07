@@ -20,7 +20,7 @@ module IbmCloudPower
     # Network Name
     attr_accessor :name
 
-    # Type of Network {pub-vlan, vlan, vxlan}
+    # Type of Network {vlan, pub-vlan}
     attr_accessor :type
 
     # VLAN ID

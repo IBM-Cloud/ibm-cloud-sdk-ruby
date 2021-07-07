@@ -76,7 +76,7 @@ require 'ibm_cloud_power'
 
 api_instance = IbmCloudPower::PCloudEventsApi.new
 cloud_instance_id = 'cloud_instance_id_example' # String | Cloud Instance ID of a PCloud Instance
-time = 'time_example' # String | A time in either ISO 8601 or unix epoch format
+time = 'time_example' # String | (deprecated - use from_time) A time in either ISO 8601 or unix epoch format
 opts = {
   accept_language: 'accept_language_example' # String | The language requested for the return document
 }
@@ -96,7 +96,7 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **cloud_instance_id** | **String**| Cloud Instance ID of a PCloud Instance | 
- **time** | **String**| A time in either ISO 8601 or unix epoch format | 
+ **time** | **String**| (deprecated - use from_time) A time in either ISO 8601 or unix epoch format | 
  **accept_language** | **String**| The language requested for the return document | [optional] 
 
 ### Return type

@@ -9,8 +9,10 @@ Method | HTTP request | Description
 [**pcloud_cloudinstances_images_get**](PCloudImagesApi.md#pcloud_cloudinstances_images_get) | **GET** /pcloud/v1/cloud-instances/{cloud_instance_id}/images/{image_id} | Detailed information of an image
 [**pcloud_cloudinstances_images_getall**](PCloudImagesApi.md#pcloud_cloudinstances_images_getall) | **GET** /pcloud/v1/cloud-instances/{cloud_instance_id}/images | List all of the images for this cloud instance
 [**pcloud_cloudinstances_images_post**](PCloudImagesApi.md#pcloud_cloudinstances_images_post) | **POST** /pcloud/v1/cloud-instances/{cloud_instance_id}/images | Create a new image from available images
-[**pcloud_images_get**](PCloudImagesApi.md#pcloud_images_get) | **GET** /pcloud/v1/images/{image_id} | Detailed information of an available image
-[**pcloud_images_getall**](PCloudImagesApi.md#pcloud_images_getall) | **GET** /pcloud/v1/images | List all images available for copying into cloud instances
+[**pcloud_cloudinstances_stockimages_get**](PCloudImagesApi.md#pcloud_cloudinstances_stockimages_get) | **GET** /pcloud/v1/cloud-instances/{cloud_instance_id}/stock-images/{image_id} | Detailed info of an available stock image
+[**pcloud_cloudinstances_stockimages_getall**](PCloudImagesApi.md#pcloud_cloudinstances_stockimages_getall) | **GET** /pcloud/v1/cloud-instances/{cloud_instance_id}/stock-images | List all available stock images
+[**pcloud_images_get**](PCloudImagesApi.md#pcloud_images_get) | **GET** /pcloud/v1/images/{image_id} | Deprecated for /pcloud/v1/cloud-instances/${CLOUD_INSTANCE_ID}/stock-images/{image_id} - Detailed info of an available stock image
+[**pcloud_images_getall**](PCloudImagesApi.md#pcloud_images_getall) | **GET** /pcloud/v1/images | Deprecated for /pcloud/v1/cloud-instances/${CLOUD_INSTANCE_ID}/stock-images - List all available stock images
 
 
 
@@ -249,11 +251,107 @@ No authorization required
 - **Accept**: application/json
 
 
+## pcloud_cloudinstances_stockimages_get
+
+> Image pcloud_cloudinstances_stockimages_get(cloud_instance_id, image_id)
+
+Detailed info of an available stock image
+
+### Example
+
+```ruby
+# load the gem
+require 'ibm_cloud_power'
+
+api_instance = IbmCloudPower::PCloudImagesApi.new
+cloud_instance_id = 'cloud_instance_id_example' # String | Cloud Instance ID of a PCloud Instance
+image_id = 'image_id_example' # String | Image ID of a image
+
+begin
+  #Detailed info of an available stock image
+  result = api_instance.pcloud_cloudinstances_stockimages_get(cloud_instance_id, image_id)
+  p result
+rescue IbmCloudPower::ApiError => e
+  puts "Exception when calling PCloudImagesApi->pcloud_cloudinstances_stockimages_get: #{e}"
+end
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **cloud_instance_id** | **String**| Cloud Instance ID of a PCloud Instance | 
+ **image_id** | **String**| Image ID of a image | 
+
+### Return type
+
+[**Image**](Image.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## pcloud_cloudinstances_stockimages_getall
+
+> Images pcloud_cloudinstances_stockimages_getall(cloud_instance_id, opts)
+
+List all available stock images
+
+### Example
+
+```ruby
+# load the gem
+require 'ibm_cloud_power'
+
+api_instance = IbmCloudPower::PCloudImagesApi.new
+cloud_instance_id = 'cloud_instance_id_example' # String | Cloud Instance ID of a PCloud Instance
+opts = {
+  sap: true # Boolean | Include SAP images with get available stock images
+}
+
+begin
+  #List all available stock images
+  result = api_instance.pcloud_cloudinstances_stockimages_getall(cloud_instance_id, opts)
+  p result
+rescue IbmCloudPower::ApiError => e
+  puts "Exception when calling PCloudImagesApi->pcloud_cloudinstances_stockimages_getall: #{e}"
+end
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **cloud_instance_id** | **String**| Cloud Instance ID of a PCloud Instance | 
+ **sap** | **Boolean**| Include SAP images with get available stock images | [optional] 
+
+### Return type
+
+[**Images**](Images.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## pcloud_images_get
 
 > Images pcloud_images_get(image_id)
 
-Detailed information of an available image
+Deprecated for /pcloud/v1/cloud-instances/${CLOUD_INSTANCE_ID}/stock-images/{image_id} - Detailed info of an available stock image
 
 ### Example
 
@@ -265,7 +363,7 @@ api_instance = IbmCloudPower::PCloudImagesApi.new
 image_id = 'image_id_example' # String | Image ID of a image
 
 begin
-  #Detailed information of an available image
+  #Deprecated for /pcloud/v1/cloud-instances/${CLOUD_INSTANCE_ID}/stock-images/{image_id} - Detailed info of an available stock image
   result = api_instance.pcloud_images_get(image_id)
   p result
 rescue IbmCloudPower::ApiError => e
@@ -298,7 +396,7 @@ No authorization required
 
 > Images pcloud_images_getall(opts)
 
-List all images available for copying into cloud instances
+Deprecated for /pcloud/v1/cloud-instances/${CLOUD_INSTANCE_ID}/stock-images - List all available stock images
 
 ### Example
 
@@ -312,7 +410,7 @@ opts = {
 }
 
 begin
-  #List all images available for copying into cloud instances
+  #Deprecated for /pcloud/v1/cloud-instances/${CLOUD_INSTANCE_ID}/stock-images - List all available stock images
   result = api_instance.pcloud_images_getall(opts)
   p result
 rescue IbmCloudPower::ApiError => e

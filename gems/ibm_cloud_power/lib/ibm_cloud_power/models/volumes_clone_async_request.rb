@@ -14,7 +14,7 @@ require 'date'
 
 module IbmCloudPower
   class VolumesCloneAsyncRequest
-    # Base name of the new cloned volume(s). Cloned Volume names prefixed with'clone-'      and suffixed with ‘-#####’ (where #####is a 5 digit random number) If multiple volumes cloned they will be furthersuffixed with an incremental number starting with 1.   Example volume namesusing name=\"volume-abcdef\"     single volume clone will be named \"clone-volume-abcdef-83081“     multi volume clone will be named \"clone-volume-abcdef-73721-1”,\"clone-volume-abcdef-73721-2”, ... 
+    # Base name of the new cloned volume(s). Cloned Volume names will be prefixed with 'clone-'     and suffixed with ‘-#####’ (where ##### is a 5 digit random number) If multiple volumes cloned they will be further suffixed with an incremental number starting with 1.   Example volume names using name=\"volume-abcdef\"     single volume clone will be named \"clone-volume-abcdef-83081\"     multi volume clone will be named \"clone-volume-abcdef-73721-1\", \"clone-volume-abcdef-73721-2\", ... 
     attr_accessor :name
 
     # List of volumes to be cloned

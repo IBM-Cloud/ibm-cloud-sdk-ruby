@@ -994,6 +994,483 @@ module IbmCloudPower
       return data, status_code, headers
     end
 
+    # Cancel a volume-clone request, initiates the Cleanup action. The Cleanup action performs the cleanup of the preparatory clones and snapshot volumes.
+    # @param cloud_instance_id [String] Cloud Instance ID of a PCloud Instance
+    # @param volumes_clone_id [String] Volumes Clone ID, can be identified by the volumes-clone id or the volumes-clone name
+    # @param [Hash] opts the optional parameters
+    # @option opts [VolumesCloneCancel] :body Parameters for cancelling a volumes-clone request
+    # @return [VolumesClone]
+    def pcloud_v2_volumesclone_cancel_post(cloud_instance_id, volumes_clone_id, opts = {})
+      data, _status_code, _headers = pcloud_v2_volumesclone_cancel_post_with_http_info(cloud_instance_id, volumes_clone_id, opts)
+      data
+    end
+
+    # Cancel a volume-clone request, initiates the Cleanup action. The Cleanup action performs the cleanup of the preparatory clones and snapshot volumes.
+    # @param cloud_instance_id [String] Cloud Instance ID of a PCloud Instance
+    # @param volumes_clone_id [String] Volumes Clone ID, can be identified by the volumes-clone id or the volumes-clone name
+    # @param [Hash] opts the optional parameters
+    # @option opts [VolumesCloneCancel] :body Parameters for cancelling a volumes-clone request
+    # @return [Array<(VolumesClone, Integer, Hash)>] VolumesClone data, response status code and response headers
+    def pcloud_v2_volumesclone_cancel_post_with_http_info(cloud_instance_id, volumes_clone_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: PCloudVolumesApi.pcloud_v2_volumesclone_cancel_post ...'
+      end
+      # verify the required parameter 'cloud_instance_id' is set
+      if @api_client.config.client_side_validation && cloud_instance_id.nil?
+        fail ArgumentError, "Missing the required parameter 'cloud_instance_id' when calling PCloudVolumesApi.pcloud_v2_volumesclone_cancel_post"
+      end
+      # verify the required parameter 'volumes_clone_id' is set
+      if @api_client.config.client_side_validation && volumes_clone_id.nil?
+        fail ArgumentError, "Missing the required parameter 'volumes_clone_id' when calling PCloudVolumesApi.pcloud_v2_volumesclone_cancel_post"
+      end
+      # resource path
+      local_var_path = '/pcloud/v2/cloud-instances/{cloud_instance_id}/volumes-clone/{volumes_clone_id}/cancel'.sub('{' + 'cloud_instance_id' + '}', CGI.escape(cloud_instance_id.to_s)).sub('{' + 'volumes_clone_id' + '}', CGI.escape(volumes_clone_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:body] || @api_client.object_to_http_body(opts[:'body']) 
+
+      # return_type
+      return_type = opts[:return_type] || 'VolumesClone' 
+
+      # auth_names
+      auth_names = opts[:auth_names] || []
+
+      new_options = opts.merge(
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PCloudVolumesApi#pcloud_v2_volumesclone_cancel_post\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Delete a volumes-clone request
+    # @param cloud_instance_id [String] Cloud Instance ID of a PCloud Instance
+    # @param volumes_clone_id [String] Volumes Clone ID, can be identified by the volumes-clone id or the volumes-clone name
+    # @param [Hash] opts the optional parameters
+    # @return [Object]
+    def pcloud_v2_volumesclone_delete(cloud_instance_id, volumes_clone_id, opts = {})
+      data, _status_code, _headers = pcloud_v2_volumesclone_delete_with_http_info(cloud_instance_id, volumes_clone_id, opts)
+      data
+    end
+
+    # Delete a volumes-clone request
+    # @param cloud_instance_id [String] Cloud Instance ID of a PCloud Instance
+    # @param volumes_clone_id [String] Volumes Clone ID, can be identified by the volumes-clone id or the volumes-clone name
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(Object, Integer, Hash)>] Object data, response status code and response headers
+    def pcloud_v2_volumesclone_delete_with_http_info(cloud_instance_id, volumes_clone_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: PCloudVolumesApi.pcloud_v2_volumesclone_delete ...'
+      end
+      # verify the required parameter 'cloud_instance_id' is set
+      if @api_client.config.client_side_validation && cloud_instance_id.nil?
+        fail ArgumentError, "Missing the required parameter 'cloud_instance_id' when calling PCloudVolumesApi.pcloud_v2_volumesclone_delete"
+      end
+      # verify the required parameter 'volumes_clone_id' is set
+      if @api_client.config.client_side_validation && volumes_clone_id.nil?
+        fail ArgumentError, "Missing the required parameter 'volumes_clone_id' when calling PCloudVolumesApi.pcloud_v2_volumesclone_delete"
+      end
+      # resource path
+      local_var_path = '/pcloud/v2/cloud-instances/{cloud_instance_id}/volumes-clone/{volumes_clone_id}'.sub('{' + 'cloud_instance_id' + '}', CGI.escape(cloud_instance_id.to_s)).sub('{' + 'volumes_clone_id' + '}', CGI.escape(volumes_clone_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['*/*'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:body] 
+
+      # return_type
+      return_type = opts[:return_type] || 'Object' 
+
+      # auth_names
+      auth_names = opts[:auth_names] || []
+
+      new_options = opts.merge(
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PCloudVolumesApi#pcloud_v2_volumesclone_delete\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Initiate the Execute action for a volumes-clone request. The Execute action creates the cloned volumes using the volume snapshots.
+    # @param cloud_instance_id [String] Cloud Instance ID of a PCloud Instance
+    # @param volumes_clone_id [String] Volumes Clone ID, can be identified by the volumes-clone id or the volumes-clone name
+    # @param body [VolumesCloneExecute] Parameters for the cloning of volumes
+    # @param [Hash] opts the optional parameters
+    # @return [VolumesClone]
+    def pcloud_v2_volumesclone_execute_post(cloud_instance_id, volumes_clone_id, body, opts = {})
+      data, _status_code, _headers = pcloud_v2_volumesclone_execute_post_with_http_info(cloud_instance_id, volumes_clone_id, body, opts)
+      data
+    end
+
+    # Initiate the Execute action for a volumes-clone request. The Execute action creates the cloned volumes using the volume snapshots.
+    # @param cloud_instance_id [String] Cloud Instance ID of a PCloud Instance
+    # @param volumes_clone_id [String] Volumes Clone ID, can be identified by the volumes-clone id or the volumes-clone name
+    # @param body [VolumesCloneExecute] Parameters for the cloning of volumes
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(VolumesClone, Integer, Hash)>] VolumesClone data, response status code and response headers
+    def pcloud_v2_volumesclone_execute_post_with_http_info(cloud_instance_id, volumes_clone_id, body, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: PCloudVolumesApi.pcloud_v2_volumesclone_execute_post ...'
+      end
+      # verify the required parameter 'cloud_instance_id' is set
+      if @api_client.config.client_side_validation && cloud_instance_id.nil?
+        fail ArgumentError, "Missing the required parameter 'cloud_instance_id' when calling PCloudVolumesApi.pcloud_v2_volumesclone_execute_post"
+      end
+      # verify the required parameter 'volumes_clone_id' is set
+      if @api_client.config.client_side_validation && volumes_clone_id.nil?
+        fail ArgumentError, "Missing the required parameter 'volumes_clone_id' when calling PCloudVolumesApi.pcloud_v2_volumesclone_execute_post"
+      end
+      # verify the required parameter 'body' is set
+      if @api_client.config.client_side_validation && body.nil?
+        fail ArgumentError, "Missing the required parameter 'body' when calling PCloudVolumesApi.pcloud_v2_volumesclone_execute_post"
+      end
+      # resource path
+      local_var_path = '/pcloud/v2/cloud-instances/{cloud_instance_id}/volumes-clone/{volumes_clone_id}/execute'.sub('{' + 'cloud_instance_id' + '}', CGI.escape(cloud_instance_id.to_s)).sub('{' + 'volumes_clone_id' + '}', CGI.escape(volumes_clone_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:body] || @api_client.object_to_http_body(body) 
+
+      # return_type
+      return_type = opts[:return_type] || 'VolumesClone' 
+
+      # auth_names
+      auth_names = opts[:auth_names] || []
+
+      new_options = opts.merge(
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PCloudVolumesApi#pcloud_v2_volumesclone_execute_post\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Get the details for a volumes-clone request
+    # @param cloud_instance_id [String] Cloud Instance ID of a PCloud Instance
+    # @param volumes_clone_id [String] Volumes Clone ID, can be identified by the volumes-clone id or the volumes-clone name
+    # @param [Hash] opts the optional parameters
+    # @return [VolumesCloneDetail]
+    def pcloud_v2_volumesclone_get(cloud_instance_id, volumes_clone_id, opts = {})
+      data, _status_code, _headers = pcloud_v2_volumesclone_get_with_http_info(cloud_instance_id, volumes_clone_id, opts)
+      data
+    end
+
+    # Get the details for a volumes-clone request
+    # @param cloud_instance_id [String] Cloud Instance ID of a PCloud Instance
+    # @param volumes_clone_id [String] Volumes Clone ID, can be identified by the volumes-clone id or the volumes-clone name
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(VolumesCloneDetail, Integer, Hash)>] VolumesCloneDetail data, response status code and response headers
+    def pcloud_v2_volumesclone_get_with_http_info(cloud_instance_id, volumes_clone_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: PCloudVolumesApi.pcloud_v2_volumesclone_get ...'
+      end
+      # verify the required parameter 'cloud_instance_id' is set
+      if @api_client.config.client_side_validation && cloud_instance_id.nil?
+        fail ArgumentError, "Missing the required parameter 'cloud_instance_id' when calling PCloudVolumesApi.pcloud_v2_volumesclone_get"
+      end
+      # verify the required parameter 'volumes_clone_id' is set
+      if @api_client.config.client_side_validation && volumes_clone_id.nil?
+        fail ArgumentError, "Missing the required parameter 'volumes_clone_id' when calling PCloudVolumesApi.pcloud_v2_volumesclone_get"
+      end
+      # resource path
+      local_var_path = '/pcloud/v2/cloud-instances/{cloud_instance_id}/volumes-clone/{volumes_clone_id}'.sub('{' + 'cloud_instance_id' + '}', CGI.escape(cloud_instance_id.to_s)).sub('{' + 'volumes_clone_id' + '}', CGI.escape(volumes_clone_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:body] 
+
+      # return_type
+      return_type = opts[:return_type] || 'VolumesCloneDetail' 
+
+      # auth_names
+      auth_names = opts[:auth_names] || []
+
+      new_options = opts.merge(
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PCloudVolumesApi#pcloud_v2_volumesclone_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Get the list of volumes-clone request for a cloud instance
+    # @param cloud_instance_id [String] Cloud Instance ID of a PCloud Instance
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :filter volumes-clone filter to limit list items:   prepare - includes status values (preparing, prepared)   start   - includes status values (starting, available)   execute - includes status values (executing, available-rollback)   cancel  - includes status values (cancelling)   completed - includes status values (completed)   failed - includes status values (failed)   cancelled - includes status values (cancelled)   finalized - included status values (completed, failed, cancelled) 
+    # @return [VolumesClones]
+    def pcloud_v2_volumesclone_getall(cloud_instance_id, opts = {})
+      data, _status_code, _headers = pcloud_v2_volumesclone_getall_with_http_info(cloud_instance_id, opts)
+      data
+    end
+
+    # Get the list of volumes-clone request for a cloud instance
+    # @param cloud_instance_id [String] Cloud Instance ID of a PCloud Instance
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :filter volumes-clone filter to limit list items:   prepare - includes status values (preparing, prepared)   start   - includes status values (starting, available)   execute - includes status values (executing, available-rollback)   cancel  - includes status values (cancelling)   completed - includes status values (completed)   failed - includes status values (failed)   cancelled - includes status values (cancelled)   finalized - included status values (completed, failed, cancelled) 
+    # @return [Array<(VolumesClones, Integer, Hash)>] VolumesClones data, response status code and response headers
+    def pcloud_v2_volumesclone_getall_with_http_info(cloud_instance_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: PCloudVolumesApi.pcloud_v2_volumesclone_getall ...'
+      end
+      # verify the required parameter 'cloud_instance_id' is set
+      if @api_client.config.client_side_validation && cloud_instance_id.nil?
+        fail ArgumentError, "Missing the required parameter 'cloud_instance_id' when calling PCloudVolumesApi.pcloud_v2_volumesclone_getall"
+      end
+      allowable_values = ["prepare", "start", "execute", "cancel", "completed", "failed", "cancelled", "finalized"]
+      if @api_client.config.client_side_validation && opts[:'filter'] && !allowable_values.include?(opts[:'filter'])
+        fail ArgumentError, "invalid value for \"filter\", must be one of #{allowable_values}"
+      end
+      # resource path
+      local_var_path = '/pcloud/v2/cloud-instances/{cloud_instance_id}/volumes-clone'.sub('{' + 'cloud_instance_id' + '}', CGI.escape(cloud_instance_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'filter'] = opts[:'filter'] if !opts[:'filter'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:body] 
+
+      # return_type
+      return_type = opts[:return_type] || 'VolumesClones' 
+
+      # auth_names
+      auth_names = opts[:auth_names] || []
+
+      new_options = opts.merge(
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PCloudVolumesApi#pcloud_v2_volumesclone_getall\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Create a new volumes clone request and initiate the Prepare action
+    # @param cloud_instance_id [String] Cloud Instance ID of a PCloud Instance
+    # @param body [VolumesCloneCreate] Parameters for preparing a set of volumes to be cloned (This API requires a minimum of two volumes, a minimum of one volume to be in the &#39;in-use&#39; state, and a unique volume clone name. The Prepare action does the preparatory work for creating the snapshot volumes.)
+    # @param [Hash] opts the optional parameters
+    # @return [VolumesClone]
+    def pcloud_v2_volumesclone_post(cloud_instance_id, body, opts = {})
+      data, _status_code, _headers = pcloud_v2_volumesclone_post_with_http_info(cloud_instance_id, body, opts)
+      data
+    end
+
+    # Create a new volumes clone request and initiate the Prepare action
+    # @param cloud_instance_id [String] Cloud Instance ID of a PCloud Instance
+    # @param body [VolumesCloneCreate] Parameters for preparing a set of volumes to be cloned (This API requires a minimum of two volumes, a minimum of one volume to be in the &#39;in-use&#39; state, and a unique volume clone name. The Prepare action does the preparatory work for creating the snapshot volumes.)
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(VolumesClone, Integer, Hash)>] VolumesClone data, response status code and response headers
+    def pcloud_v2_volumesclone_post_with_http_info(cloud_instance_id, body, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: PCloudVolumesApi.pcloud_v2_volumesclone_post ...'
+      end
+      # verify the required parameter 'cloud_instance_id' is set
+      if @api_client.config.client_side_validation && cloud_instance_id.nil?
+        fail ArgumentError, "Missing the required parameter 'cloud_instance_id' when calling PCloudVolumesApi.pcloud_v2_volumesclone_post"
+      end
+      # verify the required parameter 'body' is set
+      if @api_client.config.client_side_validation && body.nil?
+        fail ArgumentError, "Missing the required parameter 'body' when calling PCloudVolumesApi.pcloud_v2_volumesclone_post"
+      end
+      # resource path
+      local_var_path = '/pcloud/v2/cloud-instances/{cloud_instance_id}/volumes-clone'.sub('{' + 'cloud_instance_id' + '}', CGI.escape(cloud_instance_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:body] || @api_client.object_to_http_body(body) 
+
+      # return_type
+      return_type = opts[:return_type] || 'VolumesClone' 
+
+      # auth_names
+      auth_names = opts[:auth_names] || []
+
+      new_options = opts.merge(
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PCloudVolumesApi#pcloud_v2_volumesclone_post\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Initiate the Start action for a volume-clone request. The Start action starts the consistency group to initiate the flash copy.
+    # @param cloud_instance_id [String] Cloud Instance ID of a PCloud Instance
+    # @param volumes_clone_id [String] Volumes Clone ID, can be identified by the volumes-clone id or the volumes-clone name
+    # @param [Hash] opts the optional parameters
+    # @return [VolumesClone]
+    def pcloud_v2_volumesclone_start_post(cloud_instance_id, volumes_clone_id, opts = {})
+      data, _status_code, _headers = pcloud_v2_volumesclone_start_post_with_http_info(cloud_instance_id, volumes_clone_id, opts)
+      data
+    end
+
+    # Initiate the Start action for a volume-clone request. The Start action starts the consistency group to initiate the flash copy.
+    # @param cloud_instance_id [String] Cloud Instance ID of a PCloud Instance
+    # @param volumes_clone_id [String] Volumes Clone ID, can be identified by the volumes-clone id or the volumes-clone name
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(VolumesClone, Integer, Hash)>] VolumesClone data, response status code and response headers
+    def pcloud_v2_volumesclone_start_post_with_http_info(cloud_instance_id, volumes_clone_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: PCloudVolumesApi.pcloud_v2_volumesclone_start_post ...'
+      end
+      # verify the required parameter 'cloud_instance_id' is set
+      if @api_client.config.client_side_validation && cloud_instance_id.nil?
+        fail ArgumentError, "Missing the required parameter 'cloud_instance_id' when calling PCloudVolumesApi.pcloud_v2_volumesclone_start_post"
+      end
+      # verify the required parameter 'volumes_clone_id' is set
+      if @api_client.config.client_side_validation && volumes_clone_id.nil?
+        fail ArgumentError, "Missing the required parameter 'volumes_clone_id' when calling PCloudVolumesApi.pcloud_v2_volumesclone_start_post"
+      end
+      # resource path
+      local_var_path = '/pcloud/v2/cloud-instances/{cloud_instance_id}/volumes-clone/{volumes_clone_id}/start'.sub('{' + 'cloud_instance_id' + '}', CGI.escape(cloud_instance_id.to_s)).sub('{' + 'volumes_clone_id' + '}', CGI.escape(volumes_clone_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['*/*', 'application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:body] 
+
+      # return_type
+      return_type = opts[:return_type] || 'VolumesClone' 
+
+      # auth_names
+      auth_names = opts[:auth_names] || []
+
+      new_options = opts.merge(
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PCloudVolumesApi#pcloud_v2_volumesclone_start_post\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Create a volume clone for specified volumes (version 1 - depricated)
     # @param cloud_instance_id [String] Cloud Instance ID of a PCloud Instance
     # @param body [VolumesCloneRequest] Parameters for the cloning of volumes

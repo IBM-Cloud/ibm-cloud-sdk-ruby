@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **volume_i_ds** | **Array&lt;String&gt;** | List of Volume IDs to attach to the pvm-instance on creation | [optional] 
 **instances** | [**PVMInstanceMultiCreate**](PVMInstanceMultiCreate.md) |  | [optional] 
 **ssh_key_name** | **String** | The name of the SSH Key to provide to the server for authenticating | [optional] 
-**user_data** | **String** | Cloud init user defined data | [optional] 
+**user_data** | **String** | Cloud-init user-defined data. The user-defined data is made available to the VM instance as a config drive. | [optional] 
 **pin_policy** | [**PinPolicy**](PinPolicy.md) |  | [optional] 
 
 ## Code Sample

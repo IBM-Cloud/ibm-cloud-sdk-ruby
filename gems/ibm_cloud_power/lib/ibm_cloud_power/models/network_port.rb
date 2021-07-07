@@ -29,6 +29,9 @@ module IbmCloudPower
     # The ip address of this port
     attr_accessor :ip_address
 
+    # The external ip address (for pub-vlan networks)
+    attr_accessor :external_ip
+
     attr_accessor :pvm_instance
 
     # Link to port resource
@@ -42,6 +45,7 @@ module IbmCloudPower
         :'status' => :'status',
         :'mac_address' => :'macAddress',
         :'ip_address' => :'ipAddress',
+        :'external_ip' => :'externalIP',
         :'pvm_instance' => :'pvmInstance',
         :'href' => :'href'
       }
@@ -55,6 +59,7 @@ module IbmCloudPower
         :'status' => :'String',
         :'mac_address' => :'String',
         :'ip_address' => :'String',
+        :'external_ip' => :'String',
         :'pvm_instance' => :'NetworkPortPvmInstance',
         :'href' => :'String'
       }
@@ -99,6 +104,10 @@ module IbmCloudPower
 
       if attributes.key?(:'ip_address')
         self.ip_address = attributes[:'ip_address']
+      end
+
+      if attributes.key?(:'external_ip')
+        self.external_ip = attributes[:'external_ip']
       end
 
       if attributes.key?(:'pvm_instance')
@@ -158,6 +167,7 @@ module IbmCloudPower
           status == o.status &&
           mac_address == o.mac_address &&
           ip_address == o.ip_address &&
+          external_ip == o.external_ip &&
           pvm_instance == o.pvm_instance &&
           href == o.href
     end
@@ -171,7 +181,7 @@ module IbmCloudPower
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [port_id, description, status, mac_address, ip_address, pvm_instance, href].hash
+      [port_id, description, status, mac_address, ip_address, external_ip, pvm_instance, href].hash
     end
 
     # Builds the object from hash

@@ -167,6 +167,80 @@ module IbmCloudPower
       return data, status_code, headers
     end
 
+    # Clone a PVMInstance
+    # @param cloud_instance_id [String] Cloud Instance ID of a PCloud Instance
+    # @param pvm_instance_id [String] PCloud PVM Instance ID
+    # @param body [PVMInstanceClone] Clone PVM Instance parameters
+    # @param [Hash] opts the optional parameters
+    # @return [PVMInstance]
+    def pcloud_pvminstances_clone_post(cloud_instance_id, pvm_instance_id, body, opts = {})
+      data, _status_code, _headers = pcloud_pvminstances_clone_post_with_http_info(cloud_instance_id, pvm_instance_id, body, opts)
+      data
+    end
+
+    # Clone a PVMInstance
+    # @param cloud_instance_id [String] Cloud Instance ID of a PCloud Instance
+    # @param pvm_instance_id [String] PCloud PVM Instance ID
+    # @param body [PVMInstanceClone] Clone PVM Instance parameters
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(PVMInstance, Integer, Hash)>] PVMInstance data, response status code and response headers
+    def pcloud_pvminstances_clone_post_with_http_info(cloud_instance_id, pvm_instance_id, body, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: PCloudPVMInstancesApi.pcloud_pvminstances_clone_post ...'
+      end
+      # verify the required parameter 'cloud_instance_id' is set
+      if @api_client.config.client_side_validation && cloud_instance_id.nil?
+        fail ArgumentError, "Missing the required parameter 'cloud_instance_id' when calling PCloudPVMInstancesApi.pcloud_pvminstances_clone_post"
+      end
+      # verify the required parameter 'pvm_instance_id' is set
+      if @api_client.config.client_side_validation && pvm_instance_id.nil?
+        fail ArgumentError, "Missing the required parameter 'pvm_instance_id' when calling PCloudPVMInstancesApi.pcloud_pvminstances_clone_post"
+      end
+      # verify the required parameter 'body' is set
+      if @api_client.config.client_side_validation && body.nil?
+        fail ArgumentError, "Missing the required parameter 'body' when calling PCloudPVMInstancesApi.pcloud_pvminstances_clone_post"
+      end
+      # resource path
+      local_var_path = '/pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/clone'.sub('{' + 'cloud_instance_id' + '}', CGI.escape(cloud_instance_id.to_s)).sub('{' + 'pvm_instance_id' + '}', CGI.escape(pvm_instance_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:body] || @api_client.object_to_http_body(body) 
+
+      # return_type
+      return_type = opts[:return_type] || 'PVMInstance' 
+
+      # auth_names
+      auth_names = opts[:auth_names] || []
+
+      new_options = opts.merge(
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: PCloudPVMInstancesApi#pcloud_pvminstances_clone_post\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Generate the noVNC console URL
     # @param cloud_instance_id [String] Cloud Instance ID of a PCloud Instance
     # @param pvm_instance_id [String] PCloud PVM Instance ID
@@ -237,6 +311,7 @@ module IbmCloudPower
     # @param cloud_instance_id [String] Cloud Instance ID of a PCloud Instance
     # @param pvm_instance_id [String] PCloud PVM Instance ID
     # @param [Hash] opts the optional parameters
+    # @option opts [Boolean] :delete_data_volumes Indicates whether all data volumes attached to the PVMInstance must be deleted when deleting the PVMInstance. Shared data volumes will be deleted if no other PVMInstances are attached.
     # @return [Object]
     def pcloud_pvminstances_delete(cloud_instance_id, pvm_instance_id, opts = {})
       data, _status_code, _headers = pcloud_pvminstances_delete_with_http_info(cloud_instance_id, pvm_instance_id, opts)
@@ -247,6 +322,7 @@ module IbmCloudPower
     # @param cloud_instance_id [String] Cloud Instance ID of a PCloud Instance
     # @param pvm_instance_id [String] PCloud PVM Instance ID
     # @param [Hash] opts the optional parameters
+    # @option opts [Boolean] :delete_data_volumes Indicates whether all data volumes attached to the PVMInstance must be deleted when deleting the PVMInstance. Shared data volumes will be deleted if no other PVMInstances are attached.
     # @return [Array<(Object, Integer, Hash)>] Object data, response status code and response headers
     def pcloud_pvminstances_delete_with_http_info(cloud_instance_id, pvm_instance_id, opts = {})
       if @api_client.config.debugging
@@ -265,6 +341,7 @@ module IbmCloudPower
 
       # query parameters
       query_params = opts[:query_params] || {}
+      query_params[:'delete_data_volumes'] = opts[:'delete_data_volumes'] if !opts[:'delete_data_volumes'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}
@@ -1082,10 +1159,10 @@ module IbmCloudPower
     # @param body [SnapshotRestore] PVM Instance snapshot restore parameters
     # @param [Hash] opts the optional parameters
     # @option opts [String] :restore_fail_action Action to take on a failed snapshot restore
-    # @return [nil]
+    # @return [Snapshot]
     def pcloud_pvminstances_snapshots_restore_post(cloud_instance_id, pvm_instance_id, snapshot_id, body, opts = {})
-      pcloud_pvminstances_snapshots_restore_post_with_http_info(cloud_instance_id, pvm_instance_id, snapshot_id, body, opts)
-      nil
+      data, _status_code, _headers = pcloud_pvminstances_snapshots_restore_post_with_http_info(cloud_instance_id, pvm_instance_id, snapshot_id, body, opts)
+      data
     end
 
     # Restore a PVM Instance snapshot
@@ -1096,7 +1173,7 @@ module IbmCloudPower
     # @param body [SnapshotRestore] PVM Instance snapshot restore parameters
     # @param [Hash] opts the optional parameters
     # @option opts [String] :restore_fail_action Action to take on a failed snapshot restore
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    # @return [Array<(Snapshot, Integer, Hash)>] Snapshot data, response status code and response headers
     def pcloud_pvminstances_snapshots_restore_post_with_http_info(cloud_instance_id, pvm_instance_id, snapshot_id, body, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: PCloudPVMInstancesApi.pcloud_pvminstances_snapshots_restore_post ...'
@@ -1142,7 +1219,7 @@ module IbmCloudPower
       post_body = opts[:body] || @api_client.object_to_http_body(body) 
 
       # return_type
-      return_type = opts[:return_type] 
+      return_type = opts[:return_type] || 'Snapshot' 
 
       # auth_names
       auth_names = opts[:auth_names] || []

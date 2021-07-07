@@ -41,6 +41,9 @@ module IbmCloudPower
     # Type of Disk
     attr_accessor :disk_type
 
+    # Volume type, name of storage template used to create the volume
+    attr_accessor :volume_type
+
     # Volume world wide name
     attr_accessor :wwn
 
@@ -65,6 +68,7 @@ module IbmCloudPower
         :'boot_volume' => :'bootVolume',
         :'delete_on_termination' => :'deleteOnTermination',
         :'disk_type' => :'diskType',
+        :'volume_type' => :'volumeType',
         :'wwn' => :'wwn',
         :'creation_date' => :'creationDate',
         :'last_update_date' => :'lastUpdateDate',
@@ -84,6 +88,7 @@ module IbmCloudPower
         :'boot_volume' => :'Boolean',
         :'delete_on_termination' => :'Boolean',
         :'disk_type' => :'String',
+        :'volume_type' => :'String',
         :'wwn' => :'String',
         :'creation_date' => :'DateTime',
         :'last_update_date' => :'DateTime',
@@ -146,6 +151,10 @@ module IbmCloudPower
 
       if attributes.key?(:'disk_type')
         self.disk_type = attributes[:'disk_type']
+      end
+
+      if attributes.key?(:'volume_type')
+        self.volume_type = attributes[:'volume_type']
       end
 
       if attributes.key?(:'wwn')
@@ -219,6 +228,7 @@ module IbmCloudPower
           boot_volume == o.boot_volume &&
           delete_on_termination == o.delete_on_termination &&
           disk_type == o.disk_type &&
+          volume_type == o.volume_type &&
           wwn == o.wwn &&
           creation_date == o.creation_date &&
           last_update_date == o.last_update_date &&
@@ -234,7 +244,7 @@ module IbmCloudPower
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [volume_id, name, state, size, shareable, bootable, boot_volume, delete_on_termination, disk_type, wwn, creation_date, last_update_date, pvm_instance_i_ds].hash
+      [volume_id, name, state, size, shareable, bootable, boot_volume, delete_on_termination, disk_type, volume_type, wwn, creation_date, last_update_date, pvm_instance_i_ds].hash
     end
 
     # Builds the object from hash

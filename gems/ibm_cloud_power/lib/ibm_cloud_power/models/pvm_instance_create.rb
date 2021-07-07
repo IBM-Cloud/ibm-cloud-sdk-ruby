@@ -56,10 +56,10 @@ module IbmCloudPower
     # Indicates if the server is allowed to migrate between hosts
     attr_accessor :migratable
 
-    # Cloud init user defined data
+    # Cloud-init user-defined data. The user-defined data is made available to the VM instance as a config drive.
     attr_accessor :user_data
 
-    # Storage type for server deployment
+    # Storage type for server deployment. Only valid when you deploy one of the IBM supplied **stock** images. Storage type for a custom image (an imported image or an image that is created from a VM capture) defaults to the storage type the image was created in
     attr_accessor :storage_type
 
     attr_accessor :software_licenses
@@ -67,6 +67,9 @@ module IbmCloudPower
     attr_accessor :pin_policy
 
     attr_accessor :virtual_cores
+
+    # The placement group for the server
+    attr_accessor :placement_group
 
     class EnumAttributeValidator
       attr_reader :datatype
@@ -111,7 +114,8 @@ module IbmCloudPower
         :'storage_type' => :'storageType',
         :'software_licenses' => :'softwareLicenses',
         :'pin_policy' => :'pinPolicy',
-        :'virtual_cores' => :'virtualCores'
+        :'virtual_cores' => :'virtualCores',
+        :'placement_group' => :'placementGroup'
       }
     end
 
@@ -136,7 +140,8 @@ module IbmCloudPower
         :'storage_type' => :'String',
         :'software_licenses' => :'SoftwareLicenses',
         :'pin_policy' => :'PinPolicy',
-        :'virtual_cores' => :'VirtualCores'
+        :'virtual_cores' => :'VirtualCores',
+        :'placement_group' => :'String'
       }
     end
 
@@ -250,6 +255,10 @@ module IbmCloudPower
       if attributes.key?(:'virtual_cores')
         self.virtual_cores = attributes[:'virtual_cores']
       end
+
+      if attributes.key?(:'placement_group')
+        self.placement_group = attributes[:'placement_group']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -349,7 +358,8 @@ module IbmCloudPower
           storage_type == o.storage_type &&
           software_licenses == o.software_licenses &&
           pin_policy == o.pin_policy &&
-          virtual_cores == o.virtual_cores
+          virtual_cores == o.virtual_cores &&
+          placement_group == o.placement_group
     end
 
     # @see the `==` method
@@ -361,7 +371,7 @@ module IbmCloudPower
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [server_name, replicants, replicant_naming_scheme, replicant_affinity_policy, image_id, processors, proc_type, memory, network_i_ds, networks, volume_i_ds, key_pair_name, sys_type, migratable, user_data, storage_type, software_licenses, pin_policy, virtual_cores].hash
+      [server_name, replicants, replicant_naming_scheme, replicant_affinity_policy, image_id, processors, proc_type, memory, network_i_ds, networks, volume_i_ds, key_pair_name, sys_type, migratable, user_data, storage_type, software_licenses, pin_policy, virtual_cores, placement_group].hash
     end
 
     # Builds the object from hash

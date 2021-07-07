@@ -18,6 +18,13 @@ Method | HTTP request | Description
 [**pcloud_v2_volumes_clone_post**](PCloudVolumesApi.md#pcloud_v2_volumes_clone_post) | **POST** /pcloud/v2/cloud-instances/{cloud_instance_id}/volumes/clone | Create a volume clone for specified volumes (version 2)
 [**pcloud_v2_volumes_clonetasks_get**](PCloudVolumesApi.md#pcloud_v2_volumes_clonetasks_get) | **GET** /pcloud/v2/cloud-instances/{cloud_instance_id}/volumes/clone-tasks/{clone_task_id} | Get the status of a volume clone request for the specified clone task ID
 [**pcloud_v2_volumes_post**](PCloudVolumesApi.md#pcloud_v2_volumes_post) | **POST** /pcloud/v2/cloud-instances/{cloud_instance_id}/volumes | Create multiple data volumes from a single definition
+[**pcloud_v2_volumesclone_cancel_post**](PCloudVolumesApi.md#pcloud_v2_volumesclone_cancel_post) | **POST** /pcloud/v2/cloud-instances/{cloud_instance_id}/volumes-clone/{volumes_clone_id}/cancel | Cancel a volume-clone request, initiates the Cleanup action. The Cleanup action performs the cleanup of the preparatory clones and snapshot volumes.
+[**pcloud_v2_volumesclone_delete**](PCloudVolumesApi.md#pcloud_v2_volumesclone_delete) | **DELETE** /pcloud/v2/cloud-instances/{cloud_instance_id}/volumes-clone/{volumes_clone_id} | Delete a volumes-clone request
+[**pcloud_v2_volumesclone_execute_post**](PCloudVolumesApi.md#pcloud_v2_volumesclone_execute_post) | **POST** /pcloud/v2/cloud-instances/{cloud_instance_id}/volumes-clone/{volumes_clone_id}/execute | Initiate the Execute action for a volumes-clone request. The Execute action creates the cloned volumes using the volume snapshots.
+[**pcloud_v2_volumesclone_get**](PCloudVolumesApi.md#pcloud_v2_volumesclone_get) | **GET** /pcloud/v2/cloud-instances/{cloud_instance_id}/volumes-clone/{volumes_clone_id} | Get the details for a volumes-clone request
+[**pcloud_v2_volumesclone_getall**](PCloudVolumesApi.md#pcloud_v2_volumesclone_getall) | **GET** /pcloud/v2/cloud-instances/{cloud_instance_id}/volumes-clone | Get the list of volumes-clone request for a cloud instance
+[**pcloud_v2_volumesclone_post**](PCloudVolumesApi.md#pcloud_v2_volumesclone_post) | **POST** /pcloud/v2/cloud-instances/{cloud_instance_id}/volumes-clone | Create a new volumes clone request and initiate the Prepare action
+[**pcloud_v2_volumesclone_start_post**](PCloudVolumesApi.md#pcloud_v2_volumesclone_start_post) | **POST** /pcloud/v2/cloud-instances/{cloud_instance_id}/volumes-clone/{volumes_clone_id}/start | Initiate the Start action for a volume-clone request. The Start action starts the consistency group to initiate the flash copy.
 [**pcloud_volumes_clone_post**](PCloudVolumesApi.md#pcloud_volumes_clone_post) | **POST** /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/clone | Create a volume clone for specified volumes (version 1 - depricated)
 
 
@@ -696,6 +703,343 @@ No authorization required
 
 - **Content-Type**: application/json
 - **Accept**: application/json
+
+
+## pcloud_v2_volumesclone_cancel_post
+
+> VolumesClone pcloud_v2_volumesclone_cancel_post(cloud_instance_id, volumes_clone_id, opts)
+
+Cancel a volume-clone request, initiates the Cleanup action. The Cleanup action performs the cleanup of the preparatory clones and snapshot volumes.
+
+### Example
+
+```ruby
+# load the gem
+require 'ibm_cloud_power'
+
+api_instance = IbmCloudPower::PCloudVolumesApi.new
+cloud_instance_id = 'cloud_instance_id_example' # String | Cloud Instance ID of a PCloud Instance
+volumes_clone_id = 'volumes_clone_id_example' # String | Volumes Clone ID, can be identified by the volumes-clone id or the volumes-clone name
+opts = {
+  body: IbmCloudPower::VolumesCloneCancel.new # VolumesCloneCancel | Parameters for cancelling a volumes-clone request
+}
+
+begin
+  #Cancel a volume-clone request, initiates the Cleanup action. The Cleanup action performs the cleanup of the preparatory clones and snapshot volumes.
+  result = api_instance.pcloud_v2_volumesclone_cancel_post(cloud_instance_id, volumes_clone_id, opts)
+  p result
+rescue IbmCloudPower::ApiError => e
+  puts "Exception when calling PCloudVolumesApi->pcloud_v2_volumesclone_cancel_post: #{e}"
+end
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **cloud_instance_id** | **String**| Cloud Instance ID of a PCloud Instance | 
+ **volumes_clone_id** | **String**| Volumes Clone ID, can be identified by the volumes-clone id or the volumes-clone name | 
+ **body** | [**VolumesCloneCancel**](VolumesCloneCancel.md)| Parameters for cancelling a volumes-clone request | [optional] 
+
+### Return type
+
+[**VolumesClone**](VolumesClone.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## pcloud_v2_volumesclone_delete
+
+> Object pcloud_v2_volumesclone_delete(cloud_instance_id, volumes_clone_id)
+
+Delete a volumes-clone request
+
+### Example
+
+```ruby
+# load the gem
+require 'ibm_cloud_power'
+
+api_instance = IbmCloudPower::PCloudVolumesApi.new
+cloud_instance_id = 'cloud_instance_id_example' # String | Cloud Instance ID of a PCloud Instance
+volumes_clone_id = 'volumes_clone_id_example' # String | Volumes Clone ID, can be identified by the volumes-clone id or the volumes-clone name
+
+begin
+  #Delete a volumes-clone request
+  result = api_instance.pcloud_v2_volumesclone_delete(cloud_instance_id, volumes_clone_id)
+  p result
+rescue IbmCloudPower::ApiError => e
+  puts "Exception when calling PCloudVolumesApi->pcloud_v2_volumesclone_delete: #{e}"
+end
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **cloud_instance_id** | **String**| Cloud Instance ID of a PCloud Instance | 
+ **volumes_clone_id** | **String**| Volumes Clone ID, can be identified by the volumes-clone id or the volumes-clone name | 
+
+### Return type
+
+**Object**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: */*
+
+
+## pcloud_v2_volumesclone_execute_post
+
+> VolumesClone pcloud_v2_volumesclone_execute_post(cloud_instance_id, volumes_clone_id, body)
+
+Initiate the Execute action for a volumes-clone request. The Execute action creates the cloned volumes using the volume snapshots.
+
+### Example
+
+```ruby
+# load the gem
+require 'ibm_cloud_power'
+
+api_instance = IbmCloudPower::PCloudVolumesApi.new
+cloud_instance_id = 'cloud_instance_id_example' # String | Cloud Instance ID of a PCloud Instance
+volumes_clone_id = 'volumes_clone_id_example' # String | Volumes Clone ID, can be identified by the volumes-clone id or the volumes-clone name
+body = IbmCloudPower::VolumesCloneExecute.new # VolumesCloneExecute | Parameters for the cloning of volumes
+
+begin
+  #Initiate the Execute action for a volumes-clone request. The Execute action creates the cloned volumes using the volume snapshots.
+  result = api_instance.pcloud_v2_volumesclone_execute_post(cloud_instance_id, volumes_clone_id, body)
+  p result
+rescue IbmCloudPower::ApiError => e
+  puts "Exception when calling PCloudVolumesApi->pcloud_v2_volumesclone_execute_post: #{e}"
+end
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **cloud_instance_id** | **String**| Cloud Instance ID of a PCloud Instance | 
+ **volumes_clone_id** | **String**| Volumes Clone ID, can be identified by the volumes-clone id or the volumes-clone name | 
+ **body** | [**VolumesCloneExecute**](VolumesCloneExecute.md)| Parameters for the cloning of volumes | 
+
+### Return type
+
+[**VolumesClone**](VolumesClone.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## pcloud_v2_volumesclone_get
+
+> VolumesCloneDetail pcloud_v2_volumesclone_get(cloud_instance_id, volumes_clone_id)
+
+Get the details for a volumes-clone request
+
+### Example
+
+```ruby
+# load the gem
+require 'ibm_cloud_power'
+
+api_instance = IbmCloudPower::PCloudVolumesApi.new
+cloud_instance_id = 'cloud_instance_id_example' # String | Cloud Instance ID of a PCloud Instance
+volumes_clone_id = 'volumes_clone_id_example' # String | Volumes Clone ID, can be identified by the volumes-clone id or the volumes-clone name
+
+begin
+  #Get the details for a volumes-clone request
+  result = api_instance.pcloud_v2_volumesclone_get(cloud_instance_id, volumes_clone_id)
+  p result
+rescue IbmCloudPower::ApiError => e
+  puts "Exception when calling PCloudVolumesApi->pcloud_v2_volumesclone_get: #{e}"
+end
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **cloud_instance_id** | **String**| Cloud Instance ID of a PCloud Instance | 
+ **volumes_clone_id** | **String**| Volumes Clone ID, can be identified by the volumes-clone id or the volumes-clone name | 
+
+### Return type
+
+[**VolumesCloneDetail**](VolumesCloneDetail.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## pcloud_v2_volumesclone_getall
+
+> VolumesClones pcloud_v2_volumesclone_getall(cloud_instance_id, opts)
+
+Get the list of volumes-clone request for a cloud instance
+
+### Example
+
+```ruby
+# load the gem
+require 'ibm_cloud_power'
+
+api_instance = IbmCloudPower::PCloudVolumesApi.new
+cloud_instance_id = 'cloud_instance_id_example' # String | Cloud Instance ID of a PCloud Instance
+opts = {
+  filter: 'filter_example' # String | volumes-clone filter to limit list items:   prepare - includes status values (preparing, prepared)   start   - includes status values (starting, available)   execute - includes status values (executing, available-rollback)   cancel  - includes status values (cancelling)   completed - includes status values (completed)   failed - includes status values (failed)   cancelled - includes status values (cancelled)   finalized - included status values (completed, failed, cancelled) 
+}
+
+begin
+  #Get the list of volumes-clone request for a cloud instance
+  result = api_instance.pcloud_v2_volumesclone_getall(cloud_instance_id, opts)
+  p result
+rescue IbmCloudPower::ApiError => e
+  puts "Exception when calling PCloudVolumesApi->pcloud_v2_volumesclone_getall: #{e}"
+end
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **cloud_instance_id** | **String**| Cloud Instance ID of a PCloud Instance | 
+ **filter** | **String**| volumes-clone filter to limit list items:   prepare - includes status values (preparing, prepared)   start   - includes status values (starting, available)   execute - includes status values (executing, available-rollback)   cancel  - includes status values (cancelling)   completed - includes status values (completed)   failed - includes status values (failed)   cancelled - includes status values (cancelled)   finalized - included status values (completed, failed, cancelled)  | [optional] 
+
+### Return type
+
+[**VolumesClones**](VolumesClones.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## pcloud_v2_volumesclone_post
+
+> VolumesClone pcloud_v2_volumesclone_post(cloud_instance_id, body)
+
+Create a new volumes clone request and initiate the Prepare action
+
+### Example
+
+```ruby
+# load the gem
+require 'ibm_cloud_power'
+
+api_instance = IbmCloudPower::PCloudVolumesApi.new
+cloud_instance_id = 'cloud_instance_id_example' # String | Cloud Instance ID of a PCloud Instance
+body = IbmCloudPower::VolumesCloneCreate.new # VolumesCloneCreate | Parameters for preparing a set of volumes to be cloned (This API requires a minimum of two volumes, a minimum of one volume to be in the 'in-use' state, and a unique volume clone name. The Prepare action does the preparatory work for creating the snapshot volumes.)
+
+begin
+  #Create a new volumes clone request and initiate the Prepare action
+  result = api_instance.pcloud_v2_volumesclone_post(cloud_instance_id, body)
+  p result
+rescue IbmCloudPower::ApiError => e
+  puts "Exception when calling PCloudVolumesApi->pcloud_v2_volumesclone_post: #{e}"
+end
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **cloud_instance_id** | **String**| Cloud Instance ID of a PCloud Instance | 
+ **body** | [**VolumesCloneCreate**](VolumesCloneCreate.md)| Parameters for preparing a set of volumes to be cloned (This API requires a minimum of two volumes, a minimum of one volume to be in the &#39;in-use&#39; state, and a unique volume clone name. The Prepare action does the preparatory work for creating the snapshot volumes.) | 
+
+### Return type
+
+[**VolumesClone**](VolumesClone.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## pcloud_v2_volumesclone_start_post
+
+> VolumesClone pcloud_v2_volumesclone_start_post(cloud_instance_id, volumes_clone_id)
+
+Initiate the Start action for a volume-clone request. The Start action starts the consistency group to initiate the flash copy.
+
+### Example
+
+```ruby
+# load the gem
+require 'ibm_cloud_power'
+
+api_instance = IbmCloudPower::PCloudVolumesApi.new
+cloud_instance_id = 'cloud_instance_id_example' # String | Cloud Instance ID of a PCloud Instance
+volumes_clone_id = 'volumes_clone_id_example' # String | Volumes Clone ID, can be identified by the volumes-clone id or the volumes-clone name
+
+begin
+  #Initiate the Start action for a volume-clone request. The Start action starts the consistency group to initiate the flash copy.
+  result = api_instance.pcloud_v2_volumesclone_start_post(cloud_instance_id, volumes_clone_id)
+  p result
+rescue IbmCloudPower::ApiError => e
+  puts "Exception when calling PCloudVolumesApi->pcloud_v2_volumesclone_start_post: #{e}"
+end
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **cloud_instance_id** | **String**| Cloud Instance ID of a PCloud Instance | 
+ **volumes_clone_id** | **String**| Volumes Clone ID, can be identified by the volumes-clone id or the volumes-clone name | 
+
+### Return type
+
+[**VolumesClone**](VolumesClone.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: */*, application/json
 
 
 ## pcloud_volumes_clone_post

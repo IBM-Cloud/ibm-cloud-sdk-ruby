@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**pcloud_pvminstances_action_post**](PCloudPVMInstancesApi.md#pcloud_pvminstances_action_post) | **POST** /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/action | Perform an action (start stop reboot immediate-shutdown reset) on a PVMInstance
 [**pcloud_pvminstances_capture_post**](PCloudPVMInstancesApi.md#pcloud_pvminstances_capture_post) | **POST** /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/capture | Capture a PVM instance and create a deployable image
+[**pcloud_pvminstances_clone_post**](PCloudPVMInstancesApi.md#pcloud_pvminstances_clone_post) | **POST** /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/clone | Clone a PVMInstance
 [**pcloud_pvminstances_console_post**](PCloudPVMInstancesApi.md#pcloud_pvminstances_console_post) | **POST** /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/console | Generate the noVNC console URL
 [**pcloud_pvminstances_delete**](PCloudPVMInstancesApi.md#pcloud_pvminstances_delete) | **DELETE** /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id} | Delete a PCloud PVM instance
 [**pcloud_pvminstances_get**](PCloudPVMInstancesApi.md#pcloud_pvminstances_get) | **GET** /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id} | Get a PVM instance&#39;s current state or information
@@ -121,6 +122,55 @@ No authorization required
 - **Accept**: application/json
 
 
+## pcloud_pvminstances_clone_post
+
+> PVMInstance pcloud_pvminstances_clone_post(cloud_instance_id, pvm_instance_id, body)
+
+Clone a PVMInstance
+
+### Example
+
+```ruby
+# load the gem
+require 'ibm_cloud_power'
+
+api_instance = IbmCloudPower::PCloudPVMInstancesApi.new
+cloud_instance_id = 'cloud_instance_id_example' # String | Cloud Instance ID of a PCloud Instance
+pvm_instance_id = 'pvm_instance_id_example' # String | PCloud PVM Instance ID
+body = IbmCloudPower::PVMInstanceClone.new # PVMInstanceClone | Clone PVM Instance parameters
+
+begin
+  #Clone a PVMInstance
+  result = api_instance.pcloud_pvminstances_clone_post(cloud_instance_id, pvm_instance_id, body)
+  p result
+rescue IbmCloudPower::ApiError => e
+  puts "Exception when calling PCloudPVMInstancesApi->pcloud_pvminstances_clone_post: #{e}"
+end
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **cloud_instance_id** | **String**| Cloud Instance ID of a PCloud Instance | 
+ **pvm_instance_id** | **String**| PCloud PVM Instance ID | 
+ **body** | [**PVMInstanceClone**](PVMInstanceClone.md)| Clone PVM Instance parameters | 
+
+### Return type
+
+[**PVMInstance**](PVMInstance.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## pcloud_pvminstances_console_post
 
 > PVMInstanceConsole pcloud_pvminstances_console_post(cloud_instance_id, pvm_instance_id)
@@ -170,7 +220,7 @@ No authorization required
 
 ## pcloud_pvminstances_delete
 
-> Object pcloud_pvminstances_delete(cloud_instance_id, pvm_instance_id)
+> Object pcloud_pvminstances_delete(cloud_instance_id, pvm_instance_id, opts)
 
 Delete a PCloud PVM instance
 
@@ -183,10 +233,13 @@ require 'ibm_cloud_power'
 api_instance = IbmCloudPower::PCloudPVMInstancesApi.new
 cloud_instance_id = 'cloud_instance_id_example' # String | Cloud Instance ID of a PCloud Instance
 pvm_instance_id = 'pvm_instance_id_example' # String | PCloud PVM Instance ID
+opts = {
+  delete_data_volumes: true # Boolean | Indicates whether all data volumes attached to the PVMInstance must be deleted when deleting the PVMInstance. Shared data volumes will be deleted if no other PVMInstances are attached.
+}
 
 begin
   #Delete a PCloud PVM instance
-  result = api_instance.pcloud_pvminstances_delete(cloud_instance_id, pvm_instance_id)
+  result = api_instance.pcloud_pvminstances_delete(cloud_instance_id, pvm_instance_id, opts)
   p result
 rescue IbmCloudPower::ApiError => e
   puts "Exception when calling PCloudPVMInstancesApi->pcloud_pvminstances_delete: #{e}"
@@ -200,6 +253,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **cloud_instance_id** | **String**| Cloud Instance ID of a PCloud Instance | 
  **pvm_instance_id** | **String**| PCloud PVM Instance ID | 
+ **delete_data_volumes** | **Boolean**| Indicates whether all data volumes attached to the PVMInstance must be deleted when deleting the PVMInstance. Shared data volumes will be deleted if no other PVMInstances are attached. | [optional] 
 
 ### Return type
 
@@ -754,7 +808,7 @@ No authorization required
 
 ## pcloud_pvminstances_snapshots_restore_post
 
-> pcloud_pvminstances_snapshots_restore_post(cloud_instance_id, pvm_instance_id, snapshot_id, body, opts)
+> Snapshot pcloud_pvminstances_snapshots_restore_post(cloud_instance_id, pvm_instance_id, snapshot_id, body, opts)
 
 Restore a PVM Instance snapshot
 
@@ -777,7 +831,8 @@ opts = {
 
 begin
   #Restore a PVM Instance snapshot
-  api_instance.pcloud_pvminstances_snapshots_restore_post(cloud_instance_id, pvm_instance_id, snapshot_id, body, opts)
+  result = api_instance.pcloud_pvminstances_snapshots_restore_post(cloud_instance_id, pvm_instance_id, snapshot_id, body, opts)
+  p result
 rescue IbmCloudPower::ApiError => e
   puts "Exception when calling PCloudPVMInstancesApi->pcloud_pvminstances_snapshots_restore_post: #{e}"
 end
@@ -796,7 +851,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-nil (empty response body)
+[**Snapshot**](Snapshot.md)
 
 ### Authorization
 
