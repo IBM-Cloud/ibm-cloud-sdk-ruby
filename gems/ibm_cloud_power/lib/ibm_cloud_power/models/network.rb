@@ -225,7 +225,7 @@ module IbmCloudPower
       return false if @network_id.nil?
       return false if @name.nil?
       return false if @type.nil?
-      type_validator = EnumAttributeValidator.new('String', ["vlan", "vxlan"])
+      type_validator = EnumAttributeValidator.new('String', ["pub-vlan", "vlan", "vxlan"])
       return false unless type_validator.valid?(@type)
       return false if @vlan_id.nil?
       return false if @cidr.nil?
@@ -239,7 +239,7 @@ module IbmCloudPower
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] type Object to be assigned
     def type=(type)
-      validator = EnumAttributeValidator.new('String', ["vlan", "vxlan"])
+      validator = EnumAttributeValidator.new('String', ["pub-vlan", "vlan", "vxlan"])
       unless validator.valid?(type)
         fail ArgumentError, "invalid value for \"type\", must be one of #{validator.allowable_values}."
       end
