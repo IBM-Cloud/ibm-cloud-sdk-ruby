@@ -415,7 +415,7 @@ module IbmCloudPower
       return false if @image_id.nil?
       return false if @processors.nil?
       return false if @proc_type.nil?
-      proc_type_validator = EnumAttributeValidator.new('String', ["dedicated", "shared", "capped"])
+      proc_type_validator = EnumAttributeValidator.new('String', ["dedicated", "shared", "capped", ""])
       return false unless proc_type_validator.valid?(@proc_type)
       return false if @memory.nil?
       return false if @disk_size.nil?
@@ -428,7 +428,7 @@ module IbmCloudPower
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] proc_type Object to be assigned
     def proc_type=(proc_type)
-      validator = EnumAttributeValidator.new('String', ["dedicated", "shared", "capped"])
+      validator = EnumAttributeValidator.new('String', ["dedicated", "shared", "capped", ""])
       unless validator.valid?(proc_type)
         fail ArgumentError, "invalid value for \"proc_type\", must be one of #{validator.allowable_values}."
       end
