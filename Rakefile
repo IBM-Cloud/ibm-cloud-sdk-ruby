@@ -7,31 +7,12 @@ task :default => :spec
 
 namespace :openapi do
   IBM_CLOUD_GEMS = {
-    "ibm_cloud_global_tagging"      => "tagging.json",
-    "ibm_cloud_iam"                 => "iam-identity-token-api.json",
-    "ibm_cloud_power"               => "power-cloud.json",
-    "ibm_cloud_resource_controller" => "resource-controller/resource-controller.json",
+    "activity-tracker"    => "activity-tracker.json",
+    "global_tagging"      => "tagging.json",
+    "iam"                 => "iam-identity-token-api.json",
+    "power-cloud"         => "power-cloud.json",
+    "resource_controller" => "resource-controller/resource-controller.json",
   }
-
-  task :download_cli, [:version] do |_t, args|
-    version = args[:version] || "5.0.0-beta2"
-
-    output_file    = "openapi-generator-cli-#{version}.jar"
-    target_symlink = "openapi-generator-cli"
-
-    unless File.exist?(output_file)
-      puts "Downloading #{output_file}..."
-
-      uri = URI("https://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli/#{version}/#{output_file}")
-
-      open(output_file, "wb") { |f| download(uri, f) }
-
-      puts "Downloading #{output_file}...Complete"
-    end
-
-    File.unlink(target_symlink) if File.exist?(target_symlink)
-    File.symlink(output_file, target_symlink)
-  end
 
   task :download_openapi_specs do
     IBM_CLOUD_GEMS.each do |api_gem, openapi_json|
@@ -46,13 +27,13 @@ namespace :openapi do
     end
   end
 
-  task :generate => [:download_cli, :download_openapi_specs] do
+  task :generate => :download_openapi_specs do
     IBM_CLOUD_GEMS.each do |api_gem, openapi_json|
       openapi_json.sub!("/", "-")
-      output_path  = "gems/#{api_gem}"
-      config_file  = "#{output_path}/.openapi-config.json"
+      output_path    = Pathname.new("lib/ibm_cloud")
+      openapi_sdkgen = Pathname.new("openapi-sdkgen/openapi-sdkgen.sh")
 
-      system("java -jar openapi-generator-cli generate --skip-validate-spec -i #{openapi_json} -c #{config_file} -g ruby -o #{output_path}")
+      system("#{openapi_sdkgen} generate -g ibm-ruby -i #{openapi_json} -o #{output_path} --additional-properties moduleName=IBMCloud")
     end
   end
 

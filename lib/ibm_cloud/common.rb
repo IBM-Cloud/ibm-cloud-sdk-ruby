@@ -2,14 +2,14 @@
 
 require_relative "./version.rb"
 
-module IbmCloud
+module IBMCloud
   # SDK Common class
   class Common
     def initialize(*); end
 
     def get_sdk_headers(service_name, service_version, operation_id)
       headers = {}
-      user_agent_string = "ibm_cloud-ruby-sdk-" + IbmCloud::VERSION + " #{RbConfig::CONFIG["host"]}"
+      user_agent_string = "ibm_cloud-ruby-sdk-" + IBMCloud::VERSION + " #{RbConfig::CONFIG["host"]}"
       user_agent_string += " #{RbConfig::CONFIG["RUBY_BASE_NAME"]}-#{RbConfig::CONFIG["RUBY_PROGRAM_VERSION"]}"
 
       headers["User-Agent"] = user_agent_string

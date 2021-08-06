@@ -2,7 +2,7 @@ require_relative 'lib/ibm_cloud/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "ibm_cloud"
-  spec.version       = IbmCloud::VERSION
+  spec.version       = IBMCloud::VERSION
   spec.authors       = ["adam.grare@ibm.com"]
   spec.email         = ["adam.grare@ibm.com"]
 
