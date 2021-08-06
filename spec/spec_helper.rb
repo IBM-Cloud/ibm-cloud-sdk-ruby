@@ -1,5 +1,5 @@
 require "bundler/setup"
-require "ibm/cloud/sdk"
+require "ibm_cloud"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
