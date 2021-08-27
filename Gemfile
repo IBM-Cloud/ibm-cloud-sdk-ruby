@@ -1,9 +1,7 @@
 source "https://rubygems.org"
 
-# Specify your gem's dependencies in ibm-cloud-sdk.gemspec
+# Specify your gem's dependencies in ibm_cloud.gemspec
 gemspec
 
 gem "rake", "~> 12.0"
 gem "rspec", "~> 3.0"
-gem 'vcr'
-gem 'webmock'
