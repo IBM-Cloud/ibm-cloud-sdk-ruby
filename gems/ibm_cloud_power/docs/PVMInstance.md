@@ -31,7 +31,7 @@ Name | Type | Description | Notes
 **software_licenses** | [**SoftwareLicenses**](SoftwareLicenses.md) |  | [optional] 
 **srcs** | **Array&lt;Array&lt;SRC&gt;&gt;** | The pvm instance SRC lists | [optional] 
 **pin_policy** | **String** | VM pinning policy to use [none, soft, hard] | [optional] 
-**os_type** | **String** | Type of the OS [aix, ibmi, redhat, sles] | 
+**os_type** | **String** | Type of the OS [aix, ibmi, rhel, sles] | 
 **operating_system** | **String** | OS system information (usually version and build) | [optional] 
 **sap_profile** | [**SAPProfileReference**](SAPProfileReference.md) |  | [optional] 
 **virtual_cores** | [**VirtualCores**](VirtualCores.md) |  | [optional] 

@@ -92,7 +92,7 @@ module IbmCloudPower
     # VM pinning policy to use [none, soft, hard]
     attr_accessor :pin_policy
 
-    # Type of the OS [aix, ibmi, redhat, sles]
+    # Type of the OS [aix, ibmi, rhel, sles]
     attr_accessor :os_type
 
     # OS system information (usually version and build)
