@@ -21,6 +21,9 @@ module IbmCloudIam
     # (optional) A refresh token that can be used to get a new IAM access token if that token is expired. When using the default client (no basic authorization header) as described in this documentation, this refresh_token cannot be used to retrieve a new IAM access token. When the IAM access token is about to be expired, use the API key to create a new access token.
     attr_accessor :refresh_token
 
+    # (optional) An id token
+    attr_accessor :id_token
+
     # (optional) A delegated refresh token that can only be consumed by the clients that have been specified in the API call as 'receiver_client_ids'
     attr_accessor :delegated_refresh_token
 
@@ -38,6 +41,7 @@ module IbmCloudIam
       {
         :'access_token' => :'access_token',
         :'refresh_token' => :'refresh_token',
+        :'id_token' => :'id_token',
         :'delegated_refresh_token' => :'delegated_refresh_token',
         :'token_type' => :'token_type',
         :'expires_in' => :'expires_in',
@@ -50,6 +54,7 @@ module IbmCloudIam
       {
         :'access_token' => :'String',
         :'refresh_token' => :'String',
+        :'id_token' => :'String',
         :'delegated_refresh_token' => :'String',
         :'token_type' => :'String',
         :'expires_in' => :'Integer',
@@ -84,6 +89,10 @@ module IbmCloudIam
 
       if attributes.key?(:'refresh_token')
         self.refresh_token = attributes[:'refresh_token']
+      end
+
+      if attributes.key?(:'id_token')
+        self.id_token = attributes[:'id_token']
       end
 
       if attributes.key?(:'delegated_refresh_token')
@@ -123,6 +132,7 @@ module IbmCloudIam
       self.class == o.class &&
           access_token == o.access_token &&
           refresh_token == o.refresh_token &&
+          id_token == o.id_token &&
           delegated_refresh_token == o.delegated_refresh_token &&
           token_type == o.token_type &&
           expires_in == o.expires_in &&
@@ -138,7 +148,7 @@ module IbmCloudIam
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [access_token, refresh_token, delegated_refresh_token, token_type, expires_in, expiration].hash
+      [access_token, refresh_token, id_token, delegated_refresh_token, token_type, expires_in, expiration].hash
     end
 
     # Builds the object from hash
