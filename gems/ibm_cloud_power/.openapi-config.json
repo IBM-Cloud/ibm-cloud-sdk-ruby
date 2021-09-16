@@ -1,7 +1,0 @@
-{
-  "gemName": "ibm_cloud_power",
-  "gemAuthor": "IBM Cloud Developers",
-  "gemSummary": "IBM Cloud Power Cloud",
-  "gemDescription": "Ruby gem for IBM Cloud Power Cloud",
-  "gemLicense": "Apache-2.0"
-}
