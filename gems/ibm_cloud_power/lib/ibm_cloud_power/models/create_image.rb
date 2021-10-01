@@ -209,8 +209,7 @@ module IbmCloudPower
       return false if @source.nil?
       source_validator = EnumAttributeValidator.new('String', ["root-project", "url"])
       return false unless source_validator.valid?(@source)
-      os_type_validator = EnumAttributeValidator.new('String', ["aix", "ibmi", "rhel", "sles"])
-      return false unless os_type_validator.valid?(@os_type)
+      return false if @os_type.nil?
       true
     end
 
@@ -222,16 +221,6 @@ module IbmCloudPower
         fail ArgumentError, "invalid value for \"source\", must be one of #{validator.allowable_values}."
       end
       @source = source
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] os_type Object to be assigned
-    def os_type=(os_type)
-      validator = EnumAttributeValidator.new('String', ["aix", "ibmi", "rhel", "sles"])
-      unless validator.valid?(os_type)
-        fail ArgumentError, "invalid value for \"os_type\", must be one of #{validator.allowable_values}."
-      end
-      @os_type = os_type
     end
 
     # Checks equality by comparing each attribute.
