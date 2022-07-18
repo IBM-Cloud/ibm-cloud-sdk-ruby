@@ -2,16 +2,17 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**snapshot_id** | **String** | ID of the PVM instance snapshot | 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **snapshot_id** | **String** | ID of the PVM instance snapshot |  |
 
-## Code Sample
+## Example
 
 ```ruby
-require 'IbmCloudPower'
+require 'ibm_cloud_power'
 
-instance = IbmCloudPower::SnapshotCreateResponse.new(snapshot_id: null)
+instance = IbmCloudPower::SnapshotCreateResponse.new(
+  snapshot_id: null
+)
 ```
-
 

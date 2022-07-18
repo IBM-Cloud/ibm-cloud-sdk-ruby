@@ -2,18 +2,19 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**error** | **String** |  | [optional] 
-**description** | **String** |  | [optional] 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **description** | **String** |  | [optional] |
+| **error** | **String** |  | [optional] |
 
-## Code Sample
+## Example
 
 ```ruby
-require 'IbmCloudPower'
+require 'ibm_cloud_power'
 
-instance = IbmCloudPower::Error.new(error: null,
-                                 description: null)
+instance = IbmCloudPower::Error.new(
+  description: null,
+  error: null
+)
 ```
-
 

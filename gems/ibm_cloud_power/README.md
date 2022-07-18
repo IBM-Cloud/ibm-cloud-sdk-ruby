@@ -88,7 +88,7 @@ Class | Method | HTTP request | Description
 *IbmCloudPower::PCloudEventsApi* | [**pcloud_events_get**](docs/PCloudEventsApi.md#pcloud_events_get) | **GET** /pcloud/v1/cloud-instances/{cloud_instance_id}/events/{event_id} | Get a single event
 *IbmCloudPower::PCloudEventsApi* | [**pcloud_events_getsince**](docs/PCloudEventsApi.md#pcloud_events_getsince) | **GET** /pcloud/v1/cloud-instances/{cloud_instance_id}/events | Get events from this cloud instance since a specific timestamp
 *IbmCloudPower::PCloudImagesApi* | [**pcloud_cloudinstances_images_delete**](docs/PCloudImagesApi.md#pcloud_cloudinstances_images_delete) | **DELETE** /pcloud/v1/cloud-instances/{cloud_instance_id}/images/{image_id} | Delete an image from a cloud instance
-*IbmCloudPower::PCloudImagesApi* | [**pcloud_cloudinstances_images_export_post**](docs/PCloudImagesApi.md#pcloud_cloudinstances_images_export_post) | **POST** /pcloud/v1/cloud-instances/{cloud_instance_id}/images/{image_id}/export | Export an image
+*IbmCloudPower::PCloudImagesApi* | [**pcloud_cloudinstances_images_export_post**](docs/PCloudImagesApi.md#pcloud_cloudinstances_images_export_post) | **POST** /pcloud/v1/cloud-instances/{cloud_instance_id}/images/{image_id}/export | Export an image (version 1)
 *IbmCloudPower::PCloudImagesApi* | [**pcloud_cloudinstances_images_get**](docs/PCloudImagesApi.md#pcloud_cloudinstances_images_get) | **GET** /pcloud/v1/cloud-instances/{cloud_instance_id}/images/{image_id} | Detailed information of an image
 *IbmCloudPower::PCloudImagesApi* | [**pcloud_cloudinstances_images_getall**](docs/PCloudImagesApi.md#pcloud_cloudinstances_images_getall) | **GET** /pcloud/v1/cloud-instances/{cloud_instance_id}/images | List all of the images for this cloud instance
 *IbmCloudPower::PCloudImagesApi* | [**pcloud_cloudinstances_images_post**](docs/PCloudImagesApi.md#pcloud_cloudinstances_images_post) | **POST** /pcloud/v1/cloud-instances/{cloud_instance_id}/images | Create a new image from available images
@@ -96,9 +96,16 @@ Class | Method | HTTP request | Description
 *IbmCloudPower::PCloudImagesApi* | [**pcloud_cloudinstances_stockimages_getall**](docs/PCloudImagesApi.md#pcloud_cloudinstances_stockimages_getall) | **GET** /pcloud/v1/cloud-instances/{cloud_instance_id}/stock-images | List all available stock images
 *IbmCloudPower::PCloudImagesApi* | [**pcloud_images_get**](docs/PCloudImagesApi.md#pcloud_images_get) | **GET** /pcloud/v1/images/{image_id} | Deprecated for /pcloud/v1/cloud-instances/${CLOUD_INSTANCE_ID}/stock-images/{image_id} - Detailed info of an available stock image
 *IbmCloudPower::PCloudImagesApi* | [**pcloud_images_getall**](docs/PCloudImagesApi.md#pcloud_images_getall) | **GET** /pcloud/v1/images | Deprecated for /pcloud/v1/cloud-instances/${CLOUD_INSTANCE_ID}/stock-images - List all available stock images
+*IbmCloudPower::PCloudImagesApi* | [**pcloud_v1_cloudinstances_cosimages_get**](docs/PCloudImagesApi.md#pcloud_v1_cloudinstances_cosimages_get) | **GET** /pcloud/v1/cloud-instances/{cloud_instance_id}/cos-images | List image import jobs for this cloud instance
+*IbmCloudPower::PCloudImagesApi* | [**pcloud_v1_cloudinstances_cosimages_post**](docs/PCloudImagesApi.md#pcloud_v1_cloudinstances_cosimages_post) | **POST** /pcloud/v1/cloud-instances/{cloud_instance_id}/cos-images | Create a new image from available images in COS
+*IbmCloudPower::PCloudImagesApi* | [**pcloud_v2_images_export_get**](docs/PCloudImagesApi.md#pcloud_v2_images_export_get) | **GET** /pcloud/v2/cloud-instances/{cloud_instance_id}/images/{image_id}/export | Get an image’s last export Job details
+*IbmCloudPower::PCloudImagesApi* | [**pcloud_v2_images_export_post**](docs/PCloudImagesApi.md#pcloud_v2_images_export_post) | **POST** /pcloud/v2/cloud-instances/{cloud_instance_id}/images/{image_id}/export | Export an image (version 2)
 *IbmCloudPower::PCloudInstancesApi* | [**pcloud_cloudinstances_delete**](docs/PCloudInstancesApi.md#pcloud_cloudinstances_delete) | **DELETE** /pcloud/v1/cloud-instances/{cloud_instance_id} | Delete a Power Cloud instance
 *IbmCloudPower::PCloudInstancesApi* | [**pcloud_cloudinstances_get**](docs/PCloudInstancesApi.md#pcloud_cloudinstances_get) | **GET** /pcloud/v1/cloud-instances/{cloud_instance_id} | Get a cloud instance's current state or information
 *IbmCloudPower::PCloudInstancesApi* | [**pcloud_cloudinstances_put**](docs/PCloudInstancesApi.md#pcloud_cloudinstances_put) | **PUT** /pcloud/v1/cloud-instances/{cloud_instance_id} | Update or upgrade a cloud instance
+*IbmCloudPower::PCloudJobsApi* | [**pcloud_cloudinstances_jobs_delete**](docs/PCloudJobsApi.md#pcloud_cloudinstances_jobs_delete) | **DELETE** /pcloud/v1/cloud-instances/{cloud_instance_id}/jobs/{job_id} | Delete a cloud instance job
+*IbmCloudPower::PCloudJobsApi* | [**pcloud_cloudinstances_jobs_get**](docs/PCloudJobsApi.md#pcloud_cloudinstances_jobs_get) | **GET** /pcloud/v1/cloud-instances/{cloud_instance_id}/jobs/{job_id} | List the detail of a job
+*IbmCloudPower::PCloudJobsApi* | [**pcloud_cloudinstances_jobs_getall**](docs/PCloudJobsApi.md#pcloud_cloudinstances_jobs_getall) | **GET** /pcloud/v1/cloud-instances/{cloud_instance_id}/jobs | List the latest jobs initiated by the cloud instance
 *IbmCloudPower::PCloudNetworksApi* | [**pcloud_networks_delete**](docs/PCloudNetworksApi.md#pcloud_networks_delete) | **DELETE** /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id} | Delete a network
 *IbmCloudPower::PCloudNetworksApi* | [**pcloud_networks_get**](docs/PCloudNetworksApi.md#pcloud_networks_get) | **GET** /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id} | Get a network's current state or information
 *IbmCloudPower::PCloudNetworksApi* | [**pcloud_networks_getall**](docs/PCloudNetworksApi.md#pcloud_networks_getall) | **GET** /pcloud/v1/cloud-instances/{cloud_instance_id}/networks | Get all networks in this cloud instance
@@ -110,7 +117,7 @@ Class | Method | HTTP request | Description
 *IbmCloudPower::PCloudNetworksApi* | [**pcloud_networks_post**](docs/PCloudNetworksApi.md#pcloud_networks_post) | **POST** /pcloud/v1/cloud-instances/{cloud_instance_id}/networks | Create a new network
 *IbmCloudPower::PCloudNetworksApi* | [**pcloud_networks_put**](docs/PCloudNetworksApi.md#pcloud_networks_put) | **PUT** /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id} | Update a network
 *IbmCloudPower::PCloudPVMInstancesApi* | [**pcloud_pvminstances_action_post**](docs/PCloudPVMInstancesApi.md#pcloud_pvminstances_action_post) | **POST** /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/action | Perform an action (start stop reboot immediate-shutdown reset) on a PVMInstance
-*IbmCloudPower::PCloudPVMInstancesApi* | [**pcloud_pvminstances_capture_post**](docs/PCloudPVMInstancesApi.md#pcloud_pvminstances_capture_post) | **POST** /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/capture | Capture a PVM instance and create a deployable image
+*IbmCloudPower::PCloudPVMInstancesApi* | [**pcloud_pvminstances_capture_post**](docs/PCloudPVMInstancesApi.md#pcloud_pvminstances_capture_post) | **POST** /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/capture | Capture a PVM instance and create a deployable image (version 1)
 *IbmCloudPower::PCloudPVMInstancesApi* | [**pcloud_pvminstances_clone_post**](docs/PCloudPVMInstancesApi.md#pcloud_pvminstances_clone_post) | **POST** /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/clone | Clone a PVMInstance
 *IbmCloudPower::PCloudPVMInstancesApi* | [**pcloud_pvminstances_console_post**](docs/PCloudPVMInstancesApi.md#pcloud_pvminstances_console_post) | **POST** /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/console | Generate the noVNC console URL
 *IbmCloudPower::PCloudPVMInstancesApi* | [**pcloud_pvminstances_delete**](docs/PCloudPVMInstancesApi.md#pcloud_pvminstances_delete) | **DELETE** /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id} | Delete a PCloud PVM instance
@@ -126,6 +133,8 @@ Class | Method | HTTP request | Description
 *IbmCloudPower::PCloudPVMInstancesApi* | [**pcloud_pvminstances_snapshots_getall**](docs/PCloudPVMInstancesApi.md#pcloud_pvminstances_snapshots_getall) | **GET** /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/snapshots | Get all snapshots for this PVM instance
 *IbmCloudPower::PCloudPVMInstancesApi* | [**pcloud_pvminstances_snapshots_post**](docs/PCloudPVMInstancesApi.md#pcloud_pvminstances_snapshots_post) | **POST** /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/snapshots | Create a PVM instance snapshot
 *IbmCloudPower::PCloudPVMInstancesApi* | [**pcloud_pvminstances_snapshots_restore_post**](docs/PCloudPVMInstancesApi.md#pcloud_pvminstances_snapshots_restore_post) | **POST** /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/snapshots/{snapshot_id}/restore | Restore a PVM Instance snapshot
+*IbmCloudPower::PCloudPVMInstancesApi* | [**pcloud_v2_pvminstances_capture_get**](docs/PCloudPVMInstancesApi.md#pcloud_v2_pvminstances_capture_get) | **GET** /pcloud/v2/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/capture | Get a PVM Instance’s  last capture job details
+*IbmCloudPower::PCloudPVMInstancesApi* | [**pcloud_v2_pvminstances_capture_post**](docs/PCloudPVMInstancesApi.md#pcloud_v2_pvminstances_capture_post) | **POST** /pcloud/v2/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/capture | Capture a PVM instance and create a deployable image (version 2)
 *IbmCloudPower::PCloudPlacementGroupsApi* | [**pcloud_placementgroups_delete**](docs/PCloudPlacementGroupsApi.md#pcloud_placementgroups_delete) | **DELETE** /pcloud/v1/cloud-instances/{cloud_instance_id}/placement-groups/{placement_group_id} | Delete server placement group
 *IbmCloudPower::PCloudPlacementGroupsApi* | [**pcloud_placementgroups_get**](docs/PCloudPlacementGroupsApi.md#pcloud_placementgroups_get) | **GET** /pcloud/v1/cloud-instances/{cloud_instance_id}/placement-groups/{placement_group_id} | Get server placement group details
 *IbmCloudPower::PCloudPlacementGroupsApi* | [**pcloud_placementgroups_getall**](docs/PCloudPlacementGroupsApi.md#pcloud_placementgroups_getall) | **GET** /pcloud/v1/cloud-instances/{cloud_instance_id}/placement-groups | Get all server placement groups
@@ -153,6 +162,28 @@ Class | Method | HTTP request | Description
 *IbmCloudPower::PCloudTenantsSSHKeysApi* | [**pcloud_tenants_sshkeys_getall**](docs/PCloudTenantsSSHKeysApi.md#pcloud_tenants_sshkeys_getall) | **GET** /pcloud/v1/tenants/{tenant_id}/sshkeys | List a tenant's SSH Keys
 *IbmCloudPower::PCloudTenantsSSHKeysApi* | [**pcloud_tenants_sshkeys_post**](docs/PCloudTenantsSSHKeysApi.md#pcloud_tenants_sshkeys_post) | **POST** /pcloud/v1/tenants/{tenant_id}/sshkeys | Add a new SSH key to the tenant
 *IbmCloudPower::PCloudTenantsSSHKeysApi* | [**pcloud_tenants_sshkeys_put**](docs/PCloudTenantsSSHKeysApi.md#pcloud_tenants_sshkeys_put) | **PUT** /pcloud/v1/tenants/{tenant_id}/sshkeys/{sshkey_name} | Update an SSH Key
+*IbmCloudPower::PCloudVPNConnectionsApi* | [**pcloud_vpnconnections_delete**](docs/PCloudVPNConnectionsApi.md#pcloud_vpnconnections_delete) | **DELETE** /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/vpn-connections/{vpn_connection_id} | Delete VPN Connection
+*IbmCloudPower::PCloudVPNConnectionsApi* | [**pcloud_vpnconnections_get**](docs/PCloudVPNConnectionsApi.md#pcloud_vpnconnections_get) | **GET** /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/vpn-connections/{vpn_connection_id} | Get VPN Connection
+*IbmCloudPower::PCloudVPNConnectionsApi* | [**pcloud_vpnconnections_getall**](docs/PCloudVPNConnectionsApi.md#pcloud_vpnconnections_getall) | **GET** /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/vpn-connections | Get all VPN Connections
+*IbmCloudPower::PCloudVPNConnectionsApi* | [**pcloud_vpnconnections_networks_delete**](docs/PCloudVPNConnectionsApi.md#pcloud_vpnconnections_networks_delete) | **DELETE** /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/vpn-connections/{vpn_connection_id}/networks | Detach network
+*IbmCloudPower::PCloudVPNConnectionsApi* | [**pcloud_vpnconnections_networks_get**](docs/PCloudVPNConnectionsApi.md#pcloud_vpnconnections_networks_get) | **GET** /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/vpn-connections/{vpn_connection_id}/networks | Get attached networks
+*IbmCloudPower::PCloudVPNConnectionsApi* | [**pcloud_vpnconnections_networks_put**](docs/PCloudVPNConnectionsApi.md#pcloud_vpnconnections_networks_put) | **PUT** /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/vpn-connections/{vpn_connection_id}/networks | Attach network
+*IbmCloudPower::PCloudVPNConnectionsApi* | [**pcloud_vpnconnections_options_get**](docs/PCloudVPNConnectionsApi.md#pcloud_vpnconnections_options_get) | **GET** /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn-connections/options | Get Options
+*IbmCloudPower::PCloudVPNConnectionsApi* | [**pcloud_vpnconnections_peersubnets_delete**](docs/PCloudVPNConnectionsApi.md#pcloud_vpnconnections_peersubnets_delete) | **DELETE** /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/vpn-connections/{vpn_connection_id}/peer-subnets | Detach Peer Subnet
+*IbmCloudPower::PCloudVPNConnectionsApi* | [**pcloud_vpnconnections_peersubnets_get**](docs/PCloudVPNConnectionsApi.md#pcloud_vpnconnections_peersubnets_get) | **GET** /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/vpn-connections/{vpn_connection_id}/peer-subnets | Get Peer Subnets
+*IbmCloudPower::PCloudVPNConnectionsApi* | [**pcloud_vpnconnections_peersubnets_put**](docs/PCloudVPNConnectionsApi.md#pcloud_vpnconnections_peersubnets_put) | **PUT** /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/vpn-connections/{vpn_connection_id}/peer-subnets | Attach Peer Subnet
+*IbmCloudPower::PCloudVPNConnectionsApi* | [**pcloud_vpnconnections_post**](docs/PCloudVPNConnectionsApi.md#pcloud_vpnconnections_post) | **POST** /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/vpn-connections | Create VPN Connection
+*IbmCloudPower::PCloudVPNConnectionsApi* | [**pcloud_vpnconnections_put**](docs/PCloudVPNConnectionsApi.md#pcloud_vpnconnections_put) | **PUT** /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/vpn-connections/{vpn_connection_id} | Update VPN Connection
+*IbmCloudPower::PCloudVPNPoliciesApi* | [**pcloud_ikepolicies_delete**](docs/PCloudVPNPoliciesApi.md#pcloud_ikepolicies_delete) | **DELETE** /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ike-policies/{ike_policy_id} | Delete IKE Policy
+*IbmCloudPower::PCloudVPNPoliciesApi* | [**pcloud_ikepolicies_get**](docs/PCloudVPNPoliciesApi.md#pcloud_ikepolicies_get) | **GET** /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ike-policies/{ike_policy_id} | Get the specified IKE Policy
+*IbmCloudPower::PCloudVPNPoliciesApi* | [**pcloud_ikepolicies_getall**](docs/PCloudVPNPoliciesApi.md#pcloud_ikepolicies_getall) | **GET** /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ike-policies | Get all IKE Policies
+*IbmCloudPower::PCloudVPNPoliciesApi* | [**pcloud_ikepolicies_post**](docs/PCloudVPNPoliciesApi.md#pcloud_ikepolicies_post) | **POST** /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ike-policies | Add IKE Policy
+*IbmCloudPower::PCloudVPNPoliciesApi* | [**pcloud_ikepolicies_put**](docs/PCloudVPNPoliciesApi.md#pcloud_ikepolicies_put) | **PUT** /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ike-policies/{ike_policy_id} | Update IKE Policy
+*IbmCloudPower::PCloudVPNPoliciesApi* | [**pcloud_ipsecpolicies_delete**](docs/PCloudVPNPoliciesApi.md#pcloud_ipsecpolicies_delete) | **DELETE** /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ipsec-policies/{ipsec_policy_id} | Delete IPSec Policy
+*IbmCloudPower::PCloudVPNPoliciesApi* | [**pcloud_ipsecpolicies_get**](docs/PCloudVPNPoliciesApi.md#pcloud_ipsecpolicies_get) | **GET** /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ipsec-policies/{ipsec_policy_id} | Get the specified IPSec Policy
+*IbmCloudPower::PCloudVPNPoliciesApi* | [**pcloud_ipsecpolicies_getall**](docs/PCloudVPNPoliciesApi.md#pcloud_ipsecpolicies_getall) | **GET** /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ipsec-policies | Get all IPSec Policies
+*IbmCloudPower::PCloudVPNPoliciesApi* | [**pcloud_ipsecpolicies_post**](docs/PCloudVPNPoliciesApi.md#pcloud_ipsecpolicies_post) | **POST** /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ipsec-policies | Add IPSec Policy
+*IbmCloudPower::PCloudVPNPoliciesApi* | [**pcloud_ipsecpolicies_put**](docs/PCloudVPNPoliciesApi.md#pcloud_ipsecpolicies_put) | **PUT** /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ipsec-policies/{ipsec_policy_id} | Update IPSec Policy
 *IbmCloudPower::PCloudVolumesApi* | [**pcloud_cloudinstances_volumes_delete**](docs/PCloudVolumesApi.md#pcloud_cloudinstances_volumes_delete) | **DELETE** /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/{volume_id} | Delete a cloud instance volume
 *IbmCloudPower::PCloudVolumesApi* | [**pcloud_cloudinstances_volumes_get**](docs/PCloudVolumesApi.md#pcloud_cloudinstances_volumes_get) | **GET** /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/{volume_id} | Detailed information of a volume
 *IbmCloudPower::PCloudVolumesApi* | [**pcloud_cloudinstances_volumes_getall**](docs/PCloudVolumesApi.md#pcloud_cloudinstances_volumes_getall) | **GET** /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes | List all volumes for this cloud instance
@@ -185,6 +216,7 @@ Class | Method | HTTP request | Description
  - [IbmCloudPower::ClonedVolumeDetail](docs/ClonedVolumeDetail.md)
  - [IbmCloudPower::CloudConnection](docs/CloudConnection.md)
  - [IbmCloudPower::CloudConnectionCreate](docs/CloudConnectionCreate.md)
+ - [IbmCloudPower::CloudConnectionCreateResponse](docs/CloudConnectionCreateResponse.md)
  - [IbmCloudPower::CloudConnectionEndpointClassic](docs/CloudConnectionEndpointClassic.md)
  - [IbmCloudPower::CloudConnectionEndpointGRE](docs/CloudConnectionEndpointGRE.md)
  - [IbmCloudPower::CloudConnectionEndpointVPC](docs/CloudConnectionEndpointVPC.md)
@@ -193,31 +225,52 @@ Class | Method | HTTP request | Description
  - [IbmCloudPower::CloudConnectionUpdate](docs/CloudConnectionUpdate.md)
  - [IbmCloudPower::CloudConnectionVPC](docs/CloudConnectionVPC.md)
  - [IbmCloudPower::CloudConnectionVirtualPrivateClouds](docs/CloudConnectionVirtualPrivateClouds.md)
- - [IbmCloudPower::CloudConnectionVirtualPrivateCloudsVirtualPrivateClouds](docs/CloudConnectionVirtualPrivateCloudsVirtualPrivateClouds.md)
+ - [IbmCloudPower::CloudConnectionVirtualPrivateCloudsVirtualPrivateCloudsInner](docs/CloudConnectionVirtualPrivateCloudsVirtualPrivateCloudsInner.md)
  - [IbmCloudPower::CloudConnections](docs/CloudConnections.md)
  - [IbmCloudPower::CloudInstance](docs/CloudInstance.md)
  - [IbmCloudPower::CloudInstanceCreate](docs/CloudInstanceCreate.md)
  - [IbmCloudPower::CloudInstanceReference](docs/CloudInstanceReference.md)
  - [IbmCloudPower::CloudInstanceUpdate](docs/CloudInstanceUpdate.md)
  - [IbmCloudPower::CloudInstanceUsageLimits](docs/CloudInstanceUsageLimits.md)
+ - [IbmCloudPower::CreateCosImageImportJob](docs/CreateCosImageImportJob.md)
  - [IbmCloudPower::CreateDataVolume](docs/CreateDataVolume.md)
  - [IbmCloudPower::CreateImage](docs/CreateImage.md)
+ - [IbmCloudPower::DeadPeerDetection](docs/DeadPeerDetection.md)
  - [IbmCloudPower::Error](docs/Error.md)
  - [IbmCloudPower::Event](docs/Event.md)
  - [IbmCloudPower::EventUser](docs/EventUser.md)
  - [IbmCloudPower::Events](docs/Events.md)
  - [IbmCloudPower::ExportImage](docs/ExportImage.md)
+ - [IbmCloudPower::IKEPolicies](docs/IKEPolicies.md)
+ - [IbmCloudPower::IKEPolicy](docs/IKEPolicy.md)
+ - [IbmCloudPower::IKEPolicyCreate](docs/IKEPolicyCreate.md)
+ - [IbmCloudPower::IKEPolicyOptions](docs/IKEPolicyOptions.md)
+ - [IbmCloudPower::IKEPolicyRef](docs/IKEPolicyRef.md)
+ - [IbmCloudPower::IKEPolicyTemplate](docs/IKEPolicyTemplate.md)
+ - [IbmCloudPower::IKEPolicyUpdate](docs/IKEPolicyUpdate.md)
  - [IbmCloudPower::IPAddressRange](docs/IPAddressRange.md)
+ - [IbmCloudPower::IPSecPolicies](docs/IPSecPolicies.md)
+ - [IbmCloudPower::IPSecPolicy](docs/IPSecPolicy.md)
+ - [IbmCloudPower::IPSecPolicyCreate](docs/IPSecPolicyCreate.md)
+ - [IbmCloudPower::IPSecPolicyOptions](docs/IPSecPolicyOptions.md)
+ - [IbmCloudPower::IPSecPolicyRef](docs/IPSecPolicyRef.md)
+ - [IbmCloudPower::IPSecPolicyTemplate](docs/IPSecPolicyTemplate.md)
+ - [IbmCloudPower::IPSecPolicyUpdate](docs/IPSecPolicyUpdate.md)
  - [IbmCloudPower::Image](docs/Image.md)
  - [IbmCloudPower::ImageReference](docs/ImageReference.md)
  - [IbmCloudPower::ImageSpecifications](docs/ImageSpecifications.md)
  - [IbmCloudPower::ImageVolume](docs/ImageVolume.md)
  - [IbmCloudPower::Images](docs/Images.md)
+ - [IbmCloudPower::Job](docs/Job.md)
+ - [IbmCloudPower::JobReference](docs/JobReference.md)
+ - [IbmCloudPower::Jobs](docs/Jobs.md)
  - [IbmCloudPower::MaximumStorageAllocation](docs/MaximumStorageAllocation.md)
  - [IbmCloudPower::MinMaxDefault](docs/MinMaxDefault.md)
  - [IbmCloudPower::MultiVolumesCreate](docs/MultiVolumesCreate.md)
  - [IbmCloudPower::Network](docs/Network.md)
  - [IbmCloudPower::NetworkCreate](docs/NetworkCreate.md)
+ - [IbmCloudPower::NetworkID](docs/NetworkID.md)
+ - [IbmCloudPower::NetworkIDs](docs/NetworkIDs.md)
  - [IbmCloudPower::NetworkIpAddressMetrics](docs/NetworkIpAddressMetrics.md)
  - [IbmCloudPower::NetworkPort](docs/NetworkPort.md)
  - [IbmCloudPower::NetworkPortCreate](docs/NetworkPortCreate.md)
@@ -227,7 +280,9 @@ Class | Method | HTTP request | Description
  - [IbmCloudPower::NetworkReference](docs/NetworkReference.md)
  - [IbmCloudPower::NetworkUpdate](docs/NetworkUpdate.md)
  - [IbmCloudPower::Networks](docs/Networks.md)
+ - [IbmCloudPower::Operation](docs/Operation.md)
  - [IbmCloudPower::Operations](docs/Operations.md)
+ - [IbmCloudPower::Options](docs/Options.md)
  - [IbmCloudPower::PVMInstance](docs/PVMInstance.md)
  - [IbmCloudPower::PVMInstanceAction](docs/PVMInstanceAction.md)
  - [IbmCloudPower::PVMInstanceAddNetwork](docs/PVMInstanceAddNetwork.md)
@@ -247,6 +302,8 @@ Class | Method | HTTP request | Description
  - [IbmCloudPower::PVMInstanceUpdateResponse](docs/PVMInstanceUpdateResponse.md)
  - [IbmCloudPower::PVMInstanceVolumeUpdate](docs/PVMInstanceVolumeUpdate.md)
  - [IbmCloudPower::PVMInstances](docs/PVMInstances.md)
+ - [IbmCloudPower::PeerSubnetUpdate](docs/PeerSubnetUpdate.md)
+ - [IbmCloudPower::PeerSubnets](docs/PeerSubnets.md)
  - [IbmCloudPower::PeeringNetwork](docs/PeeringNetwork.md)
  - [IbmCloudPower::PinPolicy](docs/PinPolicy.md)
  - [IbmCloudPower::PlacementGroup](docs/PlacementGroup.md)
@@ -267,7 +324,9 @@ Class | Method | HTTP request | Description
  - [IbmCloudPower::SnapshotUpdate](docs/SnapshotUpdate.md)
  - [IbmCloudPower::Snapshots](docs/Snapshots.md)
  - [IbmCloudPower::SoftwareLicenses](docs/SoftwareLicenses.md)
+ - [IbmCloudPower::Status](docs/Status.md)
  - [IbmCloudPower::StockImage](docs/StockImage.md)
+ - [IbmCloudPower::StorageAffinity](docs/StorageAffinity.md)
  - [IbmCloudPower::StoragePoolCapacity](docs/StoragePoolCapacity.md)
  - [IbmCloudPower::StoragePoolsCapacity](docs/StoragePoolsCapacity.md)
  - [IbmCloudPower::StorageTypeCapacity](docs/StorageTypeCapacity.md)
@@ -279,6 +338,12 @@ Class | Method | HTTP request | Description
  - [IbmCloudPower::Tenant](docs/Tenant.md)
  - [IbmCloudPower::TenantUpdate](docs/TenantUpdate.md)
  - [IbmCloudPower::UpdateVolume](docs/UpdateVolume.md)
+ - [IbmCloudPower::VPNConnection](docs/VPNConnection.md)
+ - [IbmCloudPower::VPNConnectionCreate](docs/VPNConnectionCreate.md)
+ - [IbmCloudPower::VPNConnectionCreateResponse](docs/VPNConnectionCreateResponse.md)
+ - [IbmCloudPower::VPNConnectionUpdate](docs/VPNConnectionUpdate.md)
+ - [IbmCloudPower::VPNConnections](docs/VPNConnections.md)
+ - [IbmCloudPower::VPNaaSOptions](docs/VPNaaSOptions.md)
  - [IbmCloudPower::VirtualCores](docs/VirtualCores.md)
  - [IbmCloudPower::Volume](docs/Volume.md)
  - [IbmCloudPower::VolumeInfo](docs/VolumeInfo.md)

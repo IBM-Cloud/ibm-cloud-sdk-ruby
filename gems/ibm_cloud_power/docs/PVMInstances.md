@@ -2,16 +2,17 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**pvm_instances** | [**Array&lt;PVMInstanceReference&gt;**](PVMInstanceReference.md) | PVM Instance References | 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **pvm_instances** | [**Array&lt;PVMInstanceReference&gt;**](PVMInstanceReference.md) | PVM Instance References |  |
 
-## Code Sample
+## Example
 
 ```ruby
-require 'IbmCloudPower'
+require 'ibm_cloud_power'
 
-instance = IbmCloudPower::PVMInstances.new(pvm_instances: null)
+instance = IbmCloudPower::PVMInstances.new(
+  pvm_instances: null
+)
 ```
-
 

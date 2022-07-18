@@ -2,16 +2,17 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**volumes** | [**Array&lt;VolumeReference&gt;**](VolumeReference.md) | Volumes | 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **volumes** | [**Array&lt;VolumeReference&gt;**](VolumeReference.md) | Volumes |  |
 
-## Code Sample
+## Example
 
 ```ruby
-require 'IbmCloudPower'
+require 'ibm_cloud_power'
 
-instance = IbmCloudPower::Volumes.new(volumes: null)
+instance = IbmCloudPower::Volumes.new(
+  volumes: null
+)
 ```
-
 

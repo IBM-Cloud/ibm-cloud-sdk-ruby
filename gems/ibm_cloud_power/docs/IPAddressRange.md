@@ -2,18 +2,19 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**starting_ip_address** | **String** | Starting IP Address | 
-**ending_ip_address** | **String** | Ending IP Address | 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **starting_ip_address** | **String** | Starting IP Address |  |
+| **ending_ip_address** | **String** | Ending IP Address |  |
 
-## Code Sample
+## Example
 
 ```ruby
-require 'IbmCloudPower'
+require 'ibm_cloud_power'
 
-instance = IbmCloudPower::IPAddressRange.new(starting_ip_address: null,
-                                 ending_ip_address: null)
+instance = IbmCloudPower::IPAddressRange.new(
+  starting_ip_address: null,
+  ending_ip_address: null
+)
 ```
-
 

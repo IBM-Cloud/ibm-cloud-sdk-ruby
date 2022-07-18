@@ -2,18 +2,19 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**source** | [**VolumeInfo**](VolumeInfo.md) |  | 
-**clone** | [**VolumeInfo**](VolumeInfo.md) |  | 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **source** | [**VolumeInfo**](VolumeInfo.md) |  |  |
+| **clone** | [**VolumeInfo**](VolumeInfo.md) |  |  |
 
-## Code Sample
+## Example
 
 ```ruby
-require 'IbmCloudPower'
+require 'ibm_cloud_power'
 
-instance = IbmCloudPower::ClonedVolumeDetail.new(source: null,
-                                 clone: null)
+instance = IbmCloudPower::ClonedVolumeDetail.new(
+  source: null,
+  clone: null
+)
 ```
-
 

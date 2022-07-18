@@ -2,16 +2,17 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**profiles** | [**Array&lt;SAPProfile&gt;**](SAPProfile.md) | SAP Profiles | 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **profiles** | [**Array&lt;SAPProfile&gt;**](SAPProfile.md) | SAP Profiles |  |
 
-## Code Sample
+## Example
 
 ```ruby
-require 'IbmCloudPower'
+require 'ibm_cloud_power'
 
-instance = IbmCloudPower::SAPProfiles.new(profiles: null)
+instance = IbmCloudPower::SAPProfiles.new(
+  profiles: null
+)
 ```
-
 
