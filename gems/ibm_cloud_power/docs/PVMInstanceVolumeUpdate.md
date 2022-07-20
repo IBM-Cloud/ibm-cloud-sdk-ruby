@@ -2,16 +2,17 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**delete_on_termination** | **Boolean** | Indicates if the volume should be deleted when the PVMInstance is terminated | 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **delete_on_termination** | **Boolean** | Indicates if the volume should be deleted when the PVMInstance is terminated |  |
 
-## Code Sample
+## Example
 
 ```ruby
-require 'IbmCloudPower'
+require 'ibm_cloud_power'
 
-instance = IbmCloudPower::PVMInstanceVolumeUpdate.new(delete_on_termination: null)
+instance = IbmCloudPower::PVMInstanceVolumeUpdate.new(
+  delete_on_termination: null
+)
 ```
-
 

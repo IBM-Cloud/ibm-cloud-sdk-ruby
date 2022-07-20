@@ -2,16 +2,17 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**cloud_connections** | [**Array&lt;CloudConnection&gt;**](CloudConnection.md) | Cloud Connections | 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **cloud_connections** | [**Array&lt;CloudConnection&gt;**](CloudConnection.md) | Cloud Connections |  |
 
-## Code Sample
+## Example
 
 ```ruby
-require 'IbmCloudPower'
+require 'ibm_cloud_power'
 
-instance = IbmCloudPower::CloudConnections.new(cloud_connections: null)
+instance = IbmCloudPower::CloudConnections.new(
+  cloud_connections: null
+)
 ```
-
 

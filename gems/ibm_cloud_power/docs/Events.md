@@ -2,16 +2,17 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**events** | [**Array&lt;Event&gt;**](Event.md) | Events | 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **events** | [**Array&lt;Event&gt;**](Event.md) | Events |  |
 
-## Code Sample
+## Example
 
 ```ruby
-require 'IbmCloudPower'
+require 'ibm_cloud_power'
 
-instance = IbmCloudPower::Events.new(events: null)
+instance = IbmCloudPower::Events.new(
+  events: null
+)
 ```
-
 

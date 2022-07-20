@@ -2,18 +2,19 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**clone_task_id** | **String** | ID of a long running PowerVC clone task | 
-**href** | **String** | Link to PowerVC clone task resource | 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **clone_task_id** | **String** | ID of a long running PowerVC clone task |  |
+| **href** | **String** | Link to PowerVC clone task resource |  |
 
-## Code Sample
+## Example
 
 ```ruby
-require 'IbmCloudPower'
+require 'ibm_cloud_power'
 
-instance = IbmCloudPower::CloneTaskReference.new(clone_task_id: null,
-                                 href: null)
+instance = IbmCloudPower::CloneTaskReference.new(
+  clone_task_id: null,
+  href: null
+)
 ```
-
 

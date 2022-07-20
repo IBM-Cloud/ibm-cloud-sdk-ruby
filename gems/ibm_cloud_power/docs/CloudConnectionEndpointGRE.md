@@ -2,18 +2,19 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**enabled** | **Boolean** | enable gre for this cloud connection (default&#x3D;false) | [optional] 
-**tunnels** | [**Array&lt;CloudConnectionGRETunnel&gt;**](CloudConnectionGRETunnel.md) | gre tunnels configured | [optional] 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **enabled** | **Boolean** | enable gre for this cloud connection (default&#x3D;false) | [optional] |
+| **tunnels** | [**Array&lt;CloudConnectionGRETunnel&gt;**](CloudConnectionGRETunnel.md) | gre tunnels configured | [optional] |
 
-## Code Sample
+## Example
 
 ```ruby
-require 'IbmCloudPower'
+require 'ibm_cloud_power'
 
-instance = IbmCloudPower::CloudConnectionEndpointGRE.new(enabled: null,
-                                 tunnels: null)
+instance = IbmCloudPower::CloudConnectionEndpointGRE.new(
+  enabled: null,
+  tunnels: null
+)
 ```
-
 

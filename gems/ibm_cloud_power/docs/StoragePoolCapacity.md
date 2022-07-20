@@ -2,22 +2,23 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**pool_name** | **String** | Pool name | [optional] 
-**storage_type** | **String** | Storage type of the storage pool | [optional] 
-**max_allocation_size** | **Integer** | Maximum allocation storage size (GB) | 
-**total_capacity** | **Integer** | Total pool capacity (GB) | [optional] 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **pool_name** | **String** | Pool name | [optional] |
+| **storage_type** | **String** | Storage type of the storage pool | [optional] |
+| **max_allocation_size** | **Integer** | Maximum size (GB) that can be currently requested to allocate storage for a given storage type and pool at the time of creation |  |
+| **total_capacity** | **Integer** | Total pool capacity (GB) | [optional] |
 
-## Code Sample
+## Example
 
 ```ruby
-require 'IbmCloudPower'
+require 'ibm_cloud_power'
 
-instance = IbmCloudPower::StoragePoolCapacity.new(pool_name: null,
-                                 storage_type: null,
-                                 max_allocation_size: null,
-                                 total_capacity: null)
+instance = IbmCloudPower::StoragePoolCapacity.new(
+  pool_name: null,
+  storage_type: null,
+  max_allocation_size: null,
+  total_capacity: null
+)
 ```
-
 

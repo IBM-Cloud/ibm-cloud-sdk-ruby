@@ -2,16 +2,17 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**placement_groups** | [**Array&lt;PlacementGroup&gt;**](PlacementGroup.md) | List of Server Placement Groups | 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **placement_groups** | [**Array&lt;PlacementGroup&gt;**](PlacementGroup.md) | List of Server Placement Groups |  |
 
-## Code Sample
+## Example
 
 ```ruby
-require 'IbmCloudPower'
+require 'ibm_cloud_power'
 
-instance = IbmCloudPower::PlacementGroups.new(placement_groups: null)
+instance = IbmCloudPower::PlacementGroups.new(
+  placement_groups: null
+)
 ```
-
 

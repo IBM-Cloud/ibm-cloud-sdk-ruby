@@ -2,16 +2,17 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**ports** | [**Array&lt;NetworkPort&gt;**](NetworkPort.md) | Network Ports | 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **ports** | [**Array&lt;NetworkPort&gt;**](NetworkPort.md) | Network Ports |  |
 
-## Code Sample
+## Example
 
 ```ruby
-require 'IbmCloudPower'
+require 'ibm_cloud_power'
 
-instance = IbmCloudPower::NetworkPorts.new(ports: null)
+instance = IbmCloudPower::NetworkPorts.new(
+  ports: null
+)
 ```
-
 

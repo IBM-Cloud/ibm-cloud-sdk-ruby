@@ -2,16 +2,17 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**images** | [**Array&lt;ImageReference&gt;**](ImageReference.md) | Images | 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **images** | [**Array&lt;ImageReference&gt;**](ImageReference.md) | Images |  |
 
-## Code Sample
+## Example
 
 ```ruby
-require 'IbmCloudPower'
+require 'ibm_cloud_power'
 
-instance = IbmCloudPower::Images.new(images: null)
+instance = IbmCloudPower::Images.new(
+  images: null
+)
 ```
-
 

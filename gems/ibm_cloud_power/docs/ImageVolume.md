@@ -2,22 +2,23 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**volume_id** | **String** | Volume ID | 
-**name** | **String** | Volume Name | 
-**size** | **Float** | Volume Size | 
-**bootable** | **Boolean** | Indicates if the volume is boot capable | 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **volume_id** | **String** | Volume ID |  |
+| **name** | **String** | Volume Name |  |
+| **size** | **Float** | Volume Size |  |
+| **bootable** | **Boolean** | Indicates if the volume is boot capable |  |
 
-## Code Sample
+## Example
 
 ```ruby
-require 'IbmCloudPower'
+require 'ibm_cloud_power'
 
-instance = IbmCloudPower::ImageVolume.new(volume_id: null,
-                                 name: null,
-                                 size: null,
-                                 bootable: null)
+instance = IbmCloudPower::ImageVolume.new(
+  volume_id: null,
+  name: null,
+  size: null,
+  bootable: null
+)
 ```
-
 

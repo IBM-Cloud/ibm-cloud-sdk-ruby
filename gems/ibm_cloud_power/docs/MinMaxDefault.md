@@ -2,20 +2,21 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**min** | **Float** | min value | 
-**max** | **Float** | max value | 
-**default** | **Float** | default value | 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **min** | **Float** | min value |  |
+| **max** | **Float** | max value |  |
+| **default** | **Float** | default value |  |
 
-## Code Sample
+## Example
 
 ```ruby
-require 'IbmCloudPower'
+require 'ibm_cloud_power'
 
-instance = IbmCloudPower::MinMaxDefault.new(min: null,
-                                 max: null,
-                                 default: null)
+instance = IbmCloudPower::MinMaxDefault.new(
+  min: null,
+  max: null,
+  default: null
+)
 ```
-
 

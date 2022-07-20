@@ -2,18 +2,19 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**volume_id** | **String** | ID of the volume | [optional] 
-**name** | **String** | Name of the volume | [optional] 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **volume_id** | **String** | ID of the volume | [optional] |
+| **name** | **String** | Name of the volume | [optional] |
 
-## Code Sample
+## Example
 
 ```ruby
-require 'IbmCloudPower'
+require 'ibm_cloud_power'
 
-instance = IbmCloudPower::VolumeInfo.new(volume_id: null,
-                                 name: null)
+instance = IbmCloudPower::VolumeInfo.new(
+  volume_id: null,
+  name: null
+)
 ```
-
 

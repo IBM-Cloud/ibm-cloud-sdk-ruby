@@ -2,22 +2,23 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**bucket_name** | **String** | Cloud Object Storage Bucket name | 
-**region** | **String** | Cloud Object Storage Region; required for IBM COS | [optional] 
-**access_key** | **String** | Cloud Object Storage Access key | 
-**secret_key** | **String** | Cloud Object Storage Secret key | [optional] 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **bucket_name** | **String** | Cloud Object Storage Bucket name |  |
+| **region** | **String** | Cloud Object Storage Region; required for IBM COS | [optional] |
+| **access_key** | **String** | Cloud Object Storage Access key |  |
+| **secret_key** | **String** | Cloud Object Storage Secret key | [optional] |
 
-## Code Sample
+## Example
 
 ```ruby
-require 'IbmCloudPower'
+require 'ibm_cloud_power'
 
-instance = IbmCloudPower::ExportImage.new(bucket_name: null,
-                                 region: null,
-                                 access_key: null,
-                                 secret_key: null)
+instance = IbmCloudPower::ExportImage.new(
+  bucket_name: null,
+  region: null,
+  access_key: null,
+  secret_key: null
+)
 ```
-
 

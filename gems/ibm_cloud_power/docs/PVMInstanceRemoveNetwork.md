@@ -2,16 +2,17 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**mac_address** | **String** | The mac address of the network interface to be removed | [optional] 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **mac_address** | **String** | The mac address of the network interface to be removed | [optional] |
 
-## Code Sample
+## Example
 
 ```ruby
-require 'IbmCloudPower'
+require 'ibm_cloud_power'
 
-instance = IbmCloudPower::PVMInstanceRemoveNetwork.new(mac_address: null)
+instance = IbmCloudPower::PVMInstanceRemoveNetwork.new(
+  mac_address: null
+)
 ```
-
 

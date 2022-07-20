@@ -2,15 +2,14 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
 
-## Code Sample
+## Example
 
 ```ruby
-require 'IbmCloudPower'
+require 'ibm_cloud_power'
 
 instance = IbmCloudPower::CloudConnectionSpeed.new()
 ```
-
 

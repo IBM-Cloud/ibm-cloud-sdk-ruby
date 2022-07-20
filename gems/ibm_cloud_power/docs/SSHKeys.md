@@ -2,16 +2,17 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**ssh_keys** | [**Array&lt;SSHKey&gt;**](SSHKey.md) | SSH Keys | 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **ssh_keys** | [**Array&lt;SSHKey&gt;**](SSHKey.md) | SSH Keys |  |
 
-## Code Sample
+## Example
 
 ```ruby
-require 'IbmCloudPower'
+require 'ibm_cloud_power'
 
-instance = IbmCloudPower::SSHKeys.new(ssh_keys: null)
+instance = IbmCloudPower::SSHKeys.new(
+  ssh_keys: null
+)
 ```
-
 

@@ -2,20 +2,21 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**name** | **String** | User defined name for the SSH key | 
-**ssh_key** | **String** | SSH RSA key | 
-**creation_date** | **DateTime** | Date of sshkey creation | [optional] 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **name** | **String** | User defined name for the SSH key |  |
+| **ssh_key** | **String** | SSH RSA key |  |
+| **creation_date** | **Time** | Date of sshkey creation | [optional] |
 
-## Code Sample
+## Example
 
 ```ruby
-require 'IbmCloudPower'
+require 'ibm_cloud_power'
 
-instance = IbmCloudPower::SSHKey.new(name: null,
-                                 ssh_key: null,
-                                 creation_date: null)
+instance = IbmCloudPower::SSHKey.new(
+  name: null,
+  ssh_key: null,
+  creation_date: null
+)
 ```
-
 

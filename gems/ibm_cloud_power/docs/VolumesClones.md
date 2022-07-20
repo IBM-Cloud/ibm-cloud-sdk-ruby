@@ -2,16 +2,17 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**volumes_clone** | [**Array&lt;VolumesClone&gt;**](VolumesClone.md) | list of volumes-clone requests | [optional] 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **volumes_clone** | [**Array&lt;VolumesClone&gt;**](VolumesClone.md) | list of volumes-clone requests | [optional] |
 
-## Code Sample
+## Example
 
 ```ruby
-require 'IbmCloudPower'
+require 'ibm_cloud_power'
 
-instance = IbmCloudPower::VolumesClones.new(volumes_clone: null)
+instance = IbmCloudPower::VolumesClones.new(
+  volumes_clone: null
+)
 ```
-
 

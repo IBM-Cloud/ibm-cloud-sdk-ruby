@@ -2,18 +2,19 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**enabled** | **Boolean** | enable vpc for this cloud connection (default&#x3D;false) | [optional] 
-**vpcs** | [**Array&lt;CloudConnectionVPC&gt;**](CloudConnectionVPC.md) | vpc connections | [optional] 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **enabled** | **Boolean** | enable vpc for this cloud connection (default&#x3D;false) | [optional] |
+| **vpcs** | [**Array&lt;CloudConnectionVPC&gt;**](CloudConnectionVPC.md) | vpc connections | [optional] |
 
-## Code Sample
+## Example
 
 ```ruby
-require 'IbmCloudPower'
+require 'ibm_cloud_power'
 
-instance = IbmCloudPower::CloudConnectionEndpointVPC.new(enabled: null,
-                                 vpcs: null)
+instance = IbmCloudPower::CloudConnectionEndpointVPC.new(
+  enabled: null,
+  vpcs: null
+)
 ```
-
 

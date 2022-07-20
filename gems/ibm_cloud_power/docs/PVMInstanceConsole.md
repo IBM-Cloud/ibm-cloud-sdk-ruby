@@ -2,16 +2,17 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**console_url** | **String** | The URL to the noVNC console for the PVM instance | 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **console_url** | **String** | The URL to the noVNC console for the PVM instance |  |
 
-## Code Sample
+## Example
 
 ```ruby
-require 'IbmCloudPower'
+require 'ibm_cloud_power'
 
-instance = IbmCloudPower::PVMInstanceConsole.new(console_url: null)
+instance = IbmCloudPower::PVMInstanceConsole.new(
+  console_url: null
+)
 ```
-
 

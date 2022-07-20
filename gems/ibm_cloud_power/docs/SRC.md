@@ -2,18 +2,19 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**timestamp** | **String** | The date stamp of the SRC | [optional] 
-**src** | **String** | The SRC reference code | [optional] 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **timestamp** | **String** | The date stamp of the SRC | [optional] |
+| **src** | **String** | The SRC reference code | [optional] |
 
-## Code Sample
+## Example
 
 ```ruby
-require 'IbmCloudPower'
+require 'ibm_cloud_power'
 
-instance = IbmCloudPower::SRC.new(timestamp: null,
-                                 src: null)
+instance = IbmCloudPower::SRC.new(
+  timestamp: null,
+  src: null
+)
 ```
-
 
