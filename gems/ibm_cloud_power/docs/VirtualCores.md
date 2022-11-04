@@ -4,9 +4,9 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **min** | **Integer** | The minimum DLPAR range for virtual Cores (Display only support) | [optional] |
-| **max** | **Integer** | The maximum DLPAR range for virtual Cores (Display only support) | [optional] |
 | **assigned** | **Integer** | The active virtual Cores |  |
+| **max** | **Integer** | The maximum DLPAR range for virtual Cores (Display only support) | [optional] |
+| **min** | **Integer** | The minimum DLPAR range for virtual Cores (Display only support) | [optional] |
 
 ## Example
 
@@ -14,9 +14,9 @@
 require 'ibm_cloud_power'
 
 instance = IbmCloudPower::VirtualCores.new(
-  min: null,
+  assigned: null,
   max: null,
-  assigned: null
+  min: null
 )
 ```
 

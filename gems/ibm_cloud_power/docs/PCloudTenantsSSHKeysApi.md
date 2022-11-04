@@ -4,10 +4,10 @@ All URIs are relative to *http://localhost*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
-| [**pcloud_tenants_sshkeys_delete**](PCloudTenantsSSHKeysApi.md#pcloud_tenants_sshkeys_delete) | **DELETE** /pcloud/v1/tenants/{tenant_id}/sshkeys/{sshkey_name} | Delete a tenant&#39;s SSH key |
-| [**pcloud_tenants_sshkeys_get**](PCloudTenantsSSHKeysApi.md#pcloud_tenants_sshkeys_get) | **GET** /pcloud/v1/tenants/{tenant_id}/sshkeys/{sshkey_name} | Get a tenant&#39;s SSH Key by name |
-| [**pcloud_tenants_sshkeys_getall**](PCloudTenantsSSHKeysApi.md#pcloud_tenants_sshkeys_getall) | **GET** /pcloud/v1/tenants/{tenant_id}/sshkeys | List a tenant&#39;s SSH Keys |
-| [**pcloud_tenants_sshkeys_post**](PCloudTenantsSSHKeysApi.md#pcloud_tenants_sshkeys_post) | **POST** /pcloud/v1/tenants/{tenant_id}/sshkeys | Add a new SSH key to the tenant |
+| [**pcloud_tenants_sshkeys_delete**](PCloudTenantsSSHKeysApi.md#pcloud_tenants_sshkeys_delete) | **DELETE** /pcloud/v1/tenants/{tenant_id}/sshkeys/{sshkey_name} | Delete a Tenant&#39;s SSH key |
+| [**pcloud_tenants_sshkeys_get**](PCloudTenantsSSHKeysApi.md#pcloud_tenants_sshkeys_get) | **GET** /pcloud/v1/tenants/{tenant_id}/sshkeys/{sshkey_name} | Get a Tenant&#39;s SSH Key by name |
+| [**pcloud_tenants_sshkeys_getall**](PCloudTenantsSSHKeysApi.md#pcloud_tenants_sshkeys_getall) | **GET** /pcloud/v1/tenants/{tenant_id}/sshkeys | List a Tenant&#39;s SSH Keys |
+| [**pcloud_tenants_sshkeys_post**](PCloudTenantsSSHKeysApi.md#pcloud_tenants_sshkeys_post) | **POST** /pcloud/v1/tenants/{tenant_id}/sshkeys | Add a new SSH key to the Tenant |
 | [**pcloud_tenants_sshkeys_put**](PCloudTenantsSSHKeysApi.md#pcloud_tenants_sshkeys_put) | **PUT** /pcloud/v1/tenants/{tenant_id}/sshkeys/{sshkey_name} | Update an SSH Key |
 
 
@@ -15,7 +15,7 @@ All URIs are relative to *http://localhost*
 
 > Object pcloud_tenants_sshkeys_delete(tenant_id, sshkey_name)
 
-Delete a tenant's SSH key
+Delete a Tenant's SSH key
 
 ### Examples
 
@@ -28,7 +28,7 @@ tenant_id = 'tenant_id_example' # String | Tenant ID of a pcloud tenant
 sshkey_name = 'sshkey_name_example' # String | SSH key name for a pcloud tenant
 
 begin
-  # Delete a tenant's SSH key
+  # Delete a Tenant's SSH key
   result = api_instance.pcloud_tenants_sshkeys_delete(tenant_id, sshkey_name)
   p result
 rescue IbmCloudPower::ApiError => e
@@ -44,7 +44,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Delete a tenant's SSH key
+  # Delete a Tenant's SSH key
   data, status_code, headers = api_instance.pcloud_tenants_sshkeys_delete_with_http_info(tenant_id, sshkey_name)
   p status_code # => 2xx
   p headers # => { ... }
@@ -79,7 +79,7 @@ No authorization required
 
 > <SSHKey> pcloud_tenants_sshkeys_get(tenant_id, sshkey_name)
 
-Get a tenant's SSH Key by name
+Get a Tenant's SSH Key by name
 
 ### Examples
 
@@ -92,7 +92,7 @@ tenant_id = 'tenant_id_example' # String | Tenant ID of a pcloud tenant
 sshkey_name = 'sshkey_name_example' # String | SSH key name for a pcloud tenant
 
 begin
-  # Get a tenant's SSH Key by name
+  # Get a Tenant's SSH Key by name
   result = api_instance.pcloud_tenants_sshkeys_get(tenant_id, sshkey_name)
   p result
 rescue IbmCloudPower::ApiError => e
@@ -108,7 +108,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Get a tenant's SSH Key by name
+  # Get a Tenant's SSH Key by name
   data, status_code, headers = api_instance.pcloud_tenants_sshkeys_get_with_http_info(tenant_id, sshkey_name)
   p status_code # => 2xx
   p headers # => { ... }
@@ -143,7 +143,7 @@ No authorization required
 
 > <SSHKeys> pcloud_tenants_sshkeys_getall(tenant_id)
 
-List a tenant's SSH Keys
+List a Tenant's SSH Keys
 
 ### Examples
 
@@ -155,7 +155,7 @@ api_instance = IbmCloudPower::PCloudTenantsSSHKeysApi.new
 tenant_id = 'tenant_id_example' # String | Tenant ID of a pcloud tenant
 
 begin
-  # List a tenant's SSH Keys
+  # List a Tenant's SSH Keys
   result = api_instance.pcloud_tenants_sshkeys_getall(tenant_id)
   p result
 rescue IbmCloudPower::ApiError => e
@@ -171,7 +171,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # List a tenant's SSH Keys
+  # List a Tenant's SSH Keys
   data, status_code, headers = api_instance.pcloud_tenants_sshkeys_getall_with_http_info(tenant_id)
   p status_code # => 2xx
   p headers # => { ... }
@@ -205,7 +205,7 @@ No authorization required
 
 > <SSHKey> pcloud_tenants_sshkeys_post(tenant_id, body)
 
-Add a new SSH key to the tenant
+Add a new SSH key to the Tenant
 
 ### Examples
 
@@ -218,7 +218,7 @@ tenant_id = 'tenant_id_example' # String | Tenant ID of a pcloud tenant
 body = IbmCloudPower::SSHKey.new({name: 'name_example', ssh_key: 'ssh_key_example'}) # SSHKey | Parameters for the creation of a new SSH key
 
 begin
-  # Add a new SSH key to the tenant
+  # Add a new SSH key to the Tenant
   result = api_instance.pcloud_tenants_sshkeys_post(tenant_id, body)
   p result
 rescue IbmCloudPower::ApiError => e
@@ -234,7 +234,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Add a new SSH key to the tenant
+  # Add a new SSH key to the Tenant
   data, status_code, headers = api_instance.pcloud_tenants_sshkeys_post_with_http_info(tenant_id, body)
   p status_code # => 2xx
   p headers # => { ... }

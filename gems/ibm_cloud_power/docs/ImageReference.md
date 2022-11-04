@@ -4,16 +4,16 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **image_id** | **String** | Image ID |  |
-| **name** | **String** | Image Name |  |
-| **state** | **String** | Image State |  |
-| **description** | **String** | Description |  |
-| **storage_type** | **String** | Storage type for image |  |
-| **storage_pool** | **String** | Storage pool where the image is located |  |
 | **creation_date** | **Time** | Creation Date |  |
-| **last_update_date** | **Time** | Last Update Date |  |
-| **specifications** | [**ImageSpecifications**](ImageSpecifications.md) |  |  |
+| **description** | **String** | Description |  |
 | **href** | **String** | Link to Image resource |  |
+| **image_id** | **String** | Image ID |  |
+| **last_update_date** | **Time** | Last Update Date |  |
+| **name** | **String** | Image Name |  |
+| **specifications** | [**ImageSpecifications**](ImageSpecifications.md) |  |  |
+| **state** | **String** | Image State |  |
+| **storage_pool** | **String** | Storage pool where image resides |  |
+| **storage_type** | **String** | Storage type for image |  |
 
 ## Example
 
@@ -21,16 +21,16 @@
 require 'ibm_cloud_power'
 
 instance = IbmCloudPower::ImageReference.new(
-  image_id: null,
-  name: null,
-  state: null,
-  description: null,
-  storage_type: null,
-  storage_pool: null,
   creation_date: null,
+  description: null,
+  href: null,
+  image_id: null,
   last_update_date: null,
+  name: null,
   specifications: null,
-  href: null
+  state: null,
+  storage_pool: null,
+  storage_type: null
 )
 ```
 

@@ -4,8 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **source** | [**VolumeInfo**](VolumeInfo.md) |  |  |
 | **clone** | [**VolumeInfo**](VolumeInfo.md) |  |  |
+| **source** | [**VolumeInfo**](VolumeInfo.md) |  |  |
 
 ## Example
 
@@ -13,8 +13,8 @@
 require 'ibm_cloud_power'
 
 instance = IbmCloudPower::ClonedVolumeDetail.new(
-  source: null,
-  clone: null
+  clone: null,
+  source: null
 )
 ```
 

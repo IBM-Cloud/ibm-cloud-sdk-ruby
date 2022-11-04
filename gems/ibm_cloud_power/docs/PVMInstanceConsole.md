@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **console_url** | **String** | The URL to the noVNC console for the PVM instance |  |
+| **console_url** | **String** | The URL to the noVNC console for the PVM Instance |  |
 
 ## Example
 

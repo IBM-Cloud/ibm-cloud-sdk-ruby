@@ -215,7 +215,7 @@ require 'ibm_cloud_power'
 api_instance = IbmCloudPower::PCloudSnapshotsApi.new
 cloud_instance_id = 'cloud_instance_id_example' # String | Cloud Instance ID of a PCloud Instance
 snapshot_id = 'snapshot_id_example' # String | PVM Instance snapshot id
-body = IbmCloudPower::SnapshotUpdate.new # SnapshotUpdate | Parameters for the update of a PVM instance snapshot
+body = IbmCloudPower::SnapshotUpdate.new # SnapshotUpdate | Parameters for the update of a  PVM instance snapshot
 
 begin
   # Update a PVM instance snapshot
@@ -250,7 +250,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **cloud_instance_id** | **String** | Cloud Instance ID of a PCloud Instance |  |
 | **snapshot_id** | **String** | PVM Instance snapshot id |  |
-| **body** | [**SnapshotUpdate**](SnapshotUpdate.md) | Parameters for the update of a PVM instance snapshot |  |
+| **body** | [**SnapshotUpdate**](SnapshotUpdate.md) | Parameters for the update of a  PVM instance snapshot |  |
 
 ### Return type
 

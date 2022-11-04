@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **enabled** | **Boolean** | enable classic endpoint destination (default&#x3D;false) | [optional] |
-| **gre** | [**CloudConnectionEndpointGRE**](CloudConnectionEndpointGRE.md) |  | [optional] |
+| **gre** | [**CloudConnectionGRETunnel**](CloudConnectionGRETunnel.md) |  | [optional] |
 
 ## Example
 

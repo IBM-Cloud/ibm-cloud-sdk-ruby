@@ -4,26 +4,26 @@ All URIs are relative to *http://localhost*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
-| [**pcloud_cloudinstances_images_delete**](PCloudImagesApi.md#pcloud_cloudinstances_images_delete) | **DELETE** /pcloud/v1/cloud-instances/{cloud_instance_id}/images/{image_id} | Delete an image from a cloud instance |
-| [**pcloud_cloudinstances_images_export_post**](PCloudImagesApi.md#pcloud_cloudinstances_images_export_post) | **POST** /pcloud/v1/cloud-instances/{cloud_instance_id}/images/{image_id}/export | Export an image (version 1) |
-| [**pcloud_cloudinstances_images_get**](PCloudImagesApi.md#pcloud_cloudinstances_images_get) | **GET** /pcloud/v1/cloud-instances/{cloud_instance_id}/images/{image_id} | Detailed information of an image |
-| [**pcloud_cloudinstances_images_getall**](PCloudImagesApi.md#pcloud_cloudinstances_images_getall) | **GET** /pcloud/v1/cloud-instances/{cloud_instance_id}/images | List all of the images for this cloud instance |
-| [**pcloud_cloudinstances_images_post**](PCloudImagesApi.md#pcloud_cloudinstances_images_post) | **POST** /pcloud/v1/cloud-instances/{cloud_instance_id}/images | Create a new image from available images |
+| [**pcloud_cloudinstances_images_delete**](PCloudImagesApi.md#pcloud_cloudinstances_images_delete) | **DELETE** /pcloud/v1/cloud-instances/{cloud_instance_id}/images/{image_id} | Delete an Image from a Cloud Instance |
+| [**pcloud_cloudinstances_images_export_post**](PCloudImagesApi.md#pcloud_cloudinstances_images_export_post) | **POST** /pcloud/v1/cloud-instances/{cloud_instance_id}/images/{image_id}/export | Export an image |
+| [**pcloud_cloudinstances_images_get**](PCloudImagesApi.md#pcloud_cloudinstances_images_get) | **GET** /pcloud/v1/cloud-instances/{cloud_instance_id}/images/{image_id} | Detailed info of an image |
+| [**pcloud_cloudinstances_images_getall**](PCloudImagesApi.md#pcloud_cloudinstances_images_getall) | **GET** /pcloud/v1/cloud-instances/{cloud_instance_id}/images | List all images for this cloud instance |
+| [**pcloud_cloudinstances_images_post**](PCloudImagesApi.md#pcloud_cloudinstances_images_post) | **POST** /pcloud/v1/cloud-instances/{cloud_instance_id}/images | Create a new Image (from available images) |
 | [**pcloud_cloudinstances_stockimages_get**](PCloudImagesApi.md#pcloud_cloudinstances_stockimages_get) | **GET** /pcloud/v1/cloud-instances/{cloud_instance_id}/stock-images/{image_id} | Detailed info of an available stock image |
 | [**pcloud_cloudinstances_stockimages_getall**](PCloudImagesApi.md#pcloud_cloudinstances_stockimages_getall) | **GET** /pcloud/v1/cloud-instances/{cloud_instance_id}/stock-images | List all available stock images |
-| [**pcloud_images_get**](PCloudImagesApi.md#pcloud_images_get) | **GET** /pcloud/v1/images/{image_id} | Deprecated for /pcloud/v1/cloud-instances/${CLOUD_INSTANCE_ID}/stock-images/{image_id} - Detailed info of an available stock image |
-| [**pcloud_images_getall**](PCloudImagesApi.md#pcloud_images_getall) | **GET** /pcloud/v1/images | Deprecated for /pcloud/v1/cloud-instances/${CLOUD_INSTANCE_ID}/stock-images - List all available stock images |
-| [**pcloud_v1_cloudinstances_cosimages_get**](PCloudImagesApi.md#pcloud_v1_cloudinstances_cosimages_get) | **GET** /pcloud/v1/cloud-instances/{cloud_instance_id}/cos-images | List image import jobs for this cloud instance |
-| [**pcloud_v1_cloudinstances_cosimages_post**](PCloudImagesApi.md#pcloud_v1_cloudinstances_cosimages_post) | **POST** /pcloud/v1/cloud-instances/{cloud_instance_id}/cos-images | Create a new image from available images in COS |
-| [**pcloud_v2_images_export_get**](PCloudImagesApi.md#pcloud_v2_images_export_get) | **GET** /pcloud/v2/cloud-instances/{cloud_instance_id}/images/{image_id}/export | Get an image’s last export Job details |
-| [**pcloud_v2_images_export_post**](PCloudImagesApi.md#pcloud_v2_images_export_post) | **POST** /pcloud/v2/cloud-instances/{cloud_instance_id}/images/{image_id}/export | Export an image (version 2) |
+| [**pcloud_images_get**](PCloudImagesApi.md#pcloud_images_get) | **GET** /pcloud/v1/images/{image_id} | Deprecated for /pcloud/v1/cloud-instances/{cloud_instance_id}/stock-images/{image_id} - Detailed info of an available stock image |
+| [**pcloud_images_getall**](PCloudImagesApi.md#pcloud_images_getall) | **GET** /pcloud/v1/images | Deprecated for /pcloud/v1/cloud-instances/{cloud_instance_id}/stock-images - List all available stock images |
+| [**pcloud_v1_cloudinstances_cosimages_get**](PCloudImagesApi.md#pcloud_v1_cloudinstances_cosimages_get) | **GET** /pcloud/v1/cloud-instances/{cloud_instance_id}/cos-images | Get detail of last cos-image import job |
+| [**pcloud_v1_cloudinstances_cosimages_post**](PCloudImagesApi.md#pcloud_v1_cloudinstances_cosimages_post) | **POST** /pcloud/v1/cloud-instances/{cloud_instance_id}/cos-images | Create an cos-image import job |
+| [**pcloud_v2_images_export_get**](PCloudImagesApi.md#pcloud_v2_images_export_get) | **GET** /pcloud/v2/cloud-instances/{cloud_instance_id}/images/{image_id}/export | Get detail of last image export job |
+| [**pcloud_v2_images_export_post**](PCloudImagesApi.md#pcloud_v2_images_export_post) | **POST** /pcloud/v2/cloud-instances/{cloud_instance_id}/images/{image_id}/export | Add image export job to the jobs queue |
 
 
 ## pcloud_cloudinstances_images_delete
 
 > Object pcloud_cloudinstances_images_delete(cloud_instance_id, image_id)
 
-Delete an image from a cloud instance
+Delete an Image from a Cloud Instance
 
 ### Examples
 
@@ -36,7 +36,7 @@ cloud_instance_id = 'cloud_instance_id_example' # String | Cloud Instance ID of 
 image_id = 'image_id_example' # String | Image ID of a image
 
 begin
-  # Delete an image from a cloud instance
+  # Delete an Image from a Cloud Instance
   result = api_instance.pcloud_cloudinstances_images_delete(cloud_instance_id, image_id)
   p result
 rescue IbmCloudPower::ApiError => e
@@ -52,7 +52,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Delete an image from a cloud instance
+  # Delete an Image from a Cloud Instance
   data, status_code, headers = api_instance.pcloud_cloudinstances_images_delete_with_http_info(cloud_instance_id, image_id)
   p status_code # => 2xx
   p headers # => { ... }
@@ -87,7 +87,7 @@ No authorization required
 
 > Object pcloud_cloudinstances_images_export_post(cloud_instance_id, image_id, body)
 
-Export an image (version 1)
+Export an image
 
 ### Examples
 
@@ -98,10 +98,10 @@ require 'ibm_cloud_power'
 api_instance = IbmCloudPower::PCloudImagesApi.new
 cloud_instance_id = 'cloud_instance_id_example' # String | Cloud Instance ID of a PCloud Instance
 image_id = 'image_id_example' # String | Image ID of a image
-body = IbmCloudPower::ExportImage.new({bucket_name: 'bucket_name_example', access_key: 'access_key_example'}) # ExportImage | Parameters for exporting an image
+body = IbmCloudPower::ExportImage.new({access_key: 'access_key_example', bucket_name: 'bucket_name_example'}) # ExportImage | Parameters for exporting an image
 
 begin
-  # Export an image (version 1)
+  # Export an image
   result = api_instance.pcloud_cloudinstances_images_export_post(cloud_instance_id, image_id, body)
   p result
 rescue IbmCloudPower::ApiError => e
@@ -117,7 +117,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Export an image (version 1)
+  # Export an image
   data, status_code, headers = api_instance.pcloud_cloudinstances_images_export_post_with_http_info(cloud_instance_id, image_id, body)
   p status_code # => 2xx
   p headers # => { ... }
@@ -153,7 +153,7 @@ No authorization required
 
 > <Image> pcloud_cloudinstances_images_get(cloud_instance_id, image_id)
 
-Detailed information of an image
+Detailed info of an image
 
 ### Examples
 
@@ -166,7 +166,7 @@ cloud_instance_id = 'cloud_instance_id_example' # String | Cloud Instance ID of 
 image_id = 'image_id_example' # String | Image ID of a image
 
 begin
-  # Detailed information of an image
+  # Detailed info of an image
   result = api_instance.pcloud_cloudinstances_images_get(cloud_instance_id, image_id)
   p result
 rescue IbmCloudPower::ApiError => e
@@ -182,7 +182,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Detailed information of an image
+  # Detailed info of an image
   data, status_code, headers = api_instance.pcloud_cloudinstances_images_get_with_http_info(cloud_instance_id, image_id)
   p status_code # => 2xx
   p headers # => { ... }
@@ -217,7 +217,7 @@ No authorization required
 
 > <Images> pcloud_cloudinstances_images_getall(cloud_instance_id)
 
-List all of the images for this cloud instance
+List all images for this cloud instance
 
 ### Examples
 
@@ -229,7 +229,7 @@ api_instance = IbmCloudPower::PCloudImagesApi.new
 cloud_instance_id = 'cloud_instance_id_example' # String | Cloud Instance ID of a PCloud Instance
 
 begin
-  # List all of the images for this cloud instance
+  # List all images for this cloud instance
   result = api_instance.pcloud_cloudinstances_images_getall(cloud_instance_id)
   p result
 rescue IbmCloudPower::ApiError => e
@@ -245,7 +245,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # List all of the images for this cloud instance
+  # List all images for this cloud instance
   data, status_code, headers = api_instance.pcloud_cloudinstances_images_getall_with_http_info(cloud_instance_id)
   p status_code # => 2xx
   p headers # => { ... }
@@ -279,7 +279,7 @@ No authorization required
 
 > <Image> pcloud_cloudinstances_images_post(cloud_instance_id, body)
 
-Create a new image from available images
+Create a new Image (from available images)
 
 ### Examples
 
@@ -292,7 +292,7 @@ cloud_instance_id = 'cloud_instance_id_example' # String | Cloud Instance ID of 
 body = IbmCloudPower::CreateImage.new({source: 'root-project'}) # CreateImage | Parameters for the creation of a new image from available images
 
 begin
-  # Create a new image from available images
+  # Create a new Image (from available images)
   result = api_instance.pcloud_cloudinstances_images_post(cloud_instance_id, body)
   p result
 rescue IbmCloudPower::ApiError => e
@@ -308,7 +308,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Create a new image from available images
+  # Create a new Image (from available images)
   data, status_code, headers = api_instance.pcloud_cloudinstances_images_post_with_http_info(cloud_instance_id, body)
   p status_code # => 2xx
   p headers # => { ... }
@@ -418,7 +418,8 @@ require 'ibm_cloud_power'
 api_instance = IbmCloudPower::PCloudImagesApi.new
 cloud_instance_id = 'cloud_instance_id_example' # String | Cloud Instance ID of a PCloud Instance
 opts = {
-  sap: true # Boolean | Include SAP images with get available stock images
+  sap: true, # Boolean | Include SAP images with get available stock images
+  vtl: true # Boolean | Include VTL images with get available stock images
 }
 
 begin
@@ -454,6 +455,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **cloud_instance_id** | **String** | Cloud Instance ID of a PCloud Instance |  |
 | **sap** | **Boolean** | Include SAP images with get available stock images | [optional] |
+| **vtl** | **Boolean** | Include VTL images with get available stock images | [optional] |
 
 ### Return type
 
@@ -471,9 +473,9 @@ No authorization required
 
 ## pcloud_images_get
 
-> <Images> pcloud_images_get(image_id)
+> <Image> pcloud_images_get(image_id)
 
-Deprecated for /pcloud/v1/cloud-instances/${CLOUD_INSTANCE_ID}/stock-images/{image_id} - Detailed info of an available stock image
+Deprecated for /pcloud/v1/cloud-instances/{cloud_instance_id}/stock-images/{image_id} - Detailed info of an available stock image
 
 ### Examples
 
@@ -485,7 +487,7 @@ api_instance = IbmCloudPower::PCloudImagesApi.new
 image_id = 'image_id_example' # String | Image ID of a image
 
 begin
-  # Deprecated for /pcloud/v1/cloud-instances/${CLOUD_INSTANCE_ID}/stock-images/{image_id} - Detailed info of an available stock image
+  # Deprecated for /pcloud/v1/cloud-instances/{cloud_instance_id}/stock-images/{image_id} - Detailed info of an available stock image
   result = api_instance.pcloud_images_get(image_id)
   p result
 rescue IbmCloudPower::ApiError => e
@@ -497,15 +499,15 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<Images>, Integer, Hash)> pcloud_images_get_with_http_info(image_id)
+> <Array(<Image>, Integer, Hash)> pcloud_images_get_with_http_info(image_id)
 
 ```ruby
 begin
-  # Deprecated for /pcloud/v1/cloud-instances/${CLOUD_INSTANCE_ID}/stock-images/{image_id} - Detailed info of an available stock image
+  # Deprecated for /pcloud/v1/cloud-instances/{cloud_instance_id}/stock-images/{image_id} - Detailed info of an available stock image
   data, status_code, headers = api_instance.pcloud_images_get_with_http_info(image_id)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <Images>
+  p data # => <Image>
 rescue IbmCloudPower::ApiError => e
   puts "Error when calling PCloudImagesApi->pcloud_images_get_with_http_info: #{e}"
 end
@@ -519,7 +521,7 @@ end
 
 ### Return type
 
-[**Images**](Images.md)
+[**Image**](Image.md)
 
 ### Authorization
 
@@ -535,7 +537,7 @@ No authorization required
 
 > <Images> pcloud_images_getall(opts)
 
-Deprecated for /pcloud/v1/cloud-instances/${CLOUD_INSTANCE_ID}/stock-images - List all available stock images
+Deprecated for /pcloud/v1/cloud-instances/{cloud_instance_id}/stock-images - List all available stock images
 
 ### Examples
 
@@ -545,11 +547,12 @@ require 'ibm_cloud_power'
 
 api_instance = IbmCloudPower::PCloudImagesApi.new
 opts = {
-  sap: true # Boolean | Include SAP images with get available stock images
+  sap: true, # Boolean | Include SAP images with get available stock images
+  vtl: true # Boolean | Include VTL images with get available stock images
 }
 
 begin
-  # Deprecated for /pcloud/v1/cloud-instances/${CLOUD_INSTANCE_ID}/stock-images - List all available stock images
+  # Deprecated for /pcloud/v1/cloud-instances/{cloud_instance_id}/stock-images - List all available stock images
   result = api_instance.pcloud_images_getall(opts)
   p result
 rescue IbmCloudPower::ApiError => e
@@ -565,7 +568,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Deprecated for /pcloud/v1/cloud-instances/${CLOUD_INSTANCE_ID}/stock-images - List all available stock images
+  # Deprecated for /pcloud/v1/cloud-instances/{cloud_instance_id}/stock-images - List all available stock images
   data, status_code, headers = api_instance.pcloud_images_getall_with_http_info(opts)
   p status_code # => 2xx
   p headers # => { ... }
@@ -580,6 +583,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **sap** | **Boolean** | Include SAP images with get available stock images | [optional] |
+| **vtl** | **Boolean** | Include VTL images with get available stock images | [optional] |
 
 ### Return type
 
@@ -599,7 +603,7 @@ No authorization required
 
 > <Job> pcloud_v1_cloudinstances_cosimages_get(cloud_instance_id)
 
-List image import jobs for this cloud instance
+Get detail of last cos-image import job
 
 ### Examples
 
@@ -611,7 +615,7 @@ api_instance = IbmCloudPower::PCloudImagesApi.new
 cloud_instance_id = 'cloud_instance_id_example' # String | Cloud Instance ID of a PCloud Instance
 
 begin
-  # List image import jobs for this cloud instance
+  # Get detail of last cos-image import job
   result = api_instance.pcloud_v1_cloudinstances_cosimages_get(cloud_instance_id)
   p result
 rescue IbmCloudPower::ApiError => e
@@ -627,7 +631,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # List image import jobs for this cloud instance
+  # Get detail of last cos-image import job
   data, status_code, headers = api_instance.pcloud_v1_cloudinstances_cosimages_get_with_http_info(cloud_instance_id)
   p status_code # => 2xx
   p headers # => { ... }
@@ -661,7 +665,7 @@ No authorization required
 
 > <JobReference> pcloud_v1_cloudinstances_cosimages_post(cloud_instance_id, body)
 
-Create a new image from available images in COS
+Create an cos-image import job
 
 ### Examples
 
@@ -674,7 +678,7 @@ cloud_instance_id = 'cloud_instance_id_example' # String | Cloud Instance ID of 
 body = IbmCloudPower::CreateCosImageImportJob.new({bucket_name: 'bucket_name_example', image_filename: 'image_filename_example', image_name: 'image_name_example', region: 'region_example'}) # CreateCosImageImportJob | Parameters for the creation of a new cos-image import job
 
 begin
-  # Create a new image from available images in COS
+  # Create an cos-image import job
   result = api_instance.pcloud_v1_cloudinstances_cosimages_post(cloud_instance_id, body)
   p result
 rescue IbmCloudPower::ApiError => e
@@ -690,7 +694,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Create a new image from available images in COS
+  # Create an cos-image import job
   data, status_code, headers = api_instance.pcloud_v1_cloudinstances_cosimages_post_with_http_info(cloud_instance_id, body)
   p status_code # => 2xx
   p headers # => { ... }
@@ -725,7 +729,7 @@ No authorization required
 
 > <Job> pcloud_v2_images_export_get(cloud_instance_id, image_id)
 
-Get an image’s last export Job details
+Get detail of last image export job
 
 ### Examples
 
@@ -738,7 +742,7 @@ cloud_instance_id = 'cloud_instance_id_example' # String | Cloud Instance ID of 
 image_id = 'image_id_example' # String | Image ID of a image
 
 begin
-  # Get an image’s last export Job details
+  # Get detail of last image export job
   result = api_instance.pcloud_v2_images_export_get(cloud_instance_id, image_id)
   p result
 rescue IbmCloudPower::ApiError => e
@@ -754,7 +758,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Get an image’s last export Job details
+  # Get detail of last image export job
   data, status_code, headers = api_instance.pcloud_v2_images_export_get_with_http_info(cloud_instance_id, image_id)
   p status_code # => 2xx
   p headers # => { ... }
@@ -789,7 +793,7 @@ No authorization required
 
 > <JobReference> pcloud_v2_images_export_post(cloud_instance_id, image_id, body)
 
-Export an image (version 2)
+Add image export job to the jobs queue
 
 ### Examples
 
@@ -800,10 +804,10 @@ require 'ibm_cloud_power'
 api_instance = IbmCloudPower::PCloudImagesApi.new
 cloud_instance_id = 'cloud_instance_id_example' # String | Cloud Instance ID of a PCloud Instance
 image_id = 'image_id_example' # String | Image ID of a image
-body = IbmCloudPower::ExportImage.new({bucket_name: 'bucket_name_example', access_key: 'access_key_example'}) # ExportImage | Parameters for the export
+body = IbmCloudPower::ExportImage.new({access_key: 'access_key_example', bucket_name: 'bucket_name_example'}) # ExportImage | Parameters for the export
 
 begin
-  # Export an image (version 2)
+  # Add image export job to the jobs queue
   result = api_instance.pcloud_v2_images_export_post(cloud_instance_id, image_id, body)
   p result
 rescue IbmCloudPower::ApiError => e
@@ -819,7 +823,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Export an image (version 2)
+  # Add image export job to the jobs queue
   data, status_code, headers = api_instance.pcloud_v2_images_export_post_with_http_info(cloud_instance_id, image_id, body)
   p status_code # => 2xx
   p headers # => { ... }

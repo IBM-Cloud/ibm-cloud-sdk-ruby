@@ -4,9 +4,9 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **user_id** | **String** | ID of user who created/caused the event |  |
-| **name** | **String** | Name of the User | [optional] |
 | **email** | **String** | Email of the User | [optional] |
+| **name** | **String** | Name of the User | [optional] |
+| **user_id** | **String** | ID of user who created/caused the event |  |
 
 ## Example
 
@@ -14,9 +14,9 @@
 require 'ibm_cloud_power'
 
 instance = IbmCloudPower::EventUser.new(
-  user_id: null,
+  email: null,
   name: null,
-  email: null
+  user_id: null
 )
 ```
 

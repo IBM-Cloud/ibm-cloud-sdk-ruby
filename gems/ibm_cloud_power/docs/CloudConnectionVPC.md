@@ -4,8 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **vpc_id** | **String** | CRN of the specific service |  |
 | **name** | **String** | vpc name | [optional] |
+| **vpc_id** | **String** | vpc id |  |
 
 ## Example
 
@@ -13,8 +13,8 @@
 require 'ibm_cloud_power'
 
 instance = IbmCloudPower::CloudConnectionVPC.new(
-  vpc_id: null,
-  name: null
+  name: null,
+  vpc_id: null
 )
 ```
 

@@ -4,18 +4,21 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **name** | **String** | Name of the sap pvm-instance |  |
+| **deployment_type** | **String** | Custom SAP Deployment Type Information (For Internal Use Only) | [optional] |
 | **image_id** | **String** | Image ID of the sap image to use for the server |  |
-| **profile_id** | **String** | SAP Profile ID for the amount of cores and memory |  |
+| **instances** | [**PVMInstanceMultiCreate**](PVMInstanceMultiCreate.md) |  | [optional] |
+| **name** | **String** | Name of the sap pvm-instance |  |
 | **networks** | [**Array&lt;PVMInstanceAddNetwork&gt;**](PVMInstanceAddNetwork.md) | The pvm instance networks information |  |
-| **volume_ids** | **Array&lt;String&gt;** | List of Volume IDs to attach to the pvm-instance on creation | [optional] |
+| **pin_policy** | [**PinPolicy**](PinPolicy.md) |  | [optional] |
+| **placement_group** | **String** | The placement group for the server | [optional] |
+| **profile_id** | **String** | SAP Profile ID for the amount of cores and memory |  |
+| **ssh_key_name** | **String** | The name of the SSH Key to provide to the server for authenticating | [optional] |
 | **storage_affinity** | [**StorageAffinity**](StorageAffinity.md) |  | [optional] |
 | **storage_pool** | **String** | Storage Pool for server deployment; if provided then storageAffinity and storageType will be ignored; Only valid when you deploy one of the IBM supplied stock images. Storage type and pool for a custom image (an imported image or an image that is created from a PVMInstance capture) defaults to the storage type and pool the image was created in | [optional] |
-| **storage_type** | **String** | Storage type for server deployment; will be ignored if storagePool or storageAffinityPolicy is provided; Only valid when you deploy one of the IBM supplied stock images. Storage type and pool for a custom image (an imported or an image that is created from a PVMInstance capture) defaults to the storage type and pool the image was created in | [optional] |
-| **instances** | [**PVMInstanceMultiCreate**](PVMInstanceMultiCreate.md) |  | [optional] |
-| **ssh_key_name** | **String** | The name of the SSH Key to provide to the server for authenticating | [optional] |
-| **user_data** | **String** | Cloud-init user-defined data. The user-defined data is made available to the VM instance as a config drive. | [optional] |
-| **pin_policy** | [**PinPolicy**](PinPolicy.md) |  | [optional] |
+| **storage_type** | **String** | Storage type for server deployment; will be ignored if storagePool or storageAffinity is provided; Only valid when you deploy one of the IBM supplied stock images. Storage type and pool for a custom image (an imported image or an image that is created from a PVMInstance capture) defaults to the storage type and pool the image was created in | [optional] |
+| **sys_type** | **String** | System type used to host the instance. Only e880, e980, e1080 are supported | [optional] |
+| **user_data** | **String** | Cloud init user defined data | [optional] |
+| **volume_ids** | **Array&lt;String&gt;** | List of Volume IDs to attach to the pvm-instance on creation | [optional] |
 
 ## Example
 
@@ -23,18 +26,21 @@
 require 'ibm_cloud_power'
 
 instance = IbmCloudPower::SAPCreate.new(
-  name: null,
+  deployment_type: null,
   image_id: null,
-  profile_id: null,
+  instances: null,
+  name: null,
   networks: null,
-  volume_ids: null,
+  pin_policy: null,
+  placement_group: null,
+  profile_id: null,
+  ssh_key_name: null,
   storage_affinity: null,
   storage_pool: null,
   storage_type: null,
-  instances: null,
-  ssh_key_name: null,
+  sys_type: null,
   user_data: null,
-  pin_policy: null
+  volume_ids: null
 )
 ```
 

@@ -4,21 +4,21 @@ All URIs are relative to *http://localhost*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
-| [**pcloud_cloudconnections_delete**](PCloudCloudConnectionsApi.md#pcloud_cloudconnections_delete) | **DELETE** /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections/{cloud_connection_id} | Delete a Cloud connection |
-| [**pcloud_cloudconnections_get**](PCloudCloudConnectionsApi.md#pcloud_cloudconnections_get) | **GET** /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections/{cloud_connection_id} | Get a Cloud connection&#39;s state or information |
-| [**pcloud_cloudconnections_getall**](PCloudCloudConnectionsApi.md#pcloud_cloudconnections_getall) | **GET** /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections | Get all Cloud connections in a specific cloud instance |
-| [**pcloud_cloudconnections_networks_delete**](PCloudCloudConnectionsApi.md#pcloud_cloudconnections_networks_delete) | **DELETE** /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections/{cloud_connection_id}/networks/{network_id} | Delete a network from a Cloud connection |
-| [**pcloud_cloudconnections_networks_put**](PCloudCloudConnectionsApi.md#pcloud_cloudconnections_networks_put) | **PUT** /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections/{cloud_connection_id}/networks/{network_id} | Add a network to the Cloud connection |
-| [**pcloud_cloudconnections_post**](PCloudCloudConnectionsApi.md#pcloud_cloudconnections_post) | **POST** /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections | Create a new Cloud connection |
-| [**pcloud_cloudconnections_put**](PCloudCloudConnectionsApi.md#pcloud_cloudconnections_put) | **PUT** /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections/{cloud_connection_id} | Update a Cloud connection |
-| [**pcloud_cloudconnections_virtualprivateclouds_getall**](PCloudCloudConnectionsApi.md#pcloud_cloudconnections_virtualprivateclouds_getall) | **GET** /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections-virtual-private-clouds | Get all virtual private clouds in a specific cloud instance |
+| [**pcloud_cloudconnections_delete**](PCloudCloudConnectionsApi.md#pcloud_cloudconnections_delete) | **DELETE** /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections/{cloud_connection_id} | Delete a Cloud Connection |
+| [**pcloud_cloudconnections_get**](PCloudCloudConnectionsApi.md#pcloud_cloudconnections_get) | **GET** /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections/{cloud_connection_id} | Get a cloud connection&#39;s state/information |
+| [**pcloud_cloudconnections_getall**](PCloudCloudConnectionsApi.md#pcloud_cloudconnections_getall) | **GET** /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections | Get all cloud connections in this cloud instance |
+| [**pcloud_cloudconnections_networks_delete**](PCloudCloudConnectionsApi.md#pcloud_cloudconnections_networks_delete) | **DELETE** /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections/{cloud_connection_id}/networks/{network_id} | Delete a network from a Cloud Connection |
+| [**pcloud_cloudconnections_networks_put**](PCloudCloudConnectionsApi.md#pcloud_cloudconnections_networks_put) | **PUT** /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections/{cloud_connection_id}/networks/{network_id} | Add a network to the cloud connection |
+| [**pcloud_cloudconnections_post**](PCloudCloudConnectionsApi.md#pcloud_cloudconnections_post) | **POST** /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections | Create a new cloud connection |
+| [**pcloud_cloudconnections_put**](PCloudCloudConnectionsApi.md#pcloud_cloudconnections_put) | **PUT** /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections/{cloud_connection_id} | Update a Cloud Connection |
+| [**pcloud_cloudconnections_virtualprivateclouds_getall**](PCloudCloudConnectionsApi.md#pcloud_cloudconnections_virtualprivateclouds_getall) | **GET** /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections-virtual-private-clouds | Get all virtual private cloud connections in this cloud instance |
 
 
 ## pcloud_cloudconnections_delete
 
 > Object pcloud_cloudconnections_delete(cloud_instance_id, cloud_connection_id)
 
-Delete a Cloud connection
+Delete a Cloud Connection
 
 ### Examples
 
@@ -28,10 +28,10 @@ require 'ibm_cloud_power'
 
 api_instance = IbmCloudPower::PCloudCloudConnectionsApi.new
 cloud_instance_id = 'cloud_instance_id_example' # String | Cloud Instance ID of a PCloud Instance
-cloud_connection_id = 'cloud_connection_id_example' # String | Cloud connection ID
+cloud_connection_id = 'cloud_connection_id_example' # String | Cloud Connection ID
 
 begin
-  # Delete a Cloud connection
+  # Delete a Cloud Connection
   result = api_instance.pcloud_cloudconnections_delete(cloud_instance_id, cloud_connection_id)
   p result
 rescue IbmCloudPower::ApiError => e
@@ -47,7 +47,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Delete a Cloud connection
+  # Delete a Cloud Connection
   data, status_code, headers = api_instance.pcloud_cloudconnections_delete_with_http_info(cloud_instance_id, cloud_connection_id)
   p status_code # => 2xx
   p headers # => { ... }
@@ -62,7 +62,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **cloud_instance_id** | **String** | Cloud Instance ID of a PCloud Instance |  |
-| **cloud_connection_id** | **String** | Cloud connection ID |  |
+| **cloud_connection_id** | **String** | Cloud Connection ID |  |
 
 ### Return type
 
@@ -75,14 +75,14 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: */*, application/json
+- **Accept**: */*
 
 
 ## pcloud_cloudconnections_get
 
 > <CloudConnection> pcloud_cloudconnections_get(cloud_instance_id, cloud_connection_id)
 
-Get a Cloud connection's state or information
+Get a cloud connection's state/information
 
 ### Examples
 
@@ -92,10 +92,10 @@ require 'ibm_cloud_power'
 
 api_instance = IbmCloudPower::PCloudCloudConnectionsApi.new
 cloud_instance_id = 'cloud_instance_id_example' # String | Cloud Instance ID of a PCloud Instance
-cloud_connection_id = 'cloud_connection_id_example' # String | Cloud connection ID
+cloud_connection_id = 'cloud_connection_id_example' # String | Cloud Connection ID
 
 begin
-  # Get a Cloud connection's state or information
+  # Get a cloud connection's state/information
   result = api_instance.pcloud_cloudconnections_get(cloud_instance_id, cloud_connection_id)
   p result
 rescue IbmCloudPower::ApiError => e
@@ -111,7 +111,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Get a Cloud connection's state or information
+  # Get a cloud connection's state/information
   data, status_code, headers = api_instance.pcloud_cloudconnections_get_with_http_info(cloud_instance_id, cloud_connection_id)
   p status_code # => 2xx
   p headers # => { ... }
@@ -126,7 +126,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **cloud_instance_id** | **String** | Cloud Instance ID of a PCloud Instance |  |
-| **cloud_connection_id** | **String** | Cloud connection ID |  |
+| **cloud_connection_id** | **String** | Cloud Connection ID |  |
 
 ### Return type
 
@@ -146,7 +146,7 @@ No authorization required
 
 > <CloudConnections> pcloud_cloudconnections_getall(cloud_instance_id)
 
-Get all Cloud connections in a specific cloud instance
+Get all cloud connections in this cloud instance
 
 ### Examples
 
@@ -158,7 +158,7 @@ api_instance = IbmCloudPower::PCloudCloudConnectionsApi.new
 cloud_instance_id = 'cloud_instance_id_example' # String | Cloud Instance ID of a PCloud Instance
 
 begin
-  # Get all Cloud connections in a specific cloud instance
+  # Get all cloud connections in this cloud instance
   result = api_instance.pcloud_cloudconnections_getall(cloud_instance_id)
   p result
 rescue IbmCloudPower::ApiError => e
@@ -174,7 +174,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Get all Cloud connections in a specific cloud instance
+  # Get all cloud connections in this cloud instance
   data, status_code, headers = api_instance.pcloud_cloudconnections_getall_with_http_info(cloud_instance_id)
   p status_code # => 2xx
   p headers # => { ... }
@@ -206,9 +206,9 @@ No authorization required
 
 ## pcloud_cloudconnections_networks_delete
 
-> <CloudConnection> pcloud_cloudconnections_networks_delete(cloud_instance_id, cloud_connection_id, network_id)
+> Object pcloud_cloudconnections_networks_delete(cloud_instance_id, cloud_connection_id, network_id)
 
-Delete a network from a Cloud connection
+Delete a network from a Cloud Connection
 
 ### Examples
 
@@ -218,11 +218,11 @@ require 'ibm_cloud_power'
 
 api_instance = IbmCloudPower::PCloudCloudConnectionsApi.new
 cloud_instance_id = 'cloud_instance_id_example' # String | Cloud Instance ID of a PCloud Instance
-cloud_connection_id = 'cloud_connection_id_example' # String | Cloud connection ID
+cloud_connection_id = 'cloud_connection_id_example' # String | Cloud Connection ID
 network_id = 'network_id_example' # String | Network ID
 
 begin
-  # Delete a network from a Cloud connection
+  # Delete a network from a Cloud Connection
   result = api_instance.pcloud_cloudconnections_networks_delete(cloud_instance_id, cloud_connection_id, network_id)
   p result
 rescue IbmCloudPower::ApiError => e
@@ -234,15 +234,15 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<CloudConnection>, Integer, Hash)> pcloud_cloudconnections_networks_delete_with_http_info(cloud_instance_id, cloud_connection_id, network_id)
+> <Array(Object, Integer, Hash)> pcloud_cloudconnections_networks_delete_with_http_info(cloud_instance_id, cloud_connection_id, network_id)
 
 ```ruby
 begin
-  # Delete a network from a Cloud connection
+  # Delete a network from a Cloud Connection
   data, status_code, headers = api_instance.pcloud_cloudconnections_networks_delete_with_http_info(cloud_instance_id, cloud_connection_id, network_id)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <CloudConnection>
+  p data # => Object
 rescue IbmCloudPower::ApiError => e
   puts "Error when calling PCloudCloudConnectionsApi->pcloud_cloudconnections_networks_delete_with_http_info: #{e}"
 end
@@ -253,12 +253,12 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **cloud_instance_id** | **String** | Cloud Instance ID of a PCloud Instance |  |
-| **cloud_connection_id** | **String** | Cloud connection ID |  |
+| **cloud_connection_id** | **String** | Cloud Connection ID |  |
 | **network_id** | **String** | Network ID |  |
 
 ### Return type
 
-[**CloudConnection**](CloudConnection.md)
+**Object**
 
 ### Authorization
 
@@ -267,14 +267,14 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: */*, application/json
+- **Accept**: */*
 
 
 ## pcloud_cloudconnections_networks_put
 
-> <CloudConnection> pcloud_cloudconnections_networks_put(cloud_instance_id, cloud_connection_id, network_id)
+> Object pcloud_cloudconnections_networks_put(cloud_instance_id, cloud_connection_id, network_id)
 
-Add a network to the Cloud connection
+Add a network to the cloud connection
 
 ### Examples
 
@@ -284,11 +284,11 @@ require 'ibm_cloud_power'
 
 api_instance = IbmCloudPower::PCloudCloudConnectionsApi.new
 cloud_instance_id = 'cloud_instance_id_example' # String | Cloud Instance ID of a PCloud Instance
-cloud_connection_id = 'cloud_connection_id_example' # String | Cloud connection ID
+cloud_connection_id = 'cloud_connection_id_example' # String | Cloud Connection ID
 network_id = 'network_id_example' # String | Network ID
 
 begin
-  # Add a network to the Cloud connection
+  # Add a network to the cloud connection
   result = api_instance.pcloud_cloudconnections_networks_put(cloud_instance_id, cloud_connection_id, network_id)
   p result
 rescue IbmCloudPower::ApiError => e
@@ -300,15 +300,15 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<CloudConnection>, Integer, Hash)> pcloud_cloudconnections_networks_put_with_http_info(cloud_instance_id, cloud_connection_id, network_id)
+> <Array(Object, Integer, Hash)> pcloud_cloudconnections_networks_put_with_http_info(cloud_instance_id, cloud_connection_id, network_id)
 
 ```ruby
 begin
-  # Add a network to the Cloud connection
+  # Add a network to the cloud connection
   data, status_code, headers = api_instance.pcloud_cloudconnections_networks_put_with_http_info(cloud_instance_id, cloud_connection_id, network_id)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <CloudConnection>
+  p data # => Object
 rescue IbmCloudPower::ApiError => e
   puts "Error when calling PCloudCloudConnectionsApi->pcloud_cloudconnections_networks_put_with_http_info: #{e}"
 end
@@ -319,12 +319,12 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **cloud_instance_id** | **String** | Cloud Instance ID of a PCloud Instance |  |
-| **cloud_connection_id** | **String** | Cloud connection ID |  |
+| **cloud_connection_id** | **String** | Cloud Connection ID |  |
 | **network_id** | **String** | Network ID |  |
 
 ### Return type
 
-[**CloudConnection**](CloudConnection.md)
+**Object**
 
 ### Authorization
 
@@ -340,7 +340,7 @@ No authorization required
 
 > <CloudConnection> pcloud_cloudconnections_post(cloud_instance_id, body)
 
-Create a new Cloud connection
+Create a new cloud connection
 
 ### Examples
 
@@ -350,10 +350,10 @@ require 'ibm_cloud_power'
 
 api_instance = IbmCloudPower::PCloudCloudConnectionsApi.new
 cloud_instance_id = 'cloud_instance_id_example' # String | Cloud Instance ID of a PCloud Instance
-body = IbmCloudPower::CloudConnectionCreate.new({name: 'name_example', speed: 50}) # CloudConnectionCreate | Parameters for the creation of a new Cloud connection
+body = IbmCloudPower::CloudConnectionCreate.new({name: 'name_example', speed: 50}) # CloudConnectionCreate | Parameters for the creation of a new cloud connection
 
 begin
-  # Create a new Cloud connection
+  # Create a new cloud connection
   result = api_instance.pcloud_cloudconnections_post(cloud_instance_id, body)
   p result
 rescue IbmCloudPower::ApiError => e
@@ -369,7 +369,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Create a new Cloud connection
+  # Create a new cloud connection
   data, status_code, headers = api_instance.pcloud_cloudconnections_post_with_http_info(cloud_instance_id, body)
   p status_code # => 2xx
   p headers # => { ... }
@@ -384,7 +384,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **cloud_instance_id** | **String** | Cloud Instance ID of a PCloud Instance |  |
-| **body** | [**CloudConnectionCreate**](CloudConnectionCreate.md) | Parameters for the creation of a new Cloud connection |  |
+| **body** | [**CloudConnectionCreate**](CloudConnectionCreate.md) | Parameters for the creation of a new cloud connection |  |
 
 ### Return type
 
@@ -404,7 +404,7 @@ No authorization required
 
 > <CloudConnection> pcloud_cloudconnections_put(cloud_instance_id, cloud_connection_id, body)
 
-Update a Cloud connection
+Update a Cloud Connection
 
 ### Examples
 
@@ -414,11 +414,11 @@ require 'ibm_cloud_power'
 
 api_instance = IbmCloudPower::PCloudCloudConnectionsApi.new
 cloud_instance_id = 'cloud_instance_id_example' # String | Cloud Instance ID of a PCloud Instance
-cloud_connection_id = 'cloud_connection_id_example' # String | Cloud connection ID
-body = IbmCloudPower::CloudConnectionUpdate.new # CloudConnectionUpdate | Parameters to update a Cloud connection
+cloud_connection_id = 'cloud_connection_id_example' # String | Cloud Connection ID
+body = IbmCloudPower::CloudConnectionUpdate.new # CloudConnectionUpdate | Parameters to update a Cloud Connection
 
 begin
-  # Update a Cloud connection
+  # Update a Cloud Connection
   result = api_instance.pcloud_cloudconnections_put(cloud_instance_id, cloud_connection_id, body)
   p result
 rescue IbmCloudPower::ApiError => e
@@ -434,7 +434,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Update a Cloud connection
+  # Update a Cloud Connection
   data, status_code, headers = api_instance.pcloud_cloudconnections_put_with_http_info(cloud_instance_id, cloud_connection_id, body)
   p status_code # => 2xx
   p headers # => { ... }
@@ -449,8 +449,8 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **cloud_instance_id** | **String** | Cloud Instance ID of a PCloud Instance |  |
-| **cloud_connection_id** | **String** | Cloud connection ID |  |
-| **body** | [**CloudConnectionUpdate**](CloudConnectionUpdate.md) | Parameters to update a Cloud connection |  |
+| **cloud_connection_id** | **String** | Cloud Connection ID |  |
+| **body** | [**CloudConnectionUpdate**](CloudConnectionUpdate.md) | Parameters to update a Cloud Connection |  |
 
 ### Return type
 
@@ -470,7 +470,7 @@ No authorization required
 
 > <CloudConnectionVirtualPrivateClouds> pcloud_cloudconnections_virtualprivateclouds_getall(cloud_instance_id)
 
-Get all virtual private clouds in a specific cloud instance
+Get all virtual private cloud connections in this cloud instance
 
 ### Examples
 
@@ -482,7 +482,7 @@ api_instance = IbmCloudPower::PCloudCloudConnectionsApi.new
 cloud_instance_id = 'cloud_instance_id_example' # String | Cloud Instance ID of a PCloud Instance
 
 begin
-  # Get all virtual private clouds in a specific cloud instance
+  # Get all virtual private cloud connections in this cloud instance
   result = api_instance.pcloud_cloudconnections_virtualprivateclouds_getall(cloud_instance_id)
   p result
 rescue IbmCloudPower::ApiError => e
@@ -498,7 +498,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Get all virtual private clouds in a specific cloud instance
+  # Get all virtual private cloud connections in this cloud instance
   data, status_code, headers = api_instance.pcloud_cloudconnections_virtualprivateclouds_getall_with_http_info(cloud_instance_id)
   p status_code # => 2xx
   p headers # => { ... }

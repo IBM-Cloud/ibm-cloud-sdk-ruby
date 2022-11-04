@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **authentication** | **String** | authentication encryption type |  |
+| **authentication** | [**IPSECPolicyAuthentication**](IPSECPolicyAuthentication.md) |  |  |
 | **dh_group** | **Integer** | Diffie-Hellman group |  |
 | **encryption** | **String** | connection encryption policy |  |
 | **id** | **String** | unique identifier of the IPSec Policy |  |
@@ -20,7 +20,7 @@ require 'ibm_cloud_power'
 instance = IbmCloudPower::IPSecPolicy.new(
   authentication: null,
   dh_group: 2,
-  encryption: 3des-cbc,
+  encryption: aes-256-cbc,
   id: 6edc8988-eb18-4b5c-a594-0d73d8254463,
   key_lifetime: 28800,
   name: ipSecPolicy2,

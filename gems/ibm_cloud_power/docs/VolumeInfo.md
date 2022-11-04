@@ -4,8 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **volume_id** | **String** | ID of the volume | [optional] |
 | **name** | **String** | Name of the volume | [optional] |
+| **volume_id** | **String** | ID of the volume | [optional] |
 
 ## Example
 
@@ -13,8 +13,8 @@
 require 'ibm_cloud_power'
 
 instance = IbmCloudPower::VolumeInfo.new(
-  volume_id: null,
-  name: null
+  name: null,
+  volume_id: null
 )
 ```
 

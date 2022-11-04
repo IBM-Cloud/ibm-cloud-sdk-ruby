@@ -4,8 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **network_id** | **String** | ID of the network |  |
 | **ip_address** | **String** | The requested ip address of this network interface | [optional] |
+| **network_id** | **String** | ID of the network |  |
 
 ## Example
 
@@ -13,8 +13,8 @@
 require 'ibm_cloud_power'
 
 instance = IbmCloudPower::PVMInstanceAddNetwork.new(
-  network_id: null,
-  ip_address: null
+  ip_address: null,
+  network_id: null
 )
 ```
 

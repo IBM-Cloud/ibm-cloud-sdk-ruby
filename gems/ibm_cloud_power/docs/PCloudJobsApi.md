@@ -6,7 +6,7 @@ All URIs are relative to *http://localhost*
 | ------ | ------------ | ----------- |
 | [**pcloud_cloudinstances_jobs_delete**](PCloudJobsApi.md#pcloud_cloudinstances_jobs_delete) | **DELETE** /pcloud/v1/cloud-instances/{cloud_instance_id}/jobs/{job_id} | Delete a cloud instance job |
 | [**pcloud_cloudinstances_jobs_get**](PCloudJobsApi.md#pcloud_cloudinstances_jobs_get) | **GET** /pcloud/v1/cloud-instances/{cloud_instance_id}/jobs/{job_id} | List the detail of a job |
-| [**pcloud_cloudinstances_jobs_getall**](PCloudJobsApi.md#pcloud_cloudinstances_jobs_getall) | **GET** /pcloud/v1/cloud-instances/{cloud_instance_id}/jobs | List the latest jobs initiated by the cloud instance |
+| [**pcloud_cloudinstances_jobs_getall**](PCloudJobsApi.md#pcloud_cloudinstances_jobs_getall) | **GET** /pcloud/v1/cloud-instances/{cloud_instance_id}/jobs | List up to the last 5 jobs initiated by the cloud instance |
 
 
 ## pcloud_cloudinstances_jobs_delete
@@ -141,7 +141,7 @@ No authorization required
 
 > <Jobs> pcloud_cloudinstances_jobs_getall(cloud_instance_id, opts)
 
-List the latest jobs initiated by the cloud instance
+List up to the last 5 jobs initiated by the cloud instance
 
 ### Examples
 
@@ -152,13 +152,13 @@ require 'ibm_cloud_power'
 api_instance = IbmCloudPower::PCloudJobsApi.new
 cloud_instance_id = 'cloud_instance_id_example' # String | Cloud Instance ID of a PCloud Instance
 opts = {
-  operation_id: 'operation_id_example', # String | ID of operation target resource (optional)
+  operation_id: 'operation_id_example', # String | Operation ID to filter jobs (optional)
   operation_target: 'cloudConnection', # String | Operation target to filter jobs (optional)
   operation_action: 'vmCapture' # String | Operation action to filter jobs (optional) vmCapture - includes operation action value (vmCapture) imageExport - includes operation action value (imageExport) imageImport - includes operation action value (imageImport) storage - includes operation action values (vmCapture,imageExport,imageImport)
 }
 
 begin
-  # List the latest jobs initiated by the cloud instance
+  # List up to the last 5 jobs initiated by the cloud instance
   result = api_instance.pcloud_cloudinstances_jobs_getall(cloud_instance_id, opts)
   p result
 rescue IbmCloudPower::ApiError => e
@@ -174,7 +174,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # List the latest jobs initiated by the cloud instance
+  # List up to the last 5 jobs initiated by the cloud instance
   data, status_code, headers = api_instance.pcloud_cloudinstances_jobs_getall_with_http_info(cloud_instance_id, opts)
   p status_code # => 2xx
   p headers # => { ... }
@@ -189,7 +189,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **cloud_instance_id** | **String** | Cloud Instance ID of a PCloud Instance |  |
-| **operation_id** | **String** | ID of operation target resource (optional) | [optional] |
+| **operation_id** | **String** | Operation ID to filter jobs (optional) | [optional] |
 | **operation_target** | **String** | Operation target to filter jobs (optional) | [optional] |
 | **operation_action** | **String** | Operation action to filter jobs (optional) vmCapture - includes operation action value (vmCapture) imageExport - includes operation action value (imageExport) imageImport - includes operation action value (imageImport) storage - includes operation action values (vmCapture,imageExport,imageImport) | [optional] |
 
