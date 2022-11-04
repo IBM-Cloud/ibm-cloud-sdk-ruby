@@ -158,19 +158,7 @@ module IbmCloudPower
       return false if @memory.nil?
       return false if @profile_id.nil?
       return false if @type.nil?
-      type_validator = EnumAttributeValidator.new('String', ["balanced", "compute", "memory", "non-production", "ultra-memory"])
-      return false unless type_validator.valid?(@type)
       true
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] type Object to be assigned
-    def type=(type)
-      validator = EnumAttributeValidator.new('String', ["balanced", "compute", "memory", "non-production", "ultra-memory"])
-      unless validator.valid?(type)
-        fail ArgumentError, "invalid value for \"type\", must be one of #{validator.allowable_values}."
-      end
-      @type = type
     end
 
     # Checks equality by comparing each attribute.
