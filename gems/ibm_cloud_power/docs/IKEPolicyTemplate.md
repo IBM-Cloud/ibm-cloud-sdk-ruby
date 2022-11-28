@@ -18,9 +18,9 @@ require 'ibm_cloud_power'
 instance = IbmCloudPower::IKEPolicyTemplate.new(
   authentication: sha256,
   dh_group: 2,
-  encryption: 3des-cbc,
+  encryption: aes-256-cbc,
   key_lifetime: 28800,
-  version: 1
+  version: 2
 )
 ```
 

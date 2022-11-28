@@ -4,9 +4,9 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **storage_type** | **String** | Storage type for a stock image | [optional] |
-| **storage_pool** | **String** | Storage pool for a stock image | [optional] |
 | **id** | **String** | Image ID | [optional] |
+| **storage_pool** | **String** | Storage pool for a stock image | [optional] |
+| **storage_type** | **String** | Storage type for a stock image | [optional] |
 
 ## Example
 
@@ -14,9 +14,9 @@
 require 'ibm_cloud_power'
 
 instance = IbmCloudPower::StockImage.new(
-  storage_type: null,
+  id: null,
   storage_pool: null,
-  id: null
+  storage_type: null
 )
 ```
 

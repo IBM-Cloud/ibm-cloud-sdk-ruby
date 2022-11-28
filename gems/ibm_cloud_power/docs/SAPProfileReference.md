@@ -4,8 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **profile_id** | **String** | SAP Profile ID |  |
 | **href** | **String** | Link to SAP profile resource |  |
+| **profile_id** | **String** | SAP Profile ID |  |
 
 ## Example
 
@@ -13,8 +13,8 @@
 require 'ibm_cloud_power'
 
 instance = IbmCloudPower::SAPProfileReference.new(
-  profile_id: null,
-  href: null
+  href: null,
+  profile_id: null
 )
 ```
 

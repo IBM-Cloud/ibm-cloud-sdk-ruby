@@ -4,7 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **cloned_volumes** | **Hash&lt;String, String&gt;** | A map of volume IDs to cloned volume IDs | [optional] |
+| **additional_properties** | **String** | ID of the new cloned volume | [optional] |
+| **cloned_volumes** | **Object** | A map of volume IDs to cloned volume IDs | [optional] |
 
 ## Example
 
@@ -12,6 +13,7 @@
 require 'ibm_cloud_power'
 
 instance = IbmCloudPower::VolumesCloneResponse.new(
+  additional_properties: null,
   cloned_volumes: null
 )
 ```

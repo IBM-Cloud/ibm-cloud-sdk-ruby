@@ -4,11 +4,11 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **profile_id** | **String** | SAP Profile ID |  |
-| **type** | **String** | Type of profile | [default to &#39;balanced&#39;] |
+| **certified** | **Boolean** | Has certification been performed on profile |  |
 | **cores** | **Integer** | Amount of cores |  |
 | **memory** | **Integer** | Amount of memory (in GB) |  |
-| **certified** | **Boolean** | Has certification been performed on profile |  |
+| **profile_id** | **String** | SAP Profile ID |  |
+| **type** | **String** | Type of profile | [default to &#39;balanced&#39;] |
 
 ## Example
 
@@ -16,11 +16,11 @@
 require 'ibm_cloud_power'
 
 instance = IbmCloudPower::SAPProfile.new(
-  profile_id: null,
-  type: null,
+  certified: null,
   cores: null,
   memory: null,
-  certified: null
+  profile_id: null,
+  type: null
 )
 ```
 

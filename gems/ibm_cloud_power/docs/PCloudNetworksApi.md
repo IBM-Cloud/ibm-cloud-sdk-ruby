@@ -4,23 +4,23 @@ All URIs are relative to *http://localhost*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
-| [**pcloud_networks_delete**](PCloudNetworksApi.md#pcloud_networks_delete) | **DELETE** /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id} | Delete a network |
-| [**pcloud_networks_get**](PCloudNetworksApi.md#pcloud_networks_get) | **GET** /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id} | Get a network&#39;s current state or information |
+| [**pcloud_networks_delete**](PCloudNetworksApi.md#pcloud_networks_delete) | **DELETE** /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id} | Delete a Network |
+| [**pcloud_networks_get**](PCloudNetworksApi.md#pcloud_networks_get) | **GET** /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id} | Get a network&#39;s current state/information |
 | [**pcloud_networks_getall**](PCloudNetworksApi.md#pcloud_networks_getall) | **GET** /pcloud/v1/cloud-instances/{cloud_instance_id}/networks | Get all networks in this cloud instance |
-| [**pcloud_networks_ports_delete**](PCloudNetworksApi.md#pcloud_networks_ports_delete) | **DELETE** /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id}/ports/{port_id} | Delete a network port |
+| [**pcloud_networks_ports_delete**](PCloudNetworksApi.md#pcloud_networks_ports_delete) | **DELETE** /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id}/ports/{port_id} | Delete a Network Port |
 | [**pcloud_networks_ports_get**](PCloudNetworksApi.md#pcloud_networks_ports_get) | **GET** /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id}/ports/{port_id} | Get a port&#39;s information |
 | [**pcloud_networks_ports_getall**](PCloudNetworksApi.md#pcloud_networks_ports_getall) | **GET** /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id}/ports | Get all ports for this network |
 | [**pcloud_networks_ports_post**](PCloudNetworksApi.md#pcloud_networks_ports_post) | **POST** /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id}/ports | Perform port addition, deletion, and listing |
 | [**pcloud_networks_ports_put**](PCloudNetworksApi.md#pcloud_networks_ports_put) | **PUT** /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id}/ports/{port_id} | Update a port&#39;s information |
-| [**pcloud_networks_post**](PCloudNetworksApi.md#pcloud_networks_post) | **POST** /pcloud/v1/cloud-instances/{cloud_instance_id}/networks | Create a new network |
-| [**pcloud_networks_put**](PCloudNetworksApi.md#pcloud_networks_put) | **PUT** /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id} | Update a network |
+| [**pcloud_networks_post**](PCloudNetworksApi.md#pcloud_networks_post) | **POST** /pcloud/v1/cloud-instances/{cloud_instance_id}/networks | Create a new Network |
+| [**pcloud_networks_put**](PCloudNetworksApi.md#pcloud_networks_put) | **PUT** /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id} | Update a Network |
 
 
 ## pcloud_networks_delete
 
 > Object pcloud_networks_delete(cloud_instance_id, network_id)
 
-Delete a network
+Delete a Network
 
 ### Examples
 
@@ -33,7 +33,7 @@ cloud_instance_id = 'cloud_instance_id_example' # String | Cloud Instance ID of 
 network_id = 'network_id_example' # String | Network ID
 
 begin
-  # Delete a network
+  # Delete a Network
   result = api_instance.pcloud_networks_delete(cloud_instance_id, network_id)
   p result
 rescue IbmCloudPower::ApiError => e
@@ -49,7 +49,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Delete a network
+  # Delete a Network
   data, status_code, headers = api_instance.pcloud_networks_delete_with_http_info(cloud_instance_id, network_id)
   p status_code # => 2xx
   p headers # => { ... }
@@ -84,7 +84,7 @@ No authorization required
 
 > <Network> pcloud_networks_get(cloud_instance_id, network_id)
 
-Get a network's current state or information
+Get a network's current state/information
 
 ### Examples
 
@@ -97,7 +97,7 @@ cloud_instance_id = 'cloud_instance_id_example' # String | Cloud Instance ID of 
 network_id = 'network_id_example' # String | Network ID
 
 begin
-  # Get a network's current state or information
+  # Get a network's current state/information
   result = api_instance.pcloud_networks_get(cloud_instance_id, network_id)
   p result
 rescue IbmCloudPower::ApiError => e
@@ -113,7 +113,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Get a network's current state or information
+  # Get a network's current state/information
   data, status_code, headers = api_instance.pcloud_networks_get_with_http_info(cloud_instance_id, network_id)
   p status_code # => 2xx
   p headers # => { ... }
@@ -214,7 +214,7 @@ No authorization required
 
 > Object pcloud_networks_ports_delete(cloud_instance_id, network_id, port_id)
 
-Delete a network port
+Delete a Network Port
 
 ### Examples
 
@@ -228,7 +228,7 @@ network_id = 'network_id_example' # String | Network ID
 port_id = 'port_id_example' # String | Port ID
 
 begin
-  # Delete a network port
+  # Delete a Network Port
   result = api_instance.pcloud_networks_ports_delete(cloud_instance_id, network_id, port_id)
   p result
 rescue IbmCloudPower::ApiError => e
@@ -244,7 +244,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Delete a network port
+  # Delete a Network Port
   data, status_code, headers = api_instance.pcloud_networks_ports_delete_with_http_info(cloud_instance_id, network_id, port_id)
   p status_code # => 2xx
   p headers # => { ... }
@@ -546,7 +546,7 @@ No authorization required
 
 > <Network> pcloud_networks_post(cloud_instance_id, body)
 
-Create a new network
+Create a new Network
 
 ### Examples
 
@@ -559,7 +559,7 @@ cloud_instance_id = 'cloud_instance_id_example' # String | Cloud Instance ID of 
 body = IbmCloudPower::NetworkCreate.new({type: 'vlan'}) # NetworkCreate | Parameters for the creation of a new network
 
 begin
-  # Create a new network
+  # Create a new Network
   result = api_instance.pcloud_networks_post(cloud_instance_id, body)
   p result
 rescue IbmCloudPower::ApiError => e
@@ -575,7 +575,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Create a new network
+  # Create a new Network
   data, status_code, headers = api_instance.pcloud_networks_post_with_http_info(cloud_instance_id, body)
   p status_code # => 2xx
   p headers # => { ... }
@@ -610,7 +610,7 @@ No authorization required
 
 > <Network> pcloud_networks_put(cloud_instance_id, network_id, body)
 
-Update a network
+Update a Network
 
 ### Examples
 
@@ -624,7 +624,7 @@ network_id = 'network_id_example' # String | Network ID
 body = IbmCloudPower::NetworkUpdate.new # NetworkUpdate | Parameters to update a Network
 
 begin
-  # Update a network
+  # Update a Network
   result = api_instance.pcloud_networks_put(cloud_instance_id, network_id, body)
   p result
 rescue IbmCloudPower::ApiError => e
@@ -640,7 +640,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Update a network
+  # Update a Network
   data, status_code, headers = api_instance.pcloud_networks_put_with_http_info(cloud_instance_id, network_id, body)
   p status_code # => 2xx
   p headers # => { ... }

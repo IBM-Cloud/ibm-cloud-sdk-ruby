@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **action** | **String** | current action of the operation |  |
-| **id** | **String** | ID of the resource target |  |
+| **id** | **String** | ID of an operation |  |
 | **target** | **String** | target resource of the operation |  |
 
 ## Example

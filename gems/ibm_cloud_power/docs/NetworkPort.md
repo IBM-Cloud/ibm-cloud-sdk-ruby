@@ -4,14 +4,14 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **port_id** | **String** | The unique Port ID |  |
-| **description** | **String** | The description of the port (not unique or indexable) |  |
-| **status** | **String** | Te |  |
-| **mac_address** | **String** | The mac address of the network interface |  |
-| **ip_address** | **String** | The ip address of this port |  |
+| **description** | **String** | Description of the port (not unique or indexable) |  |
 | **external_ip** | **String** | The external ip address (for pub-vlan networks) | [optional] |
-| **pvm_instance** | [**NetworkPortPvmInstance**](NetworkPortPvmInstance.md) |  | [optional] |
 | **href** | **String** | Link to port resource | [optional] |
+| **ip_address** | **String** | The ip address of this port |  |
+| **mac_address** | **String** | The mac address of the network interface |  |
+| **port_id** | **String** | The unique Port ID |  |
+| **pvm_instance** | [**NetworkPortPvmInstance**](NetworkPortPvmInstance.md) |  | [optional] |
+| **status** | **String** | Te |  |
 
 ## Example
 
@@ -19,14 +19,14 @@
 require 'ibm_cloud_power'
 
 instance = IbmCloudPower::NetworkPort.new(
-  port_id: null,
   description: null,
-  status: null,
-  mac_address: null,
-  ip_address: null,
   external_ip: null,
+  href: null,
+  ip_address: null,
+  mac_address: null,
+  port_id: null,
   pvm_instance: null,
-  href: null
+  status: null
 )
 ```
 

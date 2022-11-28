@@ -4,9 +4,9 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **storage_type** | **String** | Storage type |  |
+| **max_allocation_size** | **Integer** | Maximum allocation storage size (GB) |  |
 | **storage_pool** | **String** | Storage pool |  |
-| **max_allocation_size** | **Integer** | Maximum size (GB) that can be currently requested to allocate storage for a given storage type and pool at the time of creation |  |
+| **storage_type** | **String** | Storage type |  |
 
 ## Example
 
@@ -14,9 +14,9 @@
 require 'ibm_cloud_power'
 
 instance = IbmCloudPower::MaximumStorageAllocation.new(
-  storage_type: null,
+  max_allocation_size: null,
   storage_pool: null,
-  max_allocation_size: null
+  storage_type: null
 )
 ```
 

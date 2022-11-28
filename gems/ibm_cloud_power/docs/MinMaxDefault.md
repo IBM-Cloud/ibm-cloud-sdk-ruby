@@ -4,9 +4,9 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **min** | **Float** | min value |  |
-| **max** | **Float** | max value |  |
 | **default** | **Float** | default value |  |
+| **max** | **Float** | max value |  |
+| **min** | **Float** | min value |  |
 
 ## Example
 
@@ -14,9 +14,9 @@
 require 'ibm_cloud_power'
 
 instance = IbmCloudPower::MinMaxDefault.new(
-  min: null,
+  default: null,
   max: null,
-  default: null
+  min: null
 )
 ```
 

@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **authentication** | **String** | authentication of the IKE Policy | [optional] |
+| **authentication** | [**IKEPolicyAuthentication**](IKEPolicyAuthentication.md) |  | [optional] |
 | **dh_group** | **Integer** | DH group of the IKE Policy | [optional] |
 | **encryption** | **String** | encryption of the IKE Policy | [optional] |
 | **key_lifetime** | **Integer** | Policy key lifetime | [optional] |
@@ -18,9 +18,9 @@
 require 'ibm_cloud_power'
 
 instance = IbmCloudPower::IKEPolicyUpdate.new(
-  authentication: sha1,
-  dh_group: 19,
-  encryption: 3des-cbc,
+  authentication: null,
+  dh_group: 2,
+  encryption: aes-256-cbc,
   key_lifetime: 28800,
   name: ikePolicy1,
   preshared_key: null,

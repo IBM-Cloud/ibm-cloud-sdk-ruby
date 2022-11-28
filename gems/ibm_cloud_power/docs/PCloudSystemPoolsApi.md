@@ -4,14 +4,14 @@ All URIs are relative to *http://localhost*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
-| [**pcloud_systempools_get**](PCloudSystemPoolsApi.md#pcloud_systempools_get) | **GET** /pcloud/v1/cloud-instances/{cloud_instance_id}/system-pools | List of available system pools within a particular data center |
+| [**pcloud_systempools_get**](PCloudSystemPoolsApi.md#pcloud_systempools_get) | **GET** /pcloud/v1/cloud-instances/{cloud_instance_id}/system-pools | List of available system pools within a particular DataCenter |
 
 
 ## pcloud_systempools_get
 
 > <Hash<String, SystemPool>> pcloud_systempools_get(cloud_instance_id)
 
-List of available system pools within a particular data center
+List of available system pools within a particular DataCenter
 
 ### Examples
 
@@ -23,7 +23,7 @@ api_instance = IbmCloudPower::PCloudSystemPoolsApi.new
 cloud_instance_id = 'cloud_instance_id_example' # String | Cloud Instance ID of a PCloud Instance
 
 begin
-  # List of available system pools within a particular data center
+  # List of available system pools within a particular DataCenter
   result = api_instance.pcloud_systempools_get(cloud_instance_id)
   p result
 rescue IbmCloudPower::ApiError => e
@@ -39,7 +39,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # List of available system pools within a particular data center
+  # List of available system pools within a particular DataCenter
   data, status_code, headers = api_instance.pcloud_systempools_get_with_http_info(cloud_instance_id)
   p status_code # => 2xx
   p headers # => { ... }

@@ -10,7 +10,6 @@ All URIs are relative to *http://localhost*
 | [**pcloud_vpnconnections_networks_delete**](PCloudVPNConnectionsApi.md#pcloud_vpnconnections_networks_delete) | **DELETE** /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/vpn-connections/{vpn_connection_id}/networks | Detach network |
 | [**pcloud_vpnconnections_networks_get**](PCloudVPNConnectionsApi.md#pcloud_vpnconnections_networks_get) | **GET** /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/vpn-connections/{vpn_connection_id}/networks | Get attached networks |
 | [**pcloud_vpnconnections_networks_put**](PCloudVPNConnectionsApi.md#pcloud_vpnconnections_networks_put) | **PUT** /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/vpn-connections/{vpn_connection_id}/networks | Attach network |
-| [**pcloud_vpnconnections_options_get**](PCloudVPNConnectionsApi.md#pcloud_vpnconnections_options_get) | **GET** /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn-connections/options | Get Options |
 | [**pcloud_vpnconnections_peersubnets_delete**](PCloudVPNConnectionsApi.md#pcloud_vpnconnections_peersubnets_delete) | **DELETE** /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/vpn-connections/{vpn_connection_id}/peer-subnets | Detach Peer Subnet |
 | [**pcloud_vpnconnections_peersubnets_get**](PCloudVPNConnectionsApi.md#pcloud_vpnconnections_peersubnets_get) | **GET** /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/vpn-connections/{vpn_connection_id}/peer-subnets | Get Peer Subnets |
 | [**pcloud_vpnconnections_peersubnets_put**](PCloudVPNConnectionsApi.md#pcloud_vpnconnections_peersubnets_put) | **PUT** /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/vpn-connections/{vpn_connection_id}/peer-subnets | Attach Peer Subnet |
@@ -416,70 +415,6 @@ No authorization required
 - **Accept**: application/json
 
 
-## pcloud_vpnconnections_options_get
-
-> <Options> pcloud_vpnconnections_options_get(cloud_instance_id)
-
-Get Options
-
-Get allowable and default values for attributes \"authentication\", \"dhgroup\", \"encryption\", \"keyLifetime\", and \"version\" when creating or updating an IKE Policy Get allowable and default values for attributes \"authentication\", \"dhgroup\", \"encryption\", and \"keyLifetime\" when creating or updating an IPSec Policy
-
-### Examples
-
-```ruby
-require 'time'
-require 'ibm_cloud_power'
-
-api_instance = IbmCloudPower::PCloudVPNConnectionsApi.new
-cloud_instance_id = 'cloud_instance_id_example' # String | Cloud Instance ID of a PCloud Instance
-
-begin
-  # Get Options
-  result = api_instance.pcloud_vpnconnections_options_get(cloud_instance_id)
-  p result
-rescue IbmCloudPower::ApiError => e
-  puts "Error when calling PCloudVPNConnectionsApi->pcloud_vpnconnections_options_get: #{e}"
-end
-```
-
-#### Using the pcloud_vpnconnections_options_get_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<Options>, Integer, Hash)> pcloud_vpnconnections_options_get_with_http_info(cloud_instance_id)
-
-```ruby
-begin
-  # Get Options
-  data, status_code, headers = api_instance.pcloud_vpnconnections_options_get_with_http_info(cloud_instance_id)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <Options>
-rescue IbmCloudPower::ApiError => e
-  puts "Error when calling PCloudVPNConnectionsApi->pcloud_vpnconnections_options_get_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **cloud_instance_id** | **String** | Cloud Instance ID of a PCloud Instance |  |
-
-### Return type
-
-[**Options**](Options.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
 ## pcloud_vpnconnections_peersubnets_delete
 
 > <PeerSubnets> pcloud_vpnconnections_peersubnets_delete(cloud_instance_id, vpn_connection_id, body)
@@ -765,7 +700,7 @@ require 'ibm_cloud_power'
 api_instance = IbmCloudPower::PCloudVPNConnectionsApi.new
 cloud_instance_id = 'cloud_instance_id_example' # String | Cloud Instance ID of a PCloud Instance
 vpn_connection_id = 'vpn_connection_id_example' # String | ID of a VPN connection
-body = IbmCloudPower::VPNConnectionUpdate.new # VPNConnectionUpdate | VPN Connection object used for update
+body = { key: 3.56} # Hash<String, Object> | VPN Connection object used for update
 
 begin
   # Update VPN Connection
@@ -800,7 +735,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **cloud_instance_id** | **String** | Cloud Instance ID of a PCloud Instance |  |
 | **vpn_connection_id** | **String** | ID of a VPN connection |  |
-| **body** | [**VPNConnectionUpdate**](VPNConnectionUpdate.md) | VPN Connection object used for update |  |
+| **body** | [**Hash&lt;String, Object&gt;**](Object.md) | VPN Connection object used for update |  |
 
 ### Return type
 

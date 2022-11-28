@@ -149,7 +149,7 @@ require 'ibm_cloud_power'
 
 api_instance = IbmCloudPower::PCloudSAPApi.new
 cloud_instance_id = 'cloud_instance_id_example' # String | Cloud Instance ID of a PCloud Instance
-body = IbmCloudPower::SAPCreate.new({name: 'name_example', image_id: 'image_id_example', profile_id: 'profile_id_example', networks: [IbmCloudPower::PVMInstanceAddNetwork.new({network_id: 'network_id_example'})]}) # SAPCreate | Parameters for the creation of a new SAP PVM Instance
+body = IbmCloudPower::SAPCreate.new({image_id: 'image_id_example', name: 'name_example', networks: [IbmCloudPower::PVMInstanceAddNetwork.new({network_id: 'network_id_example'})], profile_id: 'profile_id_example'}) # SAPCreate | Parameters for the creation of a new SAP PVM Instance
 
 begin
   # Create a new SAP PVM Instance

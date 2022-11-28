@@ -4,8 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **starting_ip_address** | **String** | Starting IP Address |  |
 | **ending_ip_address** | **String** | Ending IP Address |  |
+| **starting_ip_address** | **String** | Starting IP Address |  |
 
 ## Example
 
@@ -13,8 +13,8 @@
 require 'ibm_cloud_power'
 
 instance = IbmCloudPower::IPAddressRange.new(
-  starting_ip_address: null,
-  ending_ip_address: null
+  ending_ip_address: null,
+  starting_ip_address: null
 )
 ```
 

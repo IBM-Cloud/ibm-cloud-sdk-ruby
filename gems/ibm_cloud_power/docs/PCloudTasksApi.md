@@ -4,15 +4,15 @@ All URIs are relative to *http://localhost*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
-| [**pcloud_tasks_delete**](PCloudTasksApi.md#pcloud_tasks_delete) | **DELETE** /pcloud/v1/tasks/{task_id} | Delete a task |
-| [**pcloud_tasks_get**](PCloudTasksApi.md#pcloud_tasks_get) | **GET** /pcloud/v1/tasks/{task_id} | Get a task |
+| [**pcloud_tasks_delete**](PCloudTasksApi.md#pcloud_tasks_delete) | **DELETE** /pcloud/v1/tasks/{task_id} | Delete a Task |
+| [**pcloud_tasks_get**](PCloudTasksApi.md#pcloud_tasks_get) | **GET** /pcloud/v1/tasks/{task_id} | Get a Task |
 
 
 ## pcloud_tasks_delete
 
 > Object pcloud_tasks_delete(task_id)
 
-Delete a task
+Delete a Task
 
 ### Examples
 
@@ -24,7 +24,7 @@ api_instance = IbmCloudPower::PCloudTasksApi.new
 task_id = 'task_id_example' # String | PCloud Task ID
 
 begin
-  # Delete a task
+  # Delete a Task
   result = api_instance.pcloud_tasks_delete(task_id)
   p result
 rescue IbmCloudPower::ApiError => e
@@ -40,7 +40,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Delete a task
+  # Delete a Task
   data, status_code, headers = api_instance.pcloud_tasks_delete_with_http_info(task_id)
   p status_code # => 2xx
   p headers # => { ... }
@@ -67,14 +67,14 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: */*
 
 
 ## pcloud_tasks_get
 
 > <Task> pcloud_tasks_get(task_id)
 
-Get a task
+Get a Task
 
 ### Examples
 
@@ -86,7 +86,7 @@ api_instance = IbmCloudPower::PCloudTasksApi.new
 task_id = 'task_id_example' # String | PCloud Task ID
 
 begin
-  # Get a task
+  # Get a Task
   result = api_instance.pcloud_tasks_get(task_id)
   p result
 rescue IbmCloudPower::ApiError => e
@@ -102,7 +102,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Get a task
+  # Get a Task
   data, status_code, headers = api_instance.pcloud_tasks_get_with_http_info(task_id)
   p status_code # => 2xx
   p headers # => { ... }

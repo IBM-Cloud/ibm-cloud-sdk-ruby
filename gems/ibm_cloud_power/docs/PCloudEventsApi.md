@@ -78,11 +78,9 @@ No authorization required
 
 ## pcloud_events_getsince
 
-> <Events> pcloud_events_getsince(cloud_instance_id, time, opts)
+> <Events> pcloud_events_getsince(cloud_instance_id, opts)
 
 Get events from this cloud instance since a specific timestamp
-
-You must append the '?time=' query parameter to the cURL URL to get a list of events.
 
 ### Examples
 
@@ -92,14 +90,16 @@ require 'ibm_cloud_power'
 
 api_instance = IbmCloudPower::PCloudEventsApi.new
 cloud_instance_id = 'cloud_instance_id_example' # String | Cloud Instance ID of a PCloud Instance
-time = 'time_example' # String | (deprecated - use from_time) A time in either ISO 8601 or unix epoch format
 opts = {
+  time: 'time_example', # String | (deprecated - use from_time) A time in either ISO 8601 or unix epoch format
+  from_time: 'from_time_example', # String | A from query time in either ISO 8601 or unix epoch format
+  to_time: 'to_time_example', # String | A to query time in either ISO 8601 or unix epoch format
   accept_language: 'accept_language_example' # String | The language requested for the return document
 }
 
 begin
   # Get events from this cloud instance since a specific timestamp
-  result = api_instance.pcloud_events_getsince(cloud_instance_id, time, opts)
+  result = api_instance.pcloud_events_getsince(cloud_instance_id, opts)
   p result
 rescue IbmCloudPower::ApiError => e
   puts "Error when calling PCloudEventsApi->pcloud_events_getsince: #{e}"
@@ -110,12 +110,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<Events>, Integer, Hash)> pcloud_events_getsince_with_http_info(cloud_instance_id, time, opts)
+> <Array(<Events>, Integer, Hash)> pcloud_events_getsince_with_http_info(cloud_instance_id, opts)
 
 ```ruby
 begin
   # Get events from this cloud instance since a specific timestamp
-  data, status_code, headers = api_instance.pcloud_events_getsince_with_http_info(cloud_instance_id, time, opts)
+  data, status_code, headers = api_instance.pcloud_events_getsince_with_http_info(cloud_instance_id, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <Events>
@@ -129,7 +129,9 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **cloud_instance_id** | **String** | Cloud Instance ID of a PCloud Instance |  |
-| **time** | **String** | (deprecated - use from_time) A time in either ISO 8601 or unix epoch format |  |
+| **time** | **String** | (deprecated - use from_time) A time in either ISO 8601 or unix epoch format | [optional] |
+| **from_time** | **String** | A from query time in either ISO 8601 or unix epoch format | [optional] |
+| **to_time** | **String** | A to query time in either ISO 8601 or unix epoch format | [optional] |
 | **accept_language** | **String** | The language requested for the return document | [optional] |
 
 ### Return type
