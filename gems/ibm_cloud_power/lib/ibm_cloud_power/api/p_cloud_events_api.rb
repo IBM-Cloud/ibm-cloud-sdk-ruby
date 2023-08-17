@@ -91,13 +91,18 @@ module IbmCloudPower
 
     # Get events from this cloud instance since a specific timestamp
     # @param cloud_instance_id [String] Cloud Instance ID of a PCloud Instance
+    # @param from_time [String, Hash] A starting timestamp in either ISO 8601 or unix epoch format, or a Hash of optional parameters
+    #   Note: 'from_time' as a string is deprecated and will be removed in the next major release.
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :time (deprecated - use from_time) A time in either ISO 8601 or unix epoch format
-    # @option opts [String] :from_time A from query time in either ISO 8601 or unix epoch format
-    # @option opts [String] :to_time A to query time in either ISO 8601 or unix epoch format
+    # @option opts [String] :to_time An ending timestamp in either ISO 8601 or Unix epoch format
     # @option opts [String] :accept_language The language requested for the return document
     # @return [Events]
-    def pcloud_events_getsince(cloud_instance_id, opts = {})
+    def pcloud_events_getsince(cloud_instance_id, from_time = nil, opts = {})
+      if from_time.is_a?(Hash)
+        opts.merge!(from_time)
+      else
+        opts[:from_time] = from_time
+      end
       data, _status_code, _headers = pcloud_events_getsince_with_http_info(cloud_instance_id, opts)
       data
     end
