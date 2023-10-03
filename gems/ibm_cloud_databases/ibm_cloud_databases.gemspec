@@ -27,7 +27,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_runtime_dependency "concurrent-ruby", "~> 1.0"
-  spec.add_runtime_dependency "http", "~> 4.4.1"
+  spec.add_runtime_dependency "http", "~> 5.1.1"
   spec.add_runtime_dependency "ibm_cloud_sdk_core", "~> 1.1.1"
   spec.add_runtime_dependency "jwt", "~> 2.2.1"
 end
