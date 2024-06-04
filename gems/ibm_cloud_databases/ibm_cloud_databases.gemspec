@@ -26,8 +26,5 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.add_runtime_dependency "concurrent-ruby", "~> 1.0"
-  spec.add_runtime_dependency "http", "~> 5.1.1"
-  spec.add_runtime_dependency "ibm_cloud_sdk_core", "~> 1.2.0"
-  spec.add_runtime_dependency "jwt", "~> 2.2.1"
+  spec.add_runtime_dependency "ibm_cloud_sdk_core", "~> 1.3.0"
 end
