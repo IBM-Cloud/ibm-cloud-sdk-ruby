@@ -22,6 +22,11 @@ Delete a Tenant's SSH key
 ```ruby
 require 'time'
 require 'ibm_cloud_power'
+# setup authorization
+IbmCloudPower.configure do |config|
+  # Configure OAuth2 access token for authorization: OauthSecurity
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
 
 api_instance = IbmCloudPower::PCloudTenantsSSHKeysApi.new
 tenant_id = 'tenant_id_example' # String | Tenant ID of a pcloud tenant
@@ -67,12 +72,12 @@ end
 
 ### Authorization
 
-No authorization required
+[OauthSecurity](../README.md#OauthSecurity)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: */*
+- **Accept**: application/json
 
 
 ## pcloud_tenants_sshkeys_get
@@ -86,6 +91,11 @@ Get a Tenant's SSH Key by name
 ```ruby
 require 'time'
 require 'ibm_cloud_power'
+# setup authorization
+IbmCloudPower.configure do |config|
+  # Configure OAuth2 access token for authorization: OauthSecurity
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
 
 api_instance = IbmCloudPower::PCloudTenantsSSHKeysApi.new
 tenant_id = 'tenant_id_example' # String | Tenant ID of a pcloud tenant
@@ -131,7 +141,7 @@ end
 
 ### Authorization
 
-No authorization required
+[OauthSecurity](../README.md#OauthSecurity)
 
 ### HTTP request headers
 
@@ -150,6 +160,11 @@ List a Tenant's SSH Keys
 ```ruby
 require 'time'
 require 'ibm_cloud_power'
+# setup authorization
+IbmCloudPower.configure do |config|
+  # Configure OAuth2 access token for authorization: OauthSecurity
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
 
 api_instance = IbmCloudPower::PCloudTenantsSSHKeysApi.new
 tenant_id = 'tenant_id_example' # String | Tenant ID of a pcloud tenant
@@ -193,7 +208,7 @@ end
 
 ### Authorization
 
-No authorization required
+[OauthSecurity](../README.md#OauthSecurity)
 
 ### HTTP request headers
 
@@ -212,6 +227,11 @@ Add a new SSH key to the Tenant
 ```ruby
 require 'time'
 require 'ibm_cloud_power'
+# setup authorization
+IbmCloudPower.configure do |config|
+  # Configure OAuth2 access token for authorization: OauthSecurity
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
 
 api_instance = IbmCloudPower::PCloudTenantsSSHKeysApi.new
 tenant_id = 'tenant_id_example' # String | Tenant ID of a pcloud tenant
@@ -257,7 +277,7 @@ end
 
 ### Authorization
 
-No authorization required
+[OauthSecurity](../README.md#OauthSecurity)
 
 ### HTTP request headers
 
@@ -276,6 +296,11 @@ Update an SSH Key
 ```ruby
 require 'time'
 require 'ibm_cloud_power'
+# setup authorization
+IbmCloudPower.configure do |config|
+  # Configure OAuth2 access token for authorization: OauthSecurity
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
 
 api_instance = IbmCloudPower::PCloudTenantsSSHKeysApi.new
 tenant_id = 'tenant_id_example' # String | Tenant ID of a pcloud tenant
@@ -323,7 +348,7 @@ end
 
 ### Authorization
 
-No authorization required
+[OauthSecurity](../README.md#OauthSecurity)
 
 ### HTTP request headers
 

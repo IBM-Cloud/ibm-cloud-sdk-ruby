@@ -4,7 +4,7 @@ All URIs are relative to *http://localhost*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
-| [**pcloud_volumegroups_action_post**](PCloudVolumeGroupsApi.md#pcloud_volumegroups_action_post) | **POST** /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups/{volume_group_id}/action | Perform an action (start stop reset ) on a volume group |
+| [**pcloud_volumegroups_action_post**](PCloudVolumeGroupsApi.md#pcloud_volumegroups_action_post) | **POST** /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups/{volume_group_id}/action | Perform an action on a volume group |
 | [**pcloud_volumegroups_delete**](PCloudVolumeGroupsApi.md#pcloud_volumegroups_delete) | **DELETE** /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups/{volume_group_id} | Delete a cloud instance volume group |
 | [**pcloud_volumegroups_get**](PCloudVolumeGroupsApi.md#pcloud_volumegroups_get) | **GET** /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups/{volume_group_id} | Get volume Group |
 | [**pcloud_volumegroups_get_details**](PCloudVolumeGroupsApi.md#pcloud_volumegroups_get_details) | **GET** /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups/{volume_group_id}/details | Get volume Group details |
@@ -20,21 +20,28 @@ All URIs are relative to *http://localhost*
 
 > Object pcloud_volumegroups_action_post(cloud_instance_id, volume_group_id, body)
 
-Perform an action (start stop reset ) on a volume group
+Perform an action on a volume group
+
+Corresponding actions are 'start', 'stop', 'reset'
 
 ### Examples
 
 ```ruby
 require 'time'
 require 'ibm_cloud_power'
+# setup authorization
+IbmCloudPower.configure do |config|
+  # Configure OAuth2 access token for authorization: OauthSecurity
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
 
 api_instance = IbmCloudPower::PCloudVolumeGroupsApi.new
 cloud_instance_id = 'cloud_instance_id_example' # String | Cloud Instance ID of a PCloud Instance
 volume_group_id = 'volume_group_id_example' # String | The ID of the volume group
-body = { key: 3.56} # Hash<String, Object> | Parameters for the desire action.
+body = IbmCloudPower::VolumeGroupAction.new # VolumeGroupAction | Parameters for the desire action.
 
 begin
-  # Perform an action (start stop reset ) on a volume group
+  # Perform an action on a volume group
   result = api_instance.pcloud_volumegroups_action_post(cloud_instance_id, volume_group_id, body)
   p result
 rescue IbmCloudPower::ApiError => e
@@ -50,7 +57,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Perform an action (start stop reset ) on a volume group
+  # Perform an action on a volume group
   data, status_code, headers = api_instance.pcloud_volumegroups_action_post_with_http_info(cloud_instance_id, volume_group_id, body)
   p status_code # => 2xx
   p headers # => { ... }
@@ -66,7 +73,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **cloud_instance_id** | **String** | Cloud Instance ID of a PCloud Instance |  |
 | **volume_group_id** | **String** | The ID of the volume group |  |
-| **body** | [**Hash&lt;String, Object&gt;**](Object.md) | Parameters for the desire action. |  |
+| **body** | [**VolumeGroupAction**](VolumeGroupAction.md) | Parameters for the desire action. |  |
 
 ### Return type
 
@@ -74,7 +81,7 @@ end
 
 ### Authorization
 
-No authorization required
+[OauthSecurity](../README.md#OauthSecurity)
 
 ### HTTP request headers
 
@@ -93,6 +100,11 @@ Delete a cloud instance volume group
 ```ruby
 require 'time'
 require 'ibm_cloud_power'
+# setup authorization
+IbmCloudPower.configure do |config|
+  # Configure OAuth2 access token for authorization: OauthSecurity
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
 
 api_instance = IbmCloudPower::PCloudVolumeGroupsApi.new
 cloud_instance_id = 'cloud_instance_id_example' # String | Cloud Instance ID of a PCloud Instance
@@ -138,12 +150,12 @@ end
 
 ### Authorization
 
-No authorization required
+[OauthSecurity](../README.md#OauthSecurity)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: */*
+- **Accept**: application/json
 
 
 ## pcloud_volumegroups_get
@@ -157,6 +169,11 @@ Get volume Group
 ```ruby
 require 'time'
 require 'ibm_cloud_power'
+# setup authorization
+IbmCloudPower.configure do |config|
+  # Configure OAuth2 access token for authorization: OauthSecurity
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
 
 api_instance = IbmCloudPower::PCloudVolumeGroupsApi.new
 cloud_instance_id = 'cloud_instance_id_example' # String | Cloud Instance ID of a PCloud Instance
@@ -202,7 +219,7 @@ end
 
 ### Authorization
 
-No authorization required
+[OauthSecurity](../README.md#OauthSecurity)
 
 ### HTTP request headers
 
@@ -221,6 +238,11 @@ Get volume Group details
 ```ruby
 require 'time'
 require 'ibm_cloud_power'
+# setup authorization
+IbmCloudPower.configure do |config|
+  # Configure OAuth2 access token for authorization: OauthSecurity
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
 
 api_instance = IbmCloudPower::PCloudVolumeGroupsApi.new
 cloud_instance_id = 'cloud_instance_id_example' # String | Cloud Instance ID of a PCloud Instance
@@ -266,7 +288,7 @@ end
 
 ### Authorization
 
-No authorization required
+[OauthSecurity](../README.md#OauthSecurity)
 
 ### HTTP request headers
 
@@ -285,6 +307,11 @@ Get all volume groups
 ```ruby
 require 'time'
 require 'ibm_cloud_power'
+# setup authorization
+IbmCloudPower.configure do |config|
+  # Configure OAuth2 access token for authorization: OauthSecurity
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
 
 api_instance = IbmCloudPower::PCloudVolumeGroupsApi.new
 cloud_instance_id = 'cloud_instance_id_example' # String | Cloud Instance ID of a PCloud Instance
@@ -328,7 +355,7 @@ end
 
 ### Authorization
 
-No authorization required
+[OauthSecurity](../README.md#OauthSecurity)
 
 ### HTTP request headers
 
@@ -347,6 +374,11 @@ Get all volume groups with details
 ```ruby
 require 'time'
 require 'ibm_cloud_power'
+# setup authorization
+IbmCloudPower.configure do |config|
+  # Configure OAuth2 access token for authorization: OauthSecurity
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
 
 api_instance = IbmCloudPower::PCloudVolumeGroupsApi.new
 cloud_instance_id = 'cloud_instance_id_example' # String | Cloud Instance ID of a PCloud Instance
@@ -390,7 +422,7 @@ end
 
 ### Authorization
 
-No authorization required
+[OauthSecurity](../README.md#OauthSecurity)
 
 ### HTTP request headers
 
@@ -409,6 +441,11 @@ Create a new volume group
 ```ruby
 require 'time'
 require 'ibm_cloud_power'
+# setup authorization
+IbmCloudPower.configure do |config|
+  # Configure OAuth2 access token for authorization: OauthSecurity
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
 
 api_instance = IbmCloudPower::PCloudVolumeGroupsApi.new
 cloud_instance_id = 'cloud_instance_id_example' # String | Cloud Instance ID of a PCloud Instance
@@ -454,7 +491,7 @@ end
 
 ### Authorization
 
-No authorization required
+[OauthSecurity](../README.md#OauthSecurity)
 
 ### HTTP request headers
 
@@ -473,6 +510,11 @@ updates the volume group
 ```ruby
 require 'time'
 require 'ibm_cloud_power'
+# setup authorization
+IbmCloudPower.configure do |config|
+  # Configure OAuth2 access token for authorization: OauthSecurity
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
 
 api_instance = IbmCloudPower::PCloudVolumeGroupsApi.new
 cloud_instance_id = 'cloud_instance_id_example' # String | Cloud Instance ID of a PCloud Instance
@@ -520,7 +562,7 @@ end
 
 ### Authorization
 
-No authorization required
+[OauthSecurity](../README.md#OauthSecurity)
 
 ### HTTP request headers
 
@@ -539,6 +581,11 @@ Get remote copy relationships of the volume belonging to volume group
 ```ruby
 require 'time'
 require 'ibm_cloud_power'
+# setup authorization
+IbmCloudPower.configure do |config|
+  # Configure OAuth2 access token for authorization: OauthSecurity
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
 
 api_instance = IbmCloudPower::PCloudVolumeGroupsApi.new
 cloud_instance_id = 'cloud_instance_id_example' # String | Cloud Instance ID of a PCloud Instance
@@ -584,7 +631,7 @@ end
 
 ### Authorization
 
-No authorization required
+[OauthSecurity](../README.md#OauthSecurity)
 
 ### HTTP request headers
 
@@ -603,6 +650,11 @@ Get storage details of volume group
 ```ruby
 require 'time'
 require 'ibm_cloud_power'
+# setup authorization
+IbmCloudPower.configure do |config|
+  # Configure OAuth2 access token for authorization: OauthSecurity
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
 
 api_instance = IbmCloudPower::PCloudVolumeGroupsApi.new
 cloud_instance_id = 'cloud_instance_id_example' # String | Cloud Instance ID of a PCloud Instance
@@ -648,7 +700,7 @@ end
 
 ### Authorization
 
-No authorization required
+[OauthSecurity](../README.md#OauthSecurity)
 
 ### HTTP request headers
 

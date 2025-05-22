@@ -19,6 +19,11 @@ Get a Tenant's current state/information
 ```ruby
 require 'time'
 require 'ibm_cloud_power'
+# setup authorization
+IbmCloudPower.configure do |config|
+  # Configure OAuth2 access token for authorization: OauthSecurity
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
 
 api_instance = IbmCloudPower::PCloudTenantsApi.new
 tenant_id = 'tenant_id_example' # String | Tenant ID of a pcloud tenant
@@ -62,7 +67,7 @@ end
 
 ### Authorization
 
-No authorization required
+[OauthSecurity](../README.md#OauthSecurity)
 
 ### HTTP request headers
 
@@ -81,6 +86,11 @@ Update a tenant
 ```ruby
 require 'time'
 require 'ibm_cloud_power'
+# setup authorization
+IbmCloudPower.configure do |config|
+  # Configure OAuth2 access token for authorization: OauthSecurity
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
 
 api_instance = IbmCloudPower::PCloudTenantsApi.new
 tenant_id = 'tenant_id_example' # String | Tenant ID of a pcloud tenant
@@ -126,7 +136,7 @@ end
 
 ### Authorization
 
-No authorization required
+[OauthSecurity](../README.md#OauthSecurity)
 
 ### HTTP request headers
 

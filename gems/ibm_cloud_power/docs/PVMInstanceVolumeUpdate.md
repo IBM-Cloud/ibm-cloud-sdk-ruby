@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **delete_on_termination** | **Boolean** | Indicates if the volume should be deleted when the PVMInstance is terminated |  |
+| **delete_on_termination** | **Boolean** | Indicates if the volume should be deleted when the PVMInstance is terminated. |  |
 
 ## Example
 

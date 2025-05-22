@@ -20,6 +20,11 @@ Get the information on an SAP profile
 ```ruby
 require 'time'
 require 'ibm_cloud_power'
+# setup authorization
+IbmCloudPower.configure do |config|
+  # Configure OAuth2 access token for authorization: OauthSecurity
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
 
 api_instance = IbmCloudPower::PCloudSAPApi.new
 cloud_instance_id = 'cloud_instance_id_example' # String | Cloud Instance ID of a PCloud Instance
@@ -65,7 +70,7 @@ end
 
 ### Authorization
 
-No authorization required
+[OauthSecurity](../README.md#OauthSecurity)
 
 ### HTTP request headers
 
@@ -75,7 +80,7 @@ No authorization required
 
 ## pcloud_sap_getall
 
-> <SAPProfiles> pcloud_sap_getall(cloud_instance_id)
+> <SAPProfiles> pcloud_sap_getall(cloud_instance_id, opts)
 
 Get list of SAP profiles
 
@@ -84,13 +89,22 @@ Get list of SAP profiles
 ```ruby
 require 'time'
 require 'ibm_cloud_power'
+# setup authorization
+IbmCloudPower.configure do |config|
+  # Configure OAuth2 access token for authorization: OauthSecurity
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
 
 api_instance = IbmCloudPower::PCloudSAPApi.new
 cloud_instance_id = 'cloud_instance_id_example' # String | Cloud Instance ID of a PCloud Instance
+opts = {
+  profile_prefix: 'bh1', # String | SAP profile prefix to filter by
+  profile_family: 'balanced' # String | SAP profile family to filter by
+}
 
 begin
   # Get list of SAP profiles
-  result = api_instance.pcloud_sap_getall(cloud_instance_id)
+  result = api_instance.pcloud_sap_getall(cloud_instance_id, opts)
   p result
 rescue IbmCloudPower::ApiError => e
   puts "Error when calling PCloudSAPApi->pcloud_sap_getall: #{e}"
@@ -101,12 +115,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<SAPProfiles>, Integer, Hash)> pcloud_sap_getall_with_http_info(cloud_instance_id)
+> <Array(<SAPProfiles>, Integer, Hash)> pcloud_sap_getall_with_http_info(cloud_instance_id, opts)
 
 ```ruby
 begin
   # Get list of SAP profiles
-  data, status_code, headers = api_instance.pcloud_sap_getall_with_http_info(cloud_instance_id)
+  data, status_code, headers = api_instance.pcloud_sap_getall_with_http_info(cloud_instance_id, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <SAPProfiles>
@@ -120,6 +134,8 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **cloud_instance_id** | **String** | Cloud Instance ID of a PCloud Instance |  |
+| **profile_prefix** | **String** | SAP profile prefix to filter by | [optional] |
+| **profile_family** | **String** | SAP profile family to filter by | [optional] |
 
 ### Return type
 
@@ -127,7 +143,7 @@ end
 
 ### Authorization
 
-No authorization required
+[OauthSecurity](../README.md#OauthSecurity)
 
 ### HTTP request headers
 
@@ -146,6 +162,11 @@ Create a new SAP PVM Instance
 ```ruby
 require 'time'
 require 'ibm_cloud_power'
+# setup authorization
+IbmCloudPower.configure do |config|
+  # Configure OAuth2 access token for authorization: OauthSecurity
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
 
 api_instance = IbmCloudPower::PCloudSAPApi.new
 cloud_instance_id = 'cloud_instance_id_example' # String | Cloud Instance ID of a PCloud Instance
@@ -191,7 +212,7 @@ end
 
 ### Authorization
 
-No authorization required
+[OauthSecurity](../README.md#OauthSecurity)
 
 ### HTTP request headers
 

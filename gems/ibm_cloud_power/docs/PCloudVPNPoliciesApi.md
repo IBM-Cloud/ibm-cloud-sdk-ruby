@@ -29,6 +29,11 @@ Delete an IKE Policy (by its unique identifier)
 ```ruby
 require 'time'
 require 'ibm_cloud_power'
+# setup authorization
+IbmCloudPower.configure do |config|
+  # Configure OAuth2 access token for authorization: OauthSecurity
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
 
 api_instance = IbmCloudPower::PCloudVPNPoliciesApi.new
 cloud_instance_id = 'cloud_instance_id_example' # String | Cloud Instance ID of a PCloud Instance
@@ -74,7 +79,7 @@ end
 
 ### Authorization
 
-No authorization required
+[OauthSecurity](../README.md#OauthSecurity)
 
 ### HTTP request headers
 
@@ -95,6 +100,11 @@ Get an IKE Policy (by its unique identifier)
 ```ruby
 require 'time'
 require 'ibm_cloud_power'
+# setup authorization
+IbmCloudPower.configure do |config|
+  # Configure OAuth2 access token for authorization: OauthSecurity
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
 
 api_instance = IbmCloudPower::PCloudVPNPoliciesApi.new
 cloud_instance_id = 'cloud_instance_id_example' # String | Cloud Instance ID of a PCloud Instance
@@ -140,7 +150,7 @@ end
 
 ### Authorization
 
-No authorization required
+[OauthSecurity](../README.md#OauthSecurity)
 
 ### HTTP request headers
 
@@ -161,6 +171,11 @@ List all IKE Policies with all attributes
 ```ruby
 require 'time'
 require 'ibm_cloud_power'
+# setup authorization
+IbmCloudPower.configure do |config|
+  # Configure OAuth2 access token for authorization: OauthSecurity
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
 
 api_instance = IbmCloudPower::PCloudVPNPoliciesApi.new
 cloud_instance_id = 'cloud_instance_id_example' # String | Cloud Instance ID of a PCloud Instance
@@ -204,7 +219,7 @@ end
 
 ### Authorization
 
-No authorization required
+[OauthSecurity](../README.md#OauthSecurity)
 
 ### HTTP request headers
 
@@ -225,6 +240,11 @@ Add a new IKE Policy
 ```ruby
 require 'time'
 require 'ibm_cloud_power'
+# setup authorization
+IbmCloudPower.configure do |config|
+  # Configure OAuth2 access token for authorization: OauthSecurity
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
 
 api_instance = IbmCloudPower::PCloudVPNPoliciesApi.new
 cloud_instance_id = 'cloud_instance_id_example' # String | Cloud Instance ID of a PCloud Instance
@@ -270,7 +290,7 @@ end
 
 ### Authorization
 
-No authorization required
+[OauthSecurity](../README.md#OauthSecurity)
 
 ### HTTP request headers
 
@@ -291,11 +311,16 @@ update an IKE Policy (by its unique identifier)
 ```ruby
 require 'time'
 require 'ibm_cloud_power'
+# setup authorization
+IbmCloudPower.configure do |config|
+  # Configure OAuth2 access token for authorization: OauthSecurity
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
 
 api_instance = IbmCloudPower::PCloudVPNPoliciesApi.new
 cloud_instance_id = 'cloud_instance_id_example' # String | Cloud Instance ID of a PCloud Instance
 ike_policy_id = 'ike_policy_id_example' # String | ID of a IKE Policy
-body = { key: 3.56} # Hash<String, Object> | Parameters for updating IKE Policy
+body = IbmCloudPower::IKEPolicyUpdate.new # IKEPolicyUpdate | Parameters for updating IKE Policy
 
 begin
   # Update IKE Policy
@@ -330,7 +355,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **cloud_instance_id** | **String** | Cloud Instance ID of a PCloud Instance |  |
 | **ike_policy_id** | **String** | ID of a IKE Policy |  |
-| **body** | [**Hash&lt;String, Object&gt;**](Object.md) | Parameters for updating IKE Policy |  |
+| **body** | [**IKEPolicyUpdate**](IKEPolicyUpdate.md) | Parameters for updating IKE Policy |  |
 
 ### Return type
 
@@ -338,7 +363,7 @@ end
 
 ### Authorization
 
-No authorization required
+[OauthSecurity](../README.md#OauthSecurity)
 
 ### HTTP request headers
 
@@ -359,6 +384,11 @@ Delete an IPSec Policy (by its unique identifier)
 ```ruby
 require 'time'
 require 'ibm_cloud_power'
+# setup authorization
+IbmCloudPower.configure do |config|
+  # Configure OAuth2 access token for authorization: OauthSecurity
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
 
 api_instance = IbmCloudPower::PCloudVPNPoliciesApi.new
 cloud_instance_id = 'cloud_instance_id_example' # String | Cloud Instance ID of a PCloud Instance
@@ -404,7 +434,7 @@ end
 
 ### Authorization
 
-No authorization required
+[OauthSecurity](../README.md#OauthSecurity)
 
 ### HTTP request headers
 
@@ -425,6 +455,11 @@ Get an IPSec Policy (by its unique identifier)
 ```ruby
 require 'time'
 require 'ibm_cloud_power'
+# setup authorization
+IbmCloudPower.configure do |config|
+  # Configure OAuth2 access token for authorization: OauthSecurity
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
 
 api_instance = IbmCloudPower::PCloudVPNPoliciesApi.new
 cloud_instance_id = 'cloud_instance_id_example' # String | Cloud Instance ID of a PCloud Instance
@@ -470,7 +505,7 @@ end
 
 ### Authorization
 
-No authorization required
+[OauthSecurity](../README.md#OauthSecurity)
 
 ### HTTP request headers
 
@@ -491,6 +526,11 @@ Get all IPSec Policies with all their attributes
 ```ruby
 require 'time'
 require 'ibm_cloud_power'
+# setup authorization
+IbmCloudPower.configure do |config|
+  # Configure OAuth2 access token for authorization: OauthSecurity
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
 
 api_instance = IbmCloudPower::PCloudVPNPoliciesApi.new
 cloud_instance_id = 'cloud_instance_id_example' # String | Cloud Instance ID of a PCloud Instance
@@ -534,7 +574,7 @@ end
 
 ### Authorization
 
-No authorization required
+[OauthSecurity](../README.md#OauthSecurity)
 
 ### HTTP request headers
 
@@ -555,6 +595,11 @@ Add a new IPSec Policy
 ```ruby
 require 'time'
 require 'ibm_cloud_power'
+# setup authorization
+IbmCloudPower.configure do |config|
+  # Configure OAuth2 access token for authorization: OauthSecurity
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
 
 api_instance = IbmCloudPower::PCloudVPNPoliciesApi.new
 cloud_instance_id = 'cloud_instance_id_example' # String | Cloud Instance ID of a PCloud Instance
@@ -600,7 +645,7 @@ end
 
 ### Authorization
 
-No authorization required
+[OauthSecurity](../README.md#OauthSecurity)
 
 ### HTTP request headers
 
@@ -621,11 +666,16 @@ update an IPSec Policy
 ```ruby
 require 'time'
 require 'ibm_cloud_power'
+# setup authorization
+IbmCloudPower.configure do |config|
+  # Configure OAuth2 access token for authorization: OauthSecurity
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
 
 api_instance = IbmCloudPower::PCloudVPNPoliciesApi.new
 cloud_instance_id = 'cloud_instance_id_example' # String | Cloud Instance ID of a PCloud Instance
 ipsec_policy_id = 'ipsec_policy_id_example' # String | ID of a IPSec Policy
-body = { key: 3.56} # Hash<String, Object> | Parameters for the update of an IPSec Policy
+body = IbmCloudPower::IPSecPolicyUpdate.new # IPSecPolicyUpdate | Parameters for the update of an IPSec Policy
 
 begin
   # Update IPSec Policy
@@ -660,7 +710,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **cloud_instance_id** | **String** | Cloud Instance ID of a PCloud Instance |  |
 | **ipsec_policy_id** | **String** | ID of a IPSec Policy |  |
-| **body** | [**Hash&lt;String, Object&gt;**](Object.md) | Parameters for the update of an IPSec Policy |  |
+| **body** | [**IPSecPolicyUpdate**](IPSecPolicyUpdate.md) | Parameters for the update of an IPSec Policy |  |
 
 ### Return type
 
@@ -668,7 +718,7 @@ end
 
 ### Authorization
 
-No authorization required
+[OauthSecurity](../README.md#OauthSecurity)
 
 ### HTTP request headers
 

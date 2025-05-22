@@ -7,8 +7,8 @@ All URIs are relative to *http://localhost*
 | [**pcloud_cloudconnections_delete**](PCloudCloudConnectionsApi.md#pcloud_cloudconnections_delete) | **DELETE** /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections/{cloud_connection_id} | Delete a Cloud Connection |
 | [**pcloud_cloudconnections_get**](PCloudCloudConnectionsApi.md#pcloud_cloudconnections_get) | **GET** /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections/{cloud_connection_id} | Get a cloud connection&#39;s state/information |
 | [**pcloud_cloudconnections_getall**](PCloudCloudConnectionsApi.md#pcloud_cloudconnections_getall) | **GET** /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections | Get all cloud connections in this cloud instance |
-| [**pcloud_cloudconnections_networks_delete**](PCloudCloudConnectionsApi.md#pcloud_cloudconnections_networks_delete) | **DELETE** /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections/{cloud_connection_id}/networks/{network_id} | Delete a network from a Cloud Connection |
-| [**pcloud_cloudconnections_networks_put**](PCloudCloudConnectionsApi.md#pcloud_cloudconnections_networks_put) | **PUT** /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections/{cloud_connection_id}/networks/{network_id} | Add a network to the cloud connection |
+| [**pcloud_cloudconnections_networks_delete**](PCloudCloudConnectionsApi.md#pcloud_cloudconnections_networks_delete) | **DELETE** /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections/{cloud_connection_id}/networks/{network_id} | Detach a network from a Cloud Connection |
+| [**pcloud_cloudconnections_networks_put**](PCloudCloudConnectionsApi.md#pcloud_cloudconnections_networks_put) | **PUT** /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections/{cloud_connection_id}/networks/{network_id} | Attach a network to the cloud connection |
 | [**pcloud_cloudconnections_post**](PCloudCloudConnectionsApi.md#pcloud_cloudconnections_post) | **POST** /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections | Create a new cloud connection |
 | [**pcloud_cloudconnections_put**](PCloudCloudConnectionsApi.md#pcloud_cloudconnections_put) | **PUT** /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections/{cloud_connection_id} | Update a Cloud Connection |
 | [**pcloud_cloudconnections_virtualprivateclouds_getall**](PCloudCloudConnectionsApi.md#pcloud_cloudconnections_virtualprivateclouds_getall) | **GET** /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections-virtual-private-clouds | Get all virtual private cloud connections in this cloud instance |
@@ -25,6 +25,11 @@ Delete a Cloud Connection
 ```ruby
 require 'time'
 require 'ibm_cloud_power'
+# setup authorization
+IbmCloudPower.configure do |config|
+  # Configure OAuth2 access token for authorization: OauthSecurity
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
 
 api_instance = IbmCloudPower::PCloudCloudConnectionsApi.new
 cloud_instance_id = 'cloud_instance_id_example' # String | Cloud Instance ID of a PCloud Instance
@@ -70,12 +75,12 @@ end
 
 ### Authorization
 
-No authorization required
+[OauthSecurity](../README.md#OauthSecurity)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: */*
+- **Accept**: application/json
 
 
 ## pcloud_cloudconnections_get
@@ -89,6 +94,11 @@ Get a cloud connection's state/information
 ```ruby
 require 'time'
 require 'ibm_cloud_power'
+# setup authorization
+IbmCloudPower.configure do |config|
+  # Configure OAuth2 access token for authorization: OauthSecurity
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
 
 api_instance = IbmCloudPower::PCloudCloudConnectionsApi.new
 cloud_instance_id = 'cloud_instance_id_example' # String | Cloud Instance ID of a PCloud Instance
@@ -134,7 +144,7 @@ end
 
 ### Authorization
 
-No authorization required
+[OauthSecurity](../README.md#OauthSecurity)
 
 ### HTTP request headers
 
@@ -153,6 +163,11 @@ Get all cloud connections in this cloud instance
 ```ruby
 require 'time'
 require 'ibm_cloud_power'
+# setup authorization
+IbmCloudPower.configure do |config|
+  # Configure OAuth2 access token for authorization: OauthSecurity
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
 
 api_instance = IbmCloudPower::PCloudCloudConnectionsApi.new
 cloud_instance_id = 'cloud_instance_id_example' # String | Cloud Instance ID of a PCloud Instance
@@ -196,7 +211,7 @@ end
 
 ### Authorization
 
-No authorization required
+[OauthSecurity](../README.md#OauthSecurity)
 
 ### HTTP request headers
 
@@ -208,13 +223,18 @@ No authorization required
 
 > Object pcloud_cloudconnections_networks_delete(cloud_instance_id, cloud_connection_id, network_id)
 
-Delete a network from a Cloud Connection
+Detach a network from a Cloud Connection
 
 ### Examples
 
 ```ruby
 require 'time'
 require 'ibm_cloud_power'
+# setup authorization
+IbmCloudPower.configure do |config|
+  # Configure OAuth2 access token for authorization: OauthSecurity
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
 
 api_instance = IbmCloudPower::PCloudCloudConnectionsApi.new
 cloud_instance_id = 'cloud_instance_id_example' # String | Cloud Instance ID of a PCloud Instance
@@ -222,7 +242,7 @@ cloud_connection_id = 'cloud_connection_id_example' # String | Cloud Connection 
 network_id = 'network_id_example' # String | Network ID
 
 begin
-  # Delete a network from a Cloud Connection
+  # Detach a network from a Cloud Connection
   result = api_instance.pcloud_cloudconnections_networks_delete(cloud_instance_id, cloud_connection_id, network_id)
   p result
 rescue IbmCloudPower::ApiError => e
@@ -238,7 +258,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Delete a network from a Cloud Connection
+  # Detach a network from a Cloud Connection
   data, status_code, headers = api_instance.pcloud_cloudconnections_networks_delete_with_http_info(cloud_instance_id, cloud_connection_id, network_id)
   p status_code # => 2xx
   p headers # => { ... }
@@ -262,25 +282,30 @@ end
 
 ### Authorization
 
-No authorization required
+[OauthSecurity](../README.md#OauthSecurity)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: */*
+- **Accept**: application/json
 
 
 ## pcloud_cloudconnections_networks_put
 
 > Object pcloud_cloudconnections_networks_put(cloud_instance_id, cloud_connection_id, network_id)
 
-Add a network to the cloud connection
+Attach a network to the cloud connection
 
 ### Examples
 
 ```ruby
 require 'time'
 require 'ibm_cloud_power'
+# setup authorization
+IbmCloudPower.configure do |config|
+  # Configure OAuth2 access token for authorization: OauthSecurity
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
 
 api_instance = IbmCloudPower::PCloudCloudConnectionsApi.new
 cloud_instance_id = 'cloud_instance_id_example' # String | Cloud Instance ID of a PCloud Instance
@@ -288,7 +313,7 @@ cloud_connection_id = 'cloud_connection_id_example' # String | Cloud Connection 
 network_id = 'network_id_example' # String | Network ID
 
 begin
-  # Add a network to the cloud connection
+  # Attach a network to the cloud connection
   result = api_instance.pcloud_cloudconnections_networks_put(cloud_instance_id, cloud_connection_id, network_id)
   p result
 rescue IbmCloudPower::ApiError => e
@@ -304,7 +329,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Add a network to the cloud connection
+  # Attach a network to the cloud connection
   data, status_code, headers = api_instance.pcloud_cloudconnections_networks_put_with_http_info(cloud_instance_id, cloud_connection_id, network_id)
   p status_code # => 2xx
   p headers # => { ... }
@@ -328,7 +353,7 @@ end
 
 ### Authorization
 
-No authorization required
+[OauthSecurity](../README.md#OauthSecurity)
 
 ### HTTP request headers
 
@@ -347,6 +372,11 @@ Create a new cloud connection
 ```ruby
 require 'time'
 require 'ibm_cloud_power'
+# setup authorization
+IbmCloudPower.configure do |config|
+  # Configure OAuth2 access token for authorization: OauthSecurity
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
 
 api_instance = IbmCloudPower::PCloudCloudConnectionsApi.new
 cloud_instance_id = 'cloud_instance_id_example' # String | Cloud Instance ID of a PCloud Instance
@@ -392,7 +422,7 @@ end
 
 ### Authorization
 
-No authorization required
+[OauthSecurity](../README.md#OauthSecurity)
 
 ### HTTP request headers
 
@@ -411,6 +441,11 @@ Update a Cloud Connection
 ```ruby
 require 'time'
 require 'ibm_cloud_power'
+# setup authorization
+IbmCloudPower.configure do |config|
+  # Configure OAuth2 access token for authorization: OauthSecurity
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
 
 api_instance = IbmCloudPower::PCloudCloudConnectionsApi.new
 cloud_instance_id = 'cloud_instance_id_example' # String | Cloud Instance ID of a PCloud Instance
@@ -458,7 +493,7 @@ end
 
 ### Authorization
 
-No authorization required
+[OauthSecurity](../README.md#OauthSecurity)
 
 ### HTTP request headers
 
@@ -477,6 +512,11 @@ Get all virtual private cloud connections in this cloud instance
 ```ruby
 require 'time'
 require 'ibm_cloud_power'
+# setup authorization
+IbmCloudPower.configure do |config|
+  # Configure OAuth2 access token for authorization: OauthSecurity
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
 
 api_instance = IbmCloudPower::PCloudCloudConnectionsApi.new
 cloud_instance_id = 'cloud_instance_id_example' # String | Cloud Instance ID of a PCloud Instance
@@ -520,7 +560,7 @@ end
 
 ### Authorization
 
-No authorization required
+[OauthSecurity](../README.md#OauthSecurity)
 
 ### HTTP request headers
 

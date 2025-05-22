@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **action** | **String** | Name of the action to take; can be start, stop, hard-reboot, soft-reboot, immediate-shutdown, reset-state |  |
+| **action** | **String** | Name of the action to take; can be start, stop, hard-reboot, soft-reboot, immediate-shutdown, reset-state, dhcp-ip-sync (on-prem only) |  |
 
 ## Example
 

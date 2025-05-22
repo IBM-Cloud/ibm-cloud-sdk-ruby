@@ -12,7 +12,8 @@
 | **percent_complete** | **Integer** | Snapshot completion percentage | [optional] |
 | **pvm_instance_id** | **String** | PCloud PVM Instance ID |  |
 | **snapshot_id** | **String** | ID of the PVM instance snapshot |  |
-| **status** | **String** | Status of the PVM instancesnapshot | [optional] |
+| **status** | **String** | Status of the PVM instance snapshot | [optional] |
+| **status_detail** | **String** | Detailed information for the last PVM instance snapshot action | [optional] |
 | **volume_snapshots** | **Hash&lt;String, String&gt;** | A map of volume snapshots included in the PVM instance snapshot |  |
 
 ## Example
@@ -30,6 +31,7 @@ instance = IbmCloudPower::Snapshot.new(
   pvm_instance_id: null,
   snapshot_id: null,
   status: null,
+  status_detail: null,
   volume_snapshots: null
 )
 ```

@@ -34,7 +34,7 @@ instance = IbmCloudPower::VPNConnectionCreateResponse.new(
   name: VPN-Connection-1,
   network_ids: null,
   peer_gateway_address: 192.168.1.1,
-  peer_subnets: [&quot;128.170.1.0/20&quot;,&quot;128.169.1.0/24&quot;,&quot;128.168.1.0/27&quot;,&quot;128.170.1.0/32&quot;],
+  peer_subnets: [128.170.1.0/20, 128.169.1.0/24, 128.168.1.0/27, 128.170.1.0/32],
   status: null,
   vpn_gateway_address: 192.168.204.1
 )

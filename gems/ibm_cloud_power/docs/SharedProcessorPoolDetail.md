@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **servers** | [**Array&lt;SharedProcessorPoolServer&gt;**](SharedProcessorPoolServer.md) | list of servers deployed in the Shared Processor Pool |  |
-| **shared_processor_pool** | [**SharedProcessorPool**](SharedProcessorPool.md) |  |  |
+| **shared_processor_pool** | [**SharedProcessorPoolDetailSharedProcessorPool**](SharedProcessorPoolDetailSharedProcessorPool.md) |  |  |
 
 ## Example
 

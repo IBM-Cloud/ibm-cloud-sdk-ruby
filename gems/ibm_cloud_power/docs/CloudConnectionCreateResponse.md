@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **job_ref** | [**JobReference**](JobReference.md) |  | [optional] |
-| **classic** | [**CloudConnectionEndpointClassic**](CloudConnectionEndpointClassic.md) |  | [optional] |
+| **classic** | [**CloudConnectionClassic**](CloudConnectionClassic.md) |  | [optional] |
 | **cloud_connection_id** | **String** | cloud connection ID |  |
 | **connection_mode** | **String** | type of service the gateway is attached to | [optional] |
 | **creation_date** | **Time** | creation date |  |
@@ -18,7 +18,7 @@
 | **port** | **String** | port |  |
 | **speed** | **Integer** | speed of the cloud connection (speed in megabits per second) |  |
 | **user_ip_address** | **String** | user IP address |  |
-| **vpc** | [**CloudConnectionEndpointVPC**](CloudConnectionEndpointVPC.md) |  | [optional] |
+| **vpc** | [**CloudConnectionVpc**](CloudConnectionVpc.md) |  | [optional] |
 
 ## Example
 

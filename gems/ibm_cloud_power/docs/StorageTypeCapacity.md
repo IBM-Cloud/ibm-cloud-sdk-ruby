@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **maximum_storage_allocation** | [**MaximumStorageAllocation**](MaximumStorageAllocation.md) |  | [optional] |
+| **maximum_storage_allocation** | [**StoragePoolsCapacityMaximumStorageAllocation**](StoragePoolsCapacityMaximumStorageAllocation.md) |  | [optional] |
 | **storage_pools_capacity** | [**Array&lt;StoragePoolCapacity&gt;**](StoragePoolCapacity.md) | List of storage pool capacity for storage type | [optional] |
 | **storage_type** | **String** | Storage type | [optional] |
 

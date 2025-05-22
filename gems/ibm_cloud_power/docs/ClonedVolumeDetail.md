@@ -4,8 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **clone** | [**VolumeInfo**](VolumeInfo.md) |  |  |
-| **source** | [**VolumeInfo**](VolumeInfo.md) |  |  |
+| **clone** | [**ClonedVolumeDetailClone**](ClonedVolumeDetailClone.md) |  |  |
+| **source** | [**ClonedVolumeDetailClone**](ClonedVolumeDetailClone.md) |  |  |
 
 ## Example
 
