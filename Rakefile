@@ -15,7 +15,7 @@ namespace :openapi do
   }
 
   task :download_cli, [:version] do |_t, args|
-    version = args[:version] || "5.0.0-beta2"
+    version = args[:version] || "5.4.0"
 
     output_file    = "openapi-generator-cli-#{version}.jar"
     target_symlink = "openapi-generator-cli"
