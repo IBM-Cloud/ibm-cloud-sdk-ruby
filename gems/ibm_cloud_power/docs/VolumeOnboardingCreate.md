@@ -6,6 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **volumes** | [**Array&lt;AuxiliaryVolumesForOnboarding&gt;**](AuxiliaryVolumesForOnboarding.md) |  |  |
 | **description** | **String** | Description of the volume onboarding operation | [optional] |
+| **user_tags** | **Array** |  | [optional] |
 
 ## Example
 
@@ -14,7 +15,8 @@ require 'ibm_cloud_power'
 
 instance = IbmCloudPower::VolumeOnboardingCreate.new(
   volumes: null,
-  description: null
+  description: null,
+  user_tags: null
 )
 ```
 

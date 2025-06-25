@@ -5,6 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **capacity** | [**System**](System.md) |  | [optional] |
+| **core_increment** | **Float** | Core allocation increment | [optional] |
 | **core_memory_ratio** | **Float** | Processor to Memory (GB) Ratio | [optional] |
 | **max_available** | [**System**](System.md) |  | [optional] |
 | **max_cores_available** | [**System**](System.md) |  | [optional] |
@@ -20,6 +21,7 @@ require 'ibm_cloud_power'
 
 instance = IbmCloudPower::SystemPool.new(
   capacity: null,
+  core_increment: null,
   core_memory_ratio: null,
   max_available: null,
   max_cores_available: null,

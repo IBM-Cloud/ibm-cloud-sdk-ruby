@@ -11,8 +11,8 @@ All URIs are relative to *http://localhost*
 | [**pcloud_cloudinstances_images_post**](PCloudImagesApi.md#pcloud_cloudinstances_images_post) | **POST** /pcloud/v1/cloud-instances/{cloud_instance_id}/images | Create a new Image (from available images) |
 | [**pcloud_cloudinstances_stockimages_get**](PCloudImagesApi.md#pcloud_cloudinstances_stockimages_get) | **GET** /pcloud/v1/cloud-instances/{cloud_instance_id}/stock-images/{image_id} | Detailed info of an available stock image |
 | [**pcloud_cloudinstances_stockimages_getall**](PCloudImagesApi.md#pcloud_cloudinstances_stockimages_getall) | **GET** /pcloud/v1/cloud-instances/{cloud_instance_id}/stock-images | List all available stock images |
-| [**pcloud_images_get**](PCloudImagesApi.md#pcloud_images_get) | **GET** /pcloud/v1/images/{image_id} | Deprecated for /pcloud/v1/cloud-instances/{cloud_instance_id}/stock-images/{image_id} - Detailed info of an available stock image |
-| [**pcloud_images_getall**](PCloudImagesApi.md#pcloud_images_getall) | **GET** /pcloud/v1/images | Deprecated for /pcloud/v1/cloud-instances/{cloud_instance_id}/stock-images - List all available stock images |
+| [**pcloud_images_get**](PCloudImagesApi.md#pcloud_images_get) | **GET** /pcloud/v1/images/{image_id} | Detailed info of an image in the image-catalog |
+| [**pcloud_images_getall**](PCloudImagesApi.md#pcloud_images_getall) | **GET** /pcloud/v1/images | List all the images in the image-catalog |
 | [**pcloud_v1_cloudinstances_cosimages_get**](PCloudImagesApi.md#pcloud_v1_cloudinstances_cosimages_get) | **GET** /pcloud/v1/cloud-instances/{cloud_instance_id}/cos-images | Get detail of last cos-image import job |
 | [**pcloud_v1_cloudinstances_cosimages_post**](PCloudImagesApi.md#pcloud_v1_cloudinstances_cosimages_post) | **POST** /pcloud/v1/cloud-instances/{cloud_instance_id}/cos-images | Create an cos-image import job |
 | [**pcloud_v2_images_export_get**](PCloudImagesApi.md#pcloud_v2_images_export_get) | **GET** /pcloud/v2/cloud-instances/{cloud_instance_id}/images/{image_id}/export | Get detail of last image export job |
@@ -80,7 +80,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: */*
+- **Accept**: application/json
 
 
 ## pcloud_cloudinstances_images_export_post
@@ -88,6 +88,8 @@ No authorization required
 > Object pcloud_cloudinstances_images_export_post(cloud_instance_id, image_id, body)
 
 Export an image
+
+This API is deprecated for /pcloud/v2/cloud-instances/{cloud_instance_id}/images/{image_id}/export.  >*Note*: Support for this API is available till Oct 2022. 
 
 ### Examples
 
@@ -475,7 +477,9 @@ No authorization required
 
 > <Image> pcloud_images_get(image_id)
 
-Deprecated for /pcloud/v1/cloud-instances/{cloud_instance_id}/stock-images/{image_id} - Detailed info of an available stock image
+Detailed info of an image in the image-catalog
+
+This API is deprecated for /pcloud/v1/cloud-instances/{cloud_instance_id}/stock-images/{image_id}.  >*Note*: Support for this API will be available till 31st March 2023. 
 
 ### Examples
 
@@ -487,7 +491,7 @@ api_instance = IbmCloudPower::PCloudImagesApi.new
 image_id = 'image_id_example' # String | Image ID of a image
 
 begin
-  # Deprecated for /pcloud/v1/cloud-instances/{cloud_instance_id}/stock-images/{image_id} - Detailed info of an available stock image
+  # Detailed info of an image in the image-catalog
   result = api_instance.pcloud_images_get(image_id)
   p result
 rescue IbmCloudPower::ApiError => e
@@ -503,7 +507,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Deprecated for /pcloud/v1/cloud-instances/{cloud_instance_id}/stock-images/{image_id} - Detailed info of an available stock image
+  # Detailed info of an image in the image-catalog
   data, status_code, headers = api_instance.pcloud_images_get_with_http_info(image_id)
   p status_code # => 2xx
   p headers # => { ... }
@@ -537,7 +541,9 @@ No authorization required
 
 > <Images> pcloud_images_getall(opts)
 
-Deprecated for /pcloud/v1/cloud-instances/{cloud_instance_id}/stock-images - List all available stock images
+List all the images in the image-catalog
+
+This API is deprecated for /pcloud/v1/cloud-instances/{cloud_instance_id}/stock-images.  >*Note*: Support for this API will be available till 31st March 2023. 
 
 ### Examples
 
@@ -552,7 +558,7 @@ opts = {
 }
 
 begin
-  # Deprecated for /pcloud/v1/cloud-instances/{cloud_instance_id}/stock-images - List all available stock images
+  # List all the images in the image-catalog
   result = api_instance.pcloud_images_getall(opts)
   p result
 rescue IbmCloudPower::ApiError => e
@@ -568,7 +574,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Deprecated for /pcloud/v1/cloud-instances/{cloud_instance_id}/stock-images - List all available stock images
+  # List all the images in the image-catalog
   data, status_code, headers = api_instance.pcloud_images_getall_with_http_info(opts)
   p status_code # => 2xx
   p headers # => { ... }

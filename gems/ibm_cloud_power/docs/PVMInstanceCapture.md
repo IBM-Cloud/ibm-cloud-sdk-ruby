@@ -11,6 +11,7 @@
 | **cloud_storage_image_path** | **String** | Cloud Storage Image Path (bucket-name [/folder/../..]) | [optional] |
 | **cloud_storage_region** | **String** | Cloud Storage Region | [optional] |
 | **cloud_storage_secret_key** | **String** | Cloud Storage Secret key | [optional] |
+| **user_tags** | **Array** |  | [optional] |
 
 ## Example
 
@@ -24,7 +25,8 @@ instance = IbmCloudPower::PVMInstanceCapture.new(
   cloud_storage_access_key: null,
   cloud_storage_image_path: null,
   cloud_storage_region: null,
-  cloud_storage_secret_key: null
+  cloud_storage_secret_key: null,
+  user_tags: null
 )
 ```
 

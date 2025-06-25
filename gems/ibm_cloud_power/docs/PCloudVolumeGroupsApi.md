@@ -4,7 +4,7 @@ All URIs are relative to *http://localhost*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
-| [**pcloud_volumegroups_action_post**](PCloudVolumeGroupsApi.md#pcloud_volumegroups_action_post) | **POST** /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups/{volume_group_id}/action | Perform an action (start stop reset ) on a volume group |
+| [**pcloud_volumegroups_action_post**](PCloudVolumeGroupsApi.md#pcloud_volumegroups_action_post) | **POST** /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups/{volume_group_id}/action | Perform an action on a volume group |
 | [**pcloud_volumegroups_delete**](PCloudVolumeGroupsApi.md#pcloud_volumegroups_delete) | **DELETE** /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups/{volume_group_id} | Delete a cloud instance volume group |
 | [**pcloud_volumegroups_get**](PCloudVolumeGroupsApi.md#pcloud_volumegroups_get) | **GET** /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups/{volume_group_id} | Get volume Group |
 | [**pcloud_volumegroups_get_details**](PCloudVolumeGroupsApi.md#pcloud_volumegroups_get_details) | **GET** /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups/{volume_group_id}/details | Get volume Group details |
@@ -20,7 +20,9 @@ All URIs are relative to *http://localhost*
 
 > Object pcloud_volumegroups_action_post(cloud_instance_id, volume_group_id, body)
 
-Perform an action (start stop reset ) on a volume group
+Perform an action on a volume group
+
+Corresponding actions are 'start', 'stop', 'reset'
 
 ### Examples
 
@@ -34,7 +36,7 @@ volume_group_id = 'volume_group_id_example' # String | The ID of the volume grou
 body = { key: 3.56} # Hash<String, Object> | Parameters for the desire action.
 
 begin
-  # Perform an action (start stop reset ) on a volume group
+  # Perform an action on a volume group
   result = api_instance.pcloud_volumegroups_action_post(cloud_instance_id, volume_group_id, body)
   p result
 rescue IbmCloudPower::ApiError => e
@@ -50,7 +52,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Perform an action (start stop reset ) on a volume group
+  # Perform an action on a volume group
   data, status_code, headers = api_instance.pcloud_volumegroups_action_post_with_http_info(cloud_instance_id, volume_group_id, body)
   p status_code # => 2xx
   p headers # => { ... }
@@ -143,7 +145,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: */*
+- **Accept**: application/json
 
 
 ## pcloud_volumegroups_get

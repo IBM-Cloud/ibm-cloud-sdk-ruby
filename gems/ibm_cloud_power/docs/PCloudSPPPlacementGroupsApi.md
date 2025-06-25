@@ -73,7 +73,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: */*
+- **Accept**: application/json
 
 
 ## pcloud_sppplacementgroups_get
@@ -265,7 +265,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: */*, application/json
+- **Accept**: application/json
 
 
 ## pcloud_sppplacementgroups_members_post

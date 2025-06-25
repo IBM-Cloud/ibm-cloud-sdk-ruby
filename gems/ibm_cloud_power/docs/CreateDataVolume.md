@@ -9,12 +9,13 @@
 | **affinity_volume** | **String** | Volume (ID or Name) to base volume affinity policy against; required if requesting affinity and affinityPVMInstance is not provided | [optional] |
 | **anti_affinity_pvm_instances** | **Array&lt;String&gt;** | List of pvmInstances to base volume anti-affinity policy against; required if requesting anti-affinity and antiAffinityVolumes is not provided | [optional] |
 | **anti_affinity_volumes** | **Array&lt;String&gt;** | List of volumes to base volume anti-affinity policy against; required if requesting anti-affinity and antiAffinityPVMInstances is not provided | [optional] |
-| **disk_type** | **String** | Type of Disk, required if affinityPolicy and volumePool not provided, otherwise ignored | [optional] |
+| **disk_type** | **String** | Type of Disk; if diskType is not provided the disk type will default to &#39;tier3&#39;. | [optional] |
 | **name** | **String** | Volume Name |  |
 | **replication_enabled** | **Boolean** | Indicates if the volume should be replication enabled or not | [optional] |
 | **shareable** | **Boolean** | Indicates if the volume is shareable between VMs | [optional] |
 | **size** | **Float** | Volume Size (GB) |  |
-| **volume_pool** | **String** | Volume pool where the volume will be created; if provided then diskType and affinityPolicy values will be ignored | [optional] |
+| **user_tags** | **Array** |  | [optional] |
+| **volume_pool** | **String** | Volume pool where the volume will be created; if provided then affinityPolicy value will be ignored | [optional] |
 
 ## Example
 
@@ -32,6 +33,7 @@ instance = IbmCloudPower::CreateDataVolume.new(
   replication_enabled: null,
   shareable: null,
   size: null,
+  user_tags: null,
   volume_pool: null
 )
 ```

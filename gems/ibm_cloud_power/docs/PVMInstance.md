@@ -7,6 +7,8 @@
 | **addresses** | [**Array&lt;PVMInstanceNetwork&gt;**](PVMInstanceNetwork.md) | (deprecated - replaced by networks) The list of addresses and their network information | [optional] |
 | **console_language** | [**ConsoleLanguage**](ConsoleLanguage.md) |  | [optional] |
 | **creation_date** | **Time** | Date/Time of PVM creation | [optional] |
+| **crn** | **String** |  | [optional] |
+| **dedicated_host_id** | **String** | ID of the dedicated host where the PVM Instance is running, if applicable | [optional] |
 | **deployment_type** | **String** | The custom deployment type | [optional] |
 | **disk_size** | **Float** | Size of allocated disk (in GB) |  |
 | **fault** | [**PVMInstanceFault**](PVMInstanceFault.md) |  | [optional] |
@@ -37,12 +39,16 @@
 | **software_licenses** | [**SoftwareLicenses**](SoftwareLicenses.md) |  | [optional] |
 | **srcs** | **Array&lt;Array&lt;SRC&gt;&gt;** | The pvm instance SRC lists | [optional] |
 | **status** | **String** | The status of the instance |  |
+| **storage_connection** | **String** | The storage connection type | [optional] |
 | **storage_pool** | **String** | Storage Pool where server is deployed | [optional] |
 | **storage_pool_affinity** | **Boolean** | Indicates if all volumes attached to the server must reside in the same storage pool; Defaults to true when initially deploying a PVMInstance | [optional][default to true] |
 | **storage_type** | **String** | Storage type where server is deployed |  |
 | **sys_type** | **String** | System type used to host the instance | [optional] |
+| **task_state** | **String** | Represents the task state of a virtual machine (VM). | [optional] |
 | **updated_date** | **Time** | Date/Time of PVM last update | [optional] |
+| **user_tags** | **Array** |  | [optional] |
 | **virtual_cores** | [**VirtualCores**](VirtualCores.md) |  | [optional] |
+| **virtual_serial_number** | [**GetServerVirtualSerialNumber**](GetServerVirtualSerialNumber.md) |  | [optional] |
 | **volume_ids** | **Array&lt;String&gt;** | List of volume IDs |  |
 
 ## Example
@@ -54,6 +60,8 @@ instance = IbmCloudPower::PVMInstance.new(
   addresses: null,
   console_language: null,
   creation_date: null,
+  crn: null,
+  dedicated_host_id: null,
   deployment_type: null,
   disk_size: null,
   fault: null,
@@ -84,12 +92,16 @@ instance = IbmCloudPower::PVMInstance.new(
   software_licenses: null,
   srcs: null,
   status: null,
+  storage_connection: null,
   storage_pool: null,
   storage_pool_affinity: null,
   storage_type: null,
   sys_type: null,
+  task_state: null,
   updated_date: null,
+  user_tags: null,
   virtual_cores: null,
+  virtual_serial_number: null,
   volume_ids: null
 )
 ```

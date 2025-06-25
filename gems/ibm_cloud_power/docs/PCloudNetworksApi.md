@@ -77,7 +77,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: */*
+- **Accept**: application/json
 
 
 ## pcloud_networks_get
@@ -216,6 +216,8 @@ No authorization required
 
 Delete a Network Port
 
+This API is deprecated for /v1/networks/{network_id}/network-interfaces/{network_interface_id}. 
+
 ### Examples
 
 ```ruby
@@ -282,6 +284,8 @@ No authorization required
 
 Get a port's information
 
+This API is deprecated for /v1/networks/{network_id}/network-interfaces/{network_interface_id}. 
+
 ### Examples
 
 ```ruby
@@ -339,7 +343,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, applicaton/json
+- **Accept**: application/json
 
 
 ## pcloud_networks_ports_getall
@@ -347,6 +351,8 @@ No authorization required
 > <NetworkPorts> pcloud_networks_ports_getall(cloud_instance_id, network_id)
 
 Get all ports for this network
+
+This API is deprecated for /v1/networks/{network_id}/network-interfaces. 
 
 ### Examples
 
@@ -411,6 +417,8 @@ No authorization required
 > <NetworkPort> pcloud_networks_ports_post(cloud_instance_id, network_id, opts)
 
 Perform port addition, deletion, and listing
+
+This API is deprecated for /v1/networks/{network_id}/network-interfaces. 
 
 ### Examples
 
@@ -479,6 +487,8 @@ No authorization required
 > <NetworkPort> pcloud_networks_ports_put(cloud_instance_id, network_id, port_id, body)
 
 Update a port's information
+
+This API is deprecated for /v1/networks/{network_id}/network-interfaces/{network_interface_id}. 
 
 ### Examples
 

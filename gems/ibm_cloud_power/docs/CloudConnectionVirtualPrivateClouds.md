@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **virtual_private_clouds** | [**Array&lt;CloudConnectionVirtualPrivateCloudsVirtualPrivateCloudsInner&gt;**](CloudConnectionVirtualPrivateCloudsVirtualPrivateCloudsInner.md) | list of available virtual private clouds |  |
+| **virtual_private_clouds** | [**Array&lt;CloudConnectionVirtualPrivateCloudsVirtualPrivateClouds&gt;**](CloudConnectionVirtualPrivateCloudsVirtualPrivateClouds.md) | list of available virtual private clouds |  |
 
 ## Example
 

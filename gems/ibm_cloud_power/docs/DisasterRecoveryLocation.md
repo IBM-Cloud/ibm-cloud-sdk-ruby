@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **location** | **String** | regionZone of a site | [optional] |
-| **replication_sites** | [**Array&lt;Site&gt;**](Site.md) | list of Replication Sites | [optional] |
+| **replication_sites** | **Array** |  | [optional] |
 
 ## Example
 
