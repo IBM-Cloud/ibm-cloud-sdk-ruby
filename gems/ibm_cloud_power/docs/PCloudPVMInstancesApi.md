@@ -4,12 +4,11 @@ All URIs are relative to *http://localhost*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
-| [**pcloud_pvminstances_action_post**](PCloudPVMInstancesApi.md#pcloud_pvminstances_action_post) | **POST** /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/action | Perform an action (start stop reboot immediate-shutdown reset) on a PVMInstance |
+| [**pcloud_pvminstances_action_post**](PCloudPVMInstancesApi.md#pcloud_pvminstances_action_post) | **POST** /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/action | Perform an action on a PVMInstance |
 | [**pcloud_pvminstances_capture_post**](PCloudPVMInstancesApi.md#pcloud_pvminstances_capture_post) | **POST** /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/capture | Capture a PVMInstance and create a deployable image |
-| [**pcloud_pvminstances_clone_post**](PCloudPVMInstancesApi.md#pcloud_pvminstances_clone_post) | **POST** /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/clone | Clone a PVMInstance |
 | [**pcloud_pvminstances_console_get**](PCloudPVMInstancesApi.md#pcloud_pvminstances_console_get) | **GET** /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/console | List all console languages |
 | [**pcloud_pvminstances_console_post**](PCloudPVMInstancesApi.md#pcloud_pvminstances_console_post) | **POST** /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/console | Generate the noVNC Console URL |
-| [**pcloud_pvminstances_console_put**](PCloudPVMInstancesApi.md#pcloud_pvminstances_console_put) | **PUT** /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/console | Update PVMInstance console laguage code |
+| [**pcloud_pvminstances_console_put**](PCloudPVMInstancesApi.md#pcloud_pvminstances_console_put) | **PUT** /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/console | Update PVMInstance console language code |
 | [**pcloud_pvminstances_delete**](PCloudPVMInstancesApi.md#pcloud_pvminstances_delete) | **DELETE** /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id} | Delete a PCloud PVM Instance |
 | [**pcloud_pvminstances_get**](PCloudPVMInstancesApi.md#pcloud_pvminstances_get) | **GET** /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id} | Get a PVM Instance&#39;s current state or information |
 | [**pcloud_pvminstances_getall**](PCloudPVMInstancesApi.md#pcloud_pvminstances_getall) | **GET** /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances | Get all the pvm instances for this cloud instance |
@@ -25,13 +24,16 @@ All URIs are relative to *http://localhost*
 | [**pcloud_pvminstances_snapshots_restore_post**](PCloudPVMInstancesApi.md#pcloud_pvminstances_snapshots_restore_post) | **POST** /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/snapshots/{snapshot_id}/restore | Restore a PVM Instance snapshot |
 | [**pcloud_v2_pvminstances_capture_get**](PCloudPVMInstancesApi.md#pcloud_v2_pvminstances_capture_get) | **GET** /pcloud/v2/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/capture | Get detail of last capture job |
 | [**pcloud_v2_pvminstances_capture_post**](PCloudPVMInstancesApi.md#pcloud_v2_pvminstances_capture_post) | **POST** /pcloud/v2/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/capture | Add a capture pvm-instance to the jobs queue |
+| [**pcloud_v2_pvminstances_getall**](PCloudPVMInstancesApi.md#pcloud_v2_pvminstances_getall) | **GET** /pcloud/v2/cloud-instances/{cloud_instance_id}/pvm-instances | Get all the pvm instances for this cloud instance |
 
 
 ## pcloud_pvminstances_action_post
 
 > Object pcloud_pvminstances_action_post(cloud_instance_id, pvm_instance_id, body)
 
-Perform an action (start stop reboot immediate-shutdown reset) on a PVMInstance
+Perform an action on a PVMInstance
+
+Corresponding actions are 'start', 'stop', 'reboot', 'immediate-shutdown', 'reset'
 
 ### Examples
 
@@ -45,7 +47,7 @@ pvm_instance_id = 'pvm_instance_id_example' # String | PCloud PVM Instance ID
 body = IbmCloudPower::PVMInstanceAction.new({action: 'start'}) # PVMInstanceAction | Parameters for the desired action
 
 begin
-  # Perform an action (start stop reboot immediate-shutdown reset) on a PVMInstance
+  # Perform an action on a PVMInstance
   result = api_instance.pcloud_pvminstances_action_post(cloud_instance_id, pvm_instance_id, body)
   p result
 rescue IbmCloudPower::ApiError => e
@@ -61,7 +63,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Perform an action (start stop reboot immediate-shutdown reset) on a PVMInstance
+  # Perform an action on a PVMInstance
   data, status_code, headers = api_instance.pcloud_pvminstances_action_post_with_http_info(cloud_instance_id, pvm_instance_id, body)
   p status_code # => 2xx
   p headers # => { ... }
@@ -98,6 +100,8 @@ No authorization required
 > Object pcloud_pvminstances_capture_post(cloud_instance_id, pvm_instance_id, body)
 
 Capture a PVMInstance and create a deployable image
+
+This API is deprecated for /pcloud/v2/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/capture.  >*Note*: Support for this API is available till Oct 2022. 
 
 ### Examples
 
@@ -148,72 +152,6 @@ end
 ### Return type
 
 **Object**
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-## pcloud_pvminstances_clone_post
-
-> <PVMInstance> pcloud_pvminstances_clone_post(cloud_instance_id, pvm_instance_id, body)
-
-Clone a PVMInstance
-
-### Examples
-
-```ruby
-require 'time'
-require 'ibm_cloud_power'
-
-api_instance = IbmCloudPower::PCloudPVMInstancesApi.new
-cloud_instance_id = 'cloud_instance_id_example' # String | Cloud Instance ID of a PCloud Instance
-pvm_instance_id = 'pvm_instance_id_example' # String | PCloud PVM Instance ID
-body = IbmCloudPower::PVMInstanceClone.new({name: 'name_example', networks: [IbmCloudPower::PVMInstanceAddNetwork.new({network_id: 'network_id_example'})]}) # PVMInstanceClone | Clone PVM Instance parameters
-
-begin
-  # Clone a PVMInstance
-  result = api_instance.pcloud_pvminstances_clone_post(cloud_instance_id, pvm_instance_id, body)
-  p result
-rescue IbmCloudPower::ApiError => e
-  puts "Error when calling PCloudPVMInstancesApi->pcloud_pvminstances_clone_post: #{e}"
-end
-```
-
-#### Using the pcloud_pvminstances_clone_post_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<PVMInstance>, Integer, Hash)> pcloud_pvminstances_clone_post_with_http_info(cloud_instance_id, pvm_instance_id, body)
-
-```ruby
-begin
-  # Clone a PVMInstance
-  data, status_code, headers = api_instance.pcloud_pvminstances_clone_post_with_http_info(cloud_instance_id, pvm_instance_id, body)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <PVMInstance>
-rescue IbmCloudPower::ApiError => e
-  puts "Error when calling PCloudPVMInstancesApi->pcloud_pvminstances_clone_post_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **cloud_instance_id** | **String** | Cloud Instance ID of a PCloud Instance |  |
-| **pvm_instance_id** | **String** | PCloud PVM Instance ID |  |
-| **body** | [**PVMInstanceClone**](PVMInstanceClone.md) | Clone PVM Instance parameters |  |
-
-### Return type
-
-[**PVMInstance**](PVMInstance.md)
 
 ### Authorization
 
@@ -357,7 +295,7 @@ No authorization required
 
 > <ConsoleLanguage> pcloud_pvminstances_console_put(cloud_instance_id, pvm_instance_id, body)
 
-Update PVMInstance console laguage code
+Update PVMInstance console language code
 
 ### Examples
 
@@ -371,7 +309,7 @@ pvm_instance_id = 'pvm_instance_id_example' # String | PCloud PVM Instance ID
 body = IbmCloudPower::ConsoleLanguage.new({code: 'code_example'}) # ConsoleLanguage | Parameters to update a PVMInstance console required codepage
 
 begin
-  # Update PVMInstance console laguage code
+  # Update PVMInstance console language code
   result = api_instance.pcloud_pvminstances_console_put(cloud_instance_id, pvm_instance_id, body)
   p result
 rescue IbmCloudPower::ApiError => e
@@ -387,7 +325,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Update PVMInstance console laguage code
+  # Update PVMInstance console language code
   data, status_code, headers = api_instance.pcloud_pvminstances_console_put_with_http_info(cloud_instance_id, pvm_instance_id, body)
   p status_code # => 2xx
   p headers # => { ... }
@@ -435,7 +373,8 @@ api_instance = IbmCloudPower::PCloudPVMInstancesApi.new
 cloud_instance_id = 'cloud_instance_id_example' # String | Cloud Instance ID of a PCloud Instance
 pvm_instance_id = 'pvm_instance_id_example' # String | PCloud PVM Instance ID
 opts = {
-  delete_data_volumes: true # Boolean | Indicates if all data volumes attached to the PVMInstance should be deleted when deleting the PVMInstance. Shared data volumes will be deleted if there are no other PVMInstances attached.
+  delete_data_volumes: true, # Boolean | Indicates if all data volumes attached to the PVMInstance should be deleted when deleting the PVMInstance. Shared data volumes will be deleted if there are no other PVMInstances attached.
+  body: IbmCloudPower::PVMInstanceDelete.new # PVMInstanceDelete | Parameters to delete a PVM Instance
 }
 
 begin
@@ -472,6 +411,7 @@ end
 | **cloud_instance_id** | **String** | Cloud Instance ID of a PCloud Instance |  |
 | **pvm_instance_id** | **String** | PCloud PVM Instance ID |  |
 | **delete_data_volumes** | **Boolean** | Indicates if all data volumes attached to the PVMInstance should be deleted when deleting the PVMInstance. Shared data volumes will be deleted if there are no other PVMInstances attached. | [optional] |
+| **body** | [**PVMInstanceDelete**](PVMInstanceDelete.md) | Parameters to delete a PVM Instance | [optional] |
 
 ### Return type
 
@@ -483,8 +423,8 @@ No authorization required
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
-- **Accept**: */*
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
 ## pcloud_pvminstances_get
@@ -1408,5 +1348,67 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## pcloud_v2_pvminstances_getall
+
+> <PVMInstancesV2> pcloud_v2_pvminstances_getall(cloud_instance_id)
+
+Get all the pvm instances for this cloud instance
+
+### Examples
+
+```ruby
+require 'time'
+require 'ibm_cloud_power'
+
+api_instance = IbmCloudPower::PCloudPVMInstancesApi.new
+cloud_instance_id = 'cloud_instance_id_example' # String | Cloud Instance ID of a PCloud Instance
+
+begin
+  # Get all the pvm instances for this cloud instance
+  result = api_instance.pcloud_v2_pvminstances_getall(cloud_instance_id)
+  p result
+rescue IbmCloudPower::ApiError => e
+  puts "Error when calling PCloudPVMInstancesApi->pcloud_v2_pvminstances_getall: #{e}"
+end
+```
+
+#### Using the pcloud_v2_pvminstances_getall_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<PVMInstancesV2>, Integer, Hash)> pcloud_v2_pvminstances_getall_with_http_info(cloud_instance_id)
+
+```ruby
+begin
+  # Get all the pvm instances for this cloud instance
+  data, status_code, headers = api_instance.pcloud_v2_pvminstances_getall_with_http_info(cloud_instance_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <PVMInstancesV2>
+rescue IbmCloudPower::ApiError => e
+  puts "Error when calling PCloudPVMInstancesApi->pcloud_v2_pvminstances_getall_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **cloud_instance_id** | **String** | Cloud Instance ID of a PCloud Instance |  |
+
+### Return type
+
+[**PVMInstancesV2**](PVMInstancesV2.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 

@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **href** | **String** | Link to pvm-instance resource | [optional] |
-| **pvm_instance_id** | **String** | The attahed pvm-instance ID | [optional] |
+| **pvm_instance_id** | **String** | The attached pvm-instance ID | [optional] |
 
 ## Example
 

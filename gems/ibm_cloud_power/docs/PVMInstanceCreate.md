@@ -4,6 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **deployment_target** | [**DeploymentTarget**](DeploymentTarget.md) |  | [optional] |
 | **deployment_type** | **String** | The custom deployment type | [optional] |
 | **image_id** | **String** | Image ID of the image to use for the server |  |
 | **key_pair_name** | **String** | The name of the SSH key pair provided to the server for authenticating users (looked up in the tenant&#39;s list of keys) | [optional] |
@@ -24,11 +25,14 @@
 | **software_licenses** | [**SoftwareLicenses**](SoftwareLicenses.md) |  | [optional] |
 | **storage_affinity** | [**StorageAffinity**](StorageAffinity.md) |  | [optional] |
 | **storage_connection** | **String** | The storage connection type | [optional] |
-| **storage_pool** | **String** | Storage Pool for server deployment; if provided then storageAffinity and storageType will be ignored; Only valid when you deploy one of the IBM supplied stock images. Storage type and pool for a custom image (an imported image or an image that is created from a PVMInstance capture) defaults to the storage type and pool the image was created in | [optional] |
-| **storage_type** | **String** | Storage type for server deployment; will be ignored if storagePool or storageAffinity is provided; Only valid when you deploy one of the IBM supplied stock images. Storage type and pool for a custom image (an imported image or an image that is created from a PVMInstance capture) defaults to the storage type and pool the image was created in | [optional] |
+| **storage_pool** | **String** | Storage Pool for server deployment; if provided then storageAffinity will be ignored; Only valid when you deploy one of the IBM supplied stock images. Storage pool for a custom image (an imported image or an image that is created from a PVMInstance capture) defaults to the storage pool the image was created in | [optional] |
+| **storage_pool_affinity** | **Boolean** | Indicates if all volumes attached to the PVMInstance must reside in the same storage pool. If set to false, volumes from any storage pool can be attached to the PVMInstance. This flag only impacts PVMInstance snapshot and capture operations. For capture, only volumes that reside in the same storage pool as the PVMInstance&#39;s boot volume can be included. For snapshots, all volumes included in the snapshot must reside in the same storage pool. | [optional][default to true] |
+| **storage_type** | **String** | Storage type for server deployment; if storageType is not provided the storage type will default to &#39;tier3&#39;. | [optional] |
 | **sys_type** | **String** | System type used to host the instance | [optional] |
-| **user_data** | **String** | Cloud init user defined data | [optional] |
+| **user_data** | **String** | Cloud init user defined data; For FLS, only cloud-config user-data is supported and data must not be compressed or exceed 63K | [optional] |
+| **user_tags** | **Array** |  | [optional] |
 | **virtual_cores** | [**VirtualCores**](VirtualCores.md) |  | [optional] |
+| **virtual_serial_number** | [**CreateServerVirtualSerialNumber**](CreateServerVirtualSerialNumber.md) |  | [optional] |
 | **volume_ids** | **Array&lt;String&gt;** | List of volume IDs | [optional] |
 
 ## Example
@@ -37,6 +41,7 @@
 require 'ibm_cloud_power'
 
 instance = IbmCloudPower::PVMInstanceCreate.new(
+  deployment_target: null,
   deployment_type: null,
   image_id: null,
   key_pair_name: null,
@@ -58,10 +63,13 @@ instance = IbmCloudPower::PVMInstanceCreate.new(
   storage_affinity: null,
   storage_connection: null,
   storage_pool: null,
+  storage_pool_affinity: null,
   storage_type: null,
   sys_type: null,
   user_data: null,
+  user_tags: null,
   virtual_cores: null,
+  virtual_serial_number: null,
   volume_ids: null
 )
 ```

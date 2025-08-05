@@ -6,13 +6,15 @@
 | ---- | ---- | ----------- | ----- |
 | **aux_volume_name** | **String** | Auxiliary volume name at storage host level | [optional] |
 | **auxiliary** | **Boolean** | true if volume is auxiliary otherwise false | [optional] |
-| **boot_volume** | **Boolean** | Indicates if the volume is the server&#39;s boot volume | [optional] |
+| **boot_volume** | **Boolean** | Indicates if the volume is the server&#39;s boot volume. Only returned when querying a server&#39;s attached volumes | [optional] |
 | **bootable** | **Boolean** | Indicates if the volume is boot capable | [optional] |
 | **consistency_group_name** | **String** | Consistency Group Name if volume is a part of volume group | [optional] |
 | **creation_date** | **Time** | Creation Date |  |
-| **delete_on_termination** | **Boolean** | Indicates if the volume should be deleted when the server terminates | [optional] |
+| **crn** | **String** |  | [optional] |
 | **disk_type** | **String** | Type of Disk | [optional] |
+| **freeze_time** | **Time** | Freeze time of remote copy relationship | [optional] |
 | **group_id** | **String** | Volume Group ID | [optional] |
+| **io_throttle_rate** | **String** | Amount of iops assigned to the volume | [optional] |
 | **last_update_date** | **Time** | Last Update Date |  |
 | **master_volume_name** | **String** | Master volume name at storage host level | [optional] |
 | **mirroring_state** | **String** | Mirroring state for replication enabled volume | [optional] |
@@ -26,6 +28,7 @@
 | **shareable** | **Boolean** | Indicates if the volume is shareable between VMs | [optional] |
 | **size** | **Float** | Volume Size |  |
 | **state** | **String** | Volume State | [optional] |
+| **user_tags** | **Array** |  | [optional] |
 | **volume_id** | **String** | Volume ID |  |
 | **volume_pool** | **String** | Volume pool, name of storage pool where the volume is located | [optional] |
 | **volume_type** | **String** | Volume type, name of storage template used to create the volume | [optional] |
@@ -43,9 +46,11 @@ instance = IbmCloudPower::Volume.new(
   bootable: null,
   consistency_group_name: null,
   creation_date: null,
-  delete_on_termination: null,
+  crn: null,
   disk_type: null,
+  freeze_time: null,
   group_id: null,
+  io_throttle_rate: null,
   last_update_date: null,
   master_volume_name: null,
   mirroring_state: null,
@@ -59,6 +64,7 @@ instance = IbmCloudPower::Volume.new(
   shareable: null,
   size: null,
   state: null,
+  user_tags: null,
   volume_id: null,
   volume_pool: null,
   volume_type: null,

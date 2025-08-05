@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **enabled** | **Boolean** | enable vpc for this cloud connection (default&#x3D;false) | [optional] |
-| **vpcs** | [**Array&lt;CloudConnectionVPC&gt;**](CloudConnectionVPC.md) | vpc connections | [optional] |
+| **vpcs** | [**Array&lt;CloudConnectionVpc&gt;**](CloudConnectionVpc.md) | vpc connections | [optional] |
 
 ## Example
 

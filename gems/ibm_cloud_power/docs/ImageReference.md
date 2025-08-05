@@ -5,6 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **creation_date** | **Time** | Creation Date |  |
+| **crn** | **String** |  | [optional] |
 | **description** | **String** | Description |  |
 | **href** | **String** | Link to Image resource |  |
 | **image_id** | **String** | Image ID |  |
@@ -22,6 +23,7 @@ require 'ibm_cloud_power'
 
 instance = IbmCloudPower::ImageReference.new(
   creation_date: null,
+  crn: null,
   description: null,
   href: null,
   image_id: null,
