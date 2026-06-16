@@ -331,6 +331,7 @@ require 'ibm_cloud_power/api/p_cloud_volume_groups_api'
 require 'ibm_cloud_power/api/p_cloud_volume_onboarding_api'
 require 'ibm_cloud_power/api/p_cloud_volumes_api'
 require 'ibm_cloud_power/api/snapshots_api'
+require 'ibm_cloud_power/api/ssh_keys_api'
 require 'ibm_cloud_power/api/workspaces_api'
 
 module IbmCloudPower
