@@ -1,0 +1,31 @@
+#!/bin/bash
+
+# Check required environment variables
+if [ -z "$GEM_NAME" ]; then
+  echo "Error: GEM_NAME environment variable is not set"
+  exit 1
+fi
+
+if [ -z "$INPUT_SPEC" ]; then
+  echo "Error: INPUT_SPEC environment variable is not set"
+  exit 1
+fi
+
+if [ -z "$OPENAPI_GENERATOR_JAR" ]; then
+  # Detect the latest version of the openapi-generator-cli package
+  version=`wget https://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli/maven-metadata.xml -O - 2>/dev/null | xq -x "//metadata/versioning/latest"`
+  OPENAPI_GENERATOR_JAR=openapi-generator-cli-$version.jar
+
+  # Download the openapi-generator-cli jar if we don't already have it locally
+  if [ ! -f "$OPENAPI_GENERATOR_JAR" ]; then
+    echo "Downloading '$OPENAPI_GENERATOR_JAR'..."
+    wget https://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli/$version/$OPENAPI_GENERATOR_JAR
+  fi
+fi
+
+gem_path="gems/$GEM_NAME"
+config_path="$gem_path/.openapi-config.json"
+
+rm -rf "${gem_path}/{docs,lib,spec}"
+
+java -jar $OPENAPI_GENERATOR_JAR generate --input-spec $INPUT_SPEC --generator-name ruby --config $config_path --output $gem_path
