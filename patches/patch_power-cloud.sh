@@ -35,4 +35,16 @@ yq '.components.schemas.SAPProfile.properties.type.enum = ["balanced","compute",
 yq '.components.schemas.NetworkCreate.properties.name.pattern = "^[a-zA-Z0-9\\-_][a-zA-Z0-9\\-_]*$"' \
   "${SPEC_FILE}" > "${SPEC_FILE}.tmp" && mv "${SPEC_FILE}.tmp" "${SPEC_FILE}"
 
+# Fix regex pattern in WorkspaceSSHKey schemas to properly escape hyphen
+yq '.components.schemas.CreateWorkspaceSSHKey.properties.name.pattern = "^[a-zA-Z0-9\\-_][a-zA-Z0-9\\-_]*$"' \
+  "${SPEC_FILE}" > "${SPEC_FILE}.tmp" && mv "${SPEC_FILE}.tmp" "${SPEC_FILE}"
+yq '.components.schemas.UpdateWorkspaceSSHKey.properties.name.pattern = "^[a-zA-Z0-9\\-_][a-zA-Z0-9\\-_]*$"' \
+  "${SPEC_FILE}" > "${SPEC_FILE}.tmp" && mv "${SPEC_FILE}.tmp" "${SPEC_FILE}"
+yq '.components.schemas.WorkspaceSSHKey.properties.name.pattern = "^[a-zA-Z0-9\\-_][a-zA-Z0-9\\-_]*$"' \
+  "${SPEC_FILE}" > "${SPEC_FILE}.tmp" && mv "${SPEC_FILE}.tmp" "${SPEC_FILE}"
+
+# Fix regex pattern in VPMemVolumeCreate schema to properly escape hyphen
+yq '.components.schemas.VPMemVolumeCreate.properties.name.pattern = "^[a-zA-Z0-9\\-_][a-zA-Z0-9\\-_]*$"' \
+  "${SPEC_FILE}" > "${SPEC_FILE}.tmp" && mv "${SPEC_FILE}.tmp" "${SPEC_FILE}"
+
 echo "Pre-generation patches applied successfully to ${SPEC_NAME}"
