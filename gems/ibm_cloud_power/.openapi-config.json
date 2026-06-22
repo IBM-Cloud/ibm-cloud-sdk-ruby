@@ -3,5 +3,6 @@
   "gemAuthor": "IBM Cloud Developers",
   "gemSummary": "IBM Cloud Power Cloud",
   "gemDescription": "Ruby gem for IBM Cloud Power Cloud",
-  "gemLicense": "Apache-2.0"
+  "gemLicense": "Apache-2.0",
+  "gemVersion": "3.0.0"
 }
