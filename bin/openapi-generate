@@ -1,4 +1,5 @@
 #!/bin/bash
+set -eo pipefail
 
 # Check required environment variables
 if [ -z "$GEM_NAME" ]; then
@@ -26,6 +27,44 @@ fi
 gem_path="gems/$GEM_NAME"
 config_path="$gem_path/.openapi-config.json"
 
-rm -rf "${gem_path}/{docs,lib,spec}"
+# Extract spec name from INPUT_SPEC (remove path and .json extension)
+SPEC_FILE=$(basename "$INPUT_SPEC")
+SPEC_NAME="${SPEC_FILE%.json}"
 
-java -jar $OPENAPI_GENERATOR_JAR generate --input-spec $INPUT_SPEC --generator-name ruby --config $config_path --output $gem_path
+# Apply optional pre-generation patches if script exists
+PATCH_SCRIPT="patches/patch_${SPEC_NAME}.sh"
+if [ -f "${PATCH_SCRIPT}" ]; then
+    echo "Found pre-generation patch script: ${PATCH_SCRIPT}"
+
+    # Export environment variables for the patch script
+    export SPEC_FILE="${INPUT_SPEC}"
+    export SPEC_NAME="${SPEC_NAME}"
+    export GEM_DIR="${gem_path}"
+    export OPENAPI_CLI_JAR="${OPENAPI_GENERATOR_JAR}"
+
+    # Run pre-generation patches
+    echo "Applying pre-generation patches..."
+    if bash "${PATCH_SCRIPT}"; then
+        echo "Pre-generation patches applied successfully"
+    else
+        echo "ERROR: Pre-generation patch script failed with exit code $?"
+        exit 1
+    fi
+else
+    echo "No pre-generation patch script found at ${PATCH_SCRIPT}, continuing without patches"
+fi
+
+# Clean up old generated code
+echo "Cleaning up old generated code..."
+rm -rf "${gem_path}"/{docs,lib,spec}
+
+# Generate the Ruby SDK
+echo "Generating Ruby SDK for ${GEM_NAME}..."
+java -jar "$OPENAPI_GENERATOR_JAR" generate \
+    --skip-validate-spec \
+    --input-spec "$INPUT_SPEC" \
+    --generator-name ruby \
+    --config "$config_path" \
+    --output "$gem_path"
+
+echo "SDK generation completed successfully for ${GEM_NAME}!"
