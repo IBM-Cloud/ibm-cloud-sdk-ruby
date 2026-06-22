@@ -46,8 +46,8 @@ jobs:
           gems/${{ matrix.gem_name }}
         commit-message: Update ${{ matrix.gem_name }} gem
         branch: openapi_generate_${{ matrix.gem_name }}
-        author: IBM Jeeves <bot@ibm.org>
-        committer: IBM Jeeves <bot@ibm.org>
+        author: IBM Jeeves <ibm-jeeves@ibm.com>
+        committer: IBM Jeeves <ibm-jeeves@ibm.com>
         delete-branch: true
         labels: enhancement
         assignees: agrare
