@@ -1,0 +1,7 @@
+{
+  "gemName": "ibm_cloud_global_tagging",
+  "gemAuthor": "IBM Cloud Developers",
+  "gemSummary": "IBM Cloud Global Tagging",
+  "gemDescription": "Ruby gem for IBM Cloud Global Tagging",
+  "gemLicense": "Apache-2.0"
+}
