@@ -33,7 +33,7 @@ jobs:
       run: sudo apt install -y xq
     - name: Download OpenAPI Spec
       run: |
-        curl ${{ matrix.spec_url }} -o "${{ matrix.spec_file }}"
+        curl --location ${{ matrix.spec_url }} --output "${{ matrix.spec_file }}"
     - name: OpenAPI Generate
       env:
         GEM_NAME: ${{ matrix.gem_name }}
