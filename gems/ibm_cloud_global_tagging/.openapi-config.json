@@ -3,5 +3,6 @@
   "gemAuthor": "IBM Cloud Developers",
   "gemSummary": "IBM Cloud Global Tagging",
   "gemDescription": "Ruby gem for IBM Cloud Global Tagging",
-  "gemLicense": "Apache-2.0"
+  "gemLicense": "Apache-2.0",
+  "gemVersion": "0.1.3"
 }
