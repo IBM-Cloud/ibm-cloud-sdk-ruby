@@ -1,0 +1,8 @@
+{
+  "gemName": "ibm_cloud_databases",
+  "gemAuthor": "IBM Cloud Developers",
+  "gemSummary": "IBM Cloud Databases",
+  "gemDescription": "Ruby gem for IBM Cloud Databases",
+  "gemLicense": "Apache-2.0",
+  "gemVersion": "0.1.2"
+}
