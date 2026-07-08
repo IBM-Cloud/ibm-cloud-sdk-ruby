@@ -4,5 +4,5 @@
   "gemSummary": "IBM Cloud IAM Identity Services",
   "gemDescription": "Ruby gem for IBM Cloud IAM Identity Services",
   "gemLicense": "Apache-2.0",
-  "gemVersion": "1.0.1"
+  "gemVersion": "2.0.0"
 }
