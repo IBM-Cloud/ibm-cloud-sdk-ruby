@@ -4,8 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **clone_task_id** | **String** | ID of a long running PowerVC clone task |  |
-| **href** | **String** | Link to PowerVC clone task resource |  |
+| **clone_task_id** | **String** | ID of a long running clone task |  |
+| **href** | **String** | Link to clone task resource |  |
 
 ## Example
 

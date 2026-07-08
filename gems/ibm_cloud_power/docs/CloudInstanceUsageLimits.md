@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **instance_memory** | **Float** | Maximum memory (in GB) per PVMInstance | [optional] |
+| **instance_memory** | **Float** | Maximum memory (in GiB) per PVMInstance | [optional] |
 | **instance_proc_units** | **Float** | Maximum proc units per PVMInstance | [optional] |
 | **instances** | **Float** | Number of power instances allowed |  |
 | **memory** | **Float** | Amount of memory allowed |  |
@@ -12,9 +12,9 @@
 | **peering_networks** | **Integer** | Amount of peering networks allowed | [optional] |
 | **proc_units** | **Float** | Number of processor units allowed |  |
 | **processors** | **Float** | Number of processors allowed |  |
-| **storage** | **Float** | Amount of storage allowed (TB) |  |
-| **storage_ssd** | **Float** | Amount of SSD storage allowed (TB) | [optional] |
-| **storage_standard** | **Float** | Amount of standard (HDD) storage allowed (TB) | [optional] |
+| **storage** | **Float** | Amount of storage allowed (TiB) |  |
+| **storage_ssd** | **Float** | Amount of SSD storage allowed (TiB) | [optional] |
+| **storage_standard** | **Float** | Amount of standard (HDD) storage allowed (TiB) | [optional] |
 
 ## Example
 

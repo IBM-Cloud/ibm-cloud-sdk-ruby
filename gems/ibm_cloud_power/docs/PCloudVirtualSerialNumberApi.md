@@ -12,6 +12,7 @@ All URIs are relative to *http://localhost*
 | [**pcloud_virtualserialnumber_get**](PCloudVirtualSerialNumberApi.md#pcloud_virtualserialnumber_get) | **GET** /v1/virtual-serial-number/{virtual_serial_number} | Get information for a Virtual Serial Number |
 | [**pcloud_virtualserialnumber_getall**](PCloudVirtualSerialNumberApi.md#pcloud_virtualserialnumber_getall) | **GET** /v1/virtual-serial-number | List all utilized and retained VSNs |
 | [**pcloud_virtualserialnumber_put**](PCloudVirtualSerialNumberApi.md#pcloud_virtualserialnumber_put) | **PUT** /v1/virtual-serial-number/{virtual_serial_number} | Update Description of a Reserved Virtual Serial Number |
+| [**pcloud_virtualserialnumber_softwaretiers_getall**](PCloudVirtualSerialNumberApi.md#pcloud_virtualserialnumber_softwaretiers_getall) | **GET** /v1/virtual-serial-number/software-tiers | List supported software tiers (IBMi licensing) |
 
 
 ## pcloud_pvminstances_virtualserialnumber_delete
@@ -527,5 +528,64 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## pcloud_virtualserialnumber_softwaretiers_getall
+
+> <Array<SupportedSoftwareTier>> pcloud_virtualserialnumber_softwaretiers_getall
+
+List supported software tiers (IBMi licensing)
+
+### Examples
+
+```ruby
+require 'time'
+require 'ibm_cloud_power'
+
+api_instance = IbmCloudPower::PCloudVirtualSerialNumberApi.new
+
+begin
+  # List supported software tiers (IBMi licensing)
+  result = api_instance.pcloud_virtualserialnumber_softwaretiers_getall
+  p result
+rescue IbmCloudPower::ApiError => e
+  puts "Error when calling PCloudVirtualSerialNumberApi->pcloud_virtualserialnumber_softwaretiers_getall: #{e}"
+end
+```
+
+#### Using the pcloud_virtualserialnumber_softwaretiers_getall_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Array<SupportedSoftwareTier>>, Integer, Hash)> pcloud_virtualserialnumber_softwaretiers_getall_with_http_info
+
+```ruby
+begin
+  # List supported software tiers (IBMi licensing)
+  data, status_code, headers = api_instance.pcloud_virtualserialnumber_softwaretiers_getall_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Array<SupportedSoftwareTier>>
+rescue IbmCloudPower::ApiError => e
+  puts "Error when calling PCloudVirtualSerialNumberApi->pcloud_virtualserialnumber_softwaretiers_getall_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**Array&lt;SupportedSoftwareTier&gt;**](SupportedSoftwareTier.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 

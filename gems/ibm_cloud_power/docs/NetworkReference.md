@@ -5,8 +5,10 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **access_config** | [**AccessConfig**](AccessConfig.md) |  | [optional] |
-| **crn** | **String** |  | [optional] |
-| **dhcp_managed** | **Boolean** | DHCP Managed Network | [optional] |
+| **advertise** | **String** | Indicates if the network is advertised externally of the workspace to PER and\\or peer networks | [optional] |
+| **arp_broadcast** | **String** | Indicates if the ARP broadcast is enabled | [optional] |
+| **crn** | **String** | The CRN for this resource | [optional] |
+| **dhcp_managed** | **Boolean** | DHCP Enabled Network | [optional] |
 | **href** | **String** | Link to Network resource |  |
 | **jumbo** | **Boolean** | (deprecated - replaced by mtu) Enable MTU Jumbo Network (for multi-zone locations only) | [optional] |
 | **mtu** | **Integer** | Maximum transmission unit | [optional] |
@@ -22,6 +24,8 @@ require 'ibm_cloud_power'
 
 instance = IbmCloudPower::NetworkReference.new(
   access_config: null,
+  advertise: null,
+  arp_broadcast: null,
   crn: null,
   dhcp_managed: null,
   href: null,

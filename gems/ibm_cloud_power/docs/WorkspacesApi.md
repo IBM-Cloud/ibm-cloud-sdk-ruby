@@ -72,7 +72,7 @@ No authorization required
 
 ## v1_workspaces_getall
 
-> <Workspaces> v1_workspaces_getall
+> <Workspaces> v1_workspaces_getall(opts)
 
 Get all Workspaces information and capabilities for a tenant
 
@@ -83,10 +83,13 @@ require 'time'
 require 'ibm_cloud_power'
 
 api_instance = IbmCloudPower::WorkspacesApi.new
+opts = {
+  tgw_by_pass_enabled: true # Boolean | Enable transit gateway bypass for the workspace list (default=false)
+}
 
 begin
   # Get all Workspaces information and capabilities for a tenant
-  result = api_instance.v1_workspaces_getall
+  result = api_instance.v1_workspaces_getall(opts)
   p result
 rescue IbmCloudPower::ApiError => e
   puts "Error when calling WorkspacesApi->v1_workspaces_getall: #{e}"
@@ -97,12 +100,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<Workspaces>, Integer, Hash)> v1_workspaces_getall_with_http_info
+> <Array(<Workspaces>, Integer, Hash)> v1_workspaces_getall_with_http_info(opts)
 
 ```ruby
 begin
   # Get all Workspaces information and capabilities for a tenant
-  data, status_code, headers = api_instance.v1_workspaces_getall_with_http_info
+  data, status_code, headers = api_instance.v1_workspaces_getall_with_http_info(opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <Workspaces>
@@ -113,7 +116,9 @@ end
 
 ### Parameters
 
-This endpoint does not need any parameter.
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **tgw_by_pass_enabled** | **Boolean** | Enable transit gateway bypass for the workspace list (default&#x3D;false) | [optional] |
 
 ### Return type
 

@@ -6,8 +6,8 @@
 | ---- | ---- | ----------- | ----- |
 | **create_timestamp** | **Time** | create timestamp for the job | [optional] |
 | **id** | **String** | id of a job |  |
-| **operation** | [**Operation**](Operation.md) |  |  |
-| **status** | [**Status**](Status.md) |  |  |
+| **operation** | [**JobOperation**](JobOperation.md) |  |  |
+| **status** | [**JobStatus**](JobStatus.md) |  |  |
 
 ## Example
 

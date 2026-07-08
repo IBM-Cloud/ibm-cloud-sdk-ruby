@@ -6,7 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **action** | **String** | Action performed on the instance snapshot | [optional] |
 | **creation_date** | **Time** | Creation Date | [optional] |
-| **description** | **String** | Description of the PVM instance snapshot | [optional] |
+| **description** | **String** | Description of the PVM instance snapshot with a maximum of 255 characters allowed. | [optional] |
 | **last_update_date** | **Time** | Last Update Date | [optional] |
 | **name** | **String** | Name of the PVM instance snapshot |  |
 | **percent_complete** | **Integer** | Snapshot completion percentage | [optional] |

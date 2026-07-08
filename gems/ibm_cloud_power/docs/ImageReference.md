@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **creation_date** | **Time** | Creation Date |  |
-| **crn** | **String** |  | [optional] |
+| **crn** | **String** | The CRN for this resource | [optional] |
 | **description** | **String** | Description |  |
 | **href** | **String** | Link to Image resource |  |
 | **image_id** | **String** | Image ID |  |

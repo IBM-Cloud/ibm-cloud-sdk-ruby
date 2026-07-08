@@ -5,15 +5,15 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **cores** | **Float** | Number of available cores in the Pod |  |
-| **memory** | **Integer** | Amount of available memory in the Pod (GB) |  |
+| **memory** | **Integer** | Amount of available memory in the Pod (GiB) |  |
 | **sat_location_id** | **String** | ID of the Satellite Location |  |
-| **storage** | **Integer** | Amount of available storage in the Pod (GB) |  |
+| **storage** | **Integer** | Amount of available storage in the Pod (GiB) |  |
 | **total_cores** | **Float** | Total number of usable cores in the Pod |  |
-| **total_memory** | **Integer** | Total amount of usable memory in the Pod (GB) |  |
+| **total_memory** | **Integer** | Total amount of usable memory in the Pod (GiB) |  |
 | **total_phys_cores** | **Float** | Total number of physical cores in the Pod |  |
-| **total_phys_memory** | **Integer** | Total amount of physical memory in the Pod (GB) |  |
-| **total_phys_storage** | **Float** | Total amount of physical storage in the Pod (GB) |  |
-| **total_storage** | **Integer** | Total amount of usable storage in the Pod (GB) |  |
+| **total_phys_memory** | **Integer** | Total amount of physical memory in the Pod (GiB) |  |
+| **total_phys_storage** | **Float** | Total amount of physical storage in the Pod (GiB) |  |
+| **total_storage** | **Integer** | Total amount of usable storage in the Pod (GiB) |  |
 
 ## Example
 

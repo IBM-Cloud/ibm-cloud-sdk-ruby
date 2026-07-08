@@ -4,8 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **name** | **String** | vpc name | [optional] |
-| **vpc_id** | **String** | vpc id |  |
+| **enabled** | **Boolean** | enable vpc for this cloud connection (default&#x3D;false) | [optional] |
+| **vpcs** | [**Array&lt;CloudConnectionVpc&gt;**](CloudConnectionVpc.md) | vpc connections | [optional] |
 
 ## Example
 
@@ -13,8 +13,8 @@
 require 'ibm_cloud_power'
 
 instance = IbmCloudPower::CloudConnectionVpc.new(
-  name: null,
-  vpc_id: null
+  enabled: null,
+  vpcs: null
 )
 ```
 

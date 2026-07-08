@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **max_allocation_size** | **Integer** | Maximum allocation storage size (GB) |  |
+| **max_allocation_size** | **Integer** | Maximum allocation storage size (GiB) |  |
 | **storage_pool** | **String** | Storage pool |  |
 | **storage_type** | **String** | Storage type |  |
 

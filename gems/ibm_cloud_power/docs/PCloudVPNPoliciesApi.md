@@ -295,7 +295,7 @@ require 'ibm_cloud_power'
 api_instance = IbmCloudPower::PCloudVPNPoliciesApi.new
 cloud_instance_id = 'cloud_instance_id_example' # String | Cloud Instance ID of a PCloud Instance
 ike_policy_id = 'ike_policy_id_example' # String | ID of a IKE Policy
-body = { key: 3.56} # Hash<String, Object> | Parameters for updating IKE Policy
+body = IbmCloudPower::IKEPolicyUpdate.new # IKEPolicyUpdate | Parameters for updating IKE Policy
 
 begin
   # Update IKE Policy
@@ -330,7 +330,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **cloud_instance_id** | **String** | Cloud Instance ID of a PCloud Instance |  |
 | **ike_policy_id** | **String** | ID of a IKE Policy |  |
-| **body** | [**Hash&lt;String, Object&gt;**](Object.md) | Parameters for updating IKE Policy |  |
+| **body** | [**IKEPolicyUpdate**](IKEPolicyUpdate.md) | Parameters for updating IKE Policy |  |
 
 ### Return type
 
@@ -625,7 +625,7 @@ require 'ibm_cloud_power'
 api_instance = IbmCloudPower::PCloudVPNPoliciesApi.new
 cloud_instance_id = 'cloud_instance_id_example' # String | Cloud Instance ID of a PCloud Instance
 ipsec_policy_id = 'ipsec_policy_id_example' # String | ID of a IPSec Policy
-body = { key: 3.56} # Hash<String, Object> | Parameters for the update of an IPSec Policy
+body = IbmCloudPower::IPSecPolicyUpdate.new # IPSecPolicyUpdate | Parameters for the update of an IPSec Policy
 
 begin
   # Update IPSec Policy
@@ -660,7 +660,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **cloud_instance_id** | **String** | Cloud Instance ID of a PCloud Instance |  |
 | **ipsec_policy_id** | **String** | ID of a IPSec Policy |  |
-| **body** | [**Hash&lt;String, Object&gt;**](Object.md) | Parameters for the update of an IPSec Policy |  |
+| **body** | [**IPSecPolicyUpdate**](IPSecPolicyUpdate.md) | Parameters for the update of an IPSec Policy |  |
 
 ### Return type
 

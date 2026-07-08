@@ -4,8 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **disaster_recovery** | [**DisasterRecovery**](DisasterRecovery.md) |  |  |
-| **supported_systems** | [**SupportedSystems**](SupportedSystems.md) |  |  |
+| **disaster_recovery** | [**CapabilitiesDetailsDisasterRecovery**](CapabilitiesDetailsDisasterRecovery.md) |  |  |
+| **supported_systems** | [**CapabilitiesDetailsSupportedSystems**](CapabilitiesDetailsSupportedSystems.md) |  |  |
 
 ## Example
 

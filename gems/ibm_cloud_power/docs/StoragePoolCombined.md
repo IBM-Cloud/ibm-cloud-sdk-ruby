@@ -5,8 +5,8 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **pool_name** | **String** | Pool name |  |
-| **storage** | **Integer** | Available/Unused pool capacity (GB) |  |
-| **total_storage** | **Integer** | Total pool capacity (GB) |  |
+| **storage** | **Integer** | Available/Unused pool capacity (GiB) |  |
+| **total_storage** | **Integer** | Total pool capacity (GiB) |  |
 
 ## Example
 

@@ -4,8 +4,6 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **cycle_period_seconds** | **Integer** | Indicates the minimum period in seconds between multiple cycles | [optional] |
-| **id** | **String** | Volume ID | [optional] |
 | **aux_changed_volume_name** | **String** | Name of the volume that is acting as the auxiliary change volume for the relationship | [optional] |
 | **aux_volume_name** | **String** | Auxiliary volume name at storage host level | [optional] |
 | **consistency_group_name** | **String** | Consistency Group Name if volume is a part of volume group | [optional] |
@@ -20,6 +18,8 @@
 | **remote_copy_id** | **String** | Remote copy relationship ID |  |
 | **state** | **String** | Indicates the relationship state | [optional] |
 | **sync** | **String** | Indicates whether the relationship is synchronized | [optional] |
+| **cycle_period_seconds** | **Integer** | Indicates the minimum period in seconds between multiple cycles | [optional] |
+| **id** | **String** | Volume ID | [optional] |
 
 ## Example
 
@@ -27,8 +27,6 @@
 require 'ibm_cloud_power'
 
 instance = IbmCloudPower::VolumeRemoteCopyRelationship.new(
-  cycle_period_seconds: null,
-  id: null,
   aux_changed_volume_name: null,
   aux_volume_name: null,
   consistency_group_name: null,
@@ -42,7 +40,9 @@ instance = IbmCloudPower::VolumeRemoteCopyRelationship.new(
   progress: null,
   remote_copy_id: null,
   state: null,
-  sync: null
+  sync: null,
+  cycle_period_seconds: null,
+  id: null
 )
 ```
 

@@ -5,12 +5,12 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **action** | **String** | The action to take if the rule matches network traffic |  |
-| **destination_port** | [**NetworkSecurityGroupRulePort**](NetworkSecurityGroupRulePort.md) |  | [optional] |
-| **destination_ports** | [**NetworkSecurityGroupRulePort**](NetworkSecurityGroupRulePort.md) |  | [optional] |
+| **destination_port** | [**NetworkSecurityGroupRulePort**](NetworkSecurityGroupRulePort.md) | The destination port for a network security group rule. | [optional] |
+| **destination_ports** | [**NetworkSecurityGroupRulePort**](NetworkSecurityGroupRulePort.md) | (deprecated - replaced by destinationPort) The destination port for a network security group rule. | [optional] |
 | **protocol** | [**NetworkSecurityGroupRuleProtocol**](NetworkSecurityGroupRuleProtocol.md) |  |  |
 | **remote** | [**NetworkSecurityGroupRuleRemote**](NetworkSecurityGroupRuleRemote.md) |  |  |
-| **source_port** | [**NetworkSecurityGroupRulePort**](NetworkSecurityGroupRulePort.md) |  | [optional] |
-| **source_ports** | [**NetworkSecurityGroupRulePort**](NetworkSecurityGroupRulePort.md) |  | [optional] |
+| **source_port** | [**NetworkSecurityGroupRulePort**](NetworkSecurityGroupRulePort.md) | The source port for a network security group rule. | [optional] |
+| **source_ports** | [**NetworkSecurityGroupRulePort**](NetworkSecurityGroupRulePort.md) | (deprecated - replaced by sourcePort) The source port for a network security group rule. | [optional] |
 
 ## Example
 

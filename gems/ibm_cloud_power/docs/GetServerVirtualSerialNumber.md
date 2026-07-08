@@ -6,6 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **description** | **String** | Description of the Virtual Serial Number |  |
 | **serial** | **String** | Virtual Serial Number |  |
+| **software_tier** | [**SoftwareTier**](SoftwareTier.md) |  | [optional] |
 
 ## Example
 
@@ -14,7 +15,8 @@ require 'ibm_cloud_power'
 
 instance = IbmCloudPower::GetServerVirtualSerialNumber.new(
   description: null,
-  serial: null
+  serial: null,
+  software_tier: null
 )
 ```
 

@@ -681,7 +681,7 @@ require 'ibm_cloud_power'
 
 api_instance = IbmCloudPower::PCloudImagesApi.new
 cloud_instance_id = 'cloud_instance_id_example' # String | Cloud Instance ID of a PCloud Instance
-body = IbmCloudPower::CreateCosImageImportJob.new({bucket_name: 'bucket_name_example', image_filename: 'image_filename_example', image_name: 'image_name_example', region: 'region_example'}) # CreateCosImageImportJob | Parameters for the creation of a new cos-image import job
+body = IbmCloudPower::CreateCosImageImportJob.new({bucket_name: 'bucket_name_example', image_filename: 'image_filename_example', image_name: 'image_name_example'}) # CreateCosImageImportJob | Parameters for the creation of a new cos-image import job
 
 begin
   # Create an cos-image import job

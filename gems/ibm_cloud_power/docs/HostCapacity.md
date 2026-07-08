@@ -4,8 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **cores** | [**HostResourceCapacity**](HostResourceCapacity.md) |  | [optional] |
-| **memory** | [**HostResourceCapacity**](HostResourceCapacity.md) |  | [optional] |
+| **cores** | [**HostCapacityCores**](HostCapacityCores.md) |  | [optional] |
+| **memory** | [**HostCapacityCores**](HostCapacityCores.md) |  | [optional] |
 
 ## Example
 

@@ -4,8 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **job_ref** | [**JobReference**](JobReference.md) |  | [optional] |
-| **classic** | [**CloudConnectionEndpointClassic**](CloudConnectionEndpointClassic.md) |  | [optional] |
+| **classic** | [**CloudConnectionClassic**](CloudConnectionClassic.md) |  | [optional] |
 | **cloud_connection_id** | **String** | cloud connection ID |  |
 | **connection_mode** | **String** | type of service the gateway is attached to | [optional] |
 | **creation_date** | **Time** | creation date |  |
@@ -18,7 +17,8 @@
 | **port** | **String** | port |  |
 | **speed** | **Integer** | speed of the cloud connection (speed in megabits per second) |  |
 | **user_ip_address** | **String** | user IP address |  |
-| **vpc** | [**CloudConnectionEndpointVPC**](CloudConnectionEndpointVPC.md) |  | [optional] |
+| **vpc** | [**CloudConnectionVpc**](CloudConnectionVpc.md) |  | [optional] |
+| **job_ref** | [**JobReference**](JobReference.md) |  | [optional] |
 
 ## Example
 
@@ -26,7 +26,6 @@
 require 'ibm_cloud_power'
 
 instance = IbmCloudPower::CloudConnectionCreateResponse.new(
-  job_ref: null,
   classic: null,
   cloud_connection_id: null,
   connection_mode: null,
@@ -40,7 +39,8 @@ instance = IbmCloudPower::CloudConnectionCreateResponse.new(
   port: null,
   speed: null,
   user_ip_address: null,
-  vpc: null
+  vpc: null,
+  job_ref: null
 )
 ```
 

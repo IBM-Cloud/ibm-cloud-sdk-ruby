@@ -6,8 +6,8 @@
 | ---- | ---- | ----------- | ----- |
 | **display_name** | **String** | Display Name of the Storage Controller |  |
 | **health** | **String** | Health status of this storage controller |  |
-| **pool_storage** | **Float** | Free storage in user pools on this storage controller (GB) |  |
-| **pool_total_storage** | **Float** | Total storage capacity of user pools in this storage controller (GB) |  |
+| **pool_storage** | **Float** | Free storage in user pools on this storage controller (GiB) |  |
+| **pool_total_storage** | **Float** | Total storage capacity of user pools in this storage controller (GiB) |  |
 | **pools** | [**Hash&lt;String, StoragePoolCombined&gt;**](StoragePoolCombined.md) | List of storage pools within this storage controller |  |
 
 ## Example

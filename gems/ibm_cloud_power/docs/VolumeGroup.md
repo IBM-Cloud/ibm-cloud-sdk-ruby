@@ -11,7 +11,7 @@
 | **replication_sites** | **Array&lt;String&gt;** | Indicates the replication site of the volume group | [optional] |
 | **replication_status** | **String** | Replication status of volume group | [optional] |
 | **status** | **String** | Status of the volume group | [optional] |
-| **status_description** | [**StatusDescription**](StatusDescription.md) |  | [optional] |
+| **status_description** | [**StatusDescription**](StatusDescription.md) | Status details of the volume group | [optional] |
 | **storage_pool** | **String** | Indicates the storage pool of the volume group | [optional] |
 
 ## Example
