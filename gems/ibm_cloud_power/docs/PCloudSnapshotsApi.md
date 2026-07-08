@@ -202,7 +202,7 @@ No authorization required
 
 ## pcloud_cloudinstances_snapshots_put
 
-> Object pcloud_cloudinstances_snapshots_put(cloud_instance_id, snapshot_id, body)
+> <Snapshot> pcloud_cloudinstances_snapshots_put(cloud_instance_id, snapshot_id, body)
 
 Update a PVM instance snapshot
 
@@ -230,7 +230,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(Object, Integer, Hash)> pcloud_cloudinstances_snapshots_put_with_http_info(cloud_instance_id, snapshot_id, body)
+> <Array(<Snapshot>, Integer, Hash)> pcloud_cloudinstances_snapshots_put_with_http_info(cloud_instance_id, snapshot_id, body)
 
 ```ruby
 begin
@@ -238,7 +238,7 @@ begin
   data, status_code, headers = api_instance.pcloud_cloudinstances_snapshots_put_with_http_info(cloud_instance_id, snapshot_id, body)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => Object
+  p data # => <Snapshot>
 rescue IbmCloudPower::ApiError => e
   puts "Error when calling PCloudSnapshotsApi->pcloud_cloudinstances_snapshots_put_with_http_info: #{e}"
 end
@@ -254,7 +254,7 @@ end
 
 ### Return type
 
-**Object**
+[**Snapshot**](Snapshot.md)
 
 ### Authorization
 

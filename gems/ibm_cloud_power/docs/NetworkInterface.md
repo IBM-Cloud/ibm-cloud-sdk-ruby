@@ -5,6 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **crn** | **String** | The Network Interface&#39;s crn |  |
+| **external_ip** | **String** | The external ip address (for pub-vlan networks) | [optional] |
 | **id** | **String** | The unique Network Interface ID |  |
 | **instance** | [**NetworkInterfaceInstance**](NetworkInterfaceInstance.md) |  | [optional] |
 | **ip_address** | **String** | The ip address of this Network Interface |  |
@@ -13,7 +14,7 @@
 | **network_security_group_id** | **String** | (deprecated - replaced by networkSecurityGroupIDs) ID of the Network Security Group the network interface will be added to | [optional] |
 | **network_security_group_ids** | **Array&lt;String&gt;** | Network security groups that the network interface is a member of. | [optional] |
 | **status** | **String** | The status of the network address group |  |
-| **user_tags** | **Array&lt;String&gt;** | The user tags associated with this resource. | [optional] |
+| **user_tags** | **Array&lt;String&gt;** | List of user tags | [optional] |
 
 ## Example
 
@@ -22,6 +23,7 @@ require 'ibm_cloud_power'
 
 instance = IbmCloudPower::NetworkInterface.new(
   crn: null,
+  external_ip: null,
   id: null,
   instance: null,
   ip_address: null,

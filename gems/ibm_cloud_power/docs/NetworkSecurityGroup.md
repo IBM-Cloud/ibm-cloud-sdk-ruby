@@ -10,7 +10,7 @@
 | **members** | [**Array&lt;NetworkSecurityGroupMember&gt;**](NetworkSecurityGroupMember.md) | The list of IPv4 addresses and\\or Network Interfaces in the Network Security Group | [optional] |
 | **name** | **String** | The name of the Network Security Group |  |
 | **rules** | [**Array&lt;NetworkSecurityGroupRule&gt;**](NetworkSecurityGroupRule.md) | The list of rules in the Network Security Group | [optional] |
-| **user_tags** | **Array&lt;String&gt;** | The user tags associated with this resource. | [optional] |
+| **user_tags** | **Array&lt;String&gt;** | List of user tags | [optional] |
 
 ## Example
 

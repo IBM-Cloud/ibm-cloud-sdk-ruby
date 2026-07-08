@@ -10,7 +10,7 @@
 | **bootable** | **Boolean** | Indicates if the volume is boot capable | [optional] |
 | **consistency_group_name** | **String** | Consistency Group Name if volume is a part of volume group | [optional] |
 | **creation_date** | **Time** | Creation Date |  |
-| **crn** | **String** |  | [optional] |
+| **crn** | **String** | The CRN for this resource | [optional] |
 | **disk_type** | **String** | Type of Disk | [optional] |
 | **freeze_time** | **Time** | Freeze time of remote copy relationship | [optional] |
 | **group_id** | **String** | Volume Group ID | [optional] |
@@ -28,7 +28,7 @@
 | **shareable** | **Boolean** | Indicates if the volume is shareable between VMs | [optional] |
 | **size** | **Float** | Volume Size |  |
 | **state** | **String** | Volume State | [optional] |
-| **user_tags** | **Array** |  | [optional] |
+| **user_tags** | **Array&lt;String&gt;** | List of user tags | [optional] |
 | **volume_id** | **String** | Volume ID |  |
 | **volume_pool** | **String** | Volume pool, name of storage pool where the volume is located | [optional] |
 | **volume_type** | **String** | Volume type, name of storage template used to create the volume | [optional] |

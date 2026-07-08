@@ -33,7 +33,7 @@ require 'ibm_cloud_power'
 api_instance = IbmCloudPower::PCloudVolumeGroupsApi.new
 cloud_instance_id = 'cloud_instance_id_example' # String | Cloud Instance ID of a PCloud Instance
 volume_group_id = 'volume_group_id_example' # String | The ID of the volume group
-body = { key: 3.56} # Hash<String, Object> | Parameters for the desire action.
+body = IbmCloudPower::VolumeGroupAction.new # VolumeGroupAction | Parameters for the desire action.
 
 begin
   # Perform an action on a volume group
@@ -68,7 +68,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **cloud_instance_id** | **String** | Cloud Instance ID of a PCloud Instance |  |
 | **volume_group_id** | **String** | The ID of the volume group |  |
-| **body** | [**Hash&lt;String, Object&gt;**](Object.md) | Parameters for the desire action. |  |
+| **body** | [**VolumeGroupAction**](VolumeGroupAction.md) | Parameters for the desire action. |  |
 
 ### Return type
 

@@ -700,7 +700,7 @@ require 'ibm_cloud_power'
 api_instance = IbmCloudPower::PCloudVPNConnectionsApi.new
 cloud_instance_id = 'cloud_instance_id_example' # String | Cloud Instance ID of a PCloud Instance
 vpn_connection_id = 'vpn_connection_id_example' # String | ID of a VPN connection
-body = { key: 3.56} # Hash<String, Object> | VPN Connection object used for update
+body = IbmCloudPower::VPNConnectionUpdate.new # VPNConnectionUpdate | VPN Connection object used for update
 
 begin
   # Update VPN Connection
@@ -735,7 +735,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **cloud_instance_id** | **String** | Cloud Instance ID of a PCloud Instance |  |
 | **vpn_connection_id** | **String** | ID of a VPN connection |  |
-| **body** | [**Hash&lt;String, Object&gt;**](Object.md) | VPN Connection object used for update |  |
+| **body** | [**VPNConnectionUpdate**](VPNConnectionUpdate.md) | VPN Connection object used for update |  |
 
 ### Return type
 

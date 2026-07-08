@@ -8,7 +8,7 @@
 | **rollback_prepare** | **Boolean** | default False, Execute failure rolls back clone activity but leaves prepared snapshot True, Execute failure rolls back clone activity and removes the prepared snapshot  | [optional] |
 | **target_replication_enabled** | **Boolean** | Cloned volume will be non replication enabled if it is set to false. By default, the replication property of the source volume will be used to determine the replication property of the cloned target volume. | [optional] |
 | **target_storage_tier** | **String** | Target storage tier for the cloned volumes. Use to clone a set of volumes from one storage tier to a different storage tier. Cloned volumes must remain in the same storage pool as the source volumes.  | [optional] |
-| **user_tags** | **Array** |  | [optional] |
+| **user_tags** | **Array&lt;String&gt;** | List of user tags | [optional] |
 
 ## Example
 

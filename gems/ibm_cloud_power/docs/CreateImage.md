@@ -15,9 +15,9 @@
 | **region** | **String** | Cloud Storage Region; only required to access IBM Cloud Storage | [optional] |
 | **secret_key** | **String** | Cloud Storage secret key; required for import image | [optional] |
 | **source** | **String** | Source of the image &gt;*Note*: url option is deprecated, this option is supported till Oct 2022  |  |
-| **storage_affinity** | [**StorageAffinity**](StorageAffinity.md) |  | [optional] |
+| **storage_affinity** | [**StorageAffinity**](StorageAffinity.md) | The storage affinity data; ignored if storagePool is provided; Used only when importing an image from cloud storage. | [optional] |
 | **storage_pool** | **String** | Storage pool where the image will be loaded; if provided then storageAffinity will be ignored; Used only when importing an image from cloud storage. | [optional] |
-| **user_tags** | **Array** |  | [optional] |
+| **user_tags** | **Array&lt;String&gt;** | List of user tags | [optional] |
 
 ## Example
 

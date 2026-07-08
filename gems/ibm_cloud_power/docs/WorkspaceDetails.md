@@ -7,8 +7,8 @@
 | **creation_date** | **Time** | Workspace creation date |  |
 | **crn** | **String** | The Workspace crn |  |
 | **href** | **String** | Link to Workspace Resource | [optional] |
-| **network_security_groups** | [**WorkspaceNetworkSecurityGroupsDetails**](WorkspaceNetworkSecurityGroupsDetails.md) |  | [optional] |
-| **power_edge_router** | [**WorkspacePowerEdgeRouterDetails**](WorkspacePowerEdgeRouterDetails.md) |  | [optional] |
+| **network_security_groups** | [**WorkspaceNetworkSecurityGroupsDetails**](WorkspaceNetworkSecurityGroupsDetails.md) | The Workspace Network Security Groups information | [optional] |
+| **power_edge_router** | [**WorkspacePowerEdgeRouterDetails**](WorkspacePowerEdgeRouterDetails.md) | The Workspace Power Edge Router information | [optional] |
 
 ## Example
 

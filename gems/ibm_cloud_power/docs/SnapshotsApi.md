@@ -7,7 +7,7 @@ All URIs are relative to *http://localhost*
 | [**v1_snapshots_get**](SnapshotsApi.md#v1_snapshots_get) | **GET** /v1/snapshots/{snapshot_id} | Get the detail of a snapshot |
 | [**v1_snapshots_getall**](SnapshotsApi.md#v1_snapshots_getall) | **GET** /v1/snapshots | Get a list of all the snapshots on a workspace |
 | [**v1_volume_snapshots_get**](SnapshotsApi.md#v1_volume_snapshots_get) | **GET** /v1/volume-snapshots | Get the list of volume snapshots on a workspace |
-| [**v1_volume_snapshots_getall**](SnapshotsApi.md#v1_volume_snapshots_getall) | **GET** /v1/volume-snapshots/{volume_snapshot_uuid} | Get the detail of a volume snapshot |
+| [**v1_volume_snapshots_get_0**](SnapshotsApi.md#v1_volume_snapshots_get_0) | **GET** /v1/volume-snapshots/{volume_snapshot_uuid} | Get the detail of a volume snapshot |
 
 
 ## v1_snapshots_get
@@ -196,9 +196,9 @@ No authorization required
 - **Accept**: application/json
 
 
-## v1_volume_snapshots_getall
+## v1_volume_snapshots_get_0
 
-> <SnapshotV1> v1_volume_snapshots_getall(volume_snapshot_uuid)
+> <SnapshotV1> v1_volume_snapshots_get_0(volume_snapshot_uuid)
 
 Get the detail of a volume snapshot
 
@@ -215,28 +215,28 @@ volume_snapshot_uuid = 'volume_snapshot_uuid_example' # String | The volume snap
 
 begin
   # Get the detail of a volume snapshot
-  result = api_instance.v1_volume_snapshots_getall(volume_snapshot_uuid)
+  result = api_instance.v1_volume_snapshots_get_0(volume_snapshot_uuid)
   p result
 rescue IbmCloudPower::ApiError => e
-  puts "Error when calling SnapshotsApi->v1_volume_snapshots_getall: #{e}"
+  puts "Error when calling SnapshotsApi->v1_volume_snapshots_get_0: #{e}"
 end
 ```
 
-#### Using the v1_volume_snapshots_getall_with_http_info variant
+#### Using the v1_volume_snapshots_get_0_with_http_info variant
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<SnapshotV1>, Integer, Hash)> v1_volume_snapshots_getall_with_http_info(volume_snapshot_uuid)
+> <Array(<SnapshotV1>, Integer, Hash)> v1_volume_snapshots_get_0_with_http_info(volume_snapshot_uuid)
 
 ```ruby
 begin
   # Get the detail of a volume snapshot
-  data, status_code, headers = api_instance.v1_volume_snapshots_getall_with_http_info(volume_snapshot_uuid)
+  data, status_code, headers = api_instance.v1_volume_snapshots_get_0_with_http_info(volume_snapshot_uuid)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <SnapshotV1>
 rescue IbmCloudPower::ApiError => e
-  puts "Error when calling SnapshotsApi->v1_volume_snapshots_getall_with_http_info: #{e}"
+  puts "Error when calling SnapshotsApi->v1_volume_snapshots_get_0_with_http_info: #{e}"
 end
 ```
 

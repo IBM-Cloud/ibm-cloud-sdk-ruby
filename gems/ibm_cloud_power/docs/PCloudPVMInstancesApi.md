@@ -44,7 +44,7 @@ require 'ibm_cloud_power'
 api_instance = IbmCloudPower::PCloudPVMInstancesApi.new
 cloud_instance_id = 'cloud_instance_id_example' # String | Cloud Instance ID of a PCloud Instance
 pvm_instance_id = 'pvm_instance_id_example' # String | PCloud PVM Instance ID
-body = IbmCloudPower::PVMInstanceAction.new({action: 'start'}) # PVMInstanceAction | Parameters for the desired action
+body = IbmCloudPower::PVMInstanceAction.new({action: 'dhcp-ip-sync'}) # PVMInstanceAction | Parameters for the desired action
 
 begin
   # Perform an action on a PVMInstance

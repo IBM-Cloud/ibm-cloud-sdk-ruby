@@ -4,8 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **asynchronous_replication** | [**ReplicationService**](ReplicationService.md) |  |  |
-| **synchronous_replication** | [**ReplicationService**](ReplicationService.md) |  | [optional] |
+| **asynchronous_replication** | [**DisasterRecoveryAsynchronousReplication**](DisasterRecoveryAsynchronousReplication.md) |  |  |
+| **synchronous_replication** | [**DisasterRecoveryAsynchronousReplication**](DisasterRecoveryAsynchronousReplication.md) |  | [optional] |
 
 ## Example
 

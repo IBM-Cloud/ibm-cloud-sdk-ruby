@@ -11,7 +11,7 @@
 | **cloud_storage_image_path** | **String** | Cloud Storage Image Path (bucket-name [/folder/../..]) | [optional] |
 | **cloud_storage_region** | **String** | Cloud Storage Region | [optional] |
 | **cloud_storage_secret_key** | **String** | Cloud Storage Secret key | [optional] |
-| **user_tags** | **Array** |  | [optional] |
+| **user_tags** | **Array&lt;String&gt;** | List of user tags | [optional] |
 
 ## Example
 

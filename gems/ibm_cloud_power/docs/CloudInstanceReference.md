@@ -9,7 +9,7 @@
 | **enabled** | **Boolean** | Indicates if the cloud instance is enabled |  |
 | **href** | **String** | Link to Cloud Instance resource |  |
 | **initialized** | **Boolean** | Indicates if the cloud instance is initialized and ready for use |  |
-| **limits** | [**CloudInstanceUsageLimits**](CloudInstanceUsageLimits.md) |  |  |
+| **limits** | [**CloudInstanceUsageLimits**](CloudInstanceUsageLimits.md) | Limits on the cloud instance |  |
 | **name** | **String** | Cloud Instance Name |  |
 | **region** | **String** | The region the cloud instance lives |  |
 

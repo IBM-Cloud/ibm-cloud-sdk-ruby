@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **description** | **String** | Description of the PVM instance snapshot | [optional] |
+| **description** | **String** | Description of the PVM instance snapshot with a maximum of 255 characters allowed. | [optional] |
 | **name** | **String** | Name of the PVM instance snapshot | [optional] |
 
 ## Example

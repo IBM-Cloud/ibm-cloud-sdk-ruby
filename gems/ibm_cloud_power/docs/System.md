@@ -13,7 +13,7 @@
 | **total_cores** | **Float** | The host total usable Processor units | [optional] |
 | **total_memory** | **Integer** | The host total usable RAM memory in GiB | [optional] |
 | **total_phys_cores** | **Float** | Total number of physical cores in the Pod | [optional] |
-| **total_phys_memory** | **Integer** | Total amount of physical memory in the Pod (GB) | [optional] |
+| **total_phys_memory** | **Integer** | Total amount of physical memory in the Pod (GiB) | [optional] |
 
 ## Example
 

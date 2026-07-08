@@ -1,14 +1,11 @@
 language: ruby
 cache: bundler
 rvm:
-  - 2.3
-  - 2.4
-  - 2.5
-  - 2.6
   - 2.7
   - 3.0
+  - 3.1
 script:
   - bundle install --path vendor/bundle
   - bundle exec rspec
   - gem build ibm_cloud_power.gemspec
-  - gem install ./ibm_cloud_power-1.0.0.gem
+  - gem install ./ibm_cloud_power-3.0.0.gem

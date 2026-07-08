@@ -5,9 +5,9 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **capabilities** | **Hash&lt;String, Boolean&gt;** | Datacenter Capabilities |  |
-| **capabilities_details** | [**CapabilitiesDetails**](CapabilitiesDetails.md) |  | [optional] |
+| **capabilities_details** | [**CapabilitiesDetails**](CapabilitiesDetails.md) | Additional Datacenter Capabilities Details | [optional] |
 | **href** | **String** | Link to Datacenter Region | [optional] |
-| **location** | [**DatacenterLocation**](DatacenterLocation.md) |  |  |
+| **location** | [**DatacenterLocation**](DatacenterLocation.md) | The Datacenter location |  |
 | **status** | **String** | The Datacenter status |  |
 | **type** | **String** | The Datacenter type |  |
 

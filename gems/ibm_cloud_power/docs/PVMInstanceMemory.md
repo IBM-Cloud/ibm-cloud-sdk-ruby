@@ -5,8 +5,8 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **assigned** | **Float** | The active memory information |  |
-| **maximum** | **Float** | The maximum amount of memory that can be allocated (in GB, for resize) | [optional] |
-| **minimum** | **Float** | The minimum amount of memory that can be allocated (in GB, for resize) | [optional] |
+| **maximum** | **Float** | The maximum amount of memory that can be allocated (in GiB, for resize) | [optional] |
+| **minimum** | **Float** | The minimum amount of memory that can be allocated (in GiB, for resize) | [optional] |
 
 ## Example
 

@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **creation_date** | **Time** | Creation Date |  |
-| **crn** | **String** |  | [optional] |
+| **crn** | **String** | The CRN for this resource | [optional] |
 | **description** | **String** | Description | [optional] |
 | **image_id** | **String** | Image ID |  |
 | **last_update_date** | **Time** | Last Update Date |  |
@@ -17,8 +17,8 @@
 | **state** | **String** | Image State | [optional] |
 | **storage_pool** | **String** | Storage pool where the image resides |  |
 | **storage_type** | **String** | Storage type for image |  |
-| **taskref** | [**TaskReference**](TaskReference.md) |  | [optional] |
-| **user_tags** | **Array** |  | [optional] |
+| **taskref** | [**ImageTaskref**](ImageTaskref.md) |  | [optional] |
+| **user_tags** | **Array&lt;String&gt;** | List of user tags | [optional] |
 | **volumes** | [**Array&lt;ImageVolume&gt;**](ImageVolume.md) | Image Volumes | [optional] |
 
 ## Example

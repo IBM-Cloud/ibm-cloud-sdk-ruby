@@ -6,7 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **ip_address** | **String** | The requested IP address of this Network Interface | [optional] |
 | **name** | **String** | Name of the Network Interface | [optional] |
-| **user_tags** | **Array&lt;String&gt;** | The user tags associated with this resource. | [optional] |
+| **user_tags** | **Array&lt;String&gt;** | List of user tags | [optional] |
 
 ## Example
 

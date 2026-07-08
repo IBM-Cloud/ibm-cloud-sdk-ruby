@@ -6,7 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **display_name** | **String** | Name of the host chosen by the user |  |
 | **sys_type** | **String** | System type |  |
-| **user_tags** | **Array** |  | [optional] |
+| **user_tags** | **Array&lt;String&gt;** | List of user tags | [optional] |
 
 ## Example
 

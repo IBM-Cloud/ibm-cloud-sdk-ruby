@@ -6,7 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **ibmi_css** | **Boolean** | IBMi Cloud Storage Solution | [optional][default to false] |
 | **ibmi_dbq** | **Boolean** | IBMi Cloud Storage Solution | [optional][default to false] |
-| **ibmi_pha** | **Boolean** | IBMi Power High Availability | [optional][default to false] |
+| **ibmi_pha** | **Boolean** | IBMi Power High Availability IASP Management Software License | [optional][default to false] |
 | **ibmi_rds** | **Boolean** | IBMi Rational Dev Studio | [optional][default to false] |
 | **ibmi_rds_users** | **Integer** | IBMi Rational Dev Studio Number of User Licenses | [optional] |
 

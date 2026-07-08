@@ -5,9 +5,9 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **capabilities** | **Hash&lt;String, Boolean&gt;** | Workspace Capabilities |  |
-| **details** | [**WorkspaceDetails**](WorkspaceDetails.md) |  |  |
+| **details** | [**WorkspaceDetails**](WorkspaceDetails.md) | The Workspace information |  |
 | **id** | **String** | Workspace ID |  |
-| **location** | [**WorkspaceLocation**](WorkspaceLocation.md) |  |  |
+| **location** | [**WorkspaceLocation**](WorkspaceLocation.md) | The Workspace location |  |
 | **name** | **String** | The Workspace name |  |
 | **status** | **String** | The Workspace status |  |
 | **type** | **String** | The Workspace type |  |

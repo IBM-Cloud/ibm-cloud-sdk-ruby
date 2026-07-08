@@ -4,8 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **auxiliary_volumes** | [**Array&lt;AuxiliaryVolumeForOnboarding&gt;**](AuxiliaryVolumeForOnboarding.md) |  |  |
-| **source_crn** | **String** | CRN of source ServiceBroker instance from where auxiliary volumes need to be onboarded |  |
+| **auxiliary_volumes** | [**Array&lt;AuxiliaryVolumesForOnboardingAuxiliaryVolumesInner&gt;**](AuxiliaryVolumesForOnboardingAuxiliaryVolumesInner.md) |  |  |
+| **source_crn** | **String** | The CRN of the workspace in which the primary volume is located need to be onboarded |  |
 
 ## Example
 

@@ -7,7 +7,7 @@ All URIs are relative to *http://localhost*
 | [**v1_networks_network_interfaces_delete**](NetworksApi.md#v1_networks_network_interfaces_delete) | **DELETE** /v1/networks/{network_id}/network-interfaces/{network_interface_id} | Delete a Network Interface |
 | [**v1_networks_network_interfaces_get**](NetworksApi.md#v1_networks_network_interfaces_get) | **GET** /v1/networks/{network_id}/network-interfaces/{network_interface_id} | Get a Network Interface&#39;s information |
 | [**v1_networks_network_interfaces_getall**](NetworksApi.md#v1_networks_network_interfaces_getall) | **GET** /v1/networks/{network_id}/network-interfaces | Get all Network Interfaces for this network |
-| [**v1_networks_network_interfaces_post**](NetworksApi.md#v1_networks_network_interfaces_post) | **POST** /v1/networks/{network_id}/network-interfaces | Perform Network Interface addition, deletion, and listing |
+| [**v1_networks_network_interfaces_post**](NetworksApi.md#v1_networks_network_interfaces_post) | **POST** /v1/networks/{network_id}/network-interfaces | Create a Network Interface |
 | [**v1_networks_network_interfaces_put**](NetworksApi.md#v1_networks_network_interfaces_put) | **PUT** /v1/networks/{network_id}/network-interfaces/{network_interface_id} | Update a Network Interface&#39;s information |
 
 
@@ -205,7 +205,7 @@ No authorization required
 
 > <NetworkInterface> v1_networks_network_interfaces_post(network_id, opts)
 
-Perform Network Interface addition, deletion, and listing
+Create a Network Interface
 
 ### Examples
 
@@ -220,7 +220,7 @@ opts = {
 }
 
 begin
-  # Perform Network Interface addition, deletion, and listing
+  # Create a Network Interface
   result = api_instance.v1_networks_network_interfaces_post(network_id, opts)
   p result
 rescue IbmCloudPower::ApiError => e
@@ -236,7 +236,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Perform Network Interface addition, deletion, and listing
+  # Create a Network Interface
   data, status_code, headers = api_instance.v1_networks_network_interfaces_post_with_http_info(network_id, opts)
   p status_code # => 2xx
   p headers # => { ... }

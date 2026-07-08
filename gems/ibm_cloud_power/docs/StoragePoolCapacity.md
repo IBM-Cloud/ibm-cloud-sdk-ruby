@@ -4,13 +4,13 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **available_capacity** | **Integer** | Available/Unused pool capacity (GB) | [optional] |
-| **max_allocation_size** | **Integer** | Maximum allocation storage size (GB) |  |
+| **available_capacity** | **Integer** | Available/Unused pool capacity (GiB) | [optional] |
+| **max_allocation_size** | **Integer** | Maximum allocation storage size (GiB) |  |
 | **pool_name** | **String** | Pool name | [optional] |
 | **replication_enabled** | **Boolean** | true if storage-pool is replication enabled and can be used to manage replication enabled volumes | [optional] |
 | **storage_host** | **String** | Storage host/controller for this storage pool | [optional] |
 | **storage_type** | **String** | Storage type of the storage pool | [optional] |
-| **total_capacity** | **Integer** | Total pool capacity (GB) | [optional] |
+| **total_capacity** | **Integer** | Total pool capacity (GiB) | [optional] |
 
 ## Example
 

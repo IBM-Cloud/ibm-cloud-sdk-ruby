@@ -4,9 +4,9 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **volumes** | [**Array&lt;AuxiliaryVolumesForOnboarding&gt;**](AuxiliaryVolumesForOnboarding.md) |  |  |
+| **volumes** | [**Array&lt;VolumeOnboardingCreateVolumesInner&gt;**](VolumeOnboardingCreateVolumesInner.md) |  |  |
 | **description** | **String** | Description of the volume onboarding operation | [optional] |
-| **user_tags** | **Array** |  | [optional] |
+| **user_tags** | **Array&lt;String&gt;** | List of user tags | [optional] |
 
 ## Example
 

@@ -13,8 +13,8 @@
 | **name** | **String** | Volume Name |  |
 | **replication_enabled** | **Boolean** | Indicates if the volume should be replication enabled or not | [optional] |
 | **shareable** | **Boolean** | Indicates if the volume is shareable between VMs | [optional] |
-| **size** | **Float** | Volume Size (GB) |  |
-| **user_tags** | **Array** |  | [optional] |
+| **size** | **Float** | Volume Size (GiB) |  |
+| **user_tags** | **Array&lt;String&gt;** | List of user tags | [optional] |
 | **volume_pool** | **String** | Volume pool where the volume will be created; if provided then affinityPolicy value will be ignored | [optional] |
 
 ## Example

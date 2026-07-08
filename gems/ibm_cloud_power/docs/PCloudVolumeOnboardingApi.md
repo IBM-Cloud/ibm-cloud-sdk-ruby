@@ -149,7 +149,7 @@ require 'ibm_cloud_power'
 
 api_instance = IbmCloudPower::PCloudVolumeOnboardingApi.new
 cloud_instance_id = 'cloud_instance_id_example' # String | Cloud Instance ID of a PCloud Instance
-body = IbmCloudPower::VolumeOnboardingCreate.new({volumes: [IbmCloudPower::AuxiliaryVolumesForOnboarding.new({auxiliary_volumes: [IbmCloudPower::AuxiliaryVolumeForOnboarding.new({aux_volume_name: 'aux_volume_name_example'})], source_crn: 'source_crn_example'})]}) # VolumeOnboardingCreate | Parameters for the creation of volume onboarding
+body = IbmCloudPower::VolumeOnboardingCreate.new({volumes: [IbmCloudPower::VolumeOnboardingCreateVolumesInner.new({auxiliary_volumes: [IbmCloudPower::AuxiliaryVolumesForOnboardingAuxiliaryVolumesInner.new({aux_volume_name: 'aux_volume_name_example'})], source_crn: 'source_crn_example'})]}) # VolumeOnboardingCreate | Parameters for the creation of volume onboarding
 
 begin
   # Onboard auxiliary volumes to target site
