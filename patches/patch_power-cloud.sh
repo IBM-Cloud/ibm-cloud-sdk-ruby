@@ -43,8 +43,14 @@ yq '.components.schemas.UpdateWorkspaceSSHKey.properties.name.pattern = "^[a-zA-
 yq '.components.schemas.WorkspaceSSHKey.properties.name.pattern = "^[a-zA-Z0-9\\-_][a-zA-Z0-9\\-_]*$"' \
   "${SPEC_FILE}" > "${SPEC_FILE}.tmp" && mv "${SPEC_FILE}.tmp" "${SPEC_FILE}"
 
+# Fix regex pattern in TargetTrustedProfile schemas to properly escape hyphen
+yq '.components.schemas.TargetTrustedProfile.properties.crn.pattern = "^(crn:v[0-9]+:[a-z0-9-]+:[a-z0-9-]+:[a-z0-9-]+:[a-z0-9-]*:([a-z]\\/[a-z0-9-]+)?:[a-z0-9-]*:[a-z0-9-]*:[a-zA-Z0-9\\-_\\.\\/]*)?$"' \
+  "${SPEC_FILE}" > "${SPEC_FILE}.tmp" && mv "${SPEC_FILE}.tmp" "${SPEC_FILE}"
+
 # Fix regex pattern in VPMemVolumeCreate schema to properly escape hyphen
 yq '.components.schemas.VPMemVolumeCreate.properties.name.pattern = "^[a-zA-Z0-9\\-_][a-zA-Z0-9\\-_]*$"' \
+  "${SPEC_FILE}" > "${SPEC_FILE}.tmp" && mv "${SPEC_FILE}.tmp" "${SPEC_FILE}"
+yq '.components.schemas.VPMemVolumeUpdate.properties.name.pattern = "^[a-zA-Z0-9][a-zA-Z0-9\\-_]*$"' \
   "${SPEC_FILE}" > "${SPEC_FILE}.tmp" && mv "${SPEC_FILE}.tmp" "${SPEC_FILE}"
 
 echo "Pre-generation patches applied successfully to ${SPEC_NAME}"
