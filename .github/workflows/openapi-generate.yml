@@ -49,7 +49,6 @@ jobs:
         author: IBM Jeeves <ibm-jeeves@ibm.com>
         committer: IBM Jeeves <ibm-jeeves@ibm.com>
         delete-branch: true
-        labels: enhancement
         assignees: agrare
         push-to-fork: ibm-jeeves/ibm-cloud-sdk-ruby
         title: Update ${{ matrix.gem_name }} gem from OpenAPI spec
