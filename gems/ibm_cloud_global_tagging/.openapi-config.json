@@ -4,5 +4,6 @@
   "gemSummary": "IBM Cloud Global Tagging",
   "gemDescription": "Ruby gem for IBM Cloud Global Tagging",
   "gemLicense": "Apache-2.0",
-  "gemVersion": "0.1.3"
+  "gemVersion": "0.1.3",
+  "useAutoload": true
 }
