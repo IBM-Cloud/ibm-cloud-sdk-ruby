@@ -1,5 +1,3 @@
-# -*- encoding: utf-8 -*-
-
 =begin
 #Global Tagging
 
@@ -12,28 +10,166 @@ Generator version: 7.23.0
 
 =end
 
-$:.push File.expand_path("../lib", __FILE__)
-require "ibm_cloud_global_tagging/version"
+require 'date'
+require 'time'
 
-Gem::Specification.new do |s|
-  s.name        = "ibm_cloud_global_tagging"
-  s.version     = IbmCloudGlobalTagging::VERSION
-  s.platform    = Gem::Platform::RUBY
-  s.authors     = ["IBM Cloud Developers"]
-  s.email       = ["michele.crudele@it.ibm.com"]
-  s.homepage    = "https://openapi-generator.tech"
-  s.summary     = "IBM Cloud Global Tagging"
-  s.description = "Ruby gem for IBM Cloud Global Tagging"
-  s.license     = "Apache-2.0"
-  s.required_ruby_version = ">= 2.7"
-  s.metadata    = {}
+module IbmCloudGlobalTagging
+  # A valid Global Search string.
+  class QueryString < ApiModelBase
+    # The Lucene-formatted query string
+    attr_accessor :query_string
 
-  s.add_runtime_dependency 'typhoeus', '~> 1.0', '>= 1.0.1'
+    # Attribute mapping from ruby-style variable name to JSON key.
+    def self.attribute_map
+      {
+        :'query_string' => :'query_string'
+      }
+    end
 
-  s.add_development_dependency 'rspec', '~> 3.6', '>= 3.6.0'
+    # Returns attribute mapping this model knows about
+    def self.acceptable_attribute_map
+      attribute_map
+    end
 
-  s.files         = `find *`.split("\n").uniq.sort.select { |f| !f.empty? }
-  s.test_files    = `find spec/*`.split("\n")
-  s.executables   = []
-  s.require_paths = ["lib"]
+    # Returns all the JSON keys this model knows about
+    def self.acceptable_attributes
+      acceptable_attribute_map.values
+    end
+
+    # Attribute type mapping.
+    def self.openapi_types
+      {
+        :'query_string' => :'String'
+      }
+    end
+
+    # List of attributes with nullable: true
+    def self.openapi_nullable
+      Set.new([
+      ])
+    end
+
+    # Initializes the object
+    # @param [Hash] attributes Model attributes in the form of hash
+    def initialize(attributes = {})
+      if (!attributes.is_a?(Hash))
+        fail ArgumentError, "The input argument (attributes) must be a hash in `IbmCloudGlobalTagging::QueryString` initialize method"
+      end
+
+      # check to see if the attribute exists and convert string to symbol for hash key
+      acceptable_attribute_map = self.class.acceptable_attribute_map
+      attributes = attributes.each_with_object({}) { |(k, v), h|
+        if (!acceptable_attribute_map.key?(k.to_sym))
+          fail ArgumentError, "`#{k}` is not a valid attribute in `IbmCloudGlobalTagging::QueryString`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
+        end
+        h[k.to_sym] = v
+      }
+
+      if attributes.key?(:'query_string')
+        self.query_string = attributes[:'query_string']
+      else
+        self.query_string = nil
+      end
+    end
+
+    # Show invalid properties with the reasons. Usually used together with valid?
+    # @return Array for valid properties with the reasons
+    def list_invalid_properties
+      warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
+      invalid_properties = Array.new
+      if @query_string.nil?
+        invalid_properties.push('invalid value for "query_string", query_string cannot be nil.')
+      end
+
+      if @query_string.to_s.length < 1
+        invalid_properties.push('invalid value for "query_string", the character length must be greater than or equal to 1.')
+      end
+
+      invalid_properties
+    end
+
+    # Check to see if the all the properties in the model are valid
+    # @return true if the model is valid
+    def valid?
+      warn '[DEPRECATED] the `valid?` method is obsolete'
+      return false if @query_string.nil?
+      return false if @query_string.to_s.length < 1
+      true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] query_string Value to be assigned
+    def query_string=(query_string)
+      if query_string.nil?
+        fail ArgumentError, 'query_string cannot be nil'
+      end
+
+      if query_string.to_s.length < 1
+        fail ArgumentError, 'invalid value for "query_string", the character length must be greater than or equal to 1.'
+      end
+
+      @query_string = query_string
+    end
+
+    # Checks equality by comparing each attribute.
+    # @param [Object] Object to be compared
+    def ==(o)
+      return true if self.equal?(o)
+      self.class == o.class &&
+          query_string == o.query_string
+    end
+
+    # @see the `==` method
+    # @param [Object] Object to be compared
+    def eql?(o)
+      self == o
+    end
+
+    # Calculates hash code according to all attributes.
+    # @return [Integer] Hash code
+    def hash
+      [query_string].hash
+    end
+
+    # Builds the object from hash
+    # @param [Hash] attributes Model attributes in the form of hash
+    # @return [Object] Returns the model itself
+    def self.build_from_hash(attributes)
+      return nil unless attributes.is_a?(Hash)
+      attributes = attributes.transform_keys(&:to_sym)
+      transformed_hash = {}
+      openapi_types.each_pair do |key, type|
+        if attributes.key?(attribute_map[key]) && attributes[attribute_map[key]].nil?
+          transformed_hash["#{key}"] = nil
+        elsif type =~ /\AArray<(.*)>/i
+          # check to ensure the input is an array given that the attribute
+          # is documented as an array but the input is not
+          if attributes[attribute_map[key]].is_a?(Array)
+            transformed_hash["#{key}"] = attributes[attribute_map[key]].map { |v| _deserialize($1, v) }
+          end
+        elsif !attributes[attribute_map[key]].nil?
+          transformed_hash["#{key}"] = _deserialize(type, attributes[attribute_map[key]])
+        end
+      end
+      new(transformed_hash)
+    end
+
+    # Returns the object in the form of hash
+    # @return [Hash] Returns the object in the form of hash
+    def to_hash
+      hash = {}
+      self.class.attribute_map.each_pair do |attr, param|
+        value = self.send(attr)
+        if value.nil?
+          is_nullable = self.class.openapi_nullable.include?(attr)
+          next if !is_nullable || (is_nullable && !instance_variable_defined?(:"@#{attr}"))
+        end
+
+        hash[param] = _to_hash(value)
+      end
+      hash
+    end
+
+  end
+
 end

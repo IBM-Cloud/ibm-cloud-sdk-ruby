@@ -1,5 +1,3 @@
-# -*- encoding: utf-8 -*-
-
 =begin
 #Global Tagging
 
@@ -12,28 +10,182 @@ Generator version: 7.23.0
 
 =end
 
-$:.push File.expand_path("../lib", __FILE__)
-require "ibm_cloud_global_tagging/version"
+require 'date'
+require 'time'
 
-Gem::Specification.new do |s|
-  s.name        = "ibm_cloud_global_tagging"
-  s.version     = IbmCloudGlobalTagging::VERSION
-  s.platform    = Gem::Platform::RUBY
-  s.authors     = ["IBM Cloud Developers"]
-  s.email       = ["michele.crudele@it.ibm.com"]
-  s.homepage    = "https://openapi-generator.tech"
-  s.summary     = "IBM Cloud Global Tagging"
-  s.description = "Ruby gem for IBM Cloud Global Tagging"
-  s.license     = "Apache-2.0"
-  s.required_ruby_version = ">= 2.7"
-  s.metadata    = {}
+module IbmCloudGlobalTagging
+  # Definition of success health response
+  class HealthResponse < ApiModelBase
+    # Name of the microservice
+    attr_accessor :service
 
-  s.add_runtime_dependency 'typhoeus', '~> 1.0', '>= 1.0.1'
+    # Version of the microservice
+    attr_accessor :version
 
-  s.add_development_dependency 'rspec', '~> 3.6', '>= 3.6.0'
+    # Information about of microservice health
+    attr_accessor :health
 
-  s.files         = `find *`.split("\n").uniq.sort.select { |f| !f.empty? }
-  s.test_files    = `find spec/*`.split("\n")
-  s.executables   = []
-  s.require_paths = ["lib"]
+    # Information about kubernetes cluster
+    attr_accessor :region
+
+    # Current timestamp
+    attr_accessor :timestamp
+
+    # Attribute mapping from ruby-style variable name to JSON key.
+    def self.attribute_map
+      {
+        :'service' => :'service',
+        :'version' => :'version',
+        :'health' => :'health',
+        :'region' => :'region',
+        :'timestamp' => :'timestamp'
+      }
+    end
+
+    # Returns attribute mapping this model knows about
+    def self.acceptable_attribute_map
+      attribute_map
+    end
+
+    # Returns all the JSON keys this model knows about
+    def self.acceptable_attributes
+      acceptable_attribute_map.values
+    end
+
+    # Attribute type mapping.
+    def self.openapi_types
+      {
+        :'service' => :'String',
+        :'version' => :'String',
+        :'health' => :'Array<HealthSummary>',
+        :'region' => :'String',
+        :'timestamp' => :'String'
+      }
+    end
+
+    # List of attributes with nullable: true
+    def self.openapi_nullable
+      Set.new([
+      ])
+    end
+
+    # Initializes the object
+    # @param [Hash] attributes Model attributes in the form of hash
+    def initialize(attributes = {})
+      if (!attributes.is_a?(Hash))
+        fail ArgumentError, "The input argument (attributes) must be a hash in `IbmCloudGlobalTagging::HealthResponse` initialize method"
+      end
+
+      # check to see if the attribute exists and convert string to symbol for hash key
+      acceptable_attribute_map = self.class.acceptable_attribute_map
+      attributes = attributes.each_with_object({}) { |(k, v), h|
+        if (!acceptable_attribute_map.key?(k.to_sym))
+          fail ArgumentError, "`#{k}` is not a valid attribute in `IbmCloudGlobalTagging::HealthResponse`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
+        end
+        h[k.to_sym] = v
+      }
+
+      if attributes.key?(:'service')
+        self.service = attributes[:'service']
+      end
+
+      if attributes.key?(:'version')
+        self.version = attributes[:'version']
+      end
+
+      if attributes.key?(:'health')
+        if (value = attributes[:'health']).is_a?(Array)
+          self.health = value
+        end
+      end
+
+      if attributes.key?(:'region')
+        self.region = attributes[:'region']
+      end
+
+      if attributes.key?(:'timestamp')
+        self.timestamp = attributes[:'timestamp']
+      end
+    end
+
+    # Show invalid properties with the reasons. Usually used together with valid?
+    # @return Array for valid properties with the reasons
+    def list_invalid_properties
+      warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
+      invalid_properties = Array.new
+      invalid_properties
+    end
+
+    # Check to see if the all the properties in the model are valid
+    # @return true if the model is valid
+    def valid?
+      warn '[DEPRECATED] the `valid?` method is obsolete'
+      true
+    end
+
+    # Checks equality by comparing each attribute.
+    # @param [Object] Object to be compared
+    def ==(o)
+      return true if self.equal?(o)
+      self.class == o.class &&
+          service == o.service &&
+          version == o.version &&
+          health == o.health &&
+          region == o.region &&
+          timestamp == o.timestamp
+    end
+
+    # @see the `==` method
+    # @param [Object] Object to be compared
+    def eql?(o)
+      self == o
+    end
+
+    # Calculates hash code according to all attributes.
+    # @return [Integer] Hash code
+    def hash
+      [service, version, health, region, timestamp].hash
+    end
+
+    # Builds the object from hash
+    # @param [Hash] attributes Model attributes in the form of hash
+    # @return [Object] Returns the model itself
+    def self.build_from_hash(attributes)
+      return nil unless attributes.is_a?(Hash)
+      attributes = attributes.transform_keys(&:to_sym)
+      transformed_hash = {}
+      openapi_types.each_pair do |key, type|
+        if attributes.key?(attribute_map[key]) && attributes[attribute_map[key]].nil?
+          transformed_hash["#{key}"] = nil
+        elsif type =~ /\AArray<(.*)>/i
+          # check to ensure the input is an array given that the attribute
+          # is documented as an array but the input is not
+          if attributes[attribute_map[key]].is_a?(Array)
+            transformed_hash["#{key}"] = attributes[attribute_map[key]].map { |v| _deserialize($1, v) }
+          end
+        elsif !attributes[attribute_map[key]].nil?
+          transformed_hash["#{key}"] = _deserialize(type, attributes[attribute_map[key]])
+        end
+      end
+      new(transformed_hash)
+    end
+
+    # Returns the object in the form of hash
+    # @return [Hash] Returns the object in the form of hash
+    def to_hash
+      hash = {}
+      self.class.attribute_map.each_pair do |attr, param|
+        value = self.send(attr)
+        if value.nil?
+          is_nullable = self.class.openapi_nullable.include?(attr)
+          next if !is_nullable || (is_nullable && !instance_variable_defined?(:"@#{attr}"))
+        end
+
+        hash[param] = _to_hash(value)
+      end
+      hash
+    end
+
+  end
+
 end

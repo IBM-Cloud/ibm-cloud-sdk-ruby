@@ -1,84 +1,416 @@
-[![Build Status](https://travis-ci.com/IBM-Cloud/ibm-cloud-sdk-ruby.svg?token=eW5FVD71iyte6tTby8gr&branch=master)](https://travis.ibm.com/IBM-Cloud/ibm-cloud-sdk-ruby)
-[![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
-# IBM Cloud Global Tagging Ruby SDK
+# ibm_cloud_global_tagging
 
-Ruby client library to interact with various [IBM Cloud Platform Services APIs](https://cloud.ibm.com/apidocs?category=platform-services).
+IbmCloudGlobalTagging - the Ruby gem for the Global Tagging
 
-Disclaimer: this SDK is being released initially as a **pre-release** version.
-Changes might occur which impact applications that use this SDK.
+## Introduction
 
-## Table of Contents
+You can manage your tags in IBM Cloud by using the Global Tagging API. With this API, you can create, delete, search, attach, or detach tags. 
 
-<!--
-  The TOC below is generated using the `markdown-toc` node package.
+Tags are uniquely identified by a Cloud Resource Naming (CRN) identifier. Tags have a name, which must be unique within a billing account. You can make tags in `key:value` or `label` format. 
 
-      https://github.com/jonschlinkert/markdown-toc
+SDKs for Java, Node, Python, and Go are available to make it easier to programmatically access the API from your code. The client libraries that are provided by the SDKs implement best practices for using the API and reduce the amount of code that you need to write. The tab for each language includes code examples that demonstrate how to use the client libraries. For more information about using the SDKs, see the [IBM Cloud SDK Common project](https://github.com/IBM/ibm-cloud-sdk-common) on GitHub.
 
-  You should regenerate the TOC after making changes to this file.
+Installing the Java SDK
 
-      npx markdown-toc -i README.md
-  -->
+Maven
 
-<!-- toc -->
+```xml
+<dependency>
+ <groupId>com.ibm.cloud</groupId>
+ <artifactId>global-tagging</artifactId>
+ <version>{version}</version>
+</dependency>
+```
 
-- [Overview](#overview)
-- [Prerequisites](#prerequisites)
-- [Installation](#installation)
-- [Using the SDK](#using-the-sdk)
-- [Questions](#questions)
-- [Issues](#issues)
-- [Open source @ IBM](#open-source--ibm)
-- [Contributing](#contributing)
-- [License](#license)
+Gradle
 
-<!-- tocstop -->
+```bash
+compile 'com.ibm.cloud:global-tagging:{version}'
+```
 
-## Overview
+Replace `{version}` in these examples with the release version.
 
-The IBM Cloud Platform Services Ruby SDK allows developers to programmatically interact with the following
-IBM Cloud services:
+View on GitHub
 
-Service Name | Imported Class Name
---- | ---
-<!-- [Example Service](https://cloud.ibm.com/apidocs/example-service) | exampleservicev1 -->
+[https://github.com/IBM/platform-services-java-sdk](https://github.com/IBM/platform-services-java-sdk)
 
-## Prerequisites
+Installing the Node SDK
 
-[ibm-cloud-onboarding]: https://cloud.ibm.com/registration
+```bash
+npm install @ibm-cloud/platform-services
+```
 
-* An [IBM Cloud][ibm-cloud-onboarding] account.
-* An IAM API key to allow the SDK to access your account. Create one [here](https://cloud.ibm.com/iam/apikeys).
-* Ruby 2.3.0 or above.
+View on GitHub
+
+[https://github.com/IBM/platform-services-node-sdk](https://github.com/IBM/platform-services-node-sdk)
+
+Installing the Python SDK
+
+```bash
+pip install --upgrade \"ibm-platform-services\"
+```
+
+View on GitHub
+
+[https://github.com/IBM/platform-services-python-sdk](https://github.com/IBM/platform-services-python-sdk)
+
+Installing the Go SDK
+
+Go modules (recommended): Add the following import in your code, and then run `go build` or `go mod tidy`
+
+```go
+import (
+ \"github.com/IBM/platform-services-go-sdk/globaltaggingv1\"
+)
+```
+
+Go get
+
+```bash
+go get -u github.com/IBM/platform-services-go-sdk/globaltaggingv1
+```
+
+View on GitHub
+
+[https://github.com/IBM/platform-services-go-sdk](https://github.com/IBM/platform-services-go-sdk)
+
+### Types of tags
+
+The Tagging API supports three types of tag: `service`, `user`, and `access`.  
+
+- Service tags are intended for services that want to attach a tag to a resource in an exclusive way: nobody else can go and detach it. A service tag is a privileged construct that only authorized services can manage. So, a regular user is not authorized to attach and detach service tags on a resource even if they have access to manage tags on the resource itself. 
+
+   Service tags are supported only for resources that are onboarded to Global Search and Tagging, which means you cannot attach a service tag to a classic infrastructure (IMS) resource. Each resource can have a maximum of 1000 service tags.
+
+- User tags are added by an authorized user in the account. Any user with the correct access role in an account can list and can delete both service and user tags in the account as long as they are not attached to any resource. Users can delete service tags because the operation is non-disruptive in that the tags aren't attached to any resource.
+
+   The Tagging API supports multiple services assigning a tag prefix at service registration time to avoid conflicts. So, a service tag name always has the form `service_prefix:tag_label`. Each resource can have maximum of 1000 user tags.
+
+- Access management tags are used to manage access to resources, and they can be created in advance for use in access policies, which  control access to resources where those tags will be attached. Only the account administrator can create access management tags, and they can delete them only when the tags aren't attached to any resources in the account. Only the resource administrator can attach and detach access management tags on the resource itself.  
+
+   The name of an access management tag must be in the form of a `key:value` pair, where `value` cannot contain the `:` character. Access management tags are supported only for IAM-managed resources, which means you cannot use them to manage access to classic infrastructure (IMS) and Cloud Foundry resources. Each resource can have a maximum of 250 access tags (which is the account limit).
+
+### Filtering tags
+
+Global Search and Tagging stores the different type of tags attached to a resource within a different attribute of the resource document:  
+
+- Service tags are stored within `service_tags` attribute.  
+- User tags are stored within the `tags` attribute.  
+- Access management tags are stored within the `access_tags` attribute.  
+
+So, you can add filters to those attributes when [searching for resources](https://cloud.ibm.com/apidocs/search).  
+
+For example, the following filter matches all resources tagged with the *your_service:your_tag* service tag.  
+
+```
+service_tags:\"your_service:your_tag\"
+```
+
+The following filter matches all resources that are tagged with any service tag starting with *your_service:*.  
+```
+service_tags:your_service:*
+```
+
+The following filter matches all resources that are tagged with the *my_tag* user tag.  
+
+```
+tags: \"my_tag\"
+```
+
+Finally, the following filter matches all resources that are tagged with the *env:public* access management tag.
+
+```
+access_tags: \"env:public\"
+```
+
+## Endpoint URLs
+
+The Global Tagging API uses the following public global endpoint URL. When you call the API, add the path for each method to form the complete API endpoint for your requests.
+
+```
+https://tags.global-search-tagging.cloud.ibm.com
+```
+
+If you enabled service endpoints in your account, you can send API requests over the IBM Cloud® private network at the following base endpoint URLs. For more information, see [Enabling VRF and service endpoints](https://cloud.ibm.com/docs/account?topic=account-vrf-service-endpoint).
+
+- Private endpoint URL for VPC infrastructure (Dallas, Washington, Sydney, London, Frankfurt, Madrid, San Paulo, Tokyo, Osaka, Toronto, Montreal, Chennai, Mumbai regions): `https://tags.private.global-search-tagging.cloud.ibm.com`
+- Private endpoint URL for classic infrastructure:
+   - Dallas `https://tags.private.us-south.global-search-tagging.cloud.ibm.com`
+   - Washington `https://tags.private.us-east.global-search-tagging.cloud.ibm.com`
+   - Sydney `https://tags.private.au-syd.global-search-tagging.cloud.ibm.com`
+   - London `https://tags.private.eu-gb.global-search-tagging.cloud.ibm.com`
+   - Frankfurt `https://tags.private.eu-de.global-search-tagging.cloud.ibm.com`
+
+Example API request
+
+```
+curl -X POST \"https://tags.global-search-tagging.cloud.ibm.com/v3/tags/attach\" --header \"Accept: application/json\" --header \"Content-Type: application/json\" --header \"Authorization: Bearer {IAM token}\" -d '{\"tag_names\": [\"{tagName}\"], \"resources\": [ { \"resource_id\": \"{resourceCRN}\" } ] }'
+```
+
+Replace `{IAM token}`, `{tagName}` and `{resourceCRN}` in this example with the values for your particular API call.
+
+## Authentication
+
+Authorization to the Global Tagging API is enforced by using an IBM Cloud Identity and Access Management (IAM) access token. The token is used to determine the actions that a user or service ID has access to when they use the API. 
+
+Obtaining an IAM token for an authenticated user or service ID is described in the [IAM Identity Services API](https://cloud.ibm.com/apidocs/iam-identity-token-api) documentation. 
+
+To use the API, add a valid IAM token to the HTTP Authorization request header, for example, `--header \"Authorization: Bearer <TOKEN>\"`.
+
+When you use the SDK, configure an IAM authenticator with the IAM API key. The authenticator automatically obtains the IAM access token for the API key and includes it with each request. You can construct an authenticator in either of two ways:
+- Programmatically by constructing an IAM authenticator instance and supplying your IAM API key 
+- By defining the API key in external configuration properties and then using the SDK authenticator factory to construct an IAM authenticator that uses the configured IAM API key
+
+In this example of using external configuration properties, an IAM authenticator instance is created with the configured API key, and then the service client is constructed with this authenticator instance and the configured service URL.
+
+For more information, see the Authentication section of the [IBM Cloud SDK Common](https://github.com/IBM/ibm-cloud-sdk-common/blob/main/README.md) documentation.
+
+To call each method, you'll need to be assigned a role that includes the required IAM actions. Each method lists the associated action. For more information about IAM actions and how they map to roles, see [Assigning access to account management services](https://cloud.ibm.com/docs/account?topic=account-account-services).
+
+To retrieve your access token:
+
+```bash
+curl -X POST \\
+  \"https://iam.cloud.ibm.com/identity/token\" \\
+  --header 'Content-Type: application/x-www-form-urlencoded' \\
+  --header 'Accept: application/json' \\
+  --data-urlencode 'grant_type=urn:ibm:params:oauth:grant-type:apikey' \\
+  --data-urlencode 'apikey=<API_KEY>'
+```
+
+Replace `<API_KEY>` with your IAM API key.
+
+Setting client options through external configuration
+
+Example environment variables, where `<SERVICE_URL>` is the endpoint URL and `<API_KEY>` is your IAM API key
+```sh
+export GLOBAL_TAGGING_URL=<SERVICE_URL>
+export GLOBAL_TAGGING_AUTHTYPE=iam
+export GLOBAL_TAGGING_APIKEY=<API_KEY>
+```
+
+Example of constructing the service client
+```go
+import {
+    \"github.com/IBM/platform-services-go-sdk/globaltaggingv1\"
+}
+...
+serviceClientOptions := &globaltaggingv1.GlobalTaggingV1Options{}
+serviceClient, err := globaltaggingv1.NewGlobalTaggingV1UsingExternalConfig(serviceClientOptions)
+```
+
+Setting client options through external configuration
+
+Example environment variables, where `<SERVICE_URL>` is the endpoint URL and `<API_KEY>` is your IAM API key
+```sh
+export GLOBAL_TAGGING_URL=<SERVICE_URL>
+export GLOBAL_TAGGING_AUTHTYPE=iam
+export GLOBAL_TAGGING_APIKEY=<API_KEY>
+```
+
+Example of constructing the service client
+```java
+import com.ibm.cloud.platform_services.global_tagging.v1.GlobalTagging;
+...
+GlobalTagging serviceClient = GlobalTagging.newInstance();
+```
+
+Setting client options through external configuration
+
+Example environment variables, where `<SERVICE_URL>` is the endpoint URL and `<API_KEY>` is your IAM API key
+```sh
+export GLOBAL_TAGGING_URL=<SERVICE_URL>
+export GLOBAL_TAGGING_AUTHTYPE=iam
+export GLOBAL_TAGGING_APIKEY=<API_KEY>
+```
+
+Example of constructing the service client
+```javascript
+const GlobalTaggingV1 = require('@ibm-cloud/platform-services/global-tagging/v1');
+...
+const serviceClient = GlobalTaggingV1.newInstance({});
+```
+
+Setting client options through external configuration
+
+Example environment variables, where `<SERVICE_URL>` is the endpoint URL and `<API_KEY>` is your IAM API key
+```sh
+export GLOBAL_TAGGING_URL=<SERVICE_URL>
+export GLOBAL_TAGGING_AUTHTYPE=iam
+export GLOBAL_TAGGING_APIKEY=<API_KEY>
+```
+
+Example of constructing the service client
+```python
+from ibm_platform_services import GlobalTaggingV1
+...
+global_tagging_service = GlobalTaggingV1.new_instance()
+```
+
+## Auditing
+
+You can monitor API activity within your account by using the IBM Cloud Activity Tracker. Whenever an API method is called, an event is generated that you can then track and audit from within Activity Tracker. The specific event type is listed for each individual method.
+
+For more information about how to track tagging activity, see [Auditing events for account management](https://cloud.ibm.com/docs/activity-tracker?topic=activity-tracker-at_events_acc_mgt).
+
+## Error handling
+
+The resource manager uses standard HTTP response codes to indicate whether a method completed successfully. A `200` type response always indicates success. A `400` type response is a failure, and a `500` type response is an internal system error.
+
+| HTTP error code | Description | Recovery |
+|-----------------|-------------|----------|
+| `200` | Success | The request was successful. |
+| `400` | Bad Request | The input parameters in the request body are either incomplete or in the wrong format. Be sure to include all required parameters in your request. |
+| `401` | Unauthorized | You are not authorized to make this request. Log in to IBM Cloud and try again. If this error persists, contact the account owner to check your permissions. |
+| `404` | Not Found | The requested resource could not be found. |
+| `409` | Conflict | The entity is already in the requested state. |
+| `410` | Gone | The resource is valid but has been removed already in a previous call |
+| `500` | Internal Server Error | *offering_name* is currently unavailable. Your request could not be processed. Wait a few minutes and try again. |
+
+## Related APIs
+
+After tagging resources, you can search for them by the tag name or resource groups or building even more complex search strings. For more information about advanced search capabilities that use the Lucene query syntax, see the [Global Search API](https://cloud.ibm.com/apidocs/search).
+
+This SDK is automatically generated by the [OpenAPI Generator](https://openapi-generator.tech) project:
+
+- API version: 1.2.0
+- Package version: 0.1.3
+- Generator version: 7.23.0
+- Build package: org.openapitools.codegen.languages.RubyClientCodegen
 
 ## Installation
 
-To install, use `gem`
+### Build a gem
 
-```bash
-gem install "ibm_cloud_global_tagging"
+To build the Ruby code into a gem:
+
+```shell
+gem build ibm_cloud_global_tagging.gemspec
 ```
 
-## Using the SDK
-For general SDK usage information, please see [this link](https://github.com/IBM/ibm-cloud-sdk-common/blob/master/gems/ibm_cloud_global_tagging/README.md)
+Then either install the gem locally:
 
-## Questions
+```shell
+gem install ./ibm_cloud_global_tagging-0.1.3.gem
+```
 
-If you are having difficulties using this SDK or have a question about the IBM Cloud services,
-please ask a question
-[Stack Overflow](http://stackoverflow.com/questions/ask?tags=ibm-cloud).
+(for development, run `gem install --dev ./ibm_cloud_global_tagging-0.1.3.gem` to install the development dependencies)
 
-## Issues
-If you encounter an issue with the project, you are welcome to submit a
-[bug report](https://github.com/IBM-Cloud/ibm-cloud-sdk-ruby/issues).
-Before that, please search for similar issues. It's possible that someone has already reported the problem.
+or publish the gem to a gem hosting service, e.g. [RubyGems](https://rubygems.org/).
 
-## Open source @ IBM
-Find more open source projects on the [IBM Github Page](http://ibm.github.io/)
+Finally add this to the Gemfile:
 
-## Contributing
-See [CONTRIBUTING.md](https://github.com/IBM-Cloud/ibm-cloud-sdk-ruby/blob/master/gems/ibm_cloud_global_tagging/CONTRIBUTING.md).
+    gem 'ibm_cloud_global_tagging', '~> 0.1.3'
 
-## License
+### Install from Git
 
-This SDK is released under the Apache 2.0 license.
-The license's full text can be found in [LICENSE](https://github.com/IBM-Cloud/ibm-cloud-sdk-ruby/blob/master/gems/ibm_cloud_global_tagging/LICENSE).
+If the Ruby gem is hosted at a git repository: https://github.com/GIT_USER_ID/GIT_REPO_ID, then add the following in the Gemfile:
+
+    gem 'ibm_cloud_global_tagging', :git => 'https://github.com/GIT_USER_ID/GIT_REPO_ID.git'
+
+### Include the Ruby code directly
+
+Include the Ruby code directly using `-I` as follows:
+
+```shell
+ruby -Ilib script.rb
+```
+
+## Getting Started
+
+Please follow the [installation](#installation) procedure and then run the following code:
+
+```ruby
+# Load the gem
+require 'ibm_cloud_global_tagging'
+
+# Setup authorization
+IbmCloudGlobalTagging.configure do |config|
+  # Configure API key authorization: IAM
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['Authorization'] = 'Bearer'
+end
+
+api_instance = IbmCloudGlobalTagging::TagsApi.new
+attach_tag_request = IbmCloudGlobalTagging::AttachTagRequest.new # AttachTagRequest | Array of tag names and list of resource IDs on which the tags should be attached or a valid Global Search string that dynamically identifies the resources to attach tags to. In that case the query cannot resolve to more than 100 resources, otherwise the entire operation will fail. The caller must have the permission to manage tags on those resources. The operation will fail for the other resources and a specific error is returned in the operation response. For resources that are onboarded to Global Search and Tagging, the resource ID is the CRN; for IMS resources, it is the IMS ID. The maximum number of resource IDs where the tag will be attached is 100. You can specify up to 100 tags to be attached. 
+opts = {
+  x_ims_auth_token: 'x_ims_auth_token_example', # String | The infrastructure authentication token, which can be used for attaching an infrastructure tag. It is deprecated in favor of IAM authentication token. 
+  creator_iam_id: 'creator_iam_id_example', # String | The user on whose behalf the attach operation must be performed (_for administrators only_). 
+  created_at: 'created_at_example', # String | The time when the tag creation must be recorded (_for administrators only_). 
+  x_request_id: 'x_request_id_example', # String | An alphanumeric string that is used to trace the request. The value  may include ASCII alphanumerics and any of following segment separators: space ( ), comma (,), hyphen, (-), and underscore (_) and may have a length up to 1024 bytes. The value is considered invalid and must be ignored if that value includes any other character or is longer than 1024 bytes or is fewer than 8 characters. If not specified or invalid, it is automatically replaced by a random (version 4) UUID.
+  x_correlation_id: 'x_correlation_id_example', # String | An alphanumeric string that is used to trace the request as a part of a larger context: the same value is used for downstream requests and retries of those requests. The value may include ASCII alphanumerics and any of following segment separators: space ( ), comma (,), hyphen, (-), and underscore (_) and may have a length up to 1024 bytes. The value is considered invalid and must be ignored if that value includes any other character or is longer than 1024 bytes or is fewer than 8 characters. If not specified or invalid, it is automatically replaced by a random (version 4) UUID.
+  account_id: 'account_id_example', # String | The ID of the billing account of the tagged resource. It is a required parameter if `tag_type` is set to `service`. Otherwise, it is inferred from the authorization IAM token. 
+  tag_type: 'user', # String | The type of the tag. Supported values are `user`, `service` and `access`. `service` and `access` are not supported for IMS resources. 
+  replace: true, # Boolean | Flag to request replacement of all attached tags. Set `true` if you want to replace all tags attached to the resource with the current ones. Default value is false. 
+  update: true # Boolean | Flag to request update of attached tags in the format `key:value`. Here's how it works for each tag in the request body: If the tag to attach is in the format `key:value`, the System will atomically detach all existing tags starting with `key:` and attach the new `key:value` tag. If no such tags exist, a new `key:value` tag will be attached. If the tag is not in the `key:value` format (e.g., a simple label), the System will attach the label as usual. The update query parameter is available for user and access management tags, but not for service tags. 
+}
+
+begin
+  #Attach tags
+  result = api_instance.attach_tag(attach_tag_request, opts)
+  p result
+rescue IbmCloudGlobalTagging::ApiError => e
+  puts "Exception when calling TagsApi->attach_tag: #{e}"
+end
+
+```
+
+## Documentation for API Endpoints
+
+All URIs are relative to *https://tags.global-search-tagging.cloud.ibm.com*
+
+Class | Method | HTTP request | Description
+------------ | ------------- | ------------- | -------------
+*IbmCloudGlobalTagging::TagsApi* | [**attach_tag**](docs/TagsApi.md#attach_tag) | **POST** /v3/tags/attach | Attach tags
+*IbmCloudGlobalTagging::TagsApi* | [**create_tag**](docs/TagsApi.md#create_tag) | **POST** /v3/tags | Create an access management tag
+*IbmCloudGlobalTagging::TagsApi* | [**delete_tag**](docs/TagsApi.md#delete_tag) | **DELETE** /v3/tags/{tag_name} | Delete an unused tag
+*IbmCloudGlobalTagging::TagsApi* | [**delete_tag_all**](docs/TagsApi.md#delete_tag_all) | **DELETE** /v3/tags | Delete all unused tags
+*IbmCloudGlobalTagging::TagsApi* | [**detach_tag**](docs/TagsApi.md#detach_tag) | **POST** /v3/tags/detach | Detach tags
+*IbmCloudGlobalTagging::TagsApi* | [**list_tags**](docs/TagsApi.md#list_tags) | **GET** /v3/tags | Get all tags
+
+
+## Documentation for Models
+
+ - [IbmCloudGlobalTagging::AliveResponse](docs/AliveResponse.md)
+ - [IbmCloudGlobalTagging::AliveResponseError](docs/AliveResponseError.md)
+ - [IbmCloudGlobalTagging::AttachTagRequest](docs/AttachTagRequest.md)
+ - [IbmCloudGlobalTagging::AttachTagRequestNot](docs/AttachTagRequestNot.md)
+ - [IbmCloudGlobalTagging::CreateTagBody](docs/CreateTagBody.md)
+ - [IbmCloudGlobalTagging::CreateTagResults](docs/CreateTagResults.md)
+ - [IbmCloudGlobalTagging::CreateTagResultsResultsInner](docs/CreateTagResultsResultsInner.md)
+ - [IbmCloudGlobalTagging::DeleteTagResults](docs/DeleteTagResults.md)
+ - [IbmCloudGlobalTagging::DeleteTagResultsItem](docs/DeleteTagResultsItem.md)
+ - [IbmCloudGlobalTagging::DeleteTagsResult](docs/DeleteTagsResult.md)
+ - [IbmCloudGlobalTagging::DeleteTagsResultItem](docs/DeleteTagsResultItem.md)
+ - [IbmCloudGlobalTagging::DetachAllResourceTagsResults](docs/DetachAllResourceTagsResults.md)
+ - [IbmCloudGlobalTagging::DetachTagRequest](docs/DetachTagRequest.md)
+ - [IbmCloudGlobalTagging::Error](docs/Error.md)
+ - [IbmCloudGlobalTagging::Errors](docs/Errors.md)
+ - [IbmCloudGlobalTagging::GetAllResourceTagsResultsInner](docs/GetAllResourceTagsResultsInner.md)
+ - [IbmCloudGlobalTagging::HealthResponse](docs/HealthResponse.md)
+ - [IbmCloudGlobalTagging::HealthSummary](docs/HealthSummary.md)
+ - [IbmCloudGlobalTagging::QueryString](docs/QueryString.md)
+ - [IbmCloudGlobalTagging::Resource](docs/Resource.md)
+ - [IbmCloudGlobalTagging::RestoreTagsRequest](docs/RestoreTagsRequest.md)
+ - [IbmCloudGlobalTagging::RestoreTagsResults](docs/RestoreTagsResults.md)
+ - [IbmCloudGlobalTagging::RestoreTagsResultsItem](docs/RestoreTagsResultsItem.md)
+ - [IbmCloudGlobalTagging::SetTagsRequest](docs/SetTagsRequest.md)
+ - [IbmCloudGlobalTagging::SetTagsResults](docs/SetTagsResults.md)
+ - [IbmCloudGlobalTagging::Tag](docs/Tag.md)
+ - [IbmCloudGlobalTagging::TagList](docs/TagList.md)
+ - [IbmCloudGlobalTagging::TagResults](docs/TagResults.md)
+ - [IbmCloudGlobalTagging::TagResultsItem](docs/TagResultsItem.md)
+
+
+## Documentation for Authorization
+
+
+Authentication schemes defined for the API:
+### IAM
+
+
+- **Type**: API key
+- **API key parameter name**: Authorization
+- **Location**: HTTP header
+

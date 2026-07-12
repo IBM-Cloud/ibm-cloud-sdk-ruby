@@ -1,5 +1,3 @@
-# -*- encoding: utf-8 -*-
-
 =begin
 #Global Tagging
 
@@ -12,28 +10,259 @@ Generator version: 7.23.0
 
 =end
 
-$:.push File.expand_path("../lib", __FILE__)
-require "ibm_cloud_global_tagging/version"
+require 'date'
+require 'time'
 
-Gem::Specification.new do |s|
-  s.name        = "ibm_cloud_global_tagging"
-  s.version     = IbmCloudGlobalTagging::VERSION
-  s.platform    = Gem::Platform::RUBY
-  s.authors     = ["IBM Cloud Developers"]
-  s.email       = ["michele.crudele@it.ibm.com"]
-  s.homepage    = "https://openapi-generator.tech"
-  s.summary     = "IBM Cloud Global Tagging"
-  s.description = "Ruby gem for IBM Cloud Global Tagging"
-  s.license     = "Apache-2.0"
-  s.required_ruby_version = ">= 2.7"
-  s.metadata    = {}
+module IbmCloudGlobalTagging
+  # A list of resources to detach tags from, or a valid Global Search string that dynamically identifies the resources to detach tags from. In that case the query cannot resolve to more than 100 resources, otherwise the entire operation will fail. The caller must have the permission to manage tags on those resources. The operation will fail for the other resources and a specific error is returned in the operation response. 
+  class DetachTagRequest < ApiModelBase
+    # The name of the tag to detach
+    attr_accessor :tag_name
 
-  s.add_runtime_dependency 'typhoeus', '~> 1.0', '>= 1.0.1'
+    # An array of tag names to detach
+    attr_accessor :tag_names
 
-  s.add_development_dependency 'rspec', '~> 3.6', '>= 3.6.0'
+    # List of resources on which the tagging operation operates on
+    attr_accessor :resources
 
-  s.files         = `find *`.split("\n").uniq.sort.select { |f| !f.empty? }
-  s.test_files    = `find spec/*`.split("\n")
-  s.executables   = []
-  s.require_paths = ["lib"]
+    attr_accessor :query
+
+    # Attribute mapping from ruby-style variable name to JSON key.
+    def self.attribute_map
+      {
+        :'tag_name' => :'tag_name',
+        :'tag_names' => :'tag_names',
+        :'resources' => :'resources',
+        :'query' => :'query'
+      }
+    end
+
+    # Returns attribute mapping this model knows about
+    def self.acceptable_attribute_map
+      attribute_map
+    end
+
+    # Returns all the JSON keys this model knows about
+    def self.acceptable_attributes
+      acceptable_attribute_map.values
+    end
+
+    # Attribute type mapping.
+    def self.openapi_types
+      {
+        :'tag_name' => :'String',
+        :'tag_names' => :'Array<String>',
+        :'resources' => :'Array<Resource>',
+        :'query' => :'QueryString'
+      }
+    end
+
+    # List of attributes with nullable: true
+    def self.openapi_nullable
+      Set.new([
+      ])
+    end
+
+    # Initializes the object
+    # @param [Hash] attributes Model attributes in the form of hash
+    def initialize(attributes = {})
+      if (!attributes.is_a?(Hash))
+        fail ArgumentError, "The input argument (attributes) must be a hash in `IbmCloudGlobalTagging::DetachTagRequest` initialize method"
+      end
+
+      # check to see if the attribute exists and convert string to symbol for hash key
+      acceptable_attribute_map = self.class.acceptable_attribute_map
+      attributes = attributes.each_with_object({}) { |(k, v), h|
+        if (!acceptable_attribute_map.key?(k.to_sym))
+          fail ArgumentError, "`#{k}` is not a valid attribute in `IbmCloudGlobalTagging::DetachTagRequest`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
+        end
+        h[k.to_sym] = v
+      }
+
+      if attributes.key?(:'tag_name')
+        self.tag_name = attributes[:'tag_name']
+      end
+
+      if attributes.key?(:'tag_names')
+        if (value = attributes[:'tag_names']).is_a?(Array)
+          self.tag_names = value
+        end
+      end
+
+      if attributes.key?(:'resources')
+        if (value = attributes[:'resources']).is_a?(Array)
+          self.resources = value
+        end
+      end
+
+      if attributes.key?(:'query')
+        self.query = attributes[:'query']
+      end
+    end
+
+    # Show invalid properties with the reasons. Usually used together with valid?
+    # @return Array for valid properties with the reasons
+    def list_invalid_properties
+      warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
+      invalid_properties = Array.new
+      if !@tag_name.nil? && @tag_name.to_s.length > 128
+        invalid_properties.push('invalid value for "tag_name", the character length must be smaller than or equal to 128.')
+      end
+
+      pattern = Regexp.new(/^([A-Za-z0-9:_ .\-]+|\*|[A-Za-z0-9_ .\-]+:\*)$/)
+      if !@tag_name.nil? && @tag_name !~ pattern
+        invalid_properties.push("invalid value for \"tag_name\", must conform to the pattern #{pattern}.")
+      end
+
+      if !@tag_names.nil? && @tag_names.length > 100
+        invalid_properties.push('invalid value for "tag_names", number of items must be less than or equal to 100.')
+      end
+
+      if !@tag_names.nil? && @tag_names.length < 1
+        invalid_properties.push('invalid value for "tag_names", number of items must be greater than or equal to 1.')
+      end
+
+      if !@resources.nil? && @resources.length > 100
+        invalid_properties.push('invalid value for "resources", number of items must be less than or equal to 100.')
+      end
+
+      if !@resources.nil? && @resources.length < 1
+        invalid_properties.push('invalid value for "resources", number of items must be greater than or equal to 1.')
+      end
+
+      invalid_properties
+    end
+
+    # Check to see if the all the properties in the model are valid
+    # @return true if the model is valid
+    def valid?
+      warn '[DEPRECATED] the `valid?` method is obsolete'
+      return false if !@tag_name.nil? && @tag_name.to_s.length > 128
+      return false if !@tag_name.nil? && @tag_name !~ Regexp.new(/^([A-Za-z0-9:_ .\-]+|\*|[A-Za-z0-9_ .\-]+:\*)$/)
+      return false if !@tag_names.nil? && @tag_names.length > 100
+      return false if !@tag_names.nil? && @tag_names.length < 1
+      return false if !@resources.nil? && @resources.length > 100
+      return false if !@resources.nil? && @resources.length < 1
+      true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] tag_name Value to be assigned
+    def tag_name=(tag_name)
+      if tag_name.nil?
+        fail ArgumentError, 'tag_name cannot be nil'
+      end
+
+      if tag_name.to_s.length > 128
+        fail ArgumentError, 'invalid value for "tag_name", the character length must be smaller than or equal to 128.'
+      end
+
+      pattern = Regexp.new(/^([A-Za-z0-9:_ .\-]+|\*|[A-Za-z0-9_ .\-]+:\*)$/)
+      if tag_name !~ pattern
+        fail ArgumentError, "invalid value for \"tag_name\", must conform to the pattern #{pattern}."
+      end
+
+      @tag_name = tag_name
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] tag_names Value to be assigned
+    def tag_names=(tag_names)
+      if tag_names.nil?
+        fail ArgumentError, 'tag_names cannot be nil'
+      end
+
+      if tag_names.length > 100
+        fail ArgumentError, 'invalid value for "tag_names", number of items must be less than or equal to 100.'
+      end
+
+      if tag_names.length < 1
+        fail ArgumentError, 'invalid value for "tag_names", number of items must be greater than or equal to 1.'
+      end
+
+      @tag_names = tag_names
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] resources Value to be assigned
+    def resources=(resources)
+      if resources.nil?
+        fail ArgumentError, 'resources cannot be nil'
+      end
+
+      if resources.length > 100
+        fail ArgumentError, 'invalid value for "resources", number of items must be less than or equal to 100.'
+      end
+
+      if resources.length < 1
+        fail ArgumentError, 'invalid value for "resources", number of items must be greater than or equal to 1.'
+      end
+
+      @resources = resources
+    end
+
+    # Checks equality by comparing each attribute.
+    # @param [Object] Object to be compared
+    def ==(o)
+      return true if self.equal?(o)
+      self.class == o.class &&
+          tag_name == o.tag_name &&
+          tag_names == o.tag_names &&
+          resources == o.resources &&
+          query == o.query
+    end
+
+    # @see the `==` method
+    # @param [Object] Object to be compared
+    def eql?(o)
+      self == o
+    end
+
+    # Calculates hash code according to all attributes.
+    # @return [Integer] Hash code
+    def hash
+      [tag_name, tag_names, resources, query].hash
+    end
+
+    # Builds the object from hash
+    # @param [Hash] attributes Model attributes in the form of hash
+    # @return [Object] Returns the model itself
+    def self.build_from_hash(attributes)
+      return nil unless attributes.is_a?(Hash)
+      attributes = attributes.transform_keys(&:to_sym)
+      transformed_hash = {}
+      openapi_types.each_pair do |key, type|
+        if attributes.key?(attribute_map[key]) && attributes[attribute_map[key]].nil?
+          transformed_hash["#{key}"] = nil
+        elsif type =~ /\AArray<(.*)>/i
+          # check to ensure the input is an array given that the attribute
+          # is documented as an array but the input is not
+          if attributes[attribute_map[key]].is_a?(Array)
+            transformed_hash["#{key}"] = attributes[attribute_map[key]].map { |v| _deserialize($1, v) }
+          end
+        elsif !attributes[attribute_map[key]].nil?
+          transformed_hash["#{key}"] = _deserialize(type, attributes[attribute_map[key]])
+        end
+      end
+      new(transformed_hash)
+    end
+
+    # Returns the object in the form of hash
+    # @return [Hash] Returns the object in the form of hash
+    def to_hash
+      hash = {}
+      self.class.attribute_map.each_pair do |attr, param|
+        value = self.send(attr)
+        if value.nil?
+          is_nullable = self.class.openapi_nullable.include?(attr)
+          next if !is_nullable || (is_nullable && !instance_variable_defined?(:"@#{attr}"))
+        end
+
+        hash[param] = _to_hash(value)
+      end
+      hash
+    end
+
+  end
+
 end
