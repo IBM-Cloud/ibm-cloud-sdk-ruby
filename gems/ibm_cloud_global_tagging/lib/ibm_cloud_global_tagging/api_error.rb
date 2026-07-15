@@ -1,5 +1,3 @@
-# -*- encoding: utf-8 -*-
-
 =begin
 #Global Tagging
 
@@ -12,28 +10,49 @@ Generator version: 7.23.0
 
 =end
 
-$:.push File.expand_path("../lib", __FILE__)
-require "ibm_cloud_global_tagging/version"
+module IbmCloudGlobalTagging
+  class ApiError < StandardError
+    attr_reader :code, :response_headers, :response_body
 
-Gem::Specification.new do |s|
-  s.name        = "ibm_cloud_global_tagging"
-  s.version     = IbmCloudGlobalTagging::VERSION
-  s.platform    = Gem::Platform::RUBY
-  s.authors     = ["IBM Cloud Developers"]
-  s.email       = ["michele.crudele@it.ibm.com"]
-  s.homepage    = "https://openapi-generator.tech"
-  s.summary     = "IBM Cloud Global Tagging"
-  s.description = "Ruby gem for IBM Cloud Global Tagging"
-  s.license     = "Apache-2.0"
-  s.required_ruby_version = ">= 2.7"
-  s.metadata    = {}
+    # Usage examples:
+    #   ApiError.new
+    #   ApiError.new("message")
+    #   ApiError.new(:code => 500, :response_headers => {}, :response_body => "")
+    #   ApiError.new(:code => 404, :message => "Not Found")
+    def initialize(arg = nil)
+      if arg.is_a? Hash
+        if arg.key?(:message) || arg.key?('message')
+          super(arg[:message] || arg['message'])
+        else
+          super arg
+        end
 
-  s.add_runtime_dependency 'typhoeus', '~> 1.0', '>= 1.0.1'
+        arg.each do |k, v|
+          instance_variable_set "@#{k}", v
+        end
+      else
+        super arg
+        @message = arg
+      end
+    end
 
-  s.add_development_dependency 'rspec', '~> 3.6', '>= 3.6.0'
+    # Override to_s to display a friendly error message
+    def to_s
+      message
+    end
 
-  s.files         = `find *`.split("\n").uniq.sort.select { |f| !f.empty? }
-  s.test_files    = `find spec/*`.split("\n")
-  s.executables   = []
-  s.require_paths = ["lib"]
+    def message
+      if @message.nil?
+        msg = "Error message: the server returns an error"
+      else
+        msg = @message
+      end
+
+      msg += "\nHTTP status code: #{code}" if code
+      msg += "\nResponse headers: #{response_headers}" if response_headers
+      msg += "\nResponse body: #{response_body}" if response_body
+
+      msg
+    end
+  end
 end
