@@ -15,6 +15,9 @@ jobs:
       fail-fast: false
       matrix:
         include:
+        - gem_name: ibm_cloud_databases
+          spec_url: https://cloud.ibm.com/apidocs/cloud-databases-api/cloud-databases-api-v5.json
+          spec_file: cloud-databases-api-cloud-databases-api-v5.json
         - gem_name: ibm_cloud_global_tagging
           spec_url: https://cloud.ibm.com/apidocs/tagging.json
           spec_file: tagging.json
