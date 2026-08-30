@@ -10,50 +10,282 @@ Generator version: 7.25.0
 
 =end
 
-# Common files
-require 'ibm_cloud_resource_controller/api_client'
-require 'ibm_cloud_resource_controller/api_error'
-require 'ibm_cloud_resource_controller/api_model_base'
-require 'ibm_cloud_resource_controller/version'
-require 'ibm_cloud_resource_controller/configuration'
-
-# Models
-IbmCloudResourceController.autoload :Credentials, 'ibm_cloud_resource_controller/models/credentials'
-IbmCloudResourceController.autoload :ErrorReport, 'ibm_cloud_resource_controller/models/error_report'
-IbmCloudResourceController.autoload :LastOperation, 'ibm_cloud_resource_controller/models/last_operation'
-IbmCloudResourceController.autoload :PlanHistoryItem, 'ibm_cloud_resource_controller/models/plan_history_item'
-IbmCloudResourceController.autoload :Reclamation, 'ibm_cloud_resource_controller/models/reclamation'
-IbmCloudResourceController.autoload :ReclamationActionsPost, 'ibm_cloud_resource_controller/models/reclamation_actions_post'
-IbmCloudResourceController.autoload :ReclamationsList, 'ibm_cloud_resource_controller/models/reclamations_list'
-IbmCloudResourceController.autoload :ResourceInstance, 'ibm_cloud_resource_controller/models/resource_instance'
-IbmCloudResourceController.autoload :ResourceInstancePatch, 'ibm_cloud_resource_controller/models/resource_instance_patch'
-IbmCloudResourceController.autoload :ResourceInstancePost, 'ibm_cloud_resource_controller/models/resource_instance_post'
-IbmCloudResourceController.autoload :ResourceInstancesList, 'ibm_cloud_resource_controller/models/resource_instances_list'
-IbmCloudResourceController.autoload :ResourceKey, 'ibm_cloud_resource_controller/models/resource_key'
-IbmCloudResourceController.autoload :ResourceKeyPatch, 'ibm_cloud_resource_controller/models/resource_key_patch'
-IbmCloudResourceController.autoload :ResourceKeyPost, 'ibm_cloud_resource_controller/models/resource_key_post'
-IbmCloudResourceController.autoload :ResourceKeyPostParameters, 'ibm_cloud_resource_controller/models/resource_key_post_parameters'
-IbmCloudResourceController.autoload :ResourceKeysList, 'ibm_cloud_resource_controller/models/resource_keys_list'
-
-# APIs
-IbmCloudResourceController.autoload :ResourceInstancesApi, 'ibm_cloud_resource_controller/api/resource_instances_api'
-IbmCloudResourceController.autoload :ResourceKeysApi, 'ibm_cloud_resource_controller/api/resource_keys_api'
-IbmCloudResourceController.autoload :ResourceReclamationsApi, 'ibm_cloud_resource_controller/api/resource_reclamations_api'
+require 'date'
+require 'time'
 
 module IbmCloudResourceController
-  class << self
-    # Customize default settings for the SDK using block.
-    #   IbmCloudResourceController.configure do |config|
-    #     config.username = "xxx"
-    #     config.password = "xxx"
-    #   end
-    # If no block given, return the default Configuration object.
-    def configure
-      if block_given?
-        yield(Configuration.default)
-      else
-        Configuration.default
+  # A reclamation.
+  class Reclamation < ApiModelBase
+    # The ID associated with the reclamation.
+    attr_accessor :id
+
+    # The ID of the entity for the reclamation.
+    attr_accessor :entity_id
+
+    # The ID of the entity type for the reclamation.
+    attr_accessor :entity_type_id
+
+    # The CRN of the entity for the reclamation.
+    attr_accessor :entity_crn
+
+    # The ID of the resource instance.
+    attr_accessor :resource_instance_id
+
+    # The ID of the resource group.
+    attr_accessor :resource_group_id
+
+    # An alpha-numeric value identifying the account ID.
+    attr_accessor :account_id
+
+    # The ID of policy for the reclamation.
+    attr_accessor :policy_id
+
+    # The state of the reclamation.
+    attr_accessor :state
+
+    # The target time that the reclamation retention period end.
+    attr_accessor :target_time
+
+    # The custom properties of the reclamation.
+    attr_accessor :custom_properties
+
+    # The date when the reclamation was created.
+    attr_accessor :created_at
+
+    # The subject who created the reclamation.
+    attr_accessor :created_by
+
+    # The date when the reclamation was last updated.
+    attr_accessor :updated_at
+
+    # The subject who updated the reclamation.
+    attr_accessor :updated_by
+
+    # Attribute mapping from ruby-style variable name to JSON key.
+    def self.attribute_map
+      {
+        :'id' => :'id',
+        :'entity_id' => :'entity_id',
+        :'entity_type_id' => :'entity_type_id',
+        :'entity_crn' => :'entity_crn',
+        :'resource_instance_id' => :'resource_instance_id',
+        :'resource_group_id' => :'resource_group_id',
+        :'account_id' => :'account_id',
+        :'policy_id' => :'policy_id',
+        :'state' => :'state',
+        :'target_time' => :'target_time',
+        :'custom_properties' => :'custom_properties',
+        :'created_at' => :'created_at',
+        :'created_by' => :'created_by',
+        :'updated_at' => :'updated_at',
+        :'updated_by' => :'updated_by'
+      }
+    end
+
+    # Returns attribute mapping this model knows about
+    def self.acceptable_attribute_map
+      attribute_map
+    end
+
+    # Returns all the JSON keys this model knows about
+    def self.acceptable_attributes
+      acceptable_attribute_map.values
+    end
+
+    # Attribute type mapping.
+    def self.openapi_types
+      {
+        :'id' => :'String',
+        :'entity_id' => :'String',
+        :'entity_type_id' => :'String',
+        :'entity_crn' => :'String',
+        :'resource_instance_id' => :'String',
+        :'resource_group_id' => :'String',
+        :'account_id' => :'String',
+        :'policy_id' => :'String',
+        :'state' => :'String',
+        :'target_time' => :'String',
+        :'custom_properties' => :'Hash<String, Object>',
+        :'created_at' => :'Time',
+        :'created_by' => :'String',
+        :'updated_at' => :'Time',
+        :'updated_by' => :'String'
+      }
+    end
+
+    # List of attributes with nullable: true
+    def self.openapi_nullable
+      Set.new([
+      ])
+    end
+
+    # Initializes the object
+    # @param [Hash] attributes Model attributes in the form of hash
+    def initialize(attributes = {})
+      if (!attributes.is_a?(Hash))
+        fail ArgumentError, "The input argument (attributes) must be a hash in `IbmCloudResourceController::Reclamation` initialize method"
+      end
+
+      # check to see if the attribute exists and convert string to symbol for hash key
+      acceptable_attribute_map = self.class.acceptable_attribute_map
+      attributes = attributes.each_with_object({}) { |(k, v), h|
+        if (!acceptable_attribute_map.key?(k.to_sym))
+          fail ArgumentError, "`#{k}` is not a valid attribute in `IbmCloudResourceController::Reclamation`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
+        end
+        h[k.to_sym] = v
+      }
+
+      if attributes.key?(:'id')
+        self.id = attributes[:'id']
+      end
+
+      if attributes.key?(:'entity_id')
+        self.entity_id = attributes[:'entity_id']
+      end
+
+      if attributes.key?(:'entity_type_id')
+        self.entity_type_id = attributes[:'entity_type_id']
+      end
+
+      if attributes.key?(:'entity_crn')
+        self.entity_crn = attributes[:'entity_crn']
+      end
+
+      if attributes.key?(:'resource_instance_id')
+        self.resource_instance_id = attributes[:'resource_instance_id']
+      end
+
+      if attributes.key?(:'resource_group_id')
+        self.resource_group_id = attributes[:'resource_group_id']
+      end
+
+      if attributes.key?(:'account_id')
+        self.account_id = attributes[:'account_id']
+      end
+
+      if attributes.key?(:'policy_id')
+        self.policy_id = attributes[:'policy_id']
+      end
+
+      if attributes.key?(:'state')
+        self.state = attributes[:'state']
+      end
+
+      if attributes.key?(:'target_time')
+        self.target_time = attributes[:'target_time']
+      end
+
+      if attributes.key?(:'custom_properties')
+        if (value = attributes[:'custom_properties']).is_a?(Hash)
+          self.custom_properties = value
+        end
+      end
+
+      if attributes.key?(:'created_at')
+        self.created_at = attributes[:'created_at']
+      end
+
+      if attributes.key?(:'created_by')
+        self.created_by = attributes[:'created_by']
+      end
+
+      if attributes.key?(:'updated_at')
+        self.updated_at = attributes[:'updated_at']
+      end
+
+      if attributes.key?(:'updated_by')
+        self.updated_by = attributes[:'updated_by']
       end
     end
+
+    # Show invalid properties with the reasons. Usually used together with valid?
+    # @return Array for valid properties with the reasons
+    def list_invalid_properties
+      warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
+      invalid_properties = Array.new
+      invalid_properties
+    end
+
+    # Check to see if the all the properties in the model are valid
+    # @return true if the model is valid
+    def valid?
+      warn '[DEPRECATED] the `valid?` method is obsolete'
+      true
+    end
+
+    # Checks equality by comparing each attribute.
+    # @param [Object] Object to be compared
+    def ==(o)
+      return true if self.equal?(o)
+      self.class == o.class &&
+          id == o.id &&
+          entity_id == o.entity_id &&
+          entity_type_id == o.entity_type_id &&
+          entity_crn == o.entity_crn &&
+          resource_instance_id == o.resource_instance_id &&
+          resource_group_id == o.resource_group_id &&
+          account_id == o.account_id &&
+          policy_id == o.policy_id &&
+          state == o.state &&
+          target_time == o.target_time &&
+          custom_properties == o.custom_properties &&
+          created_at == o.created_at &&
+          created_by == o.created_by &&
+          updated_at == o.updated_at &&
+          updated_by == o.updated_by
+    end
+
+    # @see the `==` method
+    # @param [Object] Object to be compared
+    def eql?(o)
+      self == o
+    end
+
+    # Calculates hash code according to all attributes.
+    # @return [Integer] Hash code
+    def hash
+      [id, entity_id, entity_type_id, entity_crn, resource_instance_id, resource_group_id, account_id, policy_id, state, target_time, custom_properties, created_at, created_by, updated_at, updated_by].hash
+    end
+
+    # Builds the object from hash
+    # @param [Hash] attributes Model attributes in the form of hash
+    # @return [Object] Returns the model itself
+    def self.build_from_hash(attributes)
+      return nil unless attributes.is_a?(Hash)
+      attributes = attributes.transform_keys(&:to_sym)
+      transformed_hash = {}
+      openapi_types.each_pair do |key, type|
+        if attributes.key?(attribute_map[key]) && attributes[attribute_map[key]].nil?
+          transformed_hash["#{key}"] = nil
+        elsif type =~ /\AArray<(.*)>/i
+          # check to ensure the input is an array given that the attribute
+          # is documented as an array but the input is not
+          if attributes[attribute_map[key]].is_a?(Array)
+            transformed_hash["#{key}"] = attributes[attribute_map[key]].map { |v| _deserialize($1, v) }
+          end
+        elsif !attributes[attribute_map[key]].nil?
+          transformed_hash["#{key}"] = _deserialize(type, attributes[attribute_map[key]])
+        end
+      end
+      new(transformed_hash)
+    end
+
+    # Returns the object in the form of hash
+    # @return [Hash] Returns the object in the form of hash
+    def to_hash
+      hash = {}
+      self.class.attribute_map.each_pair do |attr, param|
+        value = self.send(attr)
+        if value.nil?
+          is_nullable = self.class.openapi_nullable.include?(attr)
+          next if !is_nullable || (is_nullable && !instance_variable_defined?(:"@#{attr}"))
+        end
+
+        hash[param] = _to_hash(value)
+      end
+      hash
+    end
+
   end
+
 end

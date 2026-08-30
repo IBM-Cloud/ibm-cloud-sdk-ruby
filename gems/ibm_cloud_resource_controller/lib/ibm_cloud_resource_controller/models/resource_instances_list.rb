@@ -10,50 +10,213 @@ Generator version: 7.25.0
 
 =end
 
-# Common files
-require 'ibm_cloud_resource_controller/api_client'
-require 'ibm_cloud_resource_controller/api_error'
-require 'ibm_cloud_resource_controller/api_model_base'
-require 'ibm_cloud_resource_controller/version'
-require 'ibm_cloud_resource_controller/configuration'
-
-# Models
-IbmCloudResourceController.autoload :Credentials, 'ibm_cloud_resource_controller/models/credentials'
-IbmCloudResourceController.autoload :ErrorReport, 'ibm_cloud_resource_controller/models/error_report'
-IbmCloudResourceController.autoload :LastOperation, 'ibm_cloud_resource_controller/models/last_operation'
-IbmCloudResourceController.autoload :PlanHistoryItem, 'ibm_cloud_resource_controller/models/plan_history_item'
-IbmCloudResourceController.autoload :Reclamation, 'ibm_cloud_resource_controller/models/reclamation'
-IbmCloudResourceController.autoload :ReclamationActionsPost, 'ibm_cloud_resource_controller/models/reclamation_actions_post'
-IbmCloudResourceController.autoload :ReclamationsList, 'ibm_cloud_resource_controller/models/reclamations_list'
-IbmCloudResourceController.autoload :ResourceInstance, 'ibm_cloud_resource_controller/models/resource_instance'
-IbmCloudResourceController.autoload :ResourceInstancePatch, 'ibm_cloud_resource_controller/models/resource_instance_patch'
-IbmCloudResourceController.autoload :ResourceInstancePost, 'ibm_cloud_resource_controller/models/resource_instance_post'
-IbmCloudResourceController.autoload :ResourceInstancesList, 'ibm_cloud_resource_controller/models/resource_instances_list'
-IbmCloudResourceController.autoload :ResourceKey, 'ibm_cloud_resource_controller/models/resource_key'
-IbmCloudResourceController.autoload :ResourceKeyPatch, 'ibm_cloud_resource_controller/models/resource_key_patch'
-IbmCloudResourceController.autoload :ResourceKeyPost, 'ibm_cloud_resource_controller/models/resource_key_post'
-IbmCloudResourceController.autoload :ResourceKeyPostParameters, 'ibm_cloud_resource_controller/models/resource_key_post_parameters'
-IbmCloudResourceController.autoload :ResourceKeysList, 'ibm_cloud_resource_controller/models/resource_keys_list'
-
-# APIs
-IbmCloudResourceController.autoload :ResourceInstancesApi, 'ibm_cloud_resource_controller/api/resource_instances_api'
-IbmCloudResourceController.autoload :ResourceKeysApi, 'ibm_cloud_resource_controller/api/resource_keys_api'
-IbmCloudResourceController.autoload :ResourceReclamationsApi, 'ibm_cloud_resource_controller/api/resource_reclamations_api'
+require 'date'
+require 'time'
 
 module IbmCloudResourceController
-  class << self
-    # Customize default settings for the SDK using block.
-    #   IbmCloudResourceController.configure do |config|
-    #     config.username = "xxx"
-    #     config.password = "xxx"
-    #   end
-    # If no block given, return the default Configuration object.
-    def configure
-      if block_given?
-        yield(Configuration.default)
+  # A list of resource instances.
+  class ResourceInstancesList < ApiModelBase
+    # The number of resource instances in `resources`.
+    attr_accessor :rows_count
+
+    # The URL for requesting the next page of results.
+    attr_accessor :next_url
+
+    # A list of resource instances.
+    attr_accessor :resources
+
+    # Attribute mapping from ruby-style variable name to JSON key.
+    def self.attribute_map
+      {
+        :'rows_count' => :'rows_count',
+        :'next_url' => :'next_url',
+        :'resources' => :'resources'
+      }
+    end
+
+    # Returns attribute mapping this model knows about
+    def self.acceptable_attribute_map
+      attribute_map
+    end
+
+    # Returns all the JSON keys this model knows about
+    def self.acceptable_attributes
+      acceptable_attribute_map.values
+    end
+
+    # Attribute type mapping.
+    def self.openapi_types
+      {
+        :'rows_count' => :'Integer',
+        :'next_url' => :'String',
+        :'resources' => :'Array<ResourceInstance>'
+      }
+    end
+
+    # List of attributes with nullable: true
+    def self.openapi_nullable
+      Set.new([
+      ])
+    end
+
+    # Initializes the object
+    # @param [Hash] attributes Model attributes in the form of hash
+    def initialize(attributes = {})
+      if (!attributes.is_a?(Hash))
+        fail ArgumentError, "The input argument (attributes) must be a hash in `IbmCloudResourceController::ResourceInstancesList` initialize method"
+      end
+
+      # check to see if the attribute exists and convert string to symbol for hash key
+      acceptable_attribute_map = self.class.acceptable_attribute_map
+      attributes = attributes.each_with_object({}) { |(k, v), h|
+        if (!acceptable_attribute_map.key?(k.to_sym))
+          fail ArgumentError, "`#{k}` is not a valid attribute in `IbmCloudResourceController::ResourceInstancesList`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
+        end
+        h[k.to_sym] = v
+      }
+
+      if attributes.key?(:'rows_count')
+        self.rows_count = attributes[:'rows_count']
       else
-        Configuration.default
+        self.rows_count = nil
+      end
+
+      if attributes.key?(:'next_url')
+        self.next_url = attributes[:'next_url']
+      else
+        self.next_url = nil
+      end
+
+      if attributes.key?(:'resources')
+        if (value = attributes[:'resources']).is_a?(Array)
+          self.resources = value
+        end
+      else
+        self.resources = nil
       end
     end
+
+    # Show invalid properties with the reasons. Usually used together with valid?
+    # @return Array for valid properties with the reasons
+    def list_invalid_properties
+      warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
+      invalid_properties = Array.new
+      if @rows_count.nil?
+        invalid_properties.push('invalid value for "rows_count", rows_count cannot be nil.')
+      end
+
+      if @next_url.nil?
+        invalid_properties.push('invalid value for "next_url", next_url cannot be nil.')
+      end
+
+      if @resources.nil?
+        invalid_properties.push('invalid value for "resources", resources cannot be nil.')
+      end
+
+      invalid_properties
+    end
+
+    # Check to see if the all the properties in the model are valid
+    # @return true if the model is valid
+    def valid?
+      warn '[DEPRECATED] the `valid?` method is obsolete'
+      return false if @rows_count.nil?
+      return false if @next_url.nil?
+      return false if @resources.nil?
+      true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] rows_count Value to be assigned
+    def rows_count=(rows_count)
+      if rows_count.nil?
+        fail ArgumentError, 'rows_count cannot be nil'
+      end
+
+      @rows_count = rows_count
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] next_url Value to be assigned
+    def next_url=(next_url)
+      if next_url.nil?
+        fail ArgumentError, 'next_url cannot be nil'
+      end
+
+      @next_url = next_url
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] resources Value to be assigned
+    def resources=(resources)
+      if resources.nil?
+        fail ArgumentError, 'resources cannot be nil'
+      end
+
+      @resources = resources
+    end
+
+    # Checks equality by comparing each attribute.
+    # @param [Object] Object to be compared
+    def ==(o)
+      return true if self.equal?(o)
+      self.class == o.class &&
+          rows_count == o.rows_count &&
+          next_url == o.next_url &&
+          resources == o.resources
+    end
+
+    # @see the `==` method
+    # @param [Object] Object to be compared
+    def eql?(o)
+      self == o
+    end
+
+    # Calculates hash code according to all attributes.
+    # @return [Integer] Hash code
+    def hash
+      [rows_count, next_url, resources].hash
+    end
+
+    # Builds the object from hash
+    # @param [Hash] attributes Model attributes in the form of hash
+    # @return [Object] Returns the model itself
+    def self.build_from_hash(attributes)
+      return nil unless attributes.is_a?(Hash)
+      attributes = attributes.transform_keys(&:to_sym)
+      transformed_hash = {}
+      openapi_types.each_pair do |key, type|
+        if attributes.key?(attribute_map[key]) && attributes[attribute_map[key]].nil?
+          transformed_hash["#{key}"] = nil
+        elsif type =~ /\AArray<(.*)>/i
+          # check to ensure the input is an array given that the attribute
+          # is documented as an array but the input is not
+          if attributes[attribute_map[key]].is_a?(Array)
+            transformed_hash["#{key}"] = attributes[attribute_map[key]].map { |v| _deserialize($1, v) }
+          end
+        elsif !attributes[attribute_map[key]].nil?
+          transformed_hash["#{key}"] = _deserialize(type, attributes[attribute_map[key]])
+        end
+      end
+      new(transformed_hash)
+    end
+
+    # Returns the object in the form of hash
+    # @return [Hash] Returns the object in the form of hash
+    def to_hash
+      hash = {}
+      self.class.attribute_map.each_pair do |attr, param|
+        value = self.send(attr)
+        if value.nil?
+          is_nullable = self.class.openapi_nullable.include?(attr)
+          next if !is_nullable || (is_nullable && !instance_variable_defined?(:"@#{attr}"))
+        end
+
+        hash[param] = _to_hash(value)
+      end
+      hash
+    end
+
   end
+
 end

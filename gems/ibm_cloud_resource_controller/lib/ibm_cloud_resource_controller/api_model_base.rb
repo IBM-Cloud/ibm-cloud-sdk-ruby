@@ -10,49 +10,78 @@ Generator version: 7.25.0
 
 =end
 
-# Common files
-require 'ibm_cloud_resource_controller/api_client'
-require 'ibm_cloud_resource_controller/api_error'
-require 'ibm_cloud_resource_controller/api_model_base'
-require 'ibm_cloud_resource_controller/version'
-require 'ibm_cloud_resource_controller/configuration'
-
-# Models
-IbmCloudResourceController.autoload :Credentials, 'ibm_cloud_resource_controller/models/credentials'
-IbmCloudResourceController.autoload :ErrorReport, 'ibm_cloud_resource_controller/models/error_report'
-IbmCloudResourceController.autoload :LastOperation, 'ibm_cloud_resource_controller/models/last_operation'
-IbmCloudResourceController.autoload :PlanHistoryItem, 'ibm_cloud_resource_controller/models/plan_history_item'
-IbmCloudResourceController.autoload :Reclamation, 'ibm_cloud_resource_controller/models/reclamation'
-IbmCloudResourceController.autoload :ReclamationActionsPost, 'ibm_cloud_resource_controller/models/reclamation_actions_post'
-IbmCloudResourceController.autoload :ReclamationsList, 'ibm_cloud_resource_controller/models/reclamations_list'
-IbmCloudResourceController.autoload :ResourceInstance, 'ibm_cloud_resource_controller/models/resource_instance'
-IbmCloudResourceController.autoload :ResourceInstancePatch, 'ibm_cloud_resource_controller/models/resource_instance_patch'
-IbmCloudResourceController.autoload :ResourceInstancePost, 'ibm_cloud_resource_controller/models/resource_instance_post'
-IbmCloudResourceController.autoload :ResourceInstancesList, 'ibm_cloud_resource_controller/models/resource_instances_list'
-IbmCloudResourceController.autoload :ResourceKey, 'ibm_cloud_resource_controller/models/resource_key'
-IbmCloudResourceController.autoload :ResourceKeyPatch, 'ibm_cloud_resource_controller/models/resource_key_patch'
-IbmCloudResourceController.autoload :ResourceKeyPost, 'ibm_cloud_resource_controller/models/resource_key_post'
-IbmCloudResourceController.autoload :ResourceKeyPostParameters, 'ibm_cloud_resource_controller/models/resource_key_post_parameters'
-IbmCloudResourceController.autoload :ResourceKeysList, 'ibm_cloud_resource_controller/models/resource_keys_list'
-
-# APIs
-IbmCloudResourceController.autoload :ResourceInstancesApi, 'ibm_cloud_resource_controller/api/resource_instances_api'
-IbmCloudResourceController.autoload :ResourceKeysApi, 'ibm_cloud_resource_controller/api/resource_keys_api'
-IbmCloudResourceController.autoload :ResourceReclamationsApi, 'ibm_cloud_resource_controller/api/resource_reclamations_api'
-
 module IbmCloudResourceController
-  class << self
-    # Customize default settings for the SDK using block.
-    #   IbmCloudResourceController.configure do |config|
-    #     config.username = "xxx"
-    #     config.password = "xxx"
-    #   end
-    # If no block given, return the default Configuration object.
-    def configure
-      if block_given?
-        yield(Configuration.default)
+  class ApiModelBase
+    # Deserializes the data based on type
+    # @param string type Data type
+    # @param string value Value to be deserialized
+    # @return [Object] Deserialized data
+    def self._deserialize(type, value)
+      case type.to_sym
+      when :Time
+        Time.parse(value)
+      when :Date
+        Date.parse(value)
+      when :String
+        value.to_s
+      when :Integer
+        value.to_i
+      when :Float
+        value.to_f
+      when :Boolean
+        if value.to_s =~ /\A(true|t|yes|y|1)\z/i
+          true
+        else
+          false
+        end
+      when :Object
+        # generic object (usually a Hash), return directly
+        value
+      when /\AArray<(?<inner_type>.+)>\z/
+        inner_type = Regexp.last_match[:inner_type]
+        value.map { |v| _deserialize(inner_type, v) }
+      when /\AHash<(?<k_type>.+?), (?<v_type>.+)>\z/
+        k_type = Regexp.last_match[:k_type]
+        v_type = Regexp.last_match[:v_type]
+        {}.tap do |hash|
+          value.each do |k, v|
+            hash[_deserialize(k_type, k)] = _deserialize(v_type, v)
+          end
+        end
+      else # model
+        # models (e.g. Pet) or oneOf
+        klass = IbmCloudResourceController.const_get(type)
+        klass.respond_to?(:openapi_any_of) || klass.respond_to?(:openapi_one_of) ? klass.build(value) : klass.build_from_hash(value)
+      end
+    end
+
+    # Returns the string representation of the object
+    # @return [String] String presentation of the object
+    def to_s
+      to_hash.to_s
+    end
+
+    # to_body is an alias to to_hash (backward compatibility)
+    # @return [Hash] Returns the object in the form of hash
+    def to_body
+      to_hash
+    end
+
+    # Outputs non-array value in the form of hash
+    # For object, use to_hash. Otherwise, just return the value
+    # @param [Object] value Any valid value
+    # @return [Hash] Returns the value in the form of hash
+    def _to_hash(value)
+      if value.is_a?(Array)
+        value.compact.map { |v| _to_hash(v) }
+      elsif value.is_a?(Hash)
+        {}.tap do |hash|
+          value.each { |k, v| hash[k] = _to_hash(v) }
+        end
+      elsif value.respond_to? :to_hash
+        value.to_hash
       else
-        Configuration.default
+        value
       end
     end
   end

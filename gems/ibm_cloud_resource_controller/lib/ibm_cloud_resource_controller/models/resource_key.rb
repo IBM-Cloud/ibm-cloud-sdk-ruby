@@ -10,50 +10,340 @@ Generator version: 7.25.0
 
 =end
 
-# Common files
-require 'ibm_cloud_resource_controller/api_client'
-require 'ibm_cloud_resource_controller/api_error'
-require 'ibm_cloud_resource_controller/api_model_base'
-require 'ibm_cloud_resource_controller/version'
-require 'ibm_cloud_resource_controller/configuration'
-
-# Models
-IbmCloudResourceController.autoload :Credentials, 'ibm_cloud_resource_controller/models/credentials'
-IbmCloudResourceController.autoload :ErrorReport, 'ibm_cloud_resource_controller/models/error_report'
-IbmCloudResourceController.autoload :LastOperation, 'ibm_cloud_resource_controller/models/last_operation'
-IbmCloudResourceController.autoload :PlanHistoryItem, 'ibm_cloud_resource_controller/models/plan_history_item'
-IbmCloudResourceController.autoload :Reclamation, 'ibm_cloud_resource_controller/models/reclamation'
-IbmCloudResourceController.autoload :ReclamationActionsPost, 'ibm_cloud_resource_controller/models/reclamation_actions_post'
-IbmCloudResourceController.autoload :ReclamationsList, 'ibm_cloud_resource_controller/models/reclamations_list'
-IbmCloudResourceController.autoload :ResourceInstance, 'ibm_cloud_resource_controller/models/resource_instance'
-IbmCloudResourceController.autoload :ResourceInstancePatch, 'ibm_cloud_resource_controller/models/resource_instance_patch'
-IbmCloudResourceController.autoload :ResourceInstancePost, 'ibm_cloud_resource_controller/models/resource_instance_post'
-IbmCloudResourceController.autoload :ResourceInstancesList, 'ibm_cloud_resource_controller/models/resource_instances_list'
-IbmCloudResourceController.autoload :ResourceKey, 'ibm_cloud_resource_controller/models/resource_key'
-IbmCloudResourceController.autoload :ResourceKeyPatch, 'ibm_cloud_resource_controller/models/resource_key_patch'
-IbmCloudResourceController.autoload :ResourceKeyPost, 'ibm_cloud_resource_controller/models/resource_key_post'
-IbmCloudResourceController.autoload :ResourceKeyPostParameters, 'ibm_cloud_resource_controller/models/resource_key_post_parameters'
-IbmCloudResourceController.autoload :ResourceKeysList, 'ibm_cloud_resource_controller/models/resource_keys_list'
-
-# APIs
-IbmCloudResourceController.autoload :ResourceInstancesApi, 'ibm_cloud_resource_controller/api/resource_instances_api'
-IbmCloudResourceController.autoload :ResourceKeysApi, 'ibm_cloud_resource_controller/api/resource_keys_api'
-IbmCloudResourceController.autoload :ResourceReclamationsApi, 'ibm_cloud_resource_controller/api/resource_reclamations_api'
+require 'date'
+require 'time'
 
 module IbmCloudResourceController
-  class << self
-    # Customize default settings for the SDK using block.
-    #   IbmCloudResourceController.configure do |config|
-    #     config.username = "xxx"
-    #     config.password = "xxx"
-    #   end
-    # If no block given, return the default Configuration object.
-    def configure
-      if block_given?
-        yield(Configuration.default)
-      else
-        Configuration.default
+  # A resource key.
+  class ResourceKey < ApiModelBase
+    # The ID associated with the key.
+    attr_accessor :id
+
+    # The GUID of the key.
+    attr_accessor :guid
+
+    # When you created a new key, a relative URL path is created identifying the location of the key.
+    attr_accessor :url
+
+    # The date when the key was created.
+    attr_accessor :created_at
+
+    # The date when the key was last updated.
+    attr_accessor :updated_at
+
+    # The date when the key was deleted.
+    attr_accessor :deleted_at
+
+    # The subject who created the key.
+    attr_accessor :created_by
+
+    # The subject who updated the key.
+    attr_accessor :updated_by
+
+    # The subject who deleted the key.
+    attr_accessor :deleted_by
+
+    # The CRN of resource instance associated to the key.
+    attr_accessor :source_crn
+
+    # The human-readable name of the key.
+    attr_accessor :name
+
+    # The full Cloud Resource Name (CRN) associated with the key. For more information about this format, see [Cloud Resource Names](https://cloud.ibm.com/docs/overview?topic=overview-crn).
+    attr_accessor :crn
+
+    # The state of the key.
+    attr_accessor :state
+
+    # An alpha-numeric value identifying the account ID.
+    attr_accessor :account_id
+
+    # The ID of the resource group.
+    attr_accessor :resource_group_id
+
+    # The unique ID of the offering. This value is provided by and stored in the global catalog.
+    attr_accessor :resource_id
+
+    # Whether newly created resource key credentials can be retrieved by using get resource key or get a list of all of the resource keys requests.
+    attr_accessor :onetime_credentials
+
+    # The credentials for the key. Additional key-value pairs are passed through from the resource brokers. After a credential is created for a service, it can be viewed at any time for users that need the API key value. However, all users must have the correct level of access to see the details of a credential that includes the API key value. For additional details, see [viewing a credential](https://cloud.ibm.com/docs/account?topic=account-service_credentials&interface=ui#viewing-credentials-ui) or the service’s documentation.
+    attr_accessor :credentials
+
+    # Specifies whether the key’s credentials support IAM.
+    attr_accessor :iam_compatible
+
+    # A boolean that dictates if the key was migrated from a previous CF instance.
+    attr_accessor :migrated
+
+    # The relative path to the resource.
+    attr_accessor :resource_instance_url
+
+    # Attribute mapping from ruby-style variable name to JSON key.
+    def self.attribute_map
+      {
+        :'id' => :'id',
+        :'guid' => :'guid',
+        :'url' => :'url',
+        :'created_at' => :'created_at',
+        :'updated_at' => :'updated_at',
+        :'deleted_at' => :'deleted_at',
+        :'created_by' => :'created_by',
+        :'updated_by' => :'updated_by',
+        :'deleted_by' => :'deleted_by',
+        :'source_crn' => :'source_crn',
+        :'name' => :'name',
+        :'crn' => :'crn',
+        :'state' => :'state',
+        :'account_id' => :'account_id',
+        :'resource_group_id' => :'resource_group_id',
+        :'resource_id' => :'resource_id',
+        :'onetime_credentials' => :'onetime_credentials',
+        :'credentials' => :'credentials',
+        :'iam_compatible' => :'iam_compatible',
+        :'migrated' => :'migrated',
+        :'resource_instance_url' => :'resource_instance_url'
+      }
+    end
+
+    # Returns attribute mapping this model knows about
+    def self.acceptable_attribute_map
+      attribute_map
+    end
+
+    # Returns all the JSON keys this model knows about
+    def self.acceptable_attributes
+      acceptable_attribute_map.values
+    end
+
+    # Attribute type mapping.
+    def self.openapi_types
+      {
+        :'id' => :'String',
+        :'guid' => :'String',
+        :'url' => :'String',
+        :'created_at' => :'Time',
+        :'updated_at' => :'Time',
+        :'deleted_at' => :'Time',
+        :'created_by' => :'String',
+        :'updated_by' => :'String',
+        :'deleted_by' => :'String',
+        :'source_crn' => :'String',
+        :'name' => :'String',
+        :'crn' => :'String',
+        :'state' => :'String',
+        :'account_id' => :'String',
+        :'resource_group_id' => :'String',
+        :'resource_id' => :'String',
+        :'onetime_credentials' => :'Boolean',
+        :'credentials' => :'Credentials',
+        :'iam_compatible' => :'Boolean',
+        :'migrated' => :'Boolean',
+        :'resource_instance_url' => :'String'
+      }
+    end
+
+    # List of attributes with nullable: true
+    def self.openapi_nullable
+      Set.new([
+      ])
+    end
+
+    # Initializes the object
+    # @param [Hash] attributes Model attributes in the form of hash
+    def initialize(attributes = {})
+      if (!attributes.is_a?(Hash))
+        fail ArgumentError, "The input argument (attributes) must be a hash in `IbmCloudResourceController::ResourceKey` initialize method"
+      end
+
+      # check to see if the attribute exists and convert string to symbol for hash key
+      acceptable_attribute_map = self.class.acceptable_attribute_map
+      attributes = attributes.each_with_object({}) { |(k, v), h|
+        if (!acceptable_attribute_map.key?(k.to_sym))
+          fail ArgumentError, "`#{k}` is not a valid attribute in `IbmCloudResourceController::ResourceKey`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
+        end
+        h[k.to_sym] = v
+      }
+
+      if attributes.key?(:'id')
+        self.id = attributes[:'id']
+      end
+
+      if attributes.key?(:'guid')
+        self.guid = attributes[:'guid']
+      end
+
+      if attributes.key?(:'url')
+        self.url = attributes[:'url']
+      end
+
+      if attributes.key?(:'created_at')
+        self.created_at = attributes[:'created_at']
+      end
+
+      if attributes.key?(:'updated_at')
+        self.updated_at = attributes[:'updated_at']
+      end
+
+      if attributes.key?(:'deleted_at')
+        self.deleted_at = attributes[:'deleted_at']
+      end
+
+      if attributes.key?(:'created_by')
+        self.created_by = attributes[:'created_by']
+      end
+
+      if attributes.key?(:'updated_by')
+        self.updated_by = attributes[:'updated_by']
+      end
+
+      if attributes.key?(:'deleted_by')
+        self.deleted_by = attributes[:'deleted_by']
+      end
+
+      if attributes.key?(:'source_crn')
+        self.source_crn = attributes[:'source_crn']
+      end
+
+      if attributes.key?(:'name')
+        self.name = attributes[:'name']
+      end
+
+      if attributes.key?(:'crn')
+        self.crn = attributes[:'crn']
+      end
+
+      if attributes.key?(:'state')
+        self.state = attributes[:'state']
+      end
+
+      if attributes.key?(:'account_id')
+        self.account_id = attributes[:'account_id']
+      end
+
+      if attributes.key?(:'resource_group_id')
+        self.resource_group_id = attributes[:'resource_group_id']
+      end
+
+      if attributes.key?(:'resource_id')
+        self.resource_id = attributes[:'resource_id']
+      end
+
+      if attributes.key?(:'onetime_credentials')
+        self.onetime_credentials = attributes[:'onetime_credentials']
+      end
+
+      if attributes.key?(:'credentials')
+        self.credentials = attributes[:'credentials']
+      end
+
+      if attributes.key?(:'iam_compatible')
+        self.iam_compatible = attributes[:'iam_compatible']
+      end
+
+      if attributes.key?(:'migrated')
+        self.migrated = attributes[:'migrated']
+      end
+
+      if attributes.key?(:'resource_instance_url')
+        self.resource_instance_url = attributes[:'resource_instance_url']
       end
     end
+
+    # Show invalid properties with the reasons. Usually used together with valid?
+    # @return Array for valid properties with the reasons
+    def list_invalid_properties
+      warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
+      invalid_properties = Array.new
+      invalid_properties
+    end
+
+    # Check to see if the all the properties in the model are valid
+    # @return true if the model is valid
+    def valid?
+      warn '[DEPRECATED] the `valid?` method is obsolete'
+      true
+    end
+
+    # Checks equality by comparing each attribute.
+    # @param [Object] Object to be compared
+    def ==(o)
+      return true if self.equal?(o)
+      self.class == o.class &&
+          id == o.id &&
+          guid == o.guid &&
+          url == o.url &&
+          created_at == o.created_at &&
+          updated_at == o.updated_at &&
+          deleted_at == o.deleted_at &&
+          created_by == o.created_by &&
+          updated_by == o.updated_by &&
+          deleted_by == o.deleted_by &&
+          source_crn == o.source_crn &&
+          name == o.name &&
+          crn == o.crn &&
+          state == o.state &&
+          account_id == o.account_id &&
+          resource_group_id == o.resource_group_id &&
+          resource_id == o.resource_id &&
+          onetime_credentials == o.onetime_credentials &&
+          credentials == o.credentials &&
+          iam_compatible == o.iam_compatible &&
+          migrated == o.migrated &&
+          resource_instance_url == o.resource_instance_url
+    end
+
+    # @see the `==` method
+    # @param [Object] Object to be compared
+    def eql?(o)
+      self == o
+    end
+
+    # Calculates hash code according to all attributes.
+    # @return [Integer] Hash code
+    def hash
+      [id, guid, url, created_at, updated_at, deleted_at, created_by, updated_by, deleted_by, source_crn, name, crn, state, account_id, resource_group_id, resource_id, onetime_credentials, credentials, iam_compatible, migrated, resource_instance_url].hash
+    end
+
+    # Builds the object from hash
+    # @param [Hash] attributes Model attributes in the form of hash
+    # @return [Object] Returns the model itself
+    def self.build_from_hash(attributes)
+      return nil unless attributes.is_a?(Hash)
+      attributes = attributes.transform_keys(&:to_sym)
+      transformed_hash = {}
+      openapi_types.each_pair do |key, type|
+        if attributes.key?(attribute_map[key]) && attributes[attribute_map[key]].nil?
+          transformed_hash["#{key}"] = nil
+        elsif type =~ /\AArray<(.*)>/i
+          # check to ensure the input is an array given that the attribute
+          # is documented as an array but the input is not
+          if attributes[attribute_map[key]].is_a?(Array)
+            transformed_hash["#{key}"] = attributes[attribute_map[key]].map { |v| _deserialize($1, v) }
+          end
+        elsif !attributes[attribute_map[key]].nil?
+          transformed_hash["#{key}"] = _deserialize(type, attributes[attribute_map[key]])
+        end
+      end
+      new(transformed_hash)
+    end
+
+    # Returns the object in the form of hash
+    # @return [Hash] Returns the object in the form of hash
+    def to_hash
+      hash = {}
+      self.class.attribute_map.each_pair do |attr, param|
+        value = self.send(attr)
+        if value.nil?
+          is_nullable = self.class.openapi_nullable.include?(attr)
+          next if !is_nullable || (is_nullable && !instance_variable_defined?(:"@#{attr}"))
+        end
+
+        hash[param] = _to_hash(value)
+      end
+      hash
+    end
+
   end
+
 end

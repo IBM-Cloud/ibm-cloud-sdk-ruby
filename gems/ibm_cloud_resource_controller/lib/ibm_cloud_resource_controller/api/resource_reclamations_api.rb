@@ -10,50 +10,160 @@ Generator version: 7.25.0
 
 =end
 
-# Common files
-require 'ibm_cloud_resource_controller/api_client'
-require 'ibm_cloud_resource_controller/api_error'
-require 'ibm_cloud_resource_controller/api_model_base'
-require 'ibm_cloud_resource_controller/version'
-require 'ibm_cloud_resource_controller/configuration'
-
-# Models
-IbmCloudResourceController.autoload :Credentials, 'ibm_cloud_resource_controller/models/credentials'
-IbmCloudResourceController.autoload :ErrorReport, 'ibm_cloud_resource_controller/models/error_report'
-IbmCloudResourceController.autoload :LastOperation, 'ibm_cloud_resource_controller/models/last_operation'
-IbmCloudResourceController.autoload :PlanHistoryItem, 'ibm_cloud_resource_controller/models/plan_history_item'
-IbmCloudResourceController.autoload :Reclamation, 'ibm_cloud_resource_controller/models/reclamation'
-IbmCloudResourceController.autoload :ReclamationActionsPost, 'ibm_cloud_resource_controller/models/reclamation_actions_post'
-IbmCloudResourceController.autoload :ReclamationsList, 'ibm_cloud_resource_controller/models/reclamations_list'
-IbmCloudResourceController.autoload :ResourceInstance, 'ibm_cloud_resource_controller/models/resource_instance'
-IbmCloudResourceController.autoload :ResourceInstancePatch, 'ibm_cloud_resource_controller/models/resource_instance_patch'
-IbmCloudResourceController.autoload :ResourceInstancePost, 'ibm_cloud_resource_controller/models/resource_instance_post'
-IbmCloudResourceController.autoload :ResourceInstancesList, 'ibm_cloud_resource_controller/models/resource_instances_list'
-IbmCloudResourceController.autoload :ResourceKey, 'ibm_cloud_resource_controller/models/resource_key'
-IbmCloudResourceController.autoload :ResourceKeyPatch, 'ibm_cloud_resource_controller/models/resource_key_patch'
-IbmCloudResourceController.autoload :ResourceKeyPost, 'ibm_cloud_resource_controller/models/resource_key_post'
-IbmCloudResourceController.autoload :ResourceKeyPostParameters, 'ibm_cloud_resource_controller/models/resource_key_post_parameters'
-IbmCloudResourceController.autoload :ResourceKeysList, 'ibm_cloud_resource_controller/models/resource_keys_list'
-
-# APIs
-IbmCloudResourceController.autoload :ResourceInstancesApi, 'ibm_cloud_resource_controller/api/resource_instances_api'
-IbmCloudResourceController.autoload :ResourceKeysApi, 'ibm_cloud_resource_controller/api/resource_keys_api'
-IbmCloudResourceController.autoload :ResourceReclamationsApi, 'ibm_cloud_resource_controller/api/resource_reclamations_api'
+require 'cgi'
 
 module IbmCloudResourceController
-  class << self
-    # Customize default settings for the SDK using block.
-    #   IbmCloudResourceController.configure do |config|
-    #     config.username = "xxx"
-    #     config.password = "xxx"
-    #   end
-    # If no block given, return the default Configuration object.
-    def configure
-      if block_given?
-        yield(Configuration.default)
-      else
-        Configuration.default
+  class ResourceReclamationsApi
+    attr_accessor :api_client
+
+    def initialize(api_client = ApiClient.default)
+      @api_client = api_client
+    end
+    # Get a list of all reclamations
+    # View all of the resource reclamations that exist for every resource instance.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :account_id An alpha-numeric value identifying the account ID.
+    # @option opts [String] :resource_instance_id The GUID of the resource instance.
+    # @option opts [String] :resource_group_id The ID of the resource group.
+    # @return [ReclamationsList]
+    def list_reclamations(opts = {})
+      data, _status_code, _headers = list_reclamations_with_http_info(opts)
+      data
+    end
+
+    # Get a list of all reclamations
+    # View all of the resource reclamations that exist for every resource instance.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :account_id An alpha-numeric value identifying the account ID.
+    # @option opts [String] :resource_instance_id The GUID of the resource instance.
+    # @option opts [String] :resource_group_id The ID of the resource group.
+    # @return [Array<(ReclamationsList, Integer, Hash)>] ReclamationsList data, response status code and response headers
+    def list_reclamations_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ResourceReclamationsApi.list_reclamations ...'
       end
+      # resource path
+      local_var_path = '/v1/reclamations'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'account_id'] = opts[:'account_id'] if !opts[:'account_id'].nil?
+      query_params[:'resource_instance_id'] = opts[:'resource_instance_id'] if !opts[:'resource_instance_id'].nil?
+      query_params[:'resource_group_id'] = opts[:'resource_group_id'] if !opts[:'resource_group_id'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'ReclamationsList'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['IAM']
+
+      new_options = opts.merge(
+        :operation => :"ResourceReclamationsApi.list_reclamations",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ResourceReclamationsApi#list_reclamations\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Perform a reclamation action
+    # Reclaim a resource instance so that it can no longer be used, or restore the resource instance so that it's usable again.
+    # @param id [String] The ID associated with the reclamation.
+    # @param action_name [String] The reclamation action name. Specify &#x60;reclaim&#x60; to delete a resource, or &#x60;restore&#x60; to restore a resource.
+    # @param [Hash] opts the optional parameters
+    # @option opts [ReclamationActionsPost] :reclamation_actions_post 
+    # @return [Reclamation]
+    def run_reclamation_action(id, action_name, opts = {})
+      data, _status_code, _headers = run_reclamation_action_with_http_info(id, action_name, opts)
+      data
+    end
+
+    # Perform a reclamation action
+    # Reclaim a resource instance so that it can no longer be used, or restore the resource instance so that it&#39;s usable again.
+    # @param id [String] The ID associated with the reclamation.
+    # @param action_name [String] The reclamation action name. Specify &#x60;reclaim&#x60; to delete a resource, or &#x60;restore&#x60; to restore a resource.
+    # @param [Hash] opts the optional parameters
+    # @option opts [ReclamationActionsPost] :reclamation_actions_post 
+    # @return [Array<(Reclamation, Integer, Hash)>] Reclamation data, response status code and response headers
+    def run_reclamation_action_with_http_info(id, action_name, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ResourceReclamationsApi.run_reclamation_action ...'
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling ResourceReclamationsApi.run_reclamation_action"
+      end
+      # verify the required parameter 'action_name' is set
+      if @api_client.config.client_side_validation && action_name.nil?
+        fail ArgumentError, "Missing the required parameter 'action_name' when calling ResourceReclamationsApi.run_reclamation_action"
+      end
+      # verify enum value
+      allowable_values = ["reclaim", "restore"]
+      if @api_client.config.client_side_validation && !allowable_values.include?(action_name)
+        fail ArgumentError, "invalid value for \"action_name\", must be one of #{allowable_values}"
+      end
+      # resource path
+      local_var_path = '/v1/reclamations/{id}/actions/{action_name}'.sub('{id}', CGI.escape(id.to_s)).sub('{action_name}', CGI.escape(action_name.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(opts[:'reclamation_actions_post'])
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'Reclamation'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['IAM']
+
+      new_options = opts.merge(
+        :operation => :"ResourceReclamationsApi.run_reclamation_action",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ResourceReclamationsApi#run_reclamation_action\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
     end
   end
 end
