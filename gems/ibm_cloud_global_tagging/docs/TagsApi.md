@@ -109,7 +109,7 @@ end
 
 Create an access management tag
 
-Create an access management tag. To create an `access` tag, you must have the access listed in the [Granting users access to tag resources](https://cloud.ibm.com/docs/account?topic=account-access) documentation. `service` and `user` tags cannot be created upfront. They are created when they are attached for the first time to a resource. 
+Create an access management tag. To create an `access` tag, you must have the access listed in the [Granting users access to tag resources](/docs/account?topic=account-access) documentation. `service` and `user` tags cannot be created upfront. They are created when they are attached for the first time to a resource. 
 
 ### Examples
 
@@ -441,7 +441,7 @@ end
 
 Get all tags
 
-Lists all tags that are in a billing account. Use the `attached_to` parameter to return the list of tags that are attached to the specified resource. 
+Lists all tags that are in a billing account. To get the tags attached to a specific resource, see [Searching for tags by using the API](/docs/account?topic=account-tag&interface=api#search-tags-api-link). 
 
 ### Examples
 
