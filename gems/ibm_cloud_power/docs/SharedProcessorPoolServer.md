@@ -4,14 +4,14 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **cpus** | **Float** | The amount of cpus for the server | [optional] |
-| **uncapped** | **Boolean** | Identifies if uncapped or not | [optional] |
-| **availability_zone** | **String** | Availability zone for the server | [optional] |
-| **id** | **String** | The server ID | [optional] |
-| **memory** | **Integer** | The amount of memory for the server | [optional] |
-| **name** | **String** | The server name | [optional] |
-| **status** | **String** | Status of the server | [optional] |
-| **vcpus** | **Integer** | The amout of vcpus for the server | [optional] |
+| **cpus** | **Float** | The number of CPUs for the VSI. | [optional] |
+| **uncapped** | **Boolean** | Indicates whether the VSI is uncapped. | [optional] |
+| **availability_zone** | **String** | The availability zone of the VSI. | [optional] |
+| **id** | **String** | The unique identifier of the virtual server instance (VSI). | [optional] |
+| **memory** | **Integer** | The amount of memory of the VSI, in mebibytes (MiB). | [optional] |
+| **name** | **String** | The name of the VSI. | [optional] |
+| **status** | **String** | The status of the VSI. | [optional] |
+| **vcpus** | **Integer** | The number of virtual CPUs for the VSI. | [optional] |
 
 ## Example
 

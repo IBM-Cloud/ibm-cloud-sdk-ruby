@@ -4,9 +4,9 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **id** | **String** | The id of the Shared Processor Pool Placement Group |  |
-| **name** | **String** | The name of the Shared Processor Pool Placement Group |  |
-| **policy** | **String** | The Shared Processor Pool Placement Group policy |  |
+| **id** | **String** | The unique identifier of the shared processor pool placement group. |  |
+| **name** | **String** | The name of the shared processor pool placement group. |  |
+| **policy** | **String** | The policy of the shared processor pool placement group. |  |
 
 ## Example
 

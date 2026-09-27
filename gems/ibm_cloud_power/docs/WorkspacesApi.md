@@ -10,7 +10,7 @@ All URIs are relative to *http://localhost*
 
 ## v1_workspaces_get
 
-> <Workspace> v1_workspaces_get(workspace_id)
+> <Workspace> v1_workspaces_get(workspace_id, opts)
 
 Get a Workspace's information and capabilities
 
@@ -22,10 +22,14 @@ require 'ibm_cloud_power'
 
 api_instance = IbmCloudPower::WorkspacesApi.new
 workspace_id = 'workspace_id_example' # String | Workspace ID
+opts = {
+  tgw_by_pass_enabled: true, # Boolean | Enable transit gateway bypass for the workspace list and get single workspace (default=false)
+  crn: 'crn_example' # String | the CRN of the workspace
+}
 
 begin
   # Get a Workspace's information and capabilities
-  result = api_instance.v1_workspaces_get(workspace_id)
+  result = api_instance.v1_workspaces_get(workspace_id, opts)
   p result
 rescue IbmCloudPower::ApiError => e
   puts "Error when calling WorkspacesApi->v1_workspaces_get: #{e}"
@@ -36,12 +40,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<Workspace>, Integer, Hash)> v1_workspaces_get_with_http_info(workspace_id)
+> <Array(<Workspace>, Integer, Hash)> v1_workspaces_get_with_http_info(workspace_id, opts)
 
 ```ruby
 begin
   # Get a Workspace's information and capabilities
-  data, status_code, headers = api_instance.v1_workspaces_get_with_http_info(workspace_id)
+  data, status_code, headers = api_instance.v1_workspaces_get_with_http_info(workspace_id, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <Workspace>
@@ -55,6 +59,8 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **workspace_id** | **String** | Workspace ID |  |
+| **tgw_by_pass_enabled** | **Boolean** | Enable transit gateway bypass for the workspace list and get single workspace (default&#x3D;false) | [optional] |
+| **crn** | **String** | the CRN of the workspace | [optional] |
 
 ### Return type
 
@@ -84,7 +90,7 @@ require 'ibm_cloud_power'
 
 api_instance = IbmCloudPower::WorkspacesApi.new
 opts = {
-  tgw_by_pass_enabled: true # Boolean | Enable transit gateway bypass for the workspace list (default=false)
+  tgw_by_pass_enabled: true # Boolean | Enable transit gateway bypass for the workspace list and get single workspace (default=false)
 }
 
 begin
@@ -118,7 +124,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **tgw_by_pass_enabled** | **Boolean** | Enable transit gateway bypass for the workspace list (default&#x3D;false) | [optional] |
+| **tgw_by_pass_enabled** | **Boolean** | Enable transit gateway bypass for the workspace list and get single workspace (default&#x3D;false) | [optional] |
 
 ### Return type
 

@@ -10,6 +10,7 @@ All URIs are relative to *http://localhost*
 | [**v1_routes_post**](RoutesApi.md#v1_routes_post) | **POST** /v1/routes | Perform a route creation |
 | [**v1_routes_put**](RoutesApi.md#v1_routes_put) | **PUT** /v1/routes/{route_id} | Update a route&#39;s information |
 | [**v1_routes_report_get**](RoutesApi.md#v1_routes_report_get) | **GET** /v1/routes/report | Get the route report for a workspace |
+| [**v1_routes_route_switch_enabled**](RoutesApi.md#v1_routes_route_switch_enabled) | **POST** /v1/routes/{route_id}/switch-enabled | Atomically enable one network route and disable another route in the same region and in the same account. This is useful for failover situations where users only need to call this API instead of two separate PUT API calls to enable and disable the routes. |
 
 
 ## v1_routes_delete
@@ -379,5 +380,69 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## v1_routes_route_switch_enabled
+
+> <SwitchEnabledRoutes> v1_routes_route_switch_enabled(route_id, body)
+
+Atomically enable one network route and disable another route in the same region and in the same account. This is useful for failover situations where users only need to call this API instead of two separate PUT API calls to enable and disable the routes.
+
+### Examples
+
+```ruby
+require 'time'
+require 'ibm_cloud_power'
+
+api_instance = IbmCloudPower::RoutesApi.new
+route_id = 'route_id_example' # String | Route ID
+body = IbmCloudPower::RouteSwitchEnabledRequest.new({disabled_route_crn: 'disabled_route_crn_example'}) # RouteSwitchEnabledRequest | Parameters to atomically enable one route and disable another in the same region and in the same account
+
+begin
+  # Atomically enable one network route and disable another route in the same region and in the same account. This is useful for failover situations where users only need to call this API instead of two separate PUT API calls to enable and disable the routes.
+  result = api_instance.v1_routes_route_switch_enabled(route_id, body)
+  p result
+rescue IbmCloudPower::ApiError => e
+  puts "Error when calling RoutesApi->v1_routes_route_switch_enabled: #{e}"
+end
+```
+
+#### Using the v1_routes_route_switch_enabled_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SwitchEnabledRoutes>, Integer, Hash)> v1_routes_route_switch_enabled_with_http_info(route_id, body)
+
+```ruby
+begin
+  # Atomically enable one network route and disable another route in the same region and in the same account. This is useful for failover situations where users only need to call this API instead of two separate PUT API calls to enable and disable the routes.
+  data, status_code, headers = api_instance.v1_routes_route_switch_enabled_with_http_info(route_id, body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SwitchEnabledRoutes>
+rescue IbmCloudPower::ApiError => e
+  puts "Error when calling RoutesApi->v1_routes_route_switch_enabled_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **route_id** | **String** | Route ID |  |
+| **body** | [**RouteSwitchEnabledRequest**](RouteSwitchEnabledRequest.md) | Parameters to atomically enable one route and disable another in the same region and in the same account |  |
+
+### Return type
+
+[**SwitchEnabledRoutes**](SwitchEnabledRoutes.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 

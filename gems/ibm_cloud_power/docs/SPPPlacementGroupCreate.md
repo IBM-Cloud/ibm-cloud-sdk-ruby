@@ -4,8 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **name** | **String** | The name of the Shared Processor Pool Placement Group; minimum of 2 characters, maximum of 12, the only special character allowed is the underscore &#39;_&#39;. |  |
-| **policy** | **String** | The placement group policy |  |
+| **name** | **String** | The name of the shared processor pool placement group. |  |
+| **policy** | **String** | The placement policy for the placement group. |  |
 | **user_tags** | **Array&lt;String&gt;** | List of user tags | [optional] |
 
 ## Example

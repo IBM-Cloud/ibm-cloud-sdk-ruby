@@ -22,7 +22,7 @@
 | **storage_pool** | **String** | Storage Pool for server deployment; if provided then storageAffinity and storageType will be ignored; Only valid when you deploy one of the IBM supplied stock images. Storage pool for a custom image (an imported image or an image that is created from a PVMInstance capture) defaults to the storage pool the image was created in | [optional] |
 | **storage_pool_affinity** | **Boolean** | Indicates if all volumes attached to the server must reside in the same storage pool; Defaults to true when initially deploying a PVMInstance | [optional][default to true] |
 | **storage_type** | **String** | Storage type for server deployment; if storageType is not provided the storage type will default to &#39;tier3&#39;. | [optional] |
-| **sys_type** | **String** | System type used to host the instance. Only e980, s1022, e1050, e1080, s1122, e1150, and e1180 are supported | [optional] |
+| **sys_type** | **String** | System type used to host the instance; use GET /v1/datacenters to retrieve supported system types for a location. | [optional] |
 | **user_data** | **String** | Cloud init user defined data; For FLS, only cloud-config user-data is supported and data must not be compressed or exceed 63K | [optional] |
 | **user_tags** | **Array&lt;String&gt;** | List of user tags | [optional] |
 | **volume_ids** | **Array&lt;String&gt;** | List of Volume IDs to attach to the pvm-instance on creation | [optional] |

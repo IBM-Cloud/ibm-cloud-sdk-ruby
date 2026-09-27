@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **spp_placement_groups** | [**Array&lt;SPPPlacementGroup&gt;**](SPPPlacementGroup.md) | list of Shared Processor Pool Placement Groups | [optional] |
+| **spp_placement_groups** | [**Array&lt;SPPPlacementGroup&gt;**](SPPPlacementGroup.md) | The list of shared processor pool placement groups in the workspace. | [optional] |
 
 ## Example
 

@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **shared_processor_pools** | [**Array&lt;SharedProcessorPool&gt;**](SharedProcessorPool.md) | list of Shared Processor Pools | [optional] |
+| **shared_processor_pools** | [**Array&lt;SharedProcessorPool&gt;**](SharedProcessorPool.md) | The list of shared processor pools in the workspace. | [optional] |
 
 ## Example
 

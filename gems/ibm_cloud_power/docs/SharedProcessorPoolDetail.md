@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **servers** | [**Array&lt;SharedProcessorPoolServer&gt;**](SharedProcessorPoolServer.md) | list of servers deployed in the Shared Processor Pool |  |
+| **servers** | [**Array&lt;SharedProcessorPoolServer&gt;**](SharedProcessorPoolServer.md) | The list of virtual server instances (VSIs) deployed in the shared processor pool (SPP). |  |
 | **shared_processor_pool** | [**SharedProcessorPoolDetailSharedProcessorPool**](SharedProcessorPoolDetailSharedProcessorPool.md) |  |  |
 
 ## Example
