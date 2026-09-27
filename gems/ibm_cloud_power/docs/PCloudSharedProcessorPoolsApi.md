@@ -4,18 +4,20 @@ All URIs are relative to *http://localhost*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
-| [**pcloud_sharedprocessorpools_delete**](PCloudSharedProcessorPoolsApi.md#pcloud_sharedprocessorpools_delete) | **DELETE** /pcloud/v1/cloud-instances/{cloud_instance_id}/shared-processor-pools/{shared_processor_pool_id} | Delete a Shared Processor Pool from a cloud instance |
-| [**pcloud_sharedprocessorpools_get**](PCloudSharedProcessorPoolsApi.md#pcloud_sharedprocessorpools_get) | **GET** /pcloud/v1/cloud-instances/{cloud_instance_id}/shared-processor-pools/{shared_processor_pool_id} | Get the detail of a Shared Processor Pool for a cloud instance |
-| [**pcloud_sharedprocessorpools_getall**](PCloudSharedProcessorPoolsApi.md#pcloud_sharedprocessorpools_getall) | **GET** /pcloud/v1/cloud-instances/{cloud_instance_id}/shared-processor-pools | Get the list of Shared Processor Pools for a cloud instance |
-| [**pcloud_sharedprocessorpools_post**](PCloudSharedProcessorPoolsApi.md#pcloud_sharedprocessorpools_post) | **POST** /pcloud/v1/cloud-instances/{cloud_instance_id}/shared-processor-pools | Create a new Shared Processor Pool |
-| [**pcloud_sharedprocessorpools_put**](PCloudSharedProcessorPoolsApi.md#pcloud_sharedprocessorpools_put) | **PUT** /pcloud/v1/cloud-instances/{cloud_instance_id}/shared-processor-pools/{shared_processor_pool_id} | Update a Shared Processor Pool for a cloud instance |
+| [**pcloud_sharedprocessorpools_delete**](PCloudSharedProcessorPoolsApi.md#pcloud_sharedprocessorpools_delete) | **DELETE** /pcloud/v1/cloud-instances/{cloud_instance_id}/shared-processor-pools/{shared_processor_pool_id} | Delete a shared processor pool |
+| [**pcloud_sharedprocessorpools_get**](PCloudSharedProcessorPoolsApi.md#pcloud_sharedprocessorpools_get) | **GET** /pcloud/v1/cloud-instances/{cloud_instance_id}/shared-processor-pools/{shared_processor_pool_id} | Get a shared processor pool |
+| [**pcloud_sharedprocessorpools_getall**](PCloudSharedProcessorPoolsApi.md#pcloud_sharedprocessorpools_getall) | **GET** /pcloud/v1/cloud-instances/{cloud_instance_id}/shared-processor-pools | List all shared processor pools |
+| [**pcloud_sharedprocessorpools_post**](PCloudSharedProcessorPoolsApi.md#pcloud_sharedprocessorpools_post) | **POST** /pcloud/v1/cloud-instances/{cloud_instance_id}/shared-processor-pools | Create a new shared processor pool |
+| [**pcloud_sharedprocessorpools_put**](PCloudSharedProcessorPoolsApi.md#pcloud_sharedprocessorpools_put) | **PUT** /pcloud/v1/cloud-instances/{cloud_instance_id}/shared-processor-pools/{shared_processor_pool_id} | Update a shared processor pool |
 
 
 ## pcloud_sharedprocessorpools_delete
 
 > Object pcloud_sharedprocessorpools_delete(cloud_instance_id, shared_processor_pool_id)
 
-Delete a Shared Processor Pool from a cloud instance
+Delete a shared processor pool
+
+Deletes a shared processor pool (SPP) from the specified workspace. The pool must have no virtual server instances deployed before it can be deleted.
 
 ### Examples
 
@@ -25,10 +27,10 @@ require 'ibm_cloud_power'
 
 api_instance = IbmCloudPower::PCloudSharedProcessorPoolsApi.new
 cloud_instance_id = 'cloud_instance_id_example' # String | Cloud Instance ID of a PCloud Instance
-shared_processor_pool_id = 'shared_processor_pool_id_example' # String | Shared Processor Pool ID or Name
+shared_processor_pool_id = 'shared_processor_pool_id_example' # String | The unique identifier or name of the shared processor pool.
 
 begin
-  # Delete a Shared Processor Pool from a cloud instance
+  # Delete a shared processor pool
   result = api_instance.pcloud_sharedprocessorpools_delete(cloud_instance_id, shared_processor_pool_id)
   p result
 rescue IbmCloudPower::ApiError => e
@@ -44,7 +46,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Delete a Shared Processor Pool from a cloud instance
+  # Delete a shared processor pool
   data, status_code, headers = api_instance.pcloud_sharedprocessorpools_delete_with_http_info(cloud_instance_id, shared_processor_pool_id)
   p status_code # => 2xx
   p headers # => { ... }
@@ -59,7 +61,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **cloud_instance_id** | **String** | Cloud Instance ID of a PCloud Instance |  |
-| **shared_processor_pool_id** | **String** | Shared Processor Pool ID or Name |  |
+| **shared_processor_pool_id** | **String** | The unique identifier or name of the shared processor pool. |  |
 
 ### Return type
 
@@ -79,7 +81,9 @@ No authorization required
 
 > <SharedProcessorPoolDetail> pcloud_sharedprocessorpools_get(cloud_instance_id, shared_processor_pool_id)
 
-Get the detail of a Shared Processor Pool for a cloud instance
+Get a shared processor pool
+
+Retrieves the details of a shared processor pool (SPP) in the specified workspace.
 
 ### Examples
 
@@ -89,10 +93,10 @@ require 'ibm_cloud_power'
 
 api_instance = IbmCloudPower::PCloudSharedProcessorPoolsApi.new
 cloud_instance_id = 'cloud_instance_id_example' # String | Cloud Instance ID of a PCloud Instance
-shared_processor_pool_id = 'shared_processor_pool_id_example' # String | Shared Processor Pool ID or Name
+shared_processor_pool_id = 'shared_processor_pool_id_example' # String | The unique identifier or name of the shared processor pool.
 
 begin
-  # Get the detail of a Shared Processor Pool for a cloud instance
+  # Get a shared processor pool
   result = api_instance.pcloud_sharedprocessorpools_get(cloud_instance_id, shared_processor_pool_id)
   p result
 rescue IbmCloudPower::ApiError => e
@@ -108,7 +112,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Get the detail of a Shared Processor Pool for a cloud instance
+  # Get a shared processor pool
   data, status_code, headers = api_instance.pcloud_sharedprocessorpools_get_with_http_info(cloud_instance_id, shared_processor_pool_id)
   p status_code # => 2xx
   p headers # => { ... }
@@ -123,7 +127,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **cloud_instance_id** | **String** | Cloud Instance ID of a PCloud Instance |  |
-| **shared_processor_pool_id** | **String** | Shared Processor Pool ID or Name |  |
+| **shared_processor_pool_id** | **String** | The unique identifier or name of the shared processor pool. |  |
 
 ### Return type
 
@@ -143,7 +147,9 @@ No authorization required
 
 > <SharedProcessorPools> pcloud_sharedprocessorpools_getall(cloud_instance_id)
 
-Get the list of Shared Processor Pools for a cloud instance
+List all shared processor pools
+
+Lists all shared processor pools belonging to the specified workspace.
 
 ### Examples
 
@@ -155,7 +161,7 @@ api_instance = IbmCloudPower::PCloudSharedProcessorPoolsApi.new
 cloud_instance_id = 'cloud_instance_id_example' # String | Cloud Instance ID of a PCloud Instance
 
 begin
-  # Get the list of Shared Processor Pools for a cloud instance
+  # List all shared processor pools
   result = api_instance.pcloud_sharedprocessorpools_getall(cloud_instance_id)
   p result
 rescue IbmCloudPower::ApiError => e
@@ -171,7 +177,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Get the list of Shared Processor Pools for a cloud instance
+  # List all shared processor pools
   data, status_code, headers = api_instance.pcloud_sharedprocessorpools_getall_with_http_info(cloud_instance_id)
   p status_code # => 2xx
   p headers # => { ... }
@@ -205,7 +211,9 @@ No authorization required
 
 > <SharedProcessorPool> pcloud_sharedprocessorpools_post(cloud_instance_id, body)
 
-Create a new Shared Processor Pool
+Create a new shared processor pool
+
+Creates a new shared processor pool (SPP) in the specified workspace.
 
 ### Examples
 
@@ -215,10 +223,10 @@ require 'ibm_cloud_power'
 
 api_instance = IbmCloudPower::PCloudSharedProcessorPoolsApi.new
 cloud_instance_id = 'cloud_instance_id_example' # String | Cloud Instance ID of a PCloud Instance
-body = IbmCloudPower::SharedProcessorPoolCreate.new({host_group: 'host_group_example', name: 'name_example', reserved_cores: 37}) # SharedProcessorPoolCreate | Parameters for the creation of a new Shared Processor Pool
+body = IbmCloudPower::SharedProcessorPoolCreate.new({host_group: 'host_group_example', name: 'name_example', reserved_cores: 37}) # SharedProcessorPoolCreate | The shared processor pool creation parameters.
 
 begin
-  # Create a new Shared Processor Pool
+  # Create a new shared processor pool
   result = api_instance.pcloud_sharedprocessorpools_post(cloud_instance_id, body)
   p result
 rescue IbmCloudPower::ApiError => e
@@ -234,7 +242,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Create a new Shared Processor Pool
+  # Create a new shared processor pool
   data, status_code, headers = api_instance.pcloud_sharedprocessorpools_post_with_http_info(cloud_instance_id, body)
   p status_code # => 2xx
   p headers # => { ... }
@@ -249,7 +257,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **cloud_instance_id** | **String** | Cloud Instance ID of a PCloud Instance |  |
-| **body** | [**SharedProcessorPoolCreate**](SharedProcessorPoolCreate.md) | Parameters for the creation of a new Shared Processor Pool |  |
+| **body** | [**SharedProcessorPoolCreate**](SharedProcessorPoolCreate.md) | The shared processor pool creation parameters. |  |
 
 ### Return type
 
@@ -269,7 +277,9 @@ No authorization required
 
 > <SharedProcessorPool> pcloud_sharedprocessorpools_put(cloud_instance_id, shared_processor_pool_id, body)
 
-Update a Shared Processor Pool for a cloud instance
+Update a shared processor pool
+
+Updates the name or reserved core count of a shared processor pool (SPP) in the specified workspace.
 
 ### Examples
 
@@ -279,11 +289,11 @@ require 'ibm_cloud_power'
 
 api_instance = IbmCloudPower::PCloudSharedProcessorPoolsApi.new
 cloud_instance_id = 'cloud_instance_id_example' # String | Cloud Instance ID of a PCloud Instance
-shared_processor_pool_id = 'shared_processor_pool_id_example' # String | Shared Processor Pool ID or Name
-body = IbmCloudPower::SharedProcessorPoolUpdate.new # SharedProcessorPoolUpdate | Parameters for the update of a Shared Processor Pool
+shared_processor_pool_id = 'shared_processor_pool_id_example' # String | The unique identifier or name of the shared processor pool.
+body = IbmCloudPower::SharedProcessorPoolUpdate.new # SharedProcessorPoolUpdate | The shared processor pool update parameters.
 
 begin
-  # Update a Shared Processor Pool for a cloud instance
+  # Update a shared processor pool
   result = api_instance.pcloud_sharedprocessorpools_put(cloud_instance_id, shared_processor_pool_id, body)
   p result
 rescue IbmCloudPower::ApiError => e
@@ -299,7 +309,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Update a Shared Processor Pool for a cloud instance
+  # Update a shared processor pool
   data, status_code, headers = api_instance.pcloud_sharedprocessorpools_put_with_http_info(cloud_instance_id, shared_processor_pool_id, body)
   p status_code # => 2xx
   p headers # => { ... }
@@ -314,8 +324,8 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **cloud_instance_id** | **String** | Cloud Instance ID of a PCloud Instance |  |
-| **shared_processor_pool_id** | **String** | Shared Processor Pool ID or Name |  |
-| **body** | [**SharedProcessorPoolUpdate**](SharedProcessorPoolUpdate.md) | Parameters for the update of a Shared Processor Pool |  |
+| **shared_processor_pool_id** | **String** | The unique identifier or name of the shared processor pool. |  |
+| **body** | [**SharedProcessorPoolUpdate**](SharedProcessorPoolUpdate.md) | The shared processor pool update parameters. |  |
 
 ### Return type
 

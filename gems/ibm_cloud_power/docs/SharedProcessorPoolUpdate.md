@@ -4,8 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **name** | **String** | The new name for the Shared Processor Pool; minumum of 2 characters, maximum of 12, the only special character allowed is the underscore &#39;_&#39;. | [optional] |
-| **reserved_cores** | **Integer** | The amount of reserved processor cores for the Shared Processor Pool; only integers allowed, no fractional values; the amount can be increased (dependent on available resources) or decreased (dependent on currently allocated resources) | [optional] |
+| **name** | **String** | The new name for the shared processor pool. | [optional] |
+| **reserved_cores** | **Integer** | The number of processor cores to reserve for the shared processor pool. The value cannot be decreased below the pool&#39;s currently allocated cores. Increasing the value is subject to available capacity on the host. | [optional] |
 
 ## Example
 

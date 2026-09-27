@@ -14,7 +14,7 @@
 | **network_name** | **String** | The name of the network the address is on | [optional] |
 | **network_security_group_ids** | **Array&lt;String&gt;** | IDs of the network necurity groups that the network interface is a member of | [optional] |
 | **network_security_groups_href** | **Array&lt;String&gt;** | Links to the network security groups that the network interface is a member of | [optional] |
-| **type** | **String** | The address type (fixed or dynamic) | [optional] |
+| **type** | **String** | The address type (fixed, dynamic, or externalFixed) | [optional] |
 | **version** | **Float** | The version of the information provided | [optional] |
 
 ## Example

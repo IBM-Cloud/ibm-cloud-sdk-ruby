@@ -4,19 +4,21 @@ All URIs are relative to *http://localhost*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
-| [**pcloud_sppplacementgroups_delete**](PCloudSPPPlacementGroupsApi.md#pcloud_sppplacementgroups_delete) | **DELETE** /pcloud/v1/cloud-instances/{cloud_instance_id}/spp-placement-groups/{spp_placement_group_id} | Delete a Shared Processor Pool Placement Group from a cloud instance |
-| [**pcloud_sppplacementgroups_get**](PCloudSPPPlacementGroupsApi.md#pcloud_sppplacementgroups_get) | **GET** /pcloud/v1/cloud-instances/{cloud_instance_id}/spp-placement-groups/{spp_placement_group_id} | Get the detail of a Shared Processor Pool Placement Group for a cloud instance |
-| [**pcloud_sppplacementgroups_getall**](PCloudSPPPlacementGroupsApi.md#pcloud_sppplacementgroups_getall) | **GET** /pcloud/v1/cloud-instances/{cloud_instance_id}/spp-placement-groups | Get the list of Shared Processor Pool Placement Groups for a cloud instance |
-| [**pcloud_sppplacementgroups_members_delete**](PCloudSPPPlacementGroupsApi.md#pcloud_sppplacementgroups_members_delete) | **DELETE** /pcloud/v1/cloud-instances/{cloud_instance_id}/spp-placement-groups/{spp_placement_group_id}/members/{shared_processor_pool_id} | Delete Shared Processor Pool member from a Shared Processor Pool Placement Group |
-| [**pcloud_sppplacementgroups_members_post**](PCloudSPPPlacementGroupsApi.md#pcloud_sppplacementgroups_members_post) | **POST** /pcloud/v1/cloud-instances/{cloud_instance_id}/spp-placement-groups/{spp_placement_group_id}/members/{shared_processor_pool_id} | Add Shared Processor Pool as a member of a Shared Processor Pool Placement Group |
-| [**pcloud_sppplacementgroups_post**](PCloudSPPPlacementGroupsApi.md#pcloud_sppplacementgroups_post) | **POST** /pcloud/v1/cloud-instances/{cloud_instance_id}/spp-placement-groups | Create a new Shared Processor Pool Placement Group |
+| [**pcloud_sppplacementgroups_delete**](PCloudSPPPlacementGroupsApi.md#pcloud_sppplacementgroups_delete) | **DELETE** /pcloud/v1/cloud-instances/{cloud_instance_id}/spp-placement-groups/{spp_placement_group_id} | Delete a shared processor pool placement group |
+| [**pcloud_sppplacementgroups_get**](PCloudSPPPlacementGroupsApi.md#pcloud_sppplacementgroups_get) | **GET** /pcloud/v1/cloud-instances/{cloud_instance_id}/spp-placement-groups/{spp_placement_group_id} | Get a shared processor pool placement group |
+| [**pcloud_sppplacementgroups_getall**](PCloudSPPPlacementGroupsApi.md#pcloud_sppplacementgroups_getall) | **GET** /pcloud/v1/cloud-instances/{cloud_instance_id}/spp-placement-groups | List all shared processor pool placement groups |
+| [**pcloud_sppplacementgroups_members_delete**](PCloudSPPPlacementGroupsApi.md#pcloud_sppplacementgroups_members_delete) | **DELETE** /pcloud/v1/cloud-instances/{cloud_instance_id}/spp-placement-groups/{spp_placement_group_id}/members/{shared_processor_pool_id} | Remove a member from a shared processor pool placement group |
+| [**pcloud_sppplacementgroups_members_post**](PCloudSPPPlacementGroupsApi.md#pcloud_sppplacementgroups_members_post) | **POST** /pcloud/v1/cloud-instances/{cloud_instance_id}/spp-placement-groups/{spp_placement_group_id}/members/{shared_processor_pool_id} | Add a member to a shared processor pool placement group |
+| [**pcloud_sppplacementgroups_post**](PCloudSPPPlacementGroupsApi.md#pcloud_sppplacementgroups_post) | **POST** /pcloud/v1/cloud-instances/{cloud_instance_id}/spp-placement-groups | Create a shared processor pool placement group |
 
 
 ## pcloud_sppplacementgroups_delete
 
 > Object pcloud_sppplacementgroups_delete(cloud_instance_id, spp_placement_group_id)
 
-Delete a Shared Processor Pool Placement Group from a cloud instance
+Delete a shared processor pool placement group
+
+Deletes a shared processor pool placement group from the specified workspace. The placement group must have no member shared processor pools before it can be deleted.
 
 ### Examples
 
@@ -26,10 +28,10 @@ require 'ibm_cloud_power'
 
 api_instance = IbmCloudPower::PCloudSPPPlacementGroupsApi.new
 cloud_instance_id = 'cloud_instance_id_example' # String | Cloud Instance ID of a PCloud Instance
-spp_placement_group_id = 'spp_placement_group_id_example' # String | Shared Processor Pool Placement Group ID or Name
+spp_placement_group_id = 'spp_placement_group_id_example' # String | The unique identifier or name of the shared processor pool placement group.
 
 begin
-  # Delete a Shared Processor Pool Placement Group from a cloud instance
+  # Delete a shared processor pool placement group
   result = api_instance.pcloud_sppplacementgroups_delete(cloud_instance_id, spp_placement_group_id)
   p result
 rescue IbmCloudPower::ApiError => e
@@ -45,7 +47,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Delete a Shared Processor Pool Placement Group from a cloud instance
+  # Delete a shared processor pool placement group
   data, status_code, headers = api_instance.pcloud_sppplacementgroups_delete_with_http_info(cloud_instance_id, spp_placement_group_id)
   p status_code # => 2xx
   p headers # => { ... }
@@ -60,7 +62,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **cloud_instance_id** | **String** | Cloud Instance ID of a PCloud Instance |  |
-| **spp_placement_group_id** | **String** | Shared Processor Pool Placement Group ID or Name |  |
+| **spp_placement_group_id** | **String** | The unique identifier or name of the shared processor pool placement group. |  |
 
 ### Return type
 
@@ -80,7 +82,9 @@ No authorization required
 
 > <SPPPlacementGroup> pcloud_sppplacementgroups_get(cloud_instance_id, spp_placement_group_id)
 
-Get the detail of a Shared Processor Pool Placement Group for a cloud instance
+Get a shared processor pool placement group
+
+Retrieves the details of a shared processor pool placement group in the specified workspace.
 
 ### Examples
 
@@ -90,10 +94,10 @@ require 'ibm_cloud_power'
 
 api_instance = IbmCloudPower::PCloudSPPPlacementGroupsApi.new
 cloud_instance_id = 'cloud_instance_id_example' # String | Cloud Instance ID of a PCloud Instance
-spp_placement_group_id = 'spp_placement_group_id_example' # String | Shared Processor Pool Placement Group ID or Name
+spp_placement_group_id = 'spp_placement_group_id_example' # String | The unique identifier or name of the shared processor pool placement group.
 
 begin
-  # Get the detail of a Shared Processor Pool Placement Group for a cloud instance
+  # Get a shared processor pool placement group
   result = api_instance.pcloud_sppplacementgroups_get(cloud_instance_id, spp_placement_group_id)
   p result
 rescue IbmCloudPower::ApiError => e
@@ -109,7 +113,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Get the detail of a Shared Processor Pool Placement Group for a cloud instance
+  # Get a shared processor pool placement group
   data, status_code, headers = api_instance.pcloud_sppplacementgroups_get_with_http_info(cloud_instance_id, spp_placement_group_id)
   p status_code # => 2xx
   p headers # => { ... }
@@ -124,7 +128,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **cloud_instance_id** | **String** | Cloud Instance ID of a PCloud Instance |  |
-| **spp_placement_group_id** | **String** | Shared Processor Pool Placement Group ID or Name |  |
+| **spp_placement_group_id** | **String** | The unique identifier or name of the shared processor pool placement group. |  |
 
 ### Return type
 
@@ -144,7 +148,9 @@ No authorization required
 
 > <SPPPlacementGroups> pcloud_sppplacementgroups_getall(cloud_instance_id)
 
-Get the list of Shared Processor Pool Placement Groups for a cloud instance
+List all shared processor pool placement groups
+
+Lists all shared processor pool placement groups in the specified workspace.
 
 ### Examples
 
@@ -156,7 +162,7 @@ api_instance = IbmCloudPower::PCloudSPPPlacementGroupsApi.new
 cloud_instance_id = 'cloud_instance_id_example' # String | Cloud Instance ID of a PCloud Instance
 
 begin
-  # Get the list of Shared Processor Pool Placement Groups for a cloud instance
+  # List all shared processor pool placement groups
   result = api_instance.pcloud_sppplacementgroups_getall(cloud_instance_id)
   p result
 rescue IbmCloudPower::ApiError => e
@@ -172,7 +178,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Get the list of Shared Processor Pool Placement Groups for a cloud instance
+  # List all shared processor pool placement groups
   data, status_code, headers = api_instance.pcloud_sppplacementgroups_getall_with_http_info(cloud_instance_id)
   p status_code # => 2xx
   p headers # => { ... }
@@ -206,7 +212,9 @@ No authorization required
 
 > <SPPPlacementGroup> pcloud_sppplacementgroups_members_delete(cloud_instance_id, spp_placement_group_id, shared_processor_pool_id)
 
-Delete Shared Processor Pool member from a Shared Processor Pool Placement Group
+Remove a member from a shared processor pool placement group
+
+Removes a shared processor pool from the specified placement group.
 
 ### Examples
 
@@ -216,11 +224,11 @@ require 'ibm_cloud_power'
 
 api_instance = IbmCloudPower::PCloudSPPPlacementGroupsApi.new
 cloud_instance_id = 'cloud_instance_id_example' # String | Cloud Instance ID of a PCloud Instance
-spp_placement_group_id = 'spp_placement_group_id_example' # String | Shared Processor Pool Placement Group ID or Name
-shared_processor_pool_id = 'shared_processor_pool_id_example' # String | Shared Processor Pool ID or Name
+spp_placement_group_id = 'spp_placement_group_id_example' # String | The unique identifier or name of the shared processor pool placement group.
+shared_processor_pool_id = 'shared_processor_pool_id_example' # String | The unique identifier or name of the shared processor pool.
 
 begin
-  # Delete Shared Processor Pool member from a Shared Processor Pool Placement Group
+  # Remove a member from a shared processor pool placement group
   result = api_instance.pcloud_sppplacementgroups_members_delete(cloud_instance_id, spp_placement_group_id, shared_processor_pool_id)
   p result
 rescue IbmCloudPower::ApiError => e
@@ -236,7 +244,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Delete Shared Processor Pool member from a Shared Processor Pool Placement Group
+  # Remove a member from a shared processor pool placement group
   data, status_code, headers = api_instance.pcloud_sppplacementgroups_members_delete_with_http_info(cloud_instance_id, spp_placement_group_id, shared_processor_pool_id)
   p status_code # => 2xx
   p headers # => { ... }
@@ -251,8 +259,8 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **cloud_instance_id** | **String** | Cloud Instance ID of a PCloud Instance |  |
-| **spp_placement_group_id** | **String** | Shared Processor Pool Placement Group ID or Name |  |
-| **shared_processor_pool_id** | **String** | Shared Processor Pool ID or Name |  |
+| **spp_placement_group_id** | **String** | The unique identifier or name of the shared processor pool placement group. |  |
+| **shared_processor_pool_id** | **String** | The unique identifier or name of the shared processor pool. |  |
 
 ### Return type
 
@@ -272,7 +280,9 @@ No authorization required
 
 > <SPPPlacementGroup> pcloud_sppplacementgroups_members_post(cloud_instance_id, spp_placement_group_id, shared_processor_pool_id)
 
-Add Shared Processor Pool as a member of a Shared Processor Pool Placement Group
+Add a member to a shared processor pool placement group
+
+Adds a shared processor pool as a member of the specified placement group.
 
 ### Examples
 
@@ -282,11 +292,11 @@ require 'ibm_cloud_power'
 
 api_instance = IbmCloudPower::PCloudSPPPlacementGroupsApi.new
 cloud_instance_id = 'cloud_instance_id_example' # String | Cloud Instance ID of a PCloud Instance
-spp_placement_group_id = 'spp_placement_group_id_example' # String | Shared Processor Pool Placement Group ID or Name
-shared_processor_pool_id = 'shared_processor_pool_id_example' # String | Shared Processor Pool ID or Name
+spp_placement_group_id = 'spp_placement_group_id_example' # String | The unique identifier or name of the shared processor pool placement group.
+shared_processor_pool_id = 'shared_processor_pool_id_example' # String | The unique identifier or name of the shared processor pool.
 
 begin
-  # Add Shared Processor Pool as a member of a Shared Processor Pool Placement Group
+  # Add a member to a shared processor pool placement group
   result = api_instance.pcloud_sppplacementgroups_members_post(cloud_instance_id, spp_placement_group_id, shared_processor_pool_id)
   p result
 rescue IbmCloudPower::ApiError => e
@@ -302,7 +312,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Add Shared Processor Pool as a member of a Shared Processor Pool Placement Group
+  # Add a member to a shared processor pool placement group
   data, status_code, headers = api_instance.pcloud_sppplacementgroups_members_post_with_http_info(cloud_instance_id, spp_placement_group_id, shared_processor_pool_id)
   p status_code # => 2xx
   p headers # => { ... }
@@ -317,8 +327,8 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **cloud_instance_id** | **String** | Cloud Instance ID of a PCloud Instance |  |
-| **spp_placement_group_id** | **String** | Shared Processor Pool Placement Group ID or Name |  |
-| **shared_processor_pool_id** | **String** | Shared Processor Pool ID or Name |  |
+| **spp_placement_group_id** | **String** | The unique identifier or name of the shared processor pool placement group. |  |
+| **shared_processor_pool_id** | **String** | The unique identifier or name of the shared processor pool. |  |
 
 ### Return type
 
@@ -338,7 +348,9 @@ No authorization required
 
 > <SPPPlacementGroup> pcloud_sppplacementgroups_post(cloud_instance_id, body)
 
-Create a new Shared Processor Pool Placement Group
+Create a shared processor pool placement group
+
+Creates a new shared processor pool placement group in the specified workspace.
 
 ### Examples
 
@@ -348,10 +360,10 @@ require 'ibm_cloud_power'
 
 api_instance = IbmCloudPower::PCloudSPPPlacementGroupsApi.new
 cloud_instance_id = 'cloud_instance_id_example' # String | Cloud Instance ID of a PCloud Instance
-body = IbmCloudPower::SPPPlacementGroupCreate.new({name: 'name_example', policy: 'affinity'}) # SPPPlacementGroupCreate | Parameters for the creation of a Shared Processor Pool Placement Group
+body = IbmCloudPower::SPPPlacementGroupCreate.new({name: 'name_example', policy: 'affinity'}) # SPPPlacementGroupCreate | The shared processor pool placement group creation parameters.
 
 begin
-  # Create a new Shared Processor Pool Placement Group
+  # Create a shared processor pool placement group
   result = api_instance.pcloud_sppplacementgroups_post(cloud_instance_id, body)
   p result
 rescue IbmCloudPower::ApiError => e
@@ -367,7 +379,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Create a new Shared Processor Pool Placement Group
+  # Create a shared processor pool placement group
   data, status_code, headers = api_instance.pcloud_sppplacementgroups_post_with_http_info(cloud_instance_id, body)
   p status_code # => 2xx
   p headers # => { ... }
@@ -382,7 +394,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **cloud_instance_id** | **String** | Cloud Instance ID of a PCloud Instance |  |
-| **body** | [**SPPPlacementGroupCreate**](SPPPlacementGroupCreate.md) | Parameters for the creation of a Shared Processor Pool Placement Group |  |
+| **body** | [**SPPPlacementGroupCreate**](SPPPlacementGroupCreate.md) | The shared processor pool placement group creation parameters. |  |
 
 ### Return type
 

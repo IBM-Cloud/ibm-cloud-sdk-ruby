@@ -12,8 +12,8 @@
 | **migratable** | **Boolean** | (deprecated - replaced by pinPolicy) Indicates if the server is allowed to migrate between hosts | [optional][default to true] |
 | **pin_policy** | [**PinPolicy**](PinPolicy.md) |  | [optional] |
 | **preferred_processor_compatibility_mode** | **String** | Preferred processor compatibility mode | [optional] |
-| **proc_type** | **String** | Processor type (dedicated, shared, capped) | [optional] |
-| **processors** | **Float** | Number of processors allocated | [optional] |
+| **proc_type** | **String** | Processor type (dedicated, shared, capped). When changing processor type without specifying processors, the system automatically converts the current core allocation. For dedicated to shared or capped conversion, the system reduces cores by 0.75 (for example, 1 dedicated core becomes 0.25 shared cores, 3 dedicated cores becomes 2.25 shared cores). For shared or capped to dedicated conversion, the system uses the VM&#39;s virtual cores as the new dedicated core count. To override this automatic conversion, explicitly provide the processors value. | [optional] |
+| **processors** | **Float** | Number of processors allocated. When omitted during a procType change, the system automatically converts the current core count (see procType for conversion details). When explicitly provided, this value overrides automatic conversion. | [optional] |
 | **sap_profile_id** | **String** | If an SAP pvm-instance, the SAP profile ID to switch to (only while shutdown) | [optional] |
 | **server_name** | **String** | Name of the server to create | [optional] |
 | **software_licenses** | [**SoftwareLicenses**](SoftwareLicenses.md) | The pvm instance Software Licenses | [optional] |

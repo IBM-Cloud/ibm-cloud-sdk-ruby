@@ -768,7 +768,7 @@ require 'ibm_cloud_power'
 api_instance = IbmCloudPower::PCloudPVMInstancesApi.new
 cloud_instance_id = 'cloud_instance_id_example' # String | Cloud Instance ID of a PCloud Instance
 pvm_instance_id = 'pvm_instance_id_example' # String | PCloud PVM Instance ID
-body = IbmCloudPower::PVMInstanceAddNetwork.new({network_id: 'network_id_example'}) # PVMInstanceAddNetwork | Add network to PVM Instance parameters
+body = IbmCloudPower::PVMInstanceAddNetwork.new # PVMInstanceAddNetwork | Add network to PVM Instance parameters
 
 begin
   # Perform network addition

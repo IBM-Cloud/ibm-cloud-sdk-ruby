@@ -46,7 +46,7 @@
 | **storage_pool** | **String** | Storage Pool where server is deployed | [optional] |
 | **storage_pool_affinity** | **Boolean** | Indicates if all volumes attached to the server must reside in the same storage pool | [optional][default to true] |
 | **storage_type** | **String** | Storage type of the deployment storage pool | [optional] |
-| **sys_type** | **String** | System type used to host the instance | [optional] |
+| **sys_type** | **String** | System type used to host the instance; use GET /v1/datacenters to retrieve supported system types for a location. | [optional] |
 | **task_state** | **String** | Represents the task state of a virtual machine (VM). | [optional] |
 | **updated_date** | **Time** | Date/Time of PVM last update | [optional] |
 | **virtual_cores** | [**VirtualCores**](VirtualCores.md) | The pvm instance virtual CPU information | [optional] |

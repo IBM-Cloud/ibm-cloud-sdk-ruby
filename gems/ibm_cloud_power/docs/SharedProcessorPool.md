@@ -4,19 +4,19 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **allocated_cores** | **Float** | The amount of allocated processor cores for the Shared Processor Pool |  |
-| **available_cores** | **Float** | The amount of available processor cores for the Shared Processor Pool |  |
-| **creation_date** | **Time** | The creation time of the Shared Processor Pool | [optional] |
+| **allocated_cores** | **Float** | The number of allocated processor cores for the shared processor pool. |  |
+| **available_cores** | **Float** | The number of available processor cores for the shared processor pool. |  |
+| **creation_date** | **Time** | The date and time the shared processor pool was created. | [optional] |
 | **crn** | **String** | The CRN for this resource | [optional] |
-| **dedicated_host_id** | **String** | ID of the dedicated host where the Shared Processor Pool resides, if applicable | [optional] |
-| **host_group** | **String** | The host group the host belongs to | [optional] |
-| **host_id** | **Integer** | The ID of the host where the Shared Processor Pool resides | [optional] |
-| **id** | **String** | The id of the Shared Processor Pool |  |
-| **name** | **String** | The name of the Shared Processor Pool |  |
-| **reserved_cores** | **Integer** | The amount of reserved processor cores for the Shared Processor Pool |  |
-| **shared_processor_pool_placement_groups** | [**Array&lt;SharedProcessorPoolPlacementGroup&gt;**](SharedProcessorPoolPlacementGroup.md) | list of Shared Processor Pool Placement Groups | [optional] |
-| **status** | **String** | The status of the Shared Processor Pool | [optional] |
-| **status_detail** | **String** | The status details of the Shared Processor Pool | [optional] |
+| **dedicated_host_id** | **String** | The unique identifier of the dedicated host where the shared processor pool resides, if applicable. | [optional] |
+| **host_group** | **String** | The host group that the host belongs to. | [optional] |
+| **host_id** | **Integer** | The identifier of the host where the shared processor pool resides. | [optional] |
+| **id** | **String** | The unique identifier of the shared processor pool. |  |
+| **name** | **String** | The name of the shared processor pool. |  |
+| **reserved_cores** | **Integer** | The number of reserved processor cores for the shared processor pool. |  |
+| **shared_processor_pool_placement_groups** | [**Array&lt;SharedProcessorPoolPlacementGroup&gt;**](SharedProcessorPoolPlacementGroup.md) | The list of placement groups the shared processor pool is a member of. | [optional] |
+| **status** | **String** | The status of the shared processor pool. | [optional] |
+| **status_detail** | **String** | Additional details about the status of the shared processor pool. | [optional] |
 | **user_tags** | **Array&lt;String&gt;** | List of user tags | [optional] |
 
 ## Example

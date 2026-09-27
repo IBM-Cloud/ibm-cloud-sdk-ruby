@@ -11,7 +11,7 @@
 | **anti_affinity_volumes** | **Array&lt;String&gt;** | List of volumes to base volume anti-affinity policy against; required if requesting anti-affinity and antiAffinityPVMInstances is not provided | [optional] |
 | **disk_type** | **String** | Type of Disk; if diskType is not provided the disk type will default to &#39;tier3&#39;. | [optional] |
 | **name** | **String** | Volume Name |  |
-| **replication_enabled** | **Boolean** | Indicates if the volume should be replication enabled or not | [optional] |
+| **replication_enabled** | **Boolean** | Indicates if the volume should be replication enabled or not. | [optional] |
 | **shareable** | **Boolean** | Indicates if the volume is shareable between VMs | [optional] |
 | **size** | **Float** | Volume Size (GiB) |  |
 | **user_tags** | **Array&lt;String&gt;** | List of user tags | [optional] |
